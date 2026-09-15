@@ -10,6 +10,17 @@ function directionsUrl(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }
 
+function initials(name: string) {
+  return name
+    .replace(/\b(Brewing|Brewery|Company|Co\.|Craft|Beer)\b/gi, "")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+}
+
 export default function BreweryDirectory() {
   const searchParams = useSearchParams();
   const requestedArea = searchParams.get("area");
@@ -23,17 +34,19 @@ export default function BreweryDirectory() {
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    return breweries.filter((brewery) => {
-      const matchesQuery =
-        !normalized ||
-        [brewery.name, brewery.city, brewery.neighborhood, brewery.type]
-          .join(" ")
-          .toLowerCase()
-          .includes(normalized);
-      const matchesArea = area === "All" || brewery.area === area;
-      const matchesFood = food === "All food" || brewery.food === food;
-      return matchesQuery && matchesArea && matchesFood;
-    });
+    return breweries
+      .filter((brewery) => {
+        const matchesQuery =
+          !normalized ||
+          [brewery.name, brewery.city, brewery.neighborhood, brewery.type]
+            .join(" ")
+            .toLowerCase()
+            .includes(normalized);
+        const matchesArea = area === "All" || brewery.area === area;
+        const matchesFood = food === "All food" || brewery.food === food;
+        return matchesQuery && matchesArea && matchesFood;
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [query, area, food]);
 
   return (
@@ -67,7 +80,7 @@ export default function BreweryDirectory() {
       </div>
 
       <div className="mt-7 flex items-center justify-between gap-4">
-        <p className="text-sm text-zinc-400"><span className="font-bold text-white">{filtered.length}</span> breweries in this starter directory</p>
+        <p className="text-sm text-zinc-400"><span className="font-bold text-white">{filtered.length}</span> breweries · default order A–Z</p>
         {(query || area !== "All" || food !== "All food") && (
           <button
             onClick={() => { setQuery(""); setArea("All"); setFood("All food"); }}
@@ -79,19 +92,24 @@ export default function BreweryDirectory() {
       </div>
 
       <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((brewery, index) => (
+        {filtered.map((brewery) => (
           <article key={brewery.slug} className="group overflow-hidden border border-[var(--border)] bg-[var(--panel)] transition hover:-translate-y-1 hover:border-zinc-600">
-            <div className="relative h-40 overflow-hidden border-b border-[var(--border)] bg-[#181818]">
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-50 transition duration-500 group-hover:scale-105 group-hover:opacity-65"
-                style={{
-                  backgroundImage: index % 2 === 0
-                    ? "url('https://images.unsplash.com/photo-1774109049275-6b6fa2f7cd4a?auto=format&fit=crop&q=75&w=1200')"
-                    : "url('https://images.unsplash.com/photo-1747003389183-86aaf6c9189b?auto=format&fit=crop&q=70&w=1200')"
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-transparent" />
-              <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/55 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-[var(--gold)] backdrop-blur">
+            <div className="relative h-44 overflow-hidden border-b border-[var(--border)] bg-[#161616]">
+              {brewery.image ? (
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105"
+                  style={{ backgroundImage: `url('${brewery.image.url}')` }}
+                  role="img"
+                  aria-label={brewery.image.alt}
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_70%_20%,rgba(255,207,36,.18),transparent_35%),#151515]">
+                  <div className="text-5xl font-black tracking-[-0.08em] text-zinc-700">{initials(brewery.name)}</div>
+                  <div className="absolute bottom-3 right-4 text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-600">Rights-cleared photo pending</div>
+                </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#101010] via-black/10 to-transparent" />
+              <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-black/65 px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-[var(--gold)] backdrop-blur">
                 {brewery.area}
               </div>
               <div className="absolute bottom-4 left-5 right-5">
@@ -110,9 +128,10 @@ export default function BreweryDirectory() {
               </div>
               <div className="mt-5 border-t border-[var(--border)] pt-4">
                 <p className="text-sm leading-6 text-zinc-300">{brewery.address}</p>
-                <div className="mt-4 flex gap-4 text-sm font-bold">
+                <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-bold">
                   <a href={brewery.website} target="_blank" rel="noreferrer" className="text-[var(--gold)] hover:text-white">Website ↗</a>
                   <a href={directionsUrl(brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-300 hover:text-white">Directions ↗</a>
+                  {brewery.image && <a href={brewery.image.sourceUrl} target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-white">Photo source ↗</a>}
                 </div>
                 <div className="mt-4 text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-600">Verified {brewery.lastVerified}</div>
               </div>

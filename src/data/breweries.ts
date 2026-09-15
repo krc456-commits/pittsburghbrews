@@ -1,3 +1,13 @@
+export type BreweryImage = {
+  url: string;
+  alt: string;
+  sourceLabel: string;
+  sourceUrl: string;
+  license: string;
+  licenseUrl?: string;
+  credit?: string;
+};
+
 export type Brewery = {
   name: string;
   slug: string;
@@ -12,6 +22,7 @@ export type Brewery = {
   dogFriendly?: boolean;
   lastVerified: string;
   blurb: string;
+  image?: BreweryImage;
 };
 
 export const breweries: Brewery[] = [
@@ -53,7 +64,15 @@ export const breweries: Brewery[] = [
     type: "Brewpub",
     food: "Full kitchen",
     lastVerified: "Sep 2026",
-    blurb: "A Pittsburgh craft-beer institution serving fresh beer and pizza from its Larimer brewpub."
+    blurb: "A Pittsburgh craft-beer institution serving fresh beer and pizza from its Larimer brewpub.",
+    image: {
+      url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/East_End_Brewing_Company.jpg",
+      alt: "East End Brewing Company in Pittsburgh",
+      sourceLabel: "Wikimedia Commons",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:East_End_Brewing_Company.jpg",
+      license: "Creative Commons licensed",
+      credit: "Drew from Zhrodague"
+    }
   },
   {
     name: "Trace Brewing",
@@ -125,7 +144,16 @@ export const breweries: Brewery[] = [
     outdoor: true,
     dogFriendly: true,
     lastVerified: "Sep 2026",
-    blurb: "Pittsburgh's historic North Side brewery pairing German-style beer with classic Pittsburgh food."
+    blurb: "Pittsburgh's historic North Side brewery pairing German-style beer with classic Pittsburgh food.",
+    image: {
+      url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/PennBrewery.jpg",
+      alt: "Penn Brewery complex in Pittsburgh",
+      sourceLabel: "Wikimedia Commons",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:PennBrewery.jpg",
+      license: "CC BY-SA / GFDL",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+      credit: "Lee Paxton"
+    }
   },
   {
     name: "Golden Age Beer Co.",
