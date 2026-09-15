@@ -27,9 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               </Link>
               <nav className="hidden items-center gap-7 text-sm text-zinc-300 md:flex">
                 {navItems.map(([label, href]) => (
-                  <Link key={href} href={href} className="transition hover:text-[var(--gold)]">
-                    {label}
-                  </Link>
+                  <Link key={href} href={href} className="transition hover:text-[var(--gold)]">{label}</Link>
                 ))}
               </nav>
             </div>
@@ -40,6 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <div>
                 <div className="font-bold text-white">Pittsburgh Brews</div>
                 <p className="mt-2 max-w-md">An independent guide to breweries across Pittsburgh and Western Pennsylvania.</p>
+                <Link href="/credits" className="mt-3 inline-block text-xs font-bold text-zinc-500 hover:text-[var(--gold)]">Image credits & licensing</Link>
               </div>
               <div className="md:text-right">
                 <Link href="/submit" className="text-white hover:text-[var(--gold)]">Know something changed? Submit an update.</Link>
