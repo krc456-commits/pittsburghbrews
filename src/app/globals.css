@@ -5,7 +5,7 @@
   --foreground: #f4f4f0;
   --muted: #a8a8a0;
   --panel: #141414;
-  --border: #2a2a2a;
+  --border: #292929;
   --gold: #ffcf24;
 }
 
@@ -15,15 +15,17 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top right, rgba(255, 207, 36, 0.08), transparent 28rem),
+    radial-gradient(circle at top right, rgba(255, 207, 36, 0.07), transparent 30rem),
     var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -31,7 +33,69 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
 ::selection {
   background: var(--gold);
   color: #111;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.tag {
+  border: 1px solid #333;
+  background: #181818;
+  padding: 0.35rem 0.55rem;
+  color: #b9b9b3;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.area-card {
+  min-height: 13rem;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(145deg, rgba(255, 207, 36, 0.035), transparent 55%),
+    var(--panel);
+  padding: 1.5rem;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.area-card:hover {
+  transform: translateY(-3px);
+  border-color: #555;
+  background:
+    linear-gradient(145deg, rgba(255, 207, 36, 0.09), transparent 55%),
+    #161616;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
