@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { areas, breweries } from "@/data/breweries";
+import { areas, breweries } from "@/data/allBreweries";
 
 const foodFilters = ["All food", "Full kitchen", "Food trucks", "Light food"] as const;
 const featureFilters = ["All features", "Outdoor seating", "Dog friendly"] as const;
