@@ -189,5 +189,27 @@ export const breweryAdditions: Brewery[] = [
     outdoor: true,
     lastVerified: "Sep 2026",
     blurb: "Allegheny City Brewing's Brighton Heights taproom next to Muns Pizza."
+  },
+  {
+    name: "The Church Brew Works",
+    slug: "church-brew-works",
+    city: "Pittsburgh",
+    neighborhood: "Lawrenceville",
+    area: "Pittsburgh",
+    address: "3525 Liberty Ave, Pittsburgh, PA 15201",
+    website: "https://churchbrew.com/",
+    type: "Brewpub",
+    food: "Full kitchen",
+    outdoor: false,
+    lastVerified: "Sep 2026",
+    blurb: "Landmark Lawrenceville brewpub inside a restored former church.",
+    image: {
+      url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Church_Brew_Works.jpg",
+      alt: "The Church Brew Works in Pittsburgh",
+      sourceLabel: "Wikimedia Commons",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:The_Church_Brew_Works.jpg",
+      license: "Public domain",
+      credit: "Olessi"
+    }
   }
 ];
