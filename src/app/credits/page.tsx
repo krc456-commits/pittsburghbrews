@@ -4,7 +4,7 @@ export default function CreditsPage() {
       <div className="eyebrow">Transparency</div>
       <h1 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">Image credits</h1>
       <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-400">
-        Pittsburgh Brews uses rights-cleared photography where available. When a brewery does not yet have an approved photo, its own website icon may be shown as a small brand identifier. Brewery names, logos, and trademarks remain the property of their respective owners.
+        Pittsburgh Brews only uses brewery photography when the source and reuse rights are documented. Cards without an approved storefront or taproom photo simply use the clean text layout.
       </p>
 
       <div className="mt-10 space-y-6">
@@ -28,10 +28,16 @@ export default function CreditsPage() {
           license="Creative Commons licensed"
           source="https://commons.wikimedia.org/wiki/File:East_End_Brewing_Company.jpg"
         />
+        <Credit
+          title="The Church Brew Works card photo"
+          author="Olessi"
+          license="Public domain"
+          source="https://commons.wikimedia.org/wiki/File:The_Church_Brew_Works.jpg"
+        />
       </div>
 
       <div className="mt-12 border border-[var(--border)] bg-[var(--panel)] p-6 text-sm leading-6 text-zinc-400">
-        Storefront and taproom photos are added only when a reusable source is documented. Brewery website icons are used only as identification marks and are automatically replaced by a rights-cleared photo when one is available.
+        Storefront and taproom photos are added only when a reusable source is documented. No random logos, social-media images, or decorative initials are used as substitutes.
       </div>
     </main>
   );
