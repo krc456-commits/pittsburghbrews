@@ -3,60 +3,12 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { areas, breweries } from "@/data/allBreweries";
-import type { Brewery } from "@/data/breweries";
 
 const foodFilters = ["All food", "Full kitchen", "Food trucks", "Light food"] as const;
 const featureFilters = ["All features", "Outdoor seating", "Dog friendly"] as const;
 
 function directionsUrl(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-}
-
-function initials(name: string) {
-  return name.replace(/\b(Brewing|Brewery|Company|Co\.|Craft|Beer)\b/gi, "").split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
-}
-
-function siteIconUrl(website: string) {
-  try {
-    return `${new URL(website).origin}/favicon.ico`;
-  } catch {
-    return "";
-  }
-}
-
-function BreweryVisual({ brewery }: { brewery: Brewery }) {
-  const [iconFailed, setIconFailed] = useState(false);
-
-  if (brewery.image) {
-    return (
-      <div
-        className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-[1.025]"
-        style={{ backgroundImage: `url('${brewery.image.url}')` }}
-        role="img"
-        aria-label={brewery.image.alt}
-      />
-    );
-  }
-
-  const iconUrl = siteIconUrl(brewery.website);
-
-  return (
-    <div className="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_70%_20%,rgba(255,207,36,.10),transparent_35%),#171716]">
-      <div className="absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(255,255,255,.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.025)_1px,transparent_1px)] [background-size:24px_24px]" />
-      {!iconFailed && iconUrl ? (
-        <div className="relative flex h-24 w-36 items-center justify-center rounded-2xl border border-white/10 bg-white p-5 shadow-xl shadow-black/25">
-          <img
-            src={iconUrl}
-            alt={`${brewery.name} logo mark`}
-            className="max-h-14 max-w-24 object-contain"
-            onError={() => setIconFailed(true)}
-          />
-        </div>
-      ) : (
-        <div className="relative text-5xl font-black tracking-[-.08em] text-zinc-700">{initials(brewery.name)}</div>
-      )}
-    </div>
-  );
 }
 
 export default function BreweryDirectory() {
@@ -125,15 +77,35 @@ export default function BreweryDirectory() {
       <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((brewery) => (
           <article key={brewery.slug} className="group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20">
-            <div className="relative h-48 overflow-hidden bg-[#191918]">
-              <BreweryVisual brewery={brewery} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent" />
-              <div className="absolute left-4 top-4 rounded-full border border-white/10 bg-black/60 px-3 py-1 text-[10px] font-black uppercase tracking-[.14em] text-[var(--gold)] backdrop-blur">{brewery.area}</div>
-              <div className="absolute bottom-4 left-5 right-5"><div className="text-xs font-black uppercase tracking-[.12em] text-zinc-300">{brewery.neighborhood}</div><h2 className="mt-1 text-2xl font-black text-white">{brewery.name}</h2></div>
-            </div>
+            {brewery.image ? (
+              <div className="relative h-52 overflow-hidden bg-[#191918]">
+                <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-black/5" />
+                <div className="absolute left-4 top-4 rounded-full border border-white/10 bg-black/65 px-3 py-1 text-[10px] font-black uppercase tracking-[.14em] text-[var(--gold)] backdrop-blur">{brewery.area}</div>
+                <div className="absolute bottom-4 left-5 right-5">
+                  <div className="text-xs font-black uppercase tracking-[.12em] text-zinc-300">{brewery.neighborhood}</div>
+                  <h2 className="mt-1 text-2xl font-black leading-tight text-white">{brewery.name}</h2>
+                </div>
+              </div>
+            ) : (
+              <div className="border-b border-white/8 px-5 pb-5 pt-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div className="text-xs font-black uppercase tracking-[.12em] text-zinc-500">{brewery.neighborhood}</div>
+                    <h2 className="mt-2 text-2xl font-black leading-tight text-white">{brewery.name}</h2>
+                  </div>
+                  <div className="shrink-0 rounded-full border border-white/10 bg-[#0d0d0c] px-3 py-1 text-[10px] font-black uppercase tracking-[.14em] text-[var(--gold)]">{brewery.area}</div>
+                </div>
+              </div>
+            )}
+
             <div className="p-5">
               <div className="flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
-              <div className="mt-5 border-t border-white/8 pt-4"><p className="text-sm leading-6 text-zinc-300">{brewery.address}</p><div className="mt-4 flex flex-wrap gap-4 text-sm font-black"><a href={brewery.website} target="_blank" rel="noreferrer" className="text-[var(--gold)] hover:text-white">Website ↗</a><a href={directionsUrl(brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white">Directions ↗</a></div><div className="mt-4 text-[10px] font-black uppercase tracking-[.12em] text-zinc-700">Verified {brewery.lastVerified}</div></div>
+              <div className="mt-5 border-t border-white/8 pt-4">
+                <p className="text-sm leading-6 text-zinc-300">{brewery.address}</p>
+                <div className="mt-4 flex flex-wrap gap-4 text-sm font-black"><a href={brewery.website} target="_blank" rel="noreferrer" className="text-[var(--gold)] hover:text-white">Website ↗</a><a href={directionsUrl(brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white">Directions ↗</a></div>
+                <div className="mt-4 text-[10px] font-black uppercase tracking-[.12em] text-zinc-700">Verified {brewery.lastVerified}</div>
+              </div>
             </div>
           </article>
         ))}
