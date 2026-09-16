@@ -21,8 +21,8 @@ function Brand({ footer = false }: { footer?: boolean }) {
       alt="Pittsburgh Brews"
       className={
         footer
-          ? "h-12 w-auto max-w-[330px] object-contain sm:h-14 sm:max-w-[390px]"
-          : "h-10 w-auto max-w-[225px] object-contain sm:h-12 sm:max-w-[300px] lg:h-14 lg:max-w-[350px]"
+          ? "h-16 w-auto max-w-[440px] object-contain sm:h-20 sm:max-w-[520px]"
+          : "h-14 w-auto max-w-[300px] object-contain sm:h-16 sm:max-w-[380px] lg:h-[72px] lg:max-w-[430px]"
       }
     />
   );
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <div className="min-h-screen">
           <header className="sticky top-0 z-50 border-b border-white/8 bg-[#0b0b0a]/96 backdrop-blur-xl">
-            <div className="mx-auto flex h-[82px] max-w-7xl items-center justify-between gap-5 px-5 md:h-[90px] md:px-8">
+            <div className="mx-auto flex h-[92px] max-w-7xl items-center justify-between gap-5 px-5 md:h-[104px] md:px-8">
               <Link href="/" aria-label="Pittsburgh Brews home" className="flex min-w-0 items-center"><Brand /></Link>
               <nav className="hidden shrink-0 items-center gap-6 text-sm font-bold text-zinc-300 md:flex">
                 {navItems.map(([label, href]) => (
