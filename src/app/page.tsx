@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { breweries } from "@/data/breweries";
+import { breweries } from "@/data/allBreweries";
 import { beerEvents } from "@/data/events";
 
 const primaryActions = [
@@ -59,11 +59,7 @@ export default function Home() {
             <div className="text-sm font-black uppercase tracking-[0.12em] text-zinc-500">What are you looking for?</div>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {primaryActions.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="group rounded-xl border border-white/10 bg-[#141413] p-5 transition hover:border-[var(--gold)]/50 hover:bg-[#181817]"
-                >
+                <Link key={item.label} href={item.href} className="group rounded-xl border border-white/10 bg-[#141413] p-5 transition hover:border-[var(--gold)]/50 hover:bg-[#181817]">
                   <div className="flex items-start justify-between gap-4">
                     <div className="text-xl font-black text-white">{item.label}</div>
                     <div className="text-xl text-[var(--gold)]">{item.icon}</div>
@@ -95,7 +91,7 @@ export default function Home() {
           <div className="flex items-center justify-between gap-4">
             <div>
               <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-600">Recently verified</div>
-              <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">{breweries.length} breweries and growing</h2>
+              <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">{breweries.length} brewery locations and growing</h2>
             </div>
             <Link href="/breweries" className="text-sm font-black text-[var(--gold)]">View all →</Link>
           </div>
