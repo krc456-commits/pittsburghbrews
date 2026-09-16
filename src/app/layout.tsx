@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pittsburgh Brews",
-  description: "An independent guide to breweries across Pittsburgh and Western Pennsylvania.",
+  title: "Pittsburgh Brews | Independent Pittsburgh Brewery Guide",
+  description: "Find breweries, taprooms, patios, food, and local beer across Pittsburgh and Western Pennsylvania.",
 };
 
 const navItems = [
@@ -16,55 +14,42 @@ const navItems = [
   ["Submit Update", "/submit"],
 ] as const;
 
-const logoBase64 = readFileSync(
-  join(process.cwd(), "public", "brand", "pittsburgh-brews-horizontal.webp"),
-  "utf8",
-).trim();
-
-const logoSrc = `data:image/webp;base64,${logoBase64}`;
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
         <div className="min-h-screen">
-          <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-black/90 backdrop-blur">
-            <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3 md:px-8">
-              <Link href="/" aria-label="Pittsburgh Brews home" className="shrink-0">
-                <span className="flex items-center rounded-md bg-white px-2.5 py-1.5 shadow-[0_0_0_1px_rgba(255,255,255,.08)]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={logoSrc}
-                    alt="Pittsburgh Brews"
-                    className="h-9 w-auto object-contain sm:h-10"
-                  />
-                </span>
+          <header className="sticky top-0 z-50 border-b border-white/8 bg-[#0b0b0a]/95 backdrop-blur-xl">
+            <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-5 md:px-8">
+              <Link href="/" className="block shrink-0" aria-label="Pittsburgh Brews home">
+                <img src="/brand/pittsburgh-brews-horizontal.svg" alt="Pittsburgh Brews" className="h-11 w-auto sm:h-12" />
               </Link>
-              <nav className="hidden items-center gap-7 text-sm text-zinc-300 md:flex">
+              <nav className="hidden items-center gap-7 text-sm font-bold text-zinc-300 md:flex">
                 {navItems.map(([label, href]) => (
                   <Link key={href} href={href} className="transition hover:text-[var(--gold)]">{label}</Link>
                 ))}
               </nav>
+              <Link href="/breweries" className="rounded-full border border-white/15 px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-white md:hidden">
+                Browse
+              </Link>
             </div>
           </header>
           {children}
-          <footer className="border-t border-[var(--border)] bg-black">
-            <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 text-sm text-zinc-400 md:grid-cols-2 md:px-8">
-              <div>
-                <Link href="/" aria-label="Pittsburgh Brews home" className="inline-flex rounded-md bg-white px-3 py-2">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={logoSrc}
-                    alt="Pittsburgh Brews"
-                    className="h-12 w-auto object-contain"
-                  />
-                </Link>
-                <p className="mt-4 max-w-md">An independent guide to breweries across Pittsburgh and Western Pennsylvania.</p>
-                <Link href="/credits" className="mt-3 inline-block text-xs font-bold text-zinc-500 hover:text-[var(--gold)]">Image credits & licensing</Link>
+          <footer className="border-t border-white/8 bg-[#080808]">
+            <div className="mx-auto max-w-7xl px-5 py-12 md:px-8">
+              <div className="grid gap-10 md:grid-cols-[1.2fr_.8fr] md:items-end">
+                <div>
+                  <img src="/brand/pittsburgh-brews-horizontal.svg" alt="Pittsburgh Brews" className="h-16 w-auto max-w-full" />
+                  <p className="mt-4 max-w-xl text-sm leading-6 text-zinc-500">An independent guide for finding breweries, taprooms, patios, food, and good beer across Pittsburgh and Western Pennsylvania.</p>
+                </div>
+                <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm font-bold text-zinc-400 md:justify-end">
+                  <Link href="/breweries" className="hover:text-white">Breweries</Link>
+                  <Link href="/about" className="hover:text-white">About</Link>
+                  <Link href="/submit" className="hover:text-white">Submit an update</Link>
+                  <Link href="/credits" className="hover:text-white">Image credits</Link>
+                </div>
               </div>
-              <div className="md:text-right">
-                <Link href="/submit" className="text-white hover:text-[var(--gold)]">Know something changed? Submit an update.</Link>
-              </div>
+              <div className="mt-10 border-t border-white/8 pt-5 text-xs text-zinc-600">Pittsburgh Brews · Independently maintained · No paid placement</div>
             </div>
           </footer>
         </div>

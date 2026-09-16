@@ -1,100 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #f4f4f0;
-  --muted: #a8a8a0;
-  --panel: #141414;
-  --border: #292929;
+  --background: #0b0b0a;
+  --foreground: #f5f3ec;
+  --muted: #a3a39c;
+  --panel: #141413;
+  --border: #2a2a27;
   --gold: #ffcf24;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  background: var(--background);
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--background); }
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top right, rgba(255, 207, 36, 0.07), transparent 30rem),
-    var(--background);
+  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
-
-a {
-  text-decoration: none;
-}
-
-button,
-input,
-select {
-  font: inherit;
-}
-
-button,
-select {
-  cursor: pointer;
-}
-
-::selection {
-  background: var(--gold);
-  color: #111;
-}
+a { text-decoration: none; }
+button, input, select { font: inherit; }
+button, select { cursor: pointer; }
+::selection { background: var(--gold); color: #111; }
 
 .eyebrow {
   color: var(--gold);
-  font-size: 0.75rem;
+  font-size: .72rem;
   font-weight: 900;
-  letter-spacing: 0.2em;
+  letter-spacing: .19em;
   text-transform: uppercase;
 }
 
 .tag {
-  border: 1px solid #333;
-  background: #181818;
-  padding: 0.35rem 0.55rem;
-  color: #b9b9b3;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
+  border: 1px solid #343431;
+  border-radius: 999px;
+  background: #1a1a18;
+  padding: .34rem .58rem;
+  color: #b7b7b0;
+  font-size: .64rem;
+  font-weight: 900;
+  letter-spacing: .055em;
   text-transform: uppercase;
 }
 
-.area-card {
-  min-height: 13rem;
-  border: 1px solid var(--border);
-  background:
-    linear-gradient(145deg, rgba(255, 207, 36, 0.035), transparent 55%),
-    var(--panel);
-  padding: 1.5rem;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-}
-
-.area-card:hover {
-  transform: translateY(-3px);
-  border-color: #555;
-  background:
-    linear-gradient(145deg, rgba(255, 207, 36, 0.09), transparent 55%),
-    #161616;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
