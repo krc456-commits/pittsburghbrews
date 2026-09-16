@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { breweries } from "@/data/breweries";
+import { beerEvents } from "@/data/events";
 
 const primaryActions = [
   {
@@ -11,7 +12,7 @@ const primaryActions = [
   {
     label: "Browse by area",
     detail: "Start with Pittsburgh, North, East, South, West, or beyond.",
-    href: "/breweries",
+    href: "/areas",
     icon: "◎",
   },
   {
@@ -22,7 +23,7 @@ const primaryActions = [
   },
   {
     label: "Patios & food",
-    detail: "Find breweries with outdoor seating or a full kitchen.",
+    detail: "Jump into breweries with outdoor seating, then filter from there.",
     href: "/breweries?feature=outdoor",
     icon: "☀",
   },
@@ -36,7 +37,8 @@ const quickLinks = [
   ["Dog friendly", "/breweries?feature=dog"],
 ] as const;
 
-const featured = [...breweries].sort((a, b) => a.name.localeCompare(b.name)).slice(0, 3);
+const featuredBreweries = [...breweries].sort((a, b) => a.name.localeCompare(b.name)).slice(0, 3);
+const featuredEvents = beerEvents.filter((event) => event.featured).slice(0, 3);
 
 export default function Home() {
   return (
@@ -93,13 +95,13 @@ export default function Home() {
           <div className="flex items-center justify-between gap-4">
             <div>
               <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-600">Recently verified</div>
-              <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">A few places to start</h2>
+              <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">{breweries.length} breweries and growing</h2>
             </div>
             <Link href="/breweries" className="text-sm font-black text-[var(--gold)]">View all →</Link>
           </div>
 
           <div className="mt-6 grid gap-3 md:grid-cols-3">
-            {featured.map((brewery) => (
+            {featuredBreweries.map((brewery) => (
               <Link key={brewery.slug} href={`/breweries?q=${encodeURIComponent(brewery.name)}`} className="rounded-xl border border-white/8 bg-[#131312] p-5 transition hover:border-white/20">
                 <div className="text-[11px] font-black uppercase tracking-[0.12em] text-[var(--gold)]">{brewery.neighborhood}</div>
                 <div className="mt-2 text-xl font-black text-white">{brewery.name}</div>
@@ -108,6 +110,29 @@ export default function Home() {
                   {brewery.outdoor && <span className="tag">Patio</span>}
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-white/8 bg-[#10100f]">
+        <div className="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-14">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-600">This fall</div>
+              <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">Beer events worth knowing about</h2>
+            </div>
+            <Link href="/events" className="text-sm font-black text-[var(--gold)]">See all →</Link>
+          </div>
+
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {featuredEvents.map((event) => (
+              <a key={event.name} href={event.url} target="_blank" rel="noreferrer" className="rounded-xl border border-white/8 bg-[#141413] p-5 transition hover:border-white/20">
+                <div className="text-[11px] font-black uppercase tracking-[0.12em] text-[var(--gold)]">{event.category}</div>
+                <div className="mt-2 text-lg font-black text-white">{event.name}</div>
+                <div className="mt-3 text-sm font-black text-zinc-300">{event.date}</div>
+                <div className="mt-1 text-sm text-zinc-500">{event.location}</div>
+              </a>
             ))}
           </div>
         </div>
