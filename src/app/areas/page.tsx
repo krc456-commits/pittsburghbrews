@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { breweries } from "@/data/breweries";
+import { breweries } from "@/data/allBreweries";
 
 const areaNames = ["Pittsburgh", "North", "South", "East", "West", "Surrounding Counties"] as const;
 
