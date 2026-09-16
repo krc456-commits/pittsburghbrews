@@ -29,6 +29,7 @@ export default function BreweryDirectory() {
   const [area, setArea] = useState<(typeof areas)[number]>(initialArea);
   const [food, setFood] = useState<(typeof foodFilters)[number]>(initialFood);
   const [feature, setFeature] = useState<(typeof featureFilters)[number]>(initialFeature);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -41,22 +42,57 @@ export default function BreweryDirectory() {
     }).sort((a, b) => a.name.localeCompare(b.name));
   }, [query, area, food, feature]);
 
+  const hasActiveFilters = Boolean(query || area !== "All" || food !== "All food" || feature !== "All features");
+  const activeFilterCount = [Boolean(query), area !== "All", food !== "All food", feature !== "All features"].filter(Boolean).length;
   const reset = () => { setQuery(""); setArea("All"); setFood("All food"); setFeature("All features"); };
+
+  const controls = (
+    <>
+      <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search brewery, neighborhood, or city" className="w-full rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[var(--gold)]" />
+      <select value={area} onChange={(e) => setArea(e.target.value as (typeof areas)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{areas.map((item) => <option key={item}>{item}</option>)}</select>
+      <select value={food} onChange={(e) => setFood(e.target.value as (typeof foodFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{foodFilters.map((item) => <option key={item}>{item}</option>)}</select>
+      <select value={feature} onChange={(e) => setFeature(e.target.value as (typeof featureFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{featureFilters.map((item) => <option key={item}>{item}</option>)}</select>
+    </>
+  );
 
   return (
     <div className="mt-10">
-      <div className="sticky top-[72px] z-20 -mx-5 border-y border-white/8 bg-[#0b0b0a]/95 px-5 py-4 backdrop-blur-xl md:-mx-8 md:px-8">
-        <div className="mx-auto grid max-w-7xl gap-3 lg:grid-cols-[1fr_auto_auto_auto]">
-          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search brewery, neighborhood, or city" className="w-full rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[var(--gold)]" />
-          <select value={area} onChange={(e) => setArea(e.target.value as (typeof areas)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{areas.map((item) => <option key={item}>{item}</option>)}</select>
-          <select value={food} onChange={(e) => setFood(e.target.value as (typeof foodFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{foodFilters.map((item) => <option key={item}>{item}</option>)}</select>
-          <select value={feature} onChange={(e) => setFeature(e.target.value as (typeof featureFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{featureFilters.map((item) => <option key={item}>{item}</option>)}</select>
+      <div className="sticky top-[72px] z-20 -mx-5 border-y border-white/8 bg-[#0b0b0a]/95 px-5 py-3 backdrop-blur-xl md:-mx-8 md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="lg:hidden">
+            <button
+              type="button"
+              onClick={() => setFiltersOpen((open) => !open)}
+              aria-expanded={filtersOpen}
+              className="flex w-full items-center justify-between rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-left text-sm font-black text-white"
+            >
+              <span>{filtersOpen ? "Hide search & filters" : "Search & filters"}</span>
+              <span className="flex items-center gap-2 text-zinc-500">
+                {activeFilterCount > 0 && <span className="rounded-full bg-[var(--gold)] px-2 py-0.5 text-[10px] font-black text-black">{activeFilterCount}</span>}
+                <span aria-hidden="true">{filtersOpen ? "−" : "+"}</span>
+              </span>
+            </button>
+
+            {filtersOpen && (
+              <div className="mt-3 grid gap-3">
+                {controls}
+                <div className="flex items-center justify-between pt-1">
+                  <span className="text-xs text-zinc-600">{filtered.length} matching breweries</span>
+                  {hasActiveFilters && <button type="button" onClick={reset} className="text-xs font-black text-[var(--gold)]">Clear filters</button>}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="hidden gap-3 lg:grid lg:grid-cols-[1fr_auto_auto_auto]">
+            {controls}
+          </div>
         </div>
       </div>
 
       <div className="mt-6 flex items-center justify-between gap-4">
         <p className="text-sm text-zinc-500"><span className="font-black text-white">{filtered.length}</span> breweries · A–Z</p>
-        {(query || area !== "All" || food !== "All food" || feature !== "All features") && <button onClick={reset} className="text-sm font-black text-[var(--gold)] hover:text-white">Clear filters</button>}
+        {hasActiveFilters && <button onClick={reset} className="hidden text-sm font-black text-[var(--gold)] hover:text-white lg:block">Clear filters</button>}
       </div>
 
       <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
