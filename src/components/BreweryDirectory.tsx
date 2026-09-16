@@ -17,6 +17,7 @@ function initials(name: string) {
 
 export default function BreweryDirectory() {
   const searchParams = useSearchParams();
+  const requestedQuery = searchParams.get("q") ?? "";
   const requestedArea = searchParams.get("area");
   const requestedFood = searchParams.get("food");
   const requestedFeature = searchParams.get("feature");
@@ -25,7 +26,7 @@ export default function BreweryDirectory() {
   const initialFood = foodFilters.includes(requestedFood as (typeof foodFilters)[number]) ? (requestedFood as (typeof foodFilters)[number]) : "All food";
   const initialFeature = requestedFeature === "outdoor" ? "Outdoor seating" : requestedFeature === "dog" ? "Dog friendly" : "All features";
 
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(requestedQuery);
   const [area, setArea] = useState<(typeof areas)[number]>(initialArea);
   const [food, setFood] = useState<(typeof foodFilters)[number]>(initialFood);
   const [feature, setFeature] = useState<(typeof featureFilters)[number]>(initialFeature);
@@ -47,15 +48,10 @@ export default function BreweryDirectory() {
   const reset = () => { setQuery(""); setArea("All"); setFood("All food"); setFeature("All features"); };
 
   return (
-    <div className="mt-10">
+    <div className="mt-6">
       <div className="sticky top-[72px] z-20 -mx-5 border-y border-white/8 bg-[#0b0b0a]/95 px-5 py-3 backdrop-blur-xl md:-mx-8 md:px-8">
         <div className="mx-auto max-w-7xl">
-          <button
-            type="button"
-            onClick={() => setFiltersOpen((open) => !open)}
-            aria-expanded={filtersOpen}
-            className="flex w-full items-center justify-between rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-left text-sm font-black text-white"
-          >
+          <button type="button" onClick={() => setFiltersOpen((open) => !open)} aria-expanded={filtersOpen} className="flex w-full items-center justify-between rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-left text-sm font-black text-white">
             <span>{filtersOpen ? "Hide search & filters" : "Search & filters"}</span>
             <span className="flex items-center gap-2 text-zinc-500">
               {activeFilterCount > 0 && <span className="rounded-full bg-[var(--gold)] px-2 py-0.5 text-[10px] font-black text-black">{activeFilterCount}</span>}
@@ -78,11 +74,11 @@ export default function BreweryDirectory() {
         </div>
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-4">
+      <div className="mt-5 flex items-center justify-between gap-4">
         <p className="text-sm text-zinc-500"><span className="font-black text-white">{filtered.length}</span> breweries · A–Z</p>
       </div>
 
-      <div className="mt-5 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((brewery) => (
           <article key={brewery.slug} className="group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20">
             <div className="relative h-48 overflow-hidden bg-[#191918]">
@@ -92,8 +88,7 @@ export default function BreweryDirectory() {
               <div className="absolute bottom-4 left-5 right-5"><div className="text-xs font-black uppercase tracking-[.12em] text-zinc-300">{brewery.neighborhood}</div><h2 className="mt-1 text-2xl font-black text-white">{brewery.name}</h2></div>
             </div>
             <div className="p-5">
-              <p className="text-sm leading-6 text-zinc-500">{brewery.blurb}</p>
-              <div className="mt-4 flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
+              <div className="flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
               <div className="mt-5 border-t border-white/8 pt-4"><p className="text-sm leading-6 text-zinc-300">{brewery.address}</p><div className="mt-4 flex flex-wrap gap-4 text-sm font-black"><a href={brewery.website} target="_blank" rel="noreferrer" className="text-[var(--gold)] hover:text-white">Website ↗</a><a href={directionsUrl(brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white">Directions ↗</a></div><div className="mt-4 text-[10px] font-black uppercase tracking-[.12em] text-zinc-700">Verified {brewery.lastVerified}</div></div>
             </div>
           </article>
