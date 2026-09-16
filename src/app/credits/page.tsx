@@ -4,7 +4,7 @@ export default function CreditsPage() {
       <div className="eyebrow">Transparency</div>
       <h1 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">Image credits</h1>
       <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-400">
-        Pittsburgh Brews only uses imagery when the source and reuse rights are documented. Brewery-owned photos and logos are not copied from social media, Google, Yelp, or other third-party platforms unless reuse permission is clear.
+        Pittsburgh Brews uses rights-cleared photography where available. When a brewery does not yet have an approved photo, its own website icon may be shown as a small brand identifier. Brewery names, logos, and trademarks remain the property of their respective owners.
       </p>
 
       <div className="mt-10 space-y-6">
@@ -31,7 +31,7 @@ export default function CreditsPage() {
       </div>
 
       <div className="mt-12 border border-[var(--border)] bg-[var(--panel)] p-6 text-sm leading-6 text-zinc-400">
-        Brewery cards without a documented rights-cleared image intentionally show a branded placeholder. Those will be replaced as licensed storefront photos, approved media-kit images, or explicit brewery permissions are obtained.
+        Storefront and taproom photos are added only when a reusable source is documented. Brewery website icons are used only as identification marks and are automatically replaced by a rights-cleared photo when one is available.
       </div>
     </main>
   );
