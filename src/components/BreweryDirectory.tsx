@@ -3,12 +3,17 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { areas, breweries } from "@/data/allBreweries";
+import { breweryHours } from "@/data/breweryHours";
 
 const foodFilters = ["All food", "Full kitchen", "Food trucks", "Light food"] as const;
 const featureFilters = ["All features", "Outdoor seating", "Dog friendly"] as const;
 
 function directionsUrl(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+}
+
+function googleBusinessUrl(name: string, address: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} ${address}`)}`;
 }
 
 function siteIconUrl(website: string) {
@@ -102,35 +107,85 @@ export default function BreweryDirectory() {
       </div>
 
       <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((brewery) => (
-          <article key={brewery.slug} className="group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20">
-            {brewery.image && (
-              <div className="h-52 overflow-hidden bg-[#191918]">
-                <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
-              </div>
-            )}
+        {filtered.map((brewery) => {
+          const hours = breweryHours[brewery.slug];
 
-            <div className="p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0 flex-1">
-                  <div className="text-xs font-black uppercase tracking-[.12em] text-zinc-500">{brewery.neighborhood}</div>
-                  <div className="mt-2 flex items-start gap-3">
-                    {!brewery.image && <BreweryMark website={brewery.website} name={brewery.name} />}
-                    <h2 className="min-w-0 flex-1 text-2xl font-black leading-tight text-white">{brewery.name}</h2>
-                  </div>
+          return (
+            <article key={brewery.slug} className="group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20">
+              {brewery.image && (
+                <div className="h-52 overflow-hidden bg-[#191918]">
+                  <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
                 </div>
-                <div className="shrink-0 rounded-full border border-white/10 bg-[#0d0d0c] px-3 py-1 text-[10px] font-black uppercase tracking-[.14em] text-[var(--gold)]">{brewery.area}</div>
-              </div>
+              )}
 
-              <div className="mt-5 flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
-              <div className="mt-5 border-t border-white/8 pt-4">
-                <p className="text-sm leading-6 text-zinc-300">{brewery.address}</p>
-                <div className="mt-4 flex flex-wrap gap-4 text-sm font-black"><a href={brewery.website} target="_blank" rel="noreferrer" className="text-[var(--gold)] hover:text-white">Website ↗</a><a href={directionsUrl(brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white">Directions ↗</a></div>
-                <div className="mt-4 text-[10px] font-black uppercase tracking-[.12em] text-zinc-700">Verified {brewery.lastVerified}</div>
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <div className="text-xs font-black uppercase tracking-[.12em] text-zinc-500">{brewery.neighborhood}</div>
+                    <div className="mt-2 flex items-start gap-3">
+                      {!brewery.image && <BreweryMark website={brewery.website} name={brewery.name} />}
+                      <h2 className="min-w-0 flex-1 text-2xl font-black leading-tight">
+                        <a href={brewery.website} target="_blank" rel="noreferrer" className="text-white transition hover:text-[var(--gold)]">
+                          {brewery.name}
+                        </a>
+                      </h2>
+                    </div>
+                  </div>
+                  <div className="shrink-0 rounded-full border border-white/10 bg-[#0d0d0c] px-3 py-1 text-[10px] font-black uppercase tracking-[.14em] text-[var(--gold)]">{brewery.area}</div>
+                </div>
+
+                <div className="mt-5 flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
+
+                <div className="mt-5 border-t border-white/8 pt-4">
+                  <a
+                    href={directionsUrl(brewery.address)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-sm leading-6 text-zinc-300 transition hover:text-[var(--gold)]"
+                    aria-label={`Open ${brewery.address} in maps`}
+                  >
+                    <span>{brewery.address}</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+
+                  <details className="group/hours mt-4 border-y border-white/8 py-1">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-3 text-sm font-black text-white marker:content-none">
+                      <span>Hours</span>
+                      <span className="text-lg leading-none text-[var(--gold)] transition-transform group-open/hours:rotate-90" aria-hidden="true">›</span>
+                    </summary>
+
+                    {hours ? (
+                      <div className="pb-3">
+                        <div className="space-y-1.5">
+                          {hours.hours.map((row) => (
+                            <div key={row.day} className="flex items-center justify-between gap-4 text-sm">
+                              <span className="text-zinc-500">{row.day}</span>
+                              <span className="font-bold text-zinc-200">{row.hours}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[10px] font-bold uppercase tracking-[.08em] text-zinc-600">
+                          <span>Checked {hours.lastChecked}</span>
+                          <a href={googleBusinessUrl(brewery.name, brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-[var(--gold)]">Check current hours ↗</a>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="pb-3 text-sm leading-6 text-zinc-500">
+                        Hours are being verified. <a href={googleBusinessUrl(brewery.name, brewery.address)} target="_blank" rel="noreferrer" className="font-black text-[var(--gold)] hover:text-white">View current hours in Google Maps ↗</a>
+                      </div>
+                    )}
+                  </details>
+
+                  <div className="mt-4 flex flex-wrap gap-4 text-sm font-black">
+                    <a href={brewery.website} target="_blank" rel="noreferrer" className="text-[var(--gold)] hover:text-white">Website ↗</a>
+                    <a href={directionsUrl(brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white">Directions ↗</a>
+                  </div>
+                  <div className="mt-4 text-[10px] font-black uppercase tracking-[.12em] text-zinc-700">Verified {brewery.lastVerified}</div>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
 
       {filtered.length === 0 && <div className="mt-6 rounded-xl border border-dashed border-zinc-700 p-10 text-center"><div className="text-xl font-black">No breweries match those filters.</div><p className="mt-2 text-zinc-500">Try another area or clear the filters.</p></div>}
