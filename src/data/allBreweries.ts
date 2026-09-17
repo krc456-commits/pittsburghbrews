@@ -9,6 +9,14 @@ const imageOverrides: Record<string, BreweryImage> = {
     sourceLabel: "Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Hitchhiker_brewpub,_Pittsburgh.jpg",
     license: "Creative Commons licensed"
+  },
+  "church-brew-works": {
+    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Church_Brew_Works.jpg",
+    alt: "The Church Brew Works in Pittsburgh",
+    sourceLabel: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:The_Church_Brew_Works.jpg",
+    license: "Public domain",
+    credit: "Olessi"
   }
 };
 
