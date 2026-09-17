@@ -8,9 +8,9 @@ export default function EventsPage() {
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="eyebrow">Beer events</div>
-              <h1 className="mt-2 text-4xl font-black tracking-[-0.045em] text-white md:text-6xl">What&apos;s happening now</h1>
+              <h1 className="mt-2 text-4xl font-black tracking-[-0.045em] text-white md:text-6xl">What&apos;s coming up</h1>
             </div>
-            <div className="text-sm font-bold text-zinc-500">Fall 2026 · Pittsburgh area</div>
+            <div className="text-sm font-bold text-zinc-500">Pittsburgh area · seasonal + major beer events</div>
           </div>
         </div>
       </section>
