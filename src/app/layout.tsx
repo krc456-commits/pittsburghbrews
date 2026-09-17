@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import MobileNav from "@/components/MobileNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -52,7 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   <Link key={href} href={href} className="transition hover:text-[var(--gold)]">{label}</Link>
                 ))}
               </nav>
-              <Link href="/breweries" className="shrink-0 text-sm font-black text-[var(--gold)] md:hidden">Breweries</Link>
+              <MobileNav />
             </div>
           </header>
           {children}
