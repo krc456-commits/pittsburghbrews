@@ -27,6 +27,15 @@ export const beerEvents: BeerEvent[] = [
     url: "https://www.visitpittsburgh.com/events/oktoberfest-takes-over-pittsburgh-lets-celebrate/",
   },
   {
+    name: "Seven Fields Oktoberfest",
+    date: "Sep 25-27, 2026",
+    location: "Seven Fields Town Park · Seven Fields",
+    category: "Oktoberfest",
+    description: "Three days of rides, games, food, live bands, and beer from Penn Brewery, Conny Creek Brewing, The Smiling Moose, and more.",
+    url: "https://www.sevenfields.org/Calendar.aspx",
+    featured: true,
+  },
+  {
     name: "Pittsburgh Brewing Oktoberfest",
     date: "Sep 26, 2026",
     location: "Pittsburgh Brewing Company · Creighton",
@@ -68,5 +77,14 @@ export const beerEvents: BeerEvent[] = [
     category: "Beer garden",
     description: "A 21+ onsite beer garden open alongside the haunted attraction schedule; haunted house admission is not required for the bar.",
     url: "https://www.hundredacresmanor.com/",
+  },
+  {
+    name: "Pittsburgh Winter Beerfest",
+    date: "February 2027 · date TBA",
+    location: "David L. Lawrence Convention Center · Downtown",
+    category: "Festival",
+    description: "Pittsburgh's large winter craft beer festival at the convention center, with extensive beer sampling across afternoon and evening sessions.",
+    url: "https://pittsburghbeerfest.com/",
+    featured: true,
   },
 ];
