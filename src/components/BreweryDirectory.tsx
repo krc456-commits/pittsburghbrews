@@ -12,10 +12,6 @@ function directionsUrl(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }
 
-function googleBusinessUrl(name: string, address: string) {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} ${address}`)}`;
-}
-
 function siteIconUrl(website: string) {
   try {
     return `${new URL(website).origin}/favicon.ico`;
@@ -150,7 +146,10 @@ export default function BreweryDirectory() {
 
                   <details className="group/hours mt-4 border-y border-white/8 py-1">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-3 text-sm font-black text-white marker:content-none">
-                      <span>Hours</span>
+                      <span className="flex items-center gap-2">
+                        <span>Hours</span>
+                        {!hours && <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2 py-0.5 text-[9px] font-black uppercase tracking-[.08em] text-amber-300">Unverified</span>}
+                      </span>
                       <span className="text-lg leading-none text-[var(--gold)] transition-transform group-open/hours:rotate-90" aria-hidden="true">›</span>
                     </summary>
 
@@ -166,12 +165,13 @@ export default function BreweryDirectory() {
                         </div>
                         <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[10px] font-bold uppercase tracking-[.08em] text-zinc-600">
                           <span>Checked {hours.lastChecked}</span>
-                          <a href={googleBusinessUrl(brewery.name, brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-[var(--gold)]">Check current hours ↗</a>
+                          <a href={hours.sourceUrl || brewery.website} target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-[var(--gold)]">Verify hours ↗</a>
                         </div>
                       </div>
                     ) : (
                       <div className="pb-3 text-sm leading-6 text-zinc-500">
-                        Hours are being verified. <a href={googleBusinessUrl(brewery.name, brewery.address)} target="_blank" rel="noreferrer" className="font-black text-[var(--gold)] hover:text-white">View current hours in Google Maps ↗</a>
+                        <p>Hours are currently unverified.</p>
+                        <a href={brewery.website} target="_blank" rel="noreferrer" className="mt-1 inline-block font-black text-[var(--gold)] hover:text-white">Check the brewery website for current hours ↗</a>
                       </div>
                     )}
                   </details>
