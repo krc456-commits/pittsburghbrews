@@ -20,21 +20,21 @@ function siteIconUrl(website: string) {
   }
 }
 
-function BreweryMark({ website, name }: { website: string; name: string }) {
+function BreweryMark({ website, name, logo }: { website: string; name: string; logo?: { url: string; alt: string } }) {
   const [failed, setFailed] = useState(false);
-  const icon = siteIconUrl(website);
+  const icon = logo?.url || siteIconUrl(website);
   if (!icon || failed) return null;
 
   return (
-    <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-white/[.04] p-2">
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-white/[.06] p-2">
       <img
         src={icon}
-        alt=""
-        aria-hidden="true"
+        alt={logo?.alt || ""}
+        aria-hidden={logo ? undefined : "true"}
         className="max-h-7 max-w-7 object-contain"
         onError={() => setFailed(true)}
       />
-      <span className="sr-only">{name}</span>
+      {!logo && <span className="sr-only">{name}</span>}
     </div>
   );
 }
@@ -119,7 +119,7 @@ export default function BreweryDirectory() {
                   <div className="min-w-0 flex-1">
                     <div className="text-xs font-black uppercase tracking-[.12em] text-zinc-500">{brewery.neighborhood}</div>
                     <div className="mt-2 flex items-start gap-3">
-                      {!brewery.image && <BreweryMark website={brewery.website} name={brewery.name} />}
+                      <BreweryMark website={brewery.website} name={brewery.name} logo={brewery.logo} />
                       <h2 className="min-w-0 flex-1 text-2xl font-black leading-tight">
                         <a href={brewery.website} target="_blank" rel="noreferrer" className="text-white transition hover:text-[var(--gold)]">
                           {brewery.name}
