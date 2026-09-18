@@ -6,6 +6,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Pittsburgh Brews | Pittsburgh Brewery Guide",
   description: "A local guide to breweries, taprooms, patios, food, and beer across Pittsburgh and Western Pennsylvania.",
+  icons: {
+    icon: "/brand/yellow%20outline-bridge%20centered.png",
+    shortcut: "/brand/yellow%20outline-bridge%20centered.png",
+    apple: "/brand/yellow%20outline-bridge%20centered.png",
+  },
 };
 
 const navItems = [
