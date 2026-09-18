@@ -80,11 +80,11 @@ export const beerEvents: BeerEvent[] = [
     featured: true,
   },
   {
-    name: "Hundred Acres Manor Beer Garden",
+    name: "Scream Bar at Hundred Acres Manor",
     date: "Select nights Sep-Nov 2026",
     location: "Hundred Acres Manor · Bethel Park",
     category: "Beer garden",
-    description: "A 21+ onsite beer garden open alongside the haunted attraction schedule; haunted house admission is not required for the bar.",
+    description: "The official Cinderlands Beer Co. bar at Hundred Acres Manor, pouring Cinderlands beer and hard cider. Admission to the bar is free, no haunted house ticket is required, and guests must be 21+ with valid ID.",
     url: "https://www.hundredacresmanor.com/",
   },
   {
