@@ -45,6 +45,15 @@ export const beerEvents: BeerEvent[] = [
     featured: true,
   },
   {
+    name: "Balance Brewing Oktoberfest",
+    date: "Oct 3, 2026 · 12-10 PM",
+    location: "Balance Brewing Company · Ross Township",
+    category: "Oktoberfest",
+    description: "A full-day Oktoberfest with Balance beer, Comfort & Spice, live music from John Charney, tattoos from Electric Rex, and a Wander & Root plant pop-up.",
+    url: "https://www.balancebrewingcompany.com/events",
+    featured: true,
+  },
+  {
     name: "Oktoberfest Pittsburgh",
     date: "Oct 1-11, 2026",
     location: "Downtown Pittsburgh · Fort Duquesne Boulevard",
