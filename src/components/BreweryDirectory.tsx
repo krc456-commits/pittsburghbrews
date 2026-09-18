@@ -26,12 +26,12 @@ function BreweryMark({ website, name, logo }: { website: string; name: string; l
   if (!icon || failed) return null;
 
   return (
-    <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-white/[.06] p-2">
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden">
       <img
         src={icon}
         alt={logo?.alt || ""}
         aria-hidden={logo ? undefined : "true"}
-        className="max-h-7 max-w-7 object-contain"
+        className="h-full w-full object-contain"
         onError={() => setFailed(true)}
       />
       {!logo && <span className="sr-only">{name}</span>}
