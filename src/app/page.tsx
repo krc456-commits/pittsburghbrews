@@ -1,4 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import Link from "next/link";
+import HeroBackgroundRotator from "@/components/HeroBackgroundRotator";
 import { breweries } from "@/data/allBreweries";
 import { beerEvents } from "@/data/events";
 
@@ -22,19 +25,35 @@ const featuredBrewery =
 
 const upcomingEvents = beerEvents.slice(0, 5);
 
+function getHeroStorefronts() {
+  const root = path.join(process.cwd(), "public", "brand", "breweries");
+  const validExtensions = new Set([".png", ".jpg", ".jpeg", ".webp", ".avif"]);
+
+  function walk(dir: string): string[] {
+    if (!fs.existsSync(dir)) return [];
+
+    return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const fullPath = path.join(dir, entry.name);
+
+      if (entry.isDirectory()) return walk(fullPath);
+
+      const extension = path.extname(entry.name).toLowerCase();
+      if (!validExtensions.has(extension) || !entry.name.toLowerCase().includes("storefront")) return [];
+
+      const relativePath = path.relative(path.join(process.cwd(), "public"), fullPath).split(path.sep).join("/");
+      return [`/${relativePath}`];
+    });
+  }
+
+  return walk(root).sort();
+}
+
 export default function Home() {
+  const heroStorefronts = getHeroStorefronts();
   return (
     <main className="bg-[#171714]">
       <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0">
-          <img
-            src="/brand/breweries/aslin/storefront.png"
-            alt=""
-            className="h-full w-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,20,16,.88),rgba(20,20,16,.72)_50%,rgba(20,20,16,.64))]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(255,207,36,.20),transparent_34rem)]" />
-        </div>
+        <HeroBackgroundRotator images={heroStorefronts} />
 
         <div className="relative mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
           <div className="mx-auto max-w-6xl text-center">
