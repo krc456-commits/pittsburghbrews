@@ -43,9 +43,9 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/burghers/southside-storefront.png",
     "Burgh'ers Brewing South Side storefront"
   ),
-  "hitchhiker-sharpsburg": {
+  "hitchhiker-mt-lebanon": {
     url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hitchhiker_brewpub%2C_Pittsburgh.jpg",
-    alt: "Hitchhiker Brewing taproom in Pittsburgh",
+    alt: "Hitchhiker Brewing Mt. Lebanon taproom",
     sourceLabel: "Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Hitchhiker_brewpub,_Pittsburgh.jpg",
     license: "Creative Commons licensed"
