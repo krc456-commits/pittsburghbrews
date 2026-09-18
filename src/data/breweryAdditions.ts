@@ -2,6 +2,32 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Allusion Brewing Company - Vandergrift",
+    slug: "allusion-vandergrift",
+    city: "Vandergrift",
+    neighborhood: "Vandergrift",
+    area: "Surrounding Counties",
+    address: "143 Grant Ave, Vandergrift, PA 15690",
+    website: "https://www.allusionbrewing.com/",
+    type: "Brewpub",
+    food: "Full kitchen",
+    lastVerified: "Sep 2026",
+    blurb: "Allusion's original brewery and taproom in Vandergrift, serving house beer alongside a full food menu."
+  },
+  {
+    name: "Allusion Brewing Company - Pittsburgh Taproom",
+    slug: "allusion-allison-park",
+    city: "Allison Park",
+    neighborhood: "Allison Park",
+    area: "North",
+    address: "1701 Duncan Ave, Suite 2, Allison Park, PA 15101",
+    website: "https://www.allusionbrewing.com/",
+    type: "Taproom",
+    food: "Full kitchen",
+    lastVerified: "Sep 2026",
+    blurb: "Allusion's Pittsburgh-area taproom in Allison Park, pouring house beer with a full food menu and regular events."
+  },
+  {
     name: "Brew Gentlemen",
     slug: "brew-gentlemen",
     city: "Braddock",
