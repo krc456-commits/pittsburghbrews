@@ -8,47 +8,94 @@ const primaryActions = [
   { label: "Events", href: "/events", icon: "✦" },
 ] as const;
 
+const quickPicks = [
+  ["Patios", "/breweries?feature=outdoor"],
+  ["Full kitchen", "/breweries?food=Full%20kitchen"],
+  ["Food trucks", "/breweries?food=Food%20trucks"],
+  ["Dog friendly", "/breweries?feature=dog"],
+] as const;
+
 const featuredBrewery =
   breweries.find((brewery) => brewery.slug === "hitchhiker-sharpsburg") ??
   breweries.find((brewery) => brewery.image) ??
   breweries[0];
 
-const upcomingEvents = beerEvents.slice(0, 4);
+const upcomingEvents = beerEvents.slice(0, 5);
 
 export default function Home() {
   return (
-    <main className="bg-[#0b0b0a]">
-      <section className="border-b border-white/8 bg-[radial-gradient(circle_at_80%_10%,rgba(255,207,36,.08),transparent_28rem),#0b0b0a]">
-        <div className="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="eyebrow">Pittsburgh Brews</div>
-            <h1 className="mt-3 text-4xl font-black tracking-[-0.045em] text-white sm:text-5xl md:text-6xl">
+    <main className="bg-[#171714]">
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0">
+          <img
+            src="/brand/breweries/aslin/storefront.png"
+            alt=""
+            className="h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(20,20,16,.88),rgba(20,20,16,.72)_50%,rgba(20,20,16,.64))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,rgba(255,207,36,.20),transparent_34rem)]" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
+          <div className="mx-auto max-w-6xl text-center">
+            <div className="eyebrow">Independent Pittsburgh beer guide</div>
+            <h1 className="mt-3 whitespace-nowrap text-[clamp(1.65rem,7vw,4rem)] font-black tracking-[-0.05em] text-white">
               Pittsburgh beer, made easier.
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-zinc-400 md:text-lg">
-              Find breweries, taprooms, food, patios, and local beer events around Pittsburgh and Western Pennsylvania.
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-zinc-200 sm:text-base md:text-lg md:leading-7">
+              Find breweries, browse by area, and discover local beer events — without turning a night out into a project.
             </p>
-          </div>
 
-          <div className="mx-auto mt-8 grid max-w-3xl grid-cols-3 gap-2 sm:gap-3">
-            {primaryActions.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="group flex min-h-[74px] items-center justify-center gap-2 rounded-2xl border border-white/10 bg-[#151514] px-2 py-3 text-center text-white transition hover:-translate-y-0.5 hover:border-[var(--gold)]/50 hover:bg-[#1a1a18] sm:min-h-[82px] sm:px-4"
-              >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--gold)] text-base font-black text-black sm:h-9 sm:w-9">
-                  {item.icon}
-                </span>
-                <span className="text-xs font-black leading-tight sm:text-sm md:text-base">{item.label}</span>
-              </Link>
-            ))}
+            <div className="mx-auto mt-7 grid max-w-3xl grid-cols-3 gap-2 sm:gap-3">
+              {primaryActions.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="group flex min-h-[72px] items-center justify-center gap-2 rounded-2xl border border-white/20 bg-black/35 px-2 py-3 text-center text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-[var(--gold)]/70 hover:bg-black/50 sm:min-h-[82px] sm:px-4"
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--gold)] text-base font-black text-black sm:h-9 sm:w-9">
+                    {item.icon}
+                  </span>
+                  <span className="text-[11px] font-black leading-tight sm:text-sm md:text-base">{item.label}</span>
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+              {quickPicks.map(([label, href]) => (
+                <Link
+                  key={label}
+                  href={href}
+                  className="rounded-full border border-white/15 bg-white/10 px-3.5 py-2 text-xs font-black text-zinc-100 backdrop-blur-sm transition hover:border-[var(--gold)]/60 hover:text-[var(--gold)]"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-5 text-[11px] font-black uppercase tracking-[.12em] text-zinc-300/80">
+              Independent guide · Local events · No paid placement
+            </div>
           </div>
         </div>
       </section>
 
+      <section className="border-b border-black/10 bg-[#eee8d9] text-[#191815]">
+        <div className="mx-auto grid max-w-7xl gap-6 px-5 py-9 md:grid-cols-[1.2fr_.8fr] md:items-center md:px-8">
+          <div>
+            <div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Why Pittsburgh Brews?</div>
+            <h2 className="mt-2 max-w-3xl text-2xl font-black tracking-[-.035em] md:text-3xl">
+              Less planning. More enjoying Pittsburgh beer.
+            </h2>
+          </div>
+          <p className="text-sm leading-6 text-[#5e594d] md:text-base">
+            One place for current brewery details, useful filters, upcoming beer events, and a little inspiration for where to go next.
+          </p>
+        </div>
+      </section>
+
       {featuredBrewery && (
-        <section className="border-b border-white/8 bg-[#10100f]">
+        <section className="border-b border-white/10 bg-[#1d1c18]">
           <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-12">
             <div className="mb-4 flex items-end justify-between gap-4">
               <div>
@@ -60,10 +107,10 @@ export default function Home() {
 
             <Link
               href={`/breweries?q=${encodeURIComponent(featuredBrewery.name)}`}
-              className="group grid overflow-hidden rounded-2xl border border-white/8 bg-[#141413] transition hover:border-[var(--gold)]/30 md:grid-cols-[1.15fr_.85fr]"
+              className="group grid overflow-hidden rounded-2xl border border-white/10 bg-[#27251f] transition hover:border-[var(--gold)]/30 md:grid-cols-[1.15fr_.85fr]"
             >
               {featuredBrewery.image ? (
-                <div className="h-56 overflow-hidden bg-[#191918] md:h-72">
+                <div className="h-56 overflow-hidden bg-[#22211d] md:h-72">
                   <img
                     src={featuredBrewery.image.url}
                     alt={featuredBrewery.image.alt}
@@ -71,13 +118,13 @@ export default function Home() {
                   />
                 </div>
               ) : (
-                <div className="flex h-56 items-center justify-center bg-[#191918] text-5xl text-[var(--gold)] md:h-72">🍺</div>
+                <div className="flex h-56 items-center justify-center bg-[#22211d] text-5xl text-[var(--gold)] md:h-72">🍺</div>
               )}
 
               <div className="flex flex-col justify-center p-6 md:p-8">
-                <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-500">{featuredBrewery.neighborhood}</div>
+                <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-400">{featuredBrewery.neighborhood}</div>
                 <div className="mt-2 text-3xl font-black tracking-[-0.03em] text-white">{featuredBrewery.name}</div>
-                <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-400">{featuredBrewery.blurb}</p>
+                <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-300">{featuredBrewery.blurb}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   <span className="tag">{featuredBrewery.food}</span>
                   {featuredBrewery.outdoor && <span className="tag">Patio</span>}
@@ -90,42 +137,46 @@ export default function Home() {
         </section>
       )}
 
-      <section className="border-b border-white/8">
+      <section className="border-b border-black/10 bg-[#f6f1e7] text-[#191815]">
         <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-12">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-600">On the calendar</div>
-              <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">Upcoming beer events</h2>
+              <div className="text-xs font-black uppercase tracking-[0.12em] text-[#8d6b00]">What’s happening</div>
+              <h2 className="mt-1 text-2xl font-black md:text-3xl">Upcoming Pittsburgh beer events</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#6a6457]">Festivals, Oktoberfests, brewery happenings, and beer-focused events worth knowing about.</p>
             </div>
-            <Link href="/events" className="text-sm font-black text-[var(--gold)]">See all →</Link>
+            <Link href="/events" className="shrink-0 text-sm font-black text-[#8d6b00] hover:text-black">See all →</Link>
           </div>
 
-          <div className="mt-5 overflow-hidden rounded-2xl border border-white/8 bg-[#121211]">
+          <div className="mt-6 overflow-hidden rounded-2xl border border-black/10 bg-white/55">
             {upcomingEvents.map((event, index) => (
               <a
                 key={event.name}
                 href={event.url}
                 target="_blank"
                 rel="noreferrer"
-                className={`group grid gap-2 px-5 py-4 transition hover:bg-white/[.025] sm:grid-cols-[170px_1fr_auto] sm:items-center sm:gap-5 ${index !== upcomingEvents.length - 1 ? "border-b border-white/8" : ""}`}
+                className={`group grid gap-2 px-5 py-4 transition hover:bg-white sm:grid-cols-[180px_1fr_auto] sm:items-center sm:gap-5 ${index !== upcomingEvents.length - 1 ? "border-b border-black/10" : ""}`}
               >
-                <div className="text-xs font-black uppercase tracking-[0.08em] text-[var(--gold)]">{event.date}</div>
+                <div className="text-xs font-black uppercase tracking-[0.08em] text-[#8d6b00]">{event.date}</div>
                 <div>
-                  <div className="font-black text-white group-hover:text-[var(--gold)]">{event.name}</div>
-                  <div className="mt-0.5 text-sm text-zinc-500">{event.location}</div>
+                  <div className="font-black text-[#191815] group-hover:text-[#8d6b00]">{event.name}</div>
+                  <div className="mt-0.5 text-sm text-[#777064]">{event.location}</div>
                 </div>
-                <div className="hidden text-lg text-zinc-600 transition group-hover:translate-x-0.5 group-hover:text-[var(--gold)] sm:block">→</div>
+                <div className="hidden text-lg text-[#a59d8f] transition group-hover:translate-x-0.5 group-hover:text-[#8d6b00] sm:block">→</div>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#111110]">
+      <section className="bg-[#22211d]">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-8">
-          <div className="text-sm text-zinc-600">Pittsburgh Brews is independently maintained.</div>
+          <div>
+            <div className="text-sm font-black text-white">Pick a place. Find an event. Go enjoy it.</div>
+            <div className="mt-1 text-sm text-zinc-400">Pittsburgh Brews is independently maintained for local beer drinkers and visitors.</div>
+          </div>
           <div className="flex flex-wrap gap-4 text-sm font-black">
-            <Link href="/about" className="text-white hover:text-[var(--gold)]">About →</Link>
+            <Link href="/about" className="text-white hover:text-[var(--gold)]">Why Pittsburgh Brews? →</Link>
             <Link href="/submit" className="text-zinc-400 hover:text-white">Submit an update →</Link>
           </div>
         </div>
