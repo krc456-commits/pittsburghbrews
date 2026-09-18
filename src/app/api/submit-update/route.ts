@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 const MAX_LENGTH = 6000;
 
-function text(value: unknown, max = MAX_LENGTH) {
+function text(value: FormDataEntryValue | null, max = MAX_LENGTH) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
 
@@ -19,36 +19,33 @@ function escapeHtml(value: string) {
   });
 }
 
+function redirect(request: Request, path: string) {
+  return NextResponse.redirect(new URL(path, request.url), 303);
+}
+
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    const body = await request.formData();
 
-    // Honeypot field for basic bot protection.
-    if (text(body.company, 200)) {
-      return NextResponse.json({ ok: true });
+    if (text(body.get("company"), 200)) {
+      return redirect(request, "/submit?sent=1");
     }
 
-    const name = text(body.name, 120);
-    const email = text(body.email, 200);
-    const type = text(body.type, 120);
-    const subject = text(body.subject, 200);
-    const details = text(body.details);
-    const sourceUrl = text(body.sourceUrl, 1000);
+    const name = text(body.get("name"), 120);
+    const email = text(body.get("email"), 200);
+    const type = text(body.get("type"), 120);
+    const subject = text(body.get("subject"), 200);
+    const details = text(body.get("details"));
+    const sourceUrl = text(body.get("sourceUrl"), 1000);
 
     if (!name || !type || !subject || !details) {
-      return NextResponse.json(
-        { error: "Please complete the required fields." },
-        { status: 400 }
-      );
+      return redirect(request, "/submit?error=1");
     }
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       console.error("Submit update form: RESEND_API_KEY is not configured.");
-      return NextResponse.json(
-        { error: "The form is temporarily unavailable. Please try again shortly." },
-        { status: 503 }
-      );
+      return redirect(request, "/submit?error=1");
     }
 
     const recipient = process.env.UPDATE_SUBMISSION_EMAIL || "contact@3xnorth.com";
@@ -84,18 +81,12 @@ export async function POST(request: Request) {
     if (!response.ok) {
       const errorBody = await response.text();
       console.error("Submit update form: Resend error", response.status, errorBody);
-      return NextResponse.json(
-        { error: "We couldn't send that update. Please try again." },
-        { status: 502 }
-      );
+      return redirect(request, "/submit?error=1");
     }
 
-    return NextResponse.json({ ok: true });
+    return redirect(request, "/submit?sent=1");
   } catch (error) {
     console.error("Submit update form error:", error);
-    return NextResponse.json(
-      { error: "We couldn't send that update. Please try again." },
-      { status: 500 }
-    );
+    return redirect(request, "/submit?error=1");
   }
 }
