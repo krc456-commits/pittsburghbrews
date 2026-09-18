@@ -8,6 +8,11 @@ export type BreweryImage = {
   credit?: string;
 };
 
+export type BreweryLogo = {
+  url: string;
+  alt: string;
+};
+
 export type Brewery = {
   name: string;
   slug: string;
@@ -23,6 +28,7 @@ export type Brewery = {
   lastVerified: string;
   blurb: string;
   image?: BreweryImage;
+  logo?: BreweryLogo;
 };
 
 export const breweries: Brewery[] = [
