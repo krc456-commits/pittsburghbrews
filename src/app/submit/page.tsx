@@ -1,42 +1,11 @@
-"use client";
+type SubmitPageProps = {
+  searchParams: Promise<{ sent?: string; error?: string }>;
+};
 
-import { FormEvent, useState } from "react";
-
-type Status = "idle" | "sending" | "success" | "error";
-
-export default function SubmitPage() {
-  const [status, setStatus] = useState<Status>("idle");
-  const [message, setMessage] = useState("");
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setStatus("sending");
-    setMessage("");
-
-    const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-
-    try {
-      const response = await fetch("/api/submit-update", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || "Something went wrong.");
-      }
-
-      form.reset();
-      setStatus("success");
-      setMessage("Thanks — your update was sent to Pittsburgh Brews.");
-    } catch (error) {
-      setStatus("error");
-      setMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
-    }
-  }
+export default async function SubmitPage({ searchParams }: SubmitPageProps) {
+  const params = await searchParams;
+  const sent = params.sent === "1";
+  const error = params.error === "1";
 
   return (
     <main className="bg-[#0b0b0a]">
@@ -52,7 +21,11 @@ export default function SubmitPage() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="mt-10 max-w-3xl rounded-2xl border border-white/10 bg-[#141413] p-5 sm:p-7">
+          <form
+            action="/api/submit-update"
+            method="POST"
+            className="mt-10 max-w-3xl rounded-2xl border border-white/10 bg-[#141413] p-5 sm:p-7"
+          >
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="block">
                 <span className="text-sm font-black text-white">Your name</span>
@@ -141,16 +114,20 @@ export default function SubmitPage() {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
               <button
                 type="submit"
-                disabled={status === "sending"}
-                className="rounded-full bg-[var(--gold)] px-6 py-3.5 font-black text-black transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-60"
+                className="rounded-full bg-[var(--gold)] px-6 py-3.5 font-black text-black transition hover:brightness-105"
               >
-                {status === "sending" ? "Sending…" : "Send update"}
+                Send update
               </button>
+
               <div
                 aria-live="polite"
-                className={status === "success" ? "text-sm font-bold text-emerald-400" : status === "error" ? "text-sm font-bold text-red-400" : "text-sm text-zinc-500"}
+                className={sent ? "text-sm font-bold text-emerald-400" : error ? "text-sm font-bold text-red-400" : "text-sm text-zinc-500"}
               >
-                {message || "Submissions are reviewed before anything is changed on the site."}
+                {sent
+                  ? "Thanks — your update was sent to Pittsburgh Brews."
+                  : error
+                    ? "We couldn't send that update. Please try again."
+                    : "Submissions are reviewed before anything is changed on the site."}
               </div>
             </div>
           </form>
