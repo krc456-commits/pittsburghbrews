@@ -2,6 +2,45 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Grist House - The Beer Crib",
+    slug: "grist-house-beer-crib",
+    city: "Butler",
+    neighborhood: "Butler",
+    area: "Surrounding Counties",
+    address: "795 Pittsburgh Road, Butler, PA 16002",
+    website: "https://gristhouse.com/",
+    type: "Taproom brewery",
+    food: "Light food",
+    lastVerified: "Sep 2026",
+    blurb: "Grist House's Beer Crib location in Butler."
+  },
+  {
+    name: "Grist House - The Beer Market",
+    slug: "grist-house-beer-market",
+    city: "Saxonburg",
+    neighborhood: "Saxonburg",
+    area: "Surrounding Counties",
+    address: "270 W Water Street, Saxonburg, PA 16056",
+    website: "https://gristhouse.com/",
+    type: "Taproom",
+    food: "Light food",
+    lastVerified: "Sep 2026",
+    blurb: "Grist House's Beer Market location in Saxonburg."
+  },
+  {
+    name: "Grist House - Command",
+    slug: "grist-house-command",
+    city: "Oakdale",
+    neighborhood: "Oakdale",
+    area: "West",
+    address: "301 Sgt Messerschmidt Rd, Oakdale, PA 15071",
+    website: "https://gristhouse.com/",
+    type: "Taproom brewery",
+    food: "Light food",
+    lastVerified: "Sep 2026",
+    blurb: "Grist House's Command location in Oakdale."
+  },
+  {
     name: "Hitchhiker Brewing Co. - Mt. Lebanon",
     slug: "hitchhiker-mt-lebanon",
     city: "Mt. Lebanon",
