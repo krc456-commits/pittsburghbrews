@@ -19,7 +19,7 @@ const quickPicks = [
 ] as const;
 
 const featuredBrewery =
-  breweries.find((brewery) => brewery.slug === "hitchhiker-sharpsburg") ??
+  breweries.find((brewery) => brewery.slug === "hitchhiker-mt-lebanon") ??
   breweries.find((brewery) => brewery.image) ??
   breweries[0];
 
