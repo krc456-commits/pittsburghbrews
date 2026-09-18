@@ -206,19 +206,19 @@ export const breweries: Brewery[] = [
     blurb: "Lager-focused brewery, restaurant, and beer garden in Homestead."
   },
   {
-    name: "Grist House Craft Brewery",
+    name: "Grist House - Millvale",
     slug: "grist-house",
     city: "Millvale",
     neighborhood: "Millvale",
     area: "North",
-    address: "10 E Sherman Street, Pittsburgh, PA 15209",
+    address: "10 Sherman Street, Pittsburgh, PA 15209",
     website: "https://gristhouse.com/millvale/",
     type: "Taproom brewery",
     food: "Food trucks",
     outdoor: true,
     dogFriendly: true,
     lastVerified: "Sep 2026",
-    blurb: "Millvale favorite with a large outdoor space and food trucks."
+    blurb: "Grist House's Millvale taproom with a large outdoor space and food trucks."
   },
   {
     name: "Hazel Grove Brewing",
