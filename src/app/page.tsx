@@ -4,37 +4,20 @@ import { beerEvents } from "@/data/events";
 
 const primaryActions = [
   {
-    label: "Find a brewery",
-    detail: "Browse the full Pittsburgh-area brewery directory.",
+    label: "Brewery Search",
     href: "/breweries",
-    icon: "↗",
+    icon: "⌕",
   },
   {
-    label: "Browse by area",
-    detail: "Start with Pittsburgh, North, East, South, West, or beyond.",
+    label: "Browse by Area",
     href: "/areas",
     icon: "◎",
   },
   {
-    label: "Beer events",
-    detail: "See local festivals and beer-focused events.",
+    label: "Events",
     href: "/events",
-    icon: "◫",
+    icon: "✦",
   },
-  {
-    label: "Patios & food",
-    detail: "Jump into breweries with outdoor seating, then filter from there.",
-    href: "/breweries?feature=outdoor",
-    icon: "☀",
-  },
-] as const;
-
-const quickLinks = [
-  ["Pittsburgh", "/breweries?area=Pittsburgh"],
-  ["North", "/breweries?area=North"],
-  ["East", "/breweries?area=East"],
-  ["Full kitchen", "/breweries?food=Full%20kitchen"],
-  ["Dog friendly", "/breweries?feature=dog"],
 ] as const;
 
 const featuredBreweries = [...breweries].sort((a, b) => a.name.localeCompare(b.name)).slice(0, 3);
@@ -55,17 +38,20 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-10">
-            <div className="text-sm font-black uppercase tracking-[0.12em] text-zinc-500">What are you looking for?</div>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8">
+            <div className="text-sm font-black uppercase tracking-[0.12em] text-zinc-500">Jump in</div>
+            <div className="mt-4 flex flex-wrap gap-3">
               {primaryActions.map((item) => (
-                <Link key={item.label} href={item.href} className="group rounded-xl border border-white/10 bg-[#141413] p-5 transition hover:border-[var(--gold)]/50 hover:bg-[#181817]">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="text-xl font-black text-white">{item.label}</div>
-                    <div className="text-xl text-[var(--gold)]">{item.icon}</div>
-                  </div>
-                  <div className="mt-2 text-sm leading-6 text-zinc-500">{item.detail}</div>
-                  <div className="mt-6 text-sm font-black text-zinc-300 transition group-hover:text-[var(--gold)]">Open →</div>
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="group inline-flex min-w-[180px] items-center gap-3 rounded-2xl border border-white/10 bg-[#151514] px-5 py-4 text-white shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--gold)]/50 hover:bg-[#1a1a18]"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--gold)] text-lg font-black text-black">
+                    {item.icon}
+                  </span>
+                  <span className="text-base font-black">{item.label}</span>
+                  <span className="ml-auto text-[var(--gold)] transition group-hover:translate-x-0.5" aria-hidden="true">→</span>
                 </Link>
               ))}
             </div>
@@ -73,18 +59,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-white/8 bg-[#10100f]">
-        <div className="mx-auto max-w-7xl px-5 py-8 md:px-8">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="mr-2 text-xs font-black uppercase tracking-[0.12em] text-zinc-600">Quick browse</span>
-            {quickLinks.map(([label, href]) => (
-              <Link key={label} href={href} className="rounded-full border border-white/10 bg-white/[.03] px-4 py-2 text-sm font-black text-zinc-300 transition hover:border-[var(--gold)]/40 hover:text-[var(--gold)]">
-                {label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="border-b border-white/8">
         <div className="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-14">
