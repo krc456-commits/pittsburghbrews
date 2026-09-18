@@ -2,6 +2,21 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Hitchhiker Brewing Co. - Mt. Lebanon",
+    slug: "hitchhiker-mt-lebanon",
+    city: "Mt. Lebanon",
+    neighborhood: "Mt. Lebanon",
+    area: "South",
+    address: "190 Castle Shannon Blvd, Pittsburgh, PA 15228",
+    website: "https://hitchhiker.beer/tap-rooms/",
+    type: "Taproom",
+    food: "Light food",
+    outdoor: true,
+    dogFriendly: true,
+    lastVerified: "Sep 2026",
+    blurb: "Hitchhiker's original Mt. Lebanon taproom with house beer, snacks, rotating food trucks, and outdoor seating."
+  },
+  {
     name: "Acrospire Brewing Co.",
     slug: "acrospire",
     city: "Glenshaw",
