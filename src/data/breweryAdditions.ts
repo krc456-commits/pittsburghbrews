@@ -2,6 +2,19 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Brew Gentlemen",
+    slug: "brew-gentlemen",
+    city: "Braddock",
+    neighborhood: "Braddock",
+    area: "East",
+    address: "1211 Braddock Ave, Braddock, PA 15104",
+    website: "https://www.brewgentlemen.com/",
+    type: "Independent brewery",
+    food: "Light food",
+    lastVerified: "Sep 2026",
+    blurb: "Braddock brewery known for soft, balanced beers and General Braddock’s IPA; the taproom is currently open for private events, with beer pickup available at Braddock Public House."
+  },
+  {
     name: "Grist House - The Beer Crib",
     slug: "grist-house-beer-crib",
     city: "Butler",
