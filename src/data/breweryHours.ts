@@ -194,15 +194,30 @@ export const breweryHours: Record<string, BreweryHoursEntry> = {
   "hitchhiker-sharpsburg": {
     hours: [
       { day: "Monday", hours: "Closed" },
-      { day: "Tuesday", hours: "4–11 PM" },
-      { day: "Wednesday", hours: "4–11 PM" },
-      { day: "Thursday", hours: "4–11 PM" },
-      { day: "Friday", hours: "4–11 PM" },
-      { day: "Saturday", hours: "12–11 PM" },
+      { day: "Tuesday", hours: "4–10 PM" },
+      { day: "Wednesday", hours: "4–10 PM" },
+      { day: "Thursday", hours: "4–10 PM" },
+      { day: "Friday", hours: "4–10 PM" },
+      { day: "Saturday", hours: "12–10 PM" },
       { day: "Sunday", hours: "12–8 PM" },
     ],
     lastChecked: checked,
-    sourceLabel: listing,
+    sourceLabel: "Hitchhiker Brewing",
+    sourceUrl: "https://hitchhiker.beer/tap-rooms/",
+  },
+  "hitchhiker-mt-lebanon": {
+    hours: [
+      { day: "Monday", hours: "4–10 PM" },
+      { day: "Tuesday", hours: "4–10 PM" },
+      { day: "Wednesday", hours: "4–10 PM" },
+      { day: "Thursday", hours: "4–10 PM" },
+      { day: "Friday", hours: "4–10 PM" },
+      { day: "Saturday", hours: "12–10 PM" },
+      { day: "Sunday", hours: "12–8 PM" },
+    ],
+    lastChecked: checked,
+    sourceLabel: "Hitchhiker Brewing",
+    sourceUrl: "https://hitchhiker.beer/tap-rooms/",
   },
   "hop-farm": {
     hours: [
