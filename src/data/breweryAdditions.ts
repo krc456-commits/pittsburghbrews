@@ -2,6 +2,19 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Fermata Brewing Company",
+    slug: "fermata-brewing",
+    city: "Ambridge",
+    neighborhood: "Ambridge",
+    area: "Surrounding Counties",
+    address: "918 Merchant Street, Ambridge, PA 15003",
+    website: "https://www.fermatabrewing.beer/",
+    type: "Independent brewery",
+    food: "Light food",
+    lastVerified: "Sep 2026",
+    blurb: "Music-focused craft brewery and taproom in Ambridge with community events and live music."
+  },
+  {
     name: "Allusion Brewing Company - Vandergrift",
     slug: "allusion-vandergrift",
     city: "Vandergrift",
