@@ -234,12 +234,12 @@ export const breweries: Brewery[] = [
     blurb: "Independent Hazelwood brewery with a modern neighborhood taproom."
   },
   {
-    name: "Hitchhiker Brewing Co.",
+    name: "Hitchhiker Brewing Co. - Sharpsburg",
     slug: "hitchhiker-sharpsburg",
     city: "Sharpsburg",
     neighborhood: "Sharpsburg",
     area: "East",
-    address: "1501 North Canal Street, Pittsburgh, PA 15215",
+    address: "1500 S. Canal St, Sharpsburg, PA 15215",
     website: "https://hitchhiker.beer/tap-rooms/",
     type: "Production brewery + taproom",
     food: "Food trucks",
