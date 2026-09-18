@@ -11,6 +11,18 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+  "acrospire": localImage(
+    "/brand/breweries/acrospire/storefront.png",
+    "Acrospire Brewing Co. storefront in Glenshaw"
+  ),
+  "allegheny-city-brewing": localImage(
+    "/brand/breweries/alleghenycity/storefront-eohiostreet.png",
+    "Allegheny City Brewing storefront on East Ohio Street"
+  ),
+  "allegheny-city-brighton-heights": localImage(
+    "/brand/breweries/alleghenycity/storefront.png",
+    "Allegheny City Brewing Brighton Heights storefront"
+  ),
   "abjuration-hazelwood": localImage(
     "/brand/breweries/abjuration/storefront.png",
     "Abjuration Brewing storefront at the Parkway Theater in Hazelwood"
