@@ -10,6 +10,15 @@ export type BeerEvent = {
 
 export const beerEvents: BeerEvent[] = [
   {
+    name: "Allusion Brewing Oktoberfest - Pittsburgh",
+    date: "Sep 19, 2026",
+    location: "Allusion Brewing Company · Allison Park",
+    category: "Oktoberfest",
+    description: "Oktoberfest celebration at Allusion Brewing Company's Pittsburgh taproom in Allison Park.",
+    url: "https://www.allusionbrewing.com/calendar/pittsburgh-taproom/",
+    featured: true,
+  },
+  {
     name: "Penn Brewery Oktoberfest",
     date: "Sep 17-20 & Sep 25-27, 2026",
     location: "Penn Brewery · North Side",
