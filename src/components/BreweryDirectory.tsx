@@ -119,7 +119,7 @@ export default function BreweryDirectory() {
                   <div className="min-w-0 flex-1">
                     <div className="text-xs font-black uppercase tracking-[.12em] text-zinc-500">{brewery.neighborhood}</div>
                     <div className="mt-2 flex items-start gap-3">
-                      <BreweryMark website={brewery.website} name={brewery.name} logo={brewery.logo} />
+                      <BreweryMark website={brewery.slug.startsWith("hitchhiker-") ? "" : brewery.website} name={brewery.name} logo={brewery.logo} />
                       <h2 className="min-w-0 flex-1 text-2xl font-black leading-tight">
                         <a href={brewery.website} target="_blank" rel="noreferrer" className="text-white transition hover:text-[var(--gold)]">
                           {brewery.name}
