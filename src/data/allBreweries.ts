@@ -11,6 +11,18 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+  "brew-gentlemen": localImage(
+    "/brand/breweries/brewgentlemen/storefront.png",
+    "Brew Gentlemen brewery storefront in Braddock"
+  ),
+  "cinderlands-wexford": localImage(
+    "/brand/breweries/cinderlands/storefront-wexford.png",
+    "Cinderlands Taproom storefront in Wexford"
+  ),
+  "cinderlands-warehouse": localImage(
+    "/brand/breweries/cinderlands/storefront-warehouse.png",
+    "Cinderlands Warehouse storefront in Pittsburgh"
+  ),
   "acrospire": localImage(
     "/brand/breweries/acrospire/storefront.png",
     "Acrospire Brewing Co. storefront in Glenshaw"
@@ -61,6 +73,18 @@ const imageOverrides: Record<string, BreweryImage> = {
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
+  "brew-gentlemen": {
+    url: "/brand/breweries/brewgentlemen/logo.png",
+    alt: "Brew Gentlemen logo"
+  },
+  "cinderlands-wexford": {
+    url: "/brand/breweries/cinderlands/logo.png",
+    alt: "Cinderlands Beer Company logo"
+  },
+  "cinderlands-warehouse": {
+    url: "/brand/breweries/cinderlands/logo.png",
+    alt: "Cinderlands Beer Company logo"
+  },
   "abjuration-hazelwood": {
     url: "/brand/breweries/abjuration/logo.png",
     alt: "Abjuration Brewing logo"
