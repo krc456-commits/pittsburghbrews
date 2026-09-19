@@ -11,16 +11,17 @@ const listing = "Current business listing";
 export const breweryHours: Record<string, BreweryHoursEntry> = {
   "abjuration-hazelwood": {
     hours: [
-      { day: "Monday", hours: "Closed" },
-      { day: "Tuesday", hours: "Closed" },
-      { day: "Wednesday", hours: "4–10 PM" },
-      { day: "Thursday", hours: "4–10 PM" },
-      { day: "Friday", hours: "3–10 PM" },
-      { day: "Saturday", hours: "12–10 PM" },
-      { day: "Sunday", hours: "12–6 PM" },
+      { day: "Monday", hours: "5–9 PM" },
+      { day: "Tuesday", hours: "5–9 PM" },
+      { day: "Wednesday", hours: "Closed" },
+      { day: "Thursday", hours: "5–10 PM" },
+      { day: "Friday", hours: "5–10 PM" },
+      { day: "Saturday", hours: "1–10 PM" },
+      { day: "Sunday", hours: "1–5 PM" },
     ],
-    lastChecked: checked,
-    sourceLabel: listing,
+    lastChecked: "Sep 19, 2026",
+    sourceLabel: "Abjuration Brewing",
+    sourceUrl: "https://www.abjurationbrewing.com/",
   },
   "allegheny-city-brewing": {
     hours: [
