@@ -109,7 +109,24 @@ export default function BreweryDirectory() {
           const profileHref = getBreweryProfileRoute(brewery.slug);
 
           return (
-            <article key={brewery.slug} className="group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20">
+            <article
+              key={brewery.slug}
+              className={`group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20 ${profileHref ? "cursor-pointer" : ""}`}
+              role={profileHref ? "link" : undefined}
+              tabIndex={profileHref ? 0 : undefined}
+              onClick={(event) => {
+                if (!profileHref) return;
+                const target = event.target as HTMLElement;
+                if (target.closest("a, button, input, select, summary, details")) return;
+                window.location.assign(profileHref);
+              }}
+              onKeyDown={(event) => {
+                if (profileHref && (event.key === "Enter" || event.key === " ")) {
+                  event.preventDefault();
+                  window.location.assign(profileHref);
+                }
+              }}
+            >
               {brewery.image && (
                 profileHref ? (
                   <a href={profileHref} className="block h-52 overflow-hidden bg-[#191918]">
