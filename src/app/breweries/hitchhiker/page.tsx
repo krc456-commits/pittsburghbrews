@@ -277,13 +277,18 @@ export default function HitchhikerProfilePage() {
               <div className="eyebrow">Explore nearby</div>
               <h2 className="mt-2 text-2xl font-black tracking-[-.035em] text-white">See what else is nearby.</h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-400">
-                Staying around Sharpsburg? Browse other breweries in the area and see what else is worth checking out nearby.
+                Staying around Sharpsburg? Start with breweries that are actually close by, not just everything classified in the East region.
               </p>
             </div>
             <div className="border-t border-white/8 p-6 md:border-l md:border-t-0 md:p-8">
-              <Link href="/breweries?area=East" className="inline-flex rounded-full bg-[var(--gold)] px-5 py-3 text-sm font-black text-black">
-                Explore nearby breweries →
-              </Link>
+              <div className="flex flex-wrap gap-2">
+                <Link href="/breweries?q=Dancing%20Gnome" className="inline-flex rounded-full bg-[var(--gold)] px-5 py-3 text-sm font-black text-black">
+                  Dancing Gnome →
+                </Link>
+                <Link href="/breweries?q=Inner%20Groove" className="inline-flex rounded-full border border-white/15 px-5 py-3 text-sm font-black text-white hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">
+                  Inner Groove →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
