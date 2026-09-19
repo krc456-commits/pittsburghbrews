@@ -2,6 +2,21 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Dough Daddy Brewery",
+    slug: "dough-daddy-brewery",
+    city: "Gibsonia",
+    neighborhood: "Gibsonia",
+    area: "North",
+    address: "4381 Gibsonia Rd, Gibsonia, PA 15044",
+    website: "https://doughdaddybrewery.com/",
+    type: "Brewery + restaurant",
+    food: "Full kitchen",
+    outdoor: true,
+    dogFriendly: true,
+    lastVerified: "Sep 2026",
+    blurb: "Female-owned Gibsonia brewery with a full kitchen, beer garden, live music, weekend brunch, and regular community events."
+  },
+  {
     name: "Fermata Brewing Company",
     slug: "fermata-brewing",
     city: "Ambridge",
