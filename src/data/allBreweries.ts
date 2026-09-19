@@ -35,10 +35,6 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/alleghenycity/storefront.png",
     "Allegheny City Brewing Brighton Heights storefront"
   ),
-  "abjuration-hazelwood": localImage(
-    "/brand/breweries/abjuration/storefront.png",
-    "Abjuration Brewing storefront at the Parkway Theater in Hazelwood"
-  ),
   "aslin-pittsburgh": localImage(
     "/brand/breweries/aslin/storefront.png",
     "Aslin Beer Company storefront in Pittsburgh"
