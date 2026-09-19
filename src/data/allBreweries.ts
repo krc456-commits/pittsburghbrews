@@ -11,6 +11,10 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+  "abjuration-hazelwood": localImage(
+    "/brand/breweries/abjuration/storefront.png",
+    "Abjuration Brewing The Lab storefront at the Parkway Theater in McKees Rocks"
+  ),
   "brew-gentlemen": localImage(
     "/brand/breweries/brewgentlemen/storefront.png",
     "Brew Gentlemen brewery storefront in Braddock"
