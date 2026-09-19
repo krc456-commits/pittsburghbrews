@@ -270,30 +270,6 @@ export default function HitchhikerProfilePage() {
         </div>
       </section>
 
-      <section className="border-b border-white/8">
-        <div className="mx-auto max-w-7xl px-5 py-10 md:px-8">
-          <div className="grid overflow-hidden rounded-2xl border border-white/10 bg-[#141413] md:grid-cols-[1fr_auto] md:items-center">
-            <div className="p-6 md:p-8">
-              <div className="eyebrow">Explore nearby</div>
-              <h2 className="mt-2 text-2xl font-black tracking-[-.035em] text-white">See what else is nearby.</h2>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-400">
-                Staying around Sharpsburg? Start with breweries that are actually close by, not just everything classified in the East region.
-              </p>
-            </div>
-            <div className="border-t border-white/8 p-6 md:border-l md:border-t-0 md:p-8">
-              <div className="flex flex-wrap gap-2">
-                <Link href="/breweries?q=Dancing%20Gnome" className="inline-flex rounded-full bg-[var(--gold)] px-5 py-3 text-sm font-black text-black">
-                  Dancing Gnome →
-                </Link>
-                <Link href="/breweries?q=Inner%20Groove" className="inline-flex rounded-full border border-white/15 px-5 py-3 text-sm font-black text-white hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">
-                  Inner Groove →
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="bg-[#080808]">
         <div className="mx-auto max-w-7xl px-5 py-9 md:px-8">
           <div className="grid gap-8 md:grid-cols-[1fr_.8fr]">
