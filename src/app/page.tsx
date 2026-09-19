@@ -4,7 +4,7 @@ import Link from "next/link";
 import HeroBackgroundRotator from "@/components/HeroBackgroundRotator";
 import { breweries } from "@/data/allBreweries";
 import { beerEvents } from "@/data/events";
-import { featuredProfileOrder, representativeBrewerySlugs } from "@/data/breweryProfileContent";
+import { breweryProfiles, featuredProfileOrder, representativeBrewerySlugs } from "@/data/breweryProfileContent";
 import { getBreweryProfileRoute } from "@/data/breweryProfiles";
 
 export const revalidate = 3600;
@@ -38,7 +38,7 @@ function getPittsburghDateParts() {
   };
 }
 
-function getFeaturedBrewery() {
+function getFeaturedSelection() {
   const { year, month, day } = getPittsburghDateParts();
   const today = new Date(Date.UTC(year, month - 1, day, 12));
   const baseMonday = Date.UTC(2026, 8, 14, 12);
@@ -46,12 +46,20 @@ function getFeaturedBrewery() {
   const profileSlug = featuredProfileOrder[((weekIndex % featuredProfileOrder.length) + featuredProfileOrder.length) % featuredProfileOrder.length];
   const brewerySlug = representativeBrewerySlugs[profileSlug];
 
-  return breweries.find((brewery) => brewery.slug === brewerySlug) ??
-    breweries.find((brewery) => brewery.image) ??
+  const brewery = breweries.find((item) => item.slug === brewerySlug) ??
+    breweries.find((item) => item.image) ??
     breweries[0];
+
+  return {
+    profileSlug,
+    profile: breweryProfiles[profileSlug],
+    brewery,
+  };
 }
 
-const featuredBrewery = getFeaturedBrewery();
+const featuredSelection = getFeaturedSelection();
+const featuredBrewery = featuredSelection.brewery;
+const featuredProfile = featuredSelection.profile;
 
 function getFeaturedVisual() {
   if (!featuredBrewery) return null;
@@ -198,13 +206,13 @@ export default function Home() {
               )}
 
               <div className="flex flex-col justify-center p-6 md:p-8">
-                <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-400">{featuredBrewery.neighborhood}</div>
-                <div className="mt-2 text-3xl font-black tracking-[-0.03em] text-white">{featuredBrewery.name}</div>
-                <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-300">{featuredBrewery.blurb}</p>
+                <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-400">This week’s brewery</div>
+                <div className="mt-2 text-3xl font-black tracking-[-0.03em] text-white">{featuredProfile?.name ?? featuredBrewery.name}</div>
+                <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-300">{featuredProfile?.tagline ?? featuredBrewery.blurb}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  <span className="tag">{featuredBrewery.food}</span>
-                  {featuredBrewery.outdoor && <span className="tag">Patio</span>}
-                  {featuredBrewery.dogFriendly && <span className="tag">Dog friendly</span>}
+                  {(featuredProfile?.knownFor ?? [featuredBrewery.type]).slice(0, 3).map((item) => (
+                    <span key={item} className="tag">{item}</span>
+                  ))}
                 </div>
                 <div className="mt-6 text-sm font-black text-[var(--gold)]">Check it out →</div>
               </div>
