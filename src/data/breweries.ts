@@ -33,18 +33,17 @@ export type Brewery = {
 
 export const breweries: Brewery[] = [
   {
-    name: "Abjuration Brewing - Hazelwood",
+    name: "Abjuration Brewing - The Lab",
     slug: "abjuration-hazelwood",
-    city: "Pittsburgh",
-    neighborhood: "Hazelwood",
-    area: "Pittsburgh",
-    address: "5011 Lytle Street, Pittsburgh, PA 15207",
+    city: "McKees Rocks",
+    neighborhood: "McKees Rocks",
+    area: "West",
+    address: "644 Broadway Avenue, McKees Rocks, PA 15136",
     website: "https://www.abjurationbrewing.com/",
-    type: "Independent brewery",
+    type: "Independent brewery + taproom",
     food: "Light food",
-    outdoor: true,
     lastVerified: "Sep 2026",
-    blurb: "Experimental small-batch beer at the Hazelwood Brewhouse."
+    blurb: "Abjuration's original home inside the Parkway Theater, known as The Lab."
   },
   {
     name: "Allegheny City Brewing",
