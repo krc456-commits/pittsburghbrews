@@ -104,7 +104,7 @@ export default function BreweryDirectory() {
 
       <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((brewery) => {
-          const hours = breweryHours[brewery.slug];
+          const hours = breweryHours[brewery.slug];\n          const profileHref = brewery.slug.startsWith("hitchhiker-") ? "/breweries/hitchhiker" : null;
 
           return (
             <article key={brewery.slug} className="group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20">
