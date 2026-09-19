@@ -371,18 +371,18 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     locationSlugs: ["abjuration-hazelwood"],
     extraLocations: [
       {
-        name: "The Lab — Parkway Theater",
-        address: "644 Broadway Avenue, McKees Rocks, PA 15136",
-        description: "Abjuration's original home inside the Parkway Theater and the location most directly tied to the brewery's nano-brewery roots.",
-        atmosphere: "Small · quirky · original",
-        food: "Check current theater/taproom offerings",
+        name: "Hazelwood — Hazelwood Brew House",
+        address: "5011 Lytle Street, Pittsburgh, PA 15207",
+        description: "Abjuration operates its own brewing system and tap service inside the independently operated Hazelwood Brew House, a shared historic brewery building that also houses Abstract Realm and New France Brewing.",
+        atmosphere: "Historic · shared brewery destination · indoor + outdoor",
+        food: "Shared-site food service",
         website: "https://www.abjurationbrewing.com/"
       },
       {
-        name: "Mt. Lebanon — Axe Taps, Axes & Games",
+        name: "Mt. Lebanon — Taps, Axes & Games",
         address: "1689 McFarland Road, Pittsburgh, PA 15216",
-        description: "A South Hills Abjuration tap presence inside Axe Taps, Axes & Games.",
-        atmosphere: "Games · casual",
+        description: "A partnership location inside Taps, Axes & Games. TAG is independently owned; Abjuration operates on site as the beer partner rather than owning the venue.",
+        atmosphere: "Games · casual · partnership venue",
         website: "https://www.abjurationbrewing.com/"
       }
     ],
