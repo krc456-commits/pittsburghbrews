@@ -71,7 +71,6 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     slug: "old-thunder",
     name: "Old Thunder Brewing",
     tagline: "A Blawnox destination brewery where precise lagers and ales meet a beautifully repurposed 1939 post office.",
-    founded: "2020",
     knownFor: ["Lagers", "Ales", "Wood maturation", "Historic building"],
     specialTitle: "The old post office is part of the experience.",
     specialBody: [
