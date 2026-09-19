@@ -274,10 +274,10 @@ export default function HitchhikerProfilePage() {
         <div className="mx-auto max-w-7xl px-5 py-10 md:px-8">
           <div className="grid overflow-hidden rounded-2xl border border-white/10 bg-[#141413] md:grid-cols-[1fr_auto] md:items-center">
             <div className="p-6 md:p-8">
-              <div className="eyebrow">Build around it</div>
-              <h2 className="mt-2 text-2xl font-black tracking-[-.035em] text-white">Make Hitchhiker part of a brewery crawl.</h2>
+              <div className="eyebrow">Explore nearby</div>
+              <h2 className="mt-2 text-2xl font-black tracking-[-.035em] text-white">See what else is nearby.</h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-400">
-                Sharpsburg is especially useful as a starting point for a brewery crawl. Our crawl builder is planned as a future Pittsburgh Brews feature.
+                Staying around Sharpsburg? Browse other breweries in the area and see what else is worth checking out nearby.
               </p>
             </div>
             <div className="border-t border-white/8 p-6 md:border-l md:border-t-0 md:p-8">
