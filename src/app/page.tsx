@@ -125,7 +125,7 @@ export default function Home() {
             </div>
 
             <Link
-              href={`/breweries?q=${encodeURIComponent(featuredBrewery.name)}`}
+              href={featuredBrewery.slug.startsWith("hitchhiker-") ? "/breweries/hitchhiker" : `/breweries?q=${encodeURIComponent(featuredBrewery.name)}`}
               className="group grid overflow-hidden rounded-2xl border border-white/10 bg-[#27251f] transition hover:border-[var(--gold)]/30 md:grid-cols-[1.15fr_.85fr]"
             >
               {featuredBrewery.image ? (
