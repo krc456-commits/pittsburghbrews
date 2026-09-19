@@ -53,6 +53,25 @@ function getFeaturedBrewery() {
 
 const featuredBrewery = getFeaturedBrewery();
 
+function getFeaturedVisual() {
+  if (!featuredBrewery) return null;
+
+  const profileRoute = getBreweryProfileRoute(featuredBrewery.slug);
+  const sameProfileBreweries = profileRoute
+    ? breweries.filter((brewery) => getBreweryProfileRoute(brewery.slug) === profileRoute)
+    : [featuredBrewery];
+
+  const withImage = sameProfileBreweries.find((brewery) => brewery.image);
+  if (withImage?.image) return { type: "image" as const, ...withImage.image };
+
+  const withLogo = sameProfileBreweries.find((brewery) => brewery.logo);
+  if (withLogo?.logo) return { type: "logo" as const, ...withLogo.logo };
+
+  return null;
+}
+
+const featuredVisual = getFeaturedVisual();
+
 const upcomingEvents = beerEvents.slice(0, 5);
 
 function getHeroStorefronts() {
@@ -158,12 +177,20 @@ export default function Home() {
               href={getBreweryProfileRoute(featuredBrewery.slug) ?? `/breweries?q=${encodeURIComponent(featuredBrewery.name)}`}
               className="group grid overflow-hidden rounded-2xl border border-white/10 bg-[#27251f] transition hover:border-[var(--gold)]/30 md:grid-cols-[1.15fr_.85fr]"
             >
-              {featuredBrewery.image ? (
+              {featuredVisual?.type === "image" ? (
                 <div className="h-56 overflow-hidden bg-[#22211d] md:h-72">
                   <img
-                    src={featuredBrewery.image.url}
-                    alt={featuredBrewery.image.alt}
+                    src={featuredVisual.url}
+                    alt={featuredVisual.alt}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                  />
+                </div>
+              ) : featuredVisual?.type === "logo" ? (
+                <div className="flex h-56 items-center justify-center bg-[#22211d] p-10 md:h-72">
+                  <img
+                    src={featuredVisual.url}
+                    alt={featuredVisual.alt}
+                    className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
               ) : (
