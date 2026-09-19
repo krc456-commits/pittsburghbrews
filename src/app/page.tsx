@@ -4,6 +4,10 @@ import Link from "next/link";
 import HeroBackgroundRotator from "@/components/HeroBackgroundRotator";
 import { breweries } from "@/data/allBreweries";
 import { beerEvents } from "@/data/events";
+import { featuredProfileOrder, representativeBrewerySlugs } from "@/data/breweryProfileContent";
+import { getBreweryProfileRoute } from "@/data/breweryProfiles";
+
+export const revalidate = 3600;
 
 const primaryActions = [
   { label: "Brewery Search", href: "/breweries", icon: "⌕" },
@@ -18,10 +22,36 @@ const quickPicks = [
   ["Dog friendly", "/breweries?feature=dog"],
 ] as const;
 
-const featuredBrewery =
-  breweries.find((brewery) => brewery.slug === "hitchhiker-mt-lebanon") ??
-  breweries.find((brewery) => brewery.image) ??
-  breweries[0];
+function getPittsburghDateParts() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return {
+    year: Number(values.year),
+    month: Number(values.month),
+    day: Number(values.day),
+  };
+}
+
+function getFeaturedBrewery() {
+  const { year, month, day } = getPittsburghDateParts();
+  const today = new Date(Date.UTC(year, month - 1, day, 12));
+  const baseMonday = Date.UTC(2026, 8, 14, 12);
+  const weekIndex = Math.floor((today.getTime() - baseMonday) / (7 * 24 * 60 * 60 * 1000));
+  const profileSlug = featuredProfileOrder[((weekIndex % featuredProfileOrder.length) + featuredProfileOrder.length) % featuredProfileOrder.length];
+  const brewerySlug = representativeBrewerySlugs[profileSlug];
+
+  return breweries.find((brewery) => brewery.slug === brewerySlug) ??
+    breweries.find((brewery) => brewery.image) ??
+    breweries[0];
+}
+
+const featuredBrewery = getFeaturedBrewery();
 
 const upcomingEvents = beerEvents.slice(0, 5);
 
@@ -125,7 +155,7 @@ export default function Home() {
             </div>
 
             <Link
-              href={`/breweries?q=${encodeURIComponent(featuredBrewery.name)}`}
+              href={getBreweryProfileRoute(featuredBrewery.slug) ?? `/breweries?q=${encodeURIComponent(featuredBrewery.name)}`}
               className="group grid overflow-hidden rounded-2xl border border-white/10 bg-[#27251f] transition hover:border-[var(--gold)]/30 md:grid-cols-[1.15fr_.85fr]"
             >
               {featuredBrewery.image ? (

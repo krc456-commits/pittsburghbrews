@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { areas, breweries } from "@/data/allBreweries";
 import { breweryHours } from "@/data/breweryHours";
+import { getBreweryProfileRoute } from "@/data/breweryProfiles";
 
 const foodFilters = ["All food", "Full kitchen", "Food trucks", "Light food"] as const;
 const featureFilters = ["All features", "Outdoor seating", "Dog friendly"] as const;
@@ -105,13 +106,37 @@ export default function BreweryDirectory() {
       <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((brewery) => {
           const hours = breweryHours[brewery.slug];
+          const profileHref = getBreweryProfileRoute(brewery.slug);
 
           return (
-            <article key={brewery.slug} className="group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20">
+            <article
+              key={brewery.slug}
+              className={`group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20 ${profileHref ? "cursor-pointer" : ""}`}
+              role={profileHref ? "link" : undefined}
+              tabIndex={profileHref ? 0 : undefined}
+              onClick={(event) => {
+                if (!profileHref) return;
+                const target = event.target as HTMLElement;
+                if (target.closest("a, button, input, select, summary, details")) return;
+                window.location.assign(profileHref);
+              }}
+              onKeyDown={(event) => {
+                if (profileHref && (event.key === "Enter" || event.key === " ")) {
+                  event.preventDefault();
+                  window.location.assign(profileHref);
+                }
+              }}
+            >
               {brewery.image && (
-                <div className="h-52 overflow-hidden bg-[#191918]">
-                  <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
-                </div>
+                profileHref ? (
+                  <a href={profileHref} className="block h-52 overflow-hidden bg-[#191918]">
+                    <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
+                  </a>
+                ) : (
+                  <div className="h-52 overflow-hidden bg-[#191918]">
+                    <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
+                  </div>
+                )
               )}
 
               <div className="p-5">
@@ -121,9 +146,15 @@ export default function BreweryDirectory() {
                     <div className="mt-2 flex items-start gap-3">
                       <BreweryMark website={brewery.slug.startsWith("hitchhiker-") ? "" : brewery.website} name={brewery.name} logo={brewery.logo} />
                       <h2 className="min-w-0 flex-1 text-2xl font-black leading-tight">
-                        <a href={brewery.website} target="_blank" rel="noreferrer" className="text-white transition hover:text-[var(--gold)]">
-                          {brewery.name}
-                        </a>
+                        {profileHref ? (
+                          <a href={profileHref} className="text-white transition hover:text-[var(--gold)]">
+                            {brewery.name}
+                          </a>
+                        ) : (
+                          <a href={brewery.website} target="_blank" rel="noreferrer" className="text-white transition hover:text-[var(--gold)]">
+                            {brewery.name}
+                          </a>
+                        )}
                       </h2>
                     </div>
                   </div>
