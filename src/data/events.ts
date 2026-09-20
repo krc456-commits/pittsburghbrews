@@ -10,6 +10,15 @@ export type BeerEvent = {
 
 export const beerEvents: BeerEvent[] = [
   {
+    name: "11th Hour Brewing Oktoberfest",
+    date: "Sep 19, Sep 25-26 & Oct 2-3, 2026",
+    location: "11th Hour Brewing Co. · Lawrenceville",
+    category: "Oktoberfest",
+    description: "Oktoberfest in 11th Hour's German Village with beer, pretzels, music, games, food, and more. Saturdays run 12-10 PM; Fridays run 5-10 PM.",
+    url: "https://www.11thhourbrews.com/",
+    featured: true,
+  },
+  {
     name: "Allusion Brewing Oktoberfest - Pittsburgh",
     date: "Sep 19, 2026",
     location: "Allusion Brewing Company · Allison Park",
