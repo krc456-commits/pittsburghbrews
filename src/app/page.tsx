@@ -3,7 +3,7 @@ import path from "node:path";
 import Link from "next/link";
 import HeroBackgroundRotator from "@/components/HeroBackgroundRotator";
 import { breweries } from "@/data/allBreweries";
-import { beerEvents } from "@/data/events";
+import { getVisibleBeerEvents } from "@/data/events";
 import { breweryProfiles, featuredProfileOrder, representativeBrewerySlugs } from "@/data/breweryProfileContent";
 import { getBreweryProfileRoute } from "@/data/breweryProfiles";
 
@@ -88,7 +88,7 @@ function getFeaturedVisual() {
 
 const featuredVisual = getFeaturedVisual();
 
-const upcomingEvents = beerEvents.slice(0, 5);
+const upcomingEvents = getVisibleBeerEvents().slice(0, 5);
 
 function getHeroStorefronts() {
   const root = path.join(process.cwd(), "public", "brand", "breweries");
