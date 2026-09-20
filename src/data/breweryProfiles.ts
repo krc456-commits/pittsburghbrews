@@ -16,6 +16,17 @@ export const breweryProfileRoutes: Record<string, string> = {
   "allegheny-city-brewing": "/breweries/allegheny-city",
   "allegheny-city-brighton-heights": "/breweries/allegheny-city",
   "abjuration-hazelwood": "/breweries/abjuration",
+  "balance-brewing": "/breweries/balance",
+  "eleventh-hour": "/breweries/eleventh-hour",
+  "golden-age": "/breweries/golden-age",
+  "hop-farm": "/breweries/hop-farm",
+  "lincoln-avenue-brewery": "/breweries/lincoln-avenue",
+  "trace-brewing": "/breweries/trace",
+  "two-frays": "/breweries/two-frays",
+  "velum-fermentation": "/breweries/velum",
+  "strange-roots-millvale": "/breweries/strange-roots",
+  "strange-roots-new-kensington": "/breweries/strange-roots",
+  "fermata-brewing": "/breweries/fermata",
 };
 
 export function getBreweryProfileRoute(slug: string) {
