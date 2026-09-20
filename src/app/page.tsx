@@ -50,9 +50,17 @@ function getFeaturedSelection() {
     breweries.find((item) => item.image) ??
     breweries[0];
 
+  const fallbackBrand = profileSlug === "hitchhiker"
+    ? {
+        name: "Hitchhiker Brewing Co.",
+        tagline: "A Pittsburgh brewery known for a wide-ranging beer program, from hop-forward releases and lagers to experimental sours and barrel-aged beer.",
+        knownFor: ["IPAs", "Lagers", "Experimental releases"],
+      }
+    : null;
+
   return {
     profileSlug,
-    profile: breweryProfiles[profileSlug],
+    profile: breweryProfiles[profileSlug] ?? fallbackBrand,
     brewery,
   };
 }
