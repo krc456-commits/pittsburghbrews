@@ -12,6 +12,17 @@ export type BeerEvent = {
 
 export const beerEvents: BeerEvent[] = [
   {
+    name: "2026 Slammin' Cans Graffiti Jam",
+    date: "Oct 10, 2026 · 1-6 PM",
+    startDate: "2026-10-10",
+    endDate: "2026-10-10",
+    location: "The Color Park · South Side",
+    category: "Festival",
+    description: "Friends of the Riverfront's Color Park graffiti and mural jam with brewery pop-ups from Two Frays, Cinderlands, Trace, and Aslin, plus live mural painting, community paint, food trucks, and an after-party at Burgh'ers Brewing. Free entry; brewery samples available with a suggested donation.",
+    url: "https://friendsoftheriverfront.org/homepage/slammin-cans-graffiti-jam/",
+    featured: true,
+  },
+  {
     name: "Burgh'ers Brewing Millvale Oktoberfest",
     date: "Sep 27, 2026 · doors 11 AM",
     startDate: "2026-09-27",
