@@ -391,6 +391,289 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
       { label: "Current locations", url: "https://www.abjurationbrewing.com/" },
       { label: "Brewer interview", url: "https://breweriesinpa.com/meet-the-brewer-dave-hallam-of-abjuration-brewing/" }
     ]
+  },
+  "balance": {
+    slug: "balance",
+    name: "Balance Brewing Company",
+    tagline: "A new North Hills brewery built around drinkable beer, broad appeal and a taproom designed to feel like a community gathering place.",
+    founded: "2026",
+    knownFor: ["Balanced beer", "North Hills", "Community taproom", "Wide-ranging styles"],
+    specialTitle: "The name is the mission.",
+    specialBody: [
+      "Balance grew out of conversations between Rob Houston and Matt Gibb while they worked together at Hitchhiker Brewing in 2019. Their goal was straightforward: make beer with balance in flavor, drinkability and creativity, and build a tap list that works for both beer obsessives and casual drinkers.",
+      "That philosophy also shaped the taproom. The brewery says it wants the Babcock Boulevard space to feel welcoming enough for a quick pint, a meal with friends or a neighborhood celebration."
+    ],
+    storyTitle: "Industry experience turns into a North Hills brewery",
+    story: [
+      "When the Babcock brewery space became available in 2024, the team saw a chance to bring more than two decades of combined industry experience into their own operation.",
+      "The taproom began a soft opening in March 2026 and Balance held its grand opening on June 27, 2026."
+    ],
+    beerTitle: "Built for range instead of a single house style",
+    beer: [
+      "Balance explicitly frames its beer around drinkability and variety rather than one narrow specialty.",
+      "Head brewer Matt Gibb has experience across American and European styles, from IPA and fruited sour beer to crisp lager, which fits the brewery's goal of keeping a broad, approachable board."
+    ],
+    take: "Go when you want a newer Pittsburgh brewery that is trying to be easy to like without being generic.",
+    takeDetail: "Balance is still young, which makes it especially worth revisiting as the beer list and North Hills identity continue to settle in.",
+    locationSlugs: ["balance-brewing"],
+    sources: [
+      { label: "Balance about", url: "https://www.balancebrewingcompany.com/about-us" },
+      { label: "Balance Brewing", url: "https://www.balancebrewingcompany.com/" }
+    ]
+  },
+  "eleventh-hour": {
+    slug: "eleventh-hour",
+    name: "11th Hour Brewing Co.",
+    tagline: "A Lower Lawrenceville brewery built around a rotating taproom, quality ingredients and a steady calendar of food trucks and events.",
+    knownFor: ["Lawrenceville", "Rotating beer", "Food trucks", "Events"],
+    specialTitle: "A neighborhood taproom that keeps moving.",
+    specialBody: [
+      "11th Hour puts the taproom experience at the center: house beer, rotating food trucks and frequent themed events in a tucked-away Lower Lawrenceville space.",
+      "The brewery emphasizes ingredient quality, sourcing hops from the Pacific Northwest, Australasia and Europe and grain from the Midwest and Western Europe."
+    ],
+    storyTitle: "A brewery woven into Lower Lawrenceville",
+    story: [
+      "11th Hour operates at 3711 Charlotte Street, just off Butler Street and close to the Strip District and Bloomfield edges of Lawrenceville.",
+      "Its identity has grown around the taproom itself: regulars, releases, food trucks and seasonal events rather than a restaurant-style model."
+    ],
+    beerTitle: "Ingredient-driven and intentionally varied",
+    beer: [
+      "The brewery describes its process as starting with high-quality hops and grain and letting proven recipes and brewer skill do the rest.",
+      "The current beer family spans multiple styles, with releases such as New Cult, Dream Cannon, Paper Birds and Pink Moon showing the range of the program."
+    ],
+    take: "Go when you want a brewery night that feels eventful even when you did not plan much.",
+    takeDetail: "11th Hour works especially well when you want beer plus whatever food truck or taproom event happens to be on that night.",
+    locationSlugs: ["eleventh-hour"],
+    sources: [
+      { label: "11th Hour Brewing", url: "https://www.11thhourbrews.com/" },
+      { label: "11th Hour beers", url: "https://www.11thhourbrews.com/the-brews" },
+      { label: "11th Hour FAQs", url: "https://www.11thhourbrews.com/our-faqs" }
+    ]
+  },
+  "golden-age": {
+    slug: "golden-age",
+    name: "Golden Age Beer Co.",
+    tagline: "A Homestead brewery built around crisp lager, a serious kitchen and a beer garden that treats lager as a social experience.",
+    knownFor: ["Lager", "Homestead", "Beer garden", "Full kitchen"],
+    specialTitle: "Lager is not one category here. It is the whole point.",
+    specialBody: [
+      "Golden Age was created specifically to put lager at the center of a Pittsburgh brewery. The program ranges from Northern German and Italian-style pilsner to dunkel, rauchbier and American lager.",
+      "The brewery ties that lager focus to Homestead's industrial history and to the idea that clean, drinkable beer is fundamentally social."
+    ],
+    storyTitle: "A lager brewery for Homestead",
+    story: [
+      "Golden Age was founded by the same team behind Pittsburgh beer bars Independent Brewing Company and Lorelei.",
+      "The Homestead brewery uses a 15-barrel BrauKon system designed for precise lager production, with head brewer Aaron Dahl leading the brewing program."
+    ],
+    beerTitle: "Clean, crisp and intentionally patient",
+    beer: [
+      "Golden Age leans hard into lager traditions: pilsners, dunkels, smoked lagers and other styles that reward precision and time.",
+      "The beer is paired with a full kitchen serving wood-fired pizza, smash burgers, wings and sandwiches, while the beer garden extends the brewery into a year-round gathering space when weather allows."
+    ],
+    take: "Go when you want lager to be the main event instead of the safe option.",
+    takeDetail: "Golden Age is one of the clearest style-driven brewery experiences in the region, and the kitchen plus beer garden make it easy to stay awhile.",
+    locationSlugs: ["golden-age"],
+    sources: [
+      { label: "Golden Age about", url: "https://www.goldenagebeer.com/about-1" },
+      { label: "Golden Age visit", url: "https://www.goldenagebeer.com/visit-us" },
+      { label: "Golden Age beer", url: "https://www.goldenagebeer.com/menu" }
+    ]
+  },
+  "hop-farm": {
+    slug: "hop-farm",
+    name: "Hop Farm Brewing Company",
+    tagline: "A Lawrenceville brewery that connects hoppy beer, farmhouse styles and a full kitchen to local sourcing and sustainability.",
+    knownFor: ["Local sourcing", "Hoppy ales", "Farmhouse ales", "Full kitchen"],
+    specialTitle: "The farm connection is more than branding.",
+    specialBody: [
+      "Hop Farm describes itself as an independently partner-owned brewery focused on sustainability and local sourcing.",
+      "That approach extends across both beer and food, with local ingredients showing up in hoppy ales, farmhouse ales, sour beer, lagers and the kitchen."
+    ],
+    storyTitle: "A Lawrenceville brewery built around local inputs",
+    story: [
+      "Hop Farm operates on Butler Street in Lawrenceville and has developed as both a brewery and neighborhood restaurant.",
+      "The brewery's public identity is deliberately tied to where ingredients come from and to treating food and beer as connected parts of the same operation."
+    ],
+    beerTitle: "Hops, farmhouse character, sour beer and lager",
+    beer: [
+      "The name suggests a hop-only brewery, but the program is broader than that.",
+      "Hop Farm explicitly lists hoppy ales, farmhouse ales, sour ales and lagers among its core interests, giving the tap list enough range for mixed groups."
+    ],
+    take: "Go when you want local sourcing to show up in both the pint and the plate.",
+    takeDetail: "Hop Farm is less about one signature gimmick and more about a coherent brewery-and-kitchen philosophy.",
+    locationSlugs: ["hop-farm"],
+    sources: [
+      { label: "Hop Farm about", url: "https://hopfarmbrewingco.com/about/" },
+      { label: "Hop Farm", url: "https://hopfarmbrewingco.com/" }
+    ]
+  },
+  "lincoln-avenue": {
+    slug: "lincoln-avenue",
+    name: "Lincoln Avenue Brewery",
+    tagline: "A Bellevue family brewery and restaurant shaped as much by neighborhood roots as by the beer pouring behind the bar.",
+    knownFor: ["Bellevue", "Family-owned", "Full kitchen", "Local sourcing"],
+    specialTitle: "This brewery exists because Bellevue changed with it.",
+    specialBody: [
+      "Grant and Lisa Saylor grew up in Bellevue, raised their family there and eventually built their brewery on Lincoln Avenue in a former dentist office with more than 1,000 volunteer renovation hours from the community.",
+      "The timing mattered: Bellevue voted in 2015 to allow alcohol sales, clearing a cultural and legal path for the kind of brewery-and-restaurant the Saylors had wanted to create."
+    ],
+    storyTitle: "A family dream becomes a main-street brewery",
+    story: [
+      "The Saylors had wanted to open a restaurant for years before the right Lincoln Avenue space became available in 2019.",
+      "Grant's homebrewing background became the beer side of the business while Lisa and the rest of the family helped turn LAB into a full neighborhood restaurant, brewery and live-event space."
+    ],
+    beerTitle: "Local beer with a Pennsylvania-first streak",
+    beer: [
+      "LAB uses its brewery license to lean into local beer, wine and spirits and says roughly seventy percent of what it sells comes from Pennsylvania.",
+      "The house beer moves across styles, from cream ale and stout to fruited sour and ESB, often with local ingredients or local references worked into the recipe."
+    ],
+    take: "Go when you want a brewery that feels inseparable from the neighborhood around it.",
+    takeDetail: "Lincoln Avenue Brewery works as a true local pub: house beer, a full menu, live music, trivia and the sense that Bellevue itself is part of the concept.",
+    locationSlugs: ["lincoln-avenue-brewery"],
+    sources: [
+      { label: "LAB backstory", url: "https://lincolnavenuebrewery.com/the-backstory/" },
+      { label: "LAB beer", url: "https://lincolnavenuebrewery.com/the-brews/" },
+      { label: "LAB menu", url: "https://lincolnavenuebrewery.com/menu/" }
+    ]
+  },
+  "trace": {
+    slug: "trace",
+    name: "Trace Brewing",
+    tagline: "A Bloomfield brewery where beer, coffee, food trucks, community programming and brewer training all share the same space.",
+    knownFor: ["Bloomfield", "Vocational program", "Coffee", "Food trucks"],
+    specialTitle: "Trace is trying to widen who gets to belong in brewing.",
+    specialBody: [
+      "Trace combines a neighborhood brewery with a six-month paid vocational program designed to help people start careers in professional brewing.",
+      "That workforce mission sits alongside a highly social taproom model with morning coffee service, beer throughout the day, food trucks every night and frequent collaborations."
+    ],
+    storyTitle: "A brewery with a training pipeline built in",
+    story: [
+      "Trace operates from 4312 Main Street in Bloomfield and has grown into an all-day neighborhood space rather than a taproom that only comes alive at night.",
+      "The brewery's vocational program is one of its most distinctive features, turning the production side of the business into a path into the industry."
+    ],
+    beerTitle: "Collaborative, varied and comfortable crossing categories",
+    beer: [
+      "Trace's releases range broadly, and collaborations are a recurring part of the program.",
+      "Recent projects have included pilsner, fruit-driven beer and cross-category collaborations, while the taproom format keeps the beer connected to a wider community schedule."
+    ],
+    take: "Go when you want one of Pittsburgh's most community-minded brewery spaces.",
+    takeDetail: "Trace works equally well as a coffee stop, casual afternoon beer, food-truck night or event destination, which is a big part of why it feels different.",
+    locationSlugs: ["trace-brewing"],
+    sources: [
+      { label: "Trace Brewing", url: "https://www.tracebloomfield.com/" }
+    ]
+  },
+  "two-frays": {
+    slug: "two-frays",
+    name: "Two Frays Brewery",
+    tagline: "A Garfield neighborhood brewery built around small-batch beer, a family-run identity and the promise of having something for everyone.",
+    knownFor: ["Garfield", "Small-batch beer", "Non-alcoholic beer", "Dog friendly"],
+    specialTitle: "Something for everyone is an actual brewing decision here.",
+    specialBody: [
+      "Two Frays is owned by Jen and Mike and positions itself first as a neighborhood brewery: inviting, kind and broad enough that different kinds of drinkers can all find a reason to stay.",
+      "That philosophy pushed the brewery into non-alcoholic beer in 2022, when customer requests led the team to start developing its own NA releases."
+    ],
+    storyTitle: "Family-run and built for Garfield",
+    story: [
+      "Two Frays brews and packages its beer on site at 5113 Penn Avenue.",
+      "The space is designed around neighborhood use, with outdoor seating, events and a dog-friendly approach that makes the brewery feel more like a local gathering place than a production showroom."
+    ],
+    beerTitle: "Small batches, house yeast and room for NA beer",
+    beer: [
+      "Two Frays builds recipes from scratch and uses an English house yeast across much of the program, with attention even paid to water profiles for individual beers.",
+      "The brewery also keeps non-alcoholic beer in its regular thinking, extending its 'something for everyone' idea beyond traditional craft styles."
+    ],
+    take: "Go when the group includes people who do not all drink the same way.",
+    takeDetail: "Two Frays' biggest strength is flexibility: local beer, NA options, outdoor space and a neighborhood vibe that does not require everyone to be a beer nerd.",
+    locationSlugs: ["two-frays"],
+    sources: [
+      { label: "Two Frays", url: "https://www.twofraysbrewery.com/" },
+      { label: "Two Frays brewery", url: "https://www.twofraysbrewery.com/brewery" },
+      { label: "Two Frays NA beer", url: "https://www.twofraysbrewery.com/pittsburgh-s-original-non-alcoholic-beer" }
+    ]
+  },
+  "velum": {
+    slug: "velum",
+    name: "Velum Fermentation",
+    tagline: "A huge South Side brewery where beer shares space with pickleball, pinball, events and a warehouse-sized community room.",
+    knownFor: ["South Side", "Pickleball", "Pinball", "Large taproom"],
+    specialTitle: "The room is intentionally bigger than the beer.",
+    specialBody: [
+      "Velum describes itself as a large craft brewery that offers more than beer, and the physical setup makes that obvious.",
+      "Indoor pickleball courts, a pinball-focused arcade, covered outdoor seating and a large taproom turn the Jane Street building into an activity space as much as a brewery."
+    ],
+    storyTitle: "A brewery built for lingering",
+    story: [
+      "Velum operates at 2120 Jane Street in Pittsburgh's South Side.",
+      "Its concept leans heavily into community use and flexible gathering space, which gives it a very different rhythm from a small neighborhood tasting room."
+    ],
+    beerTitle: "Beer as one part of a larger fermentation-and-events space",
+    beer: [
+      "Velum keeps house beer at the center, but the venue is intentionally not dependent on beer alone to create the experience.",
+      "That makes it especially useful for groups where some people care as much about games, events and space as they do about the tap list."
+    ],
+    take: "Go when the group wants an activity, not just a flight.",
+    takeDetail: "Velum is one of the easiest breweries in the city for a large or mixed-interest group because the building gives everyone something to do.",
+    locationSlugs: ["velum-fermentation"],
+    sources: [
+      { label: "Velum about", url: "https://www.velumfermentation.com/about/" },
+      { label: "Velum location", url: "https://www.velumfermentation.com/location/velum-fermentation/" }
+    ]
+  },
+  "strange-roots": {
+    slug: "strange-roots",
+    name: "Strange Roots Experimental Ales",
+    tagline: "A two-taproom brewery rooted in farmhouse tradition, local ingredients, mixed fermentation and beer that deliberately reflects its surroundings.",
+    knownFor: ["Farmhouse ales", "Mixed fermentation", "Local ingredients", "Two taprooms"],
+    specialTitle: "The environment is treated like an ingredient.",
+    specialBody: [
+      "Strange Roots says it operates at the intersection of farmhouse brewing tradition and locally driven experimentation.",
+      "Local ingredients, different fermentation methods and local microflora are all part of the brewery's effort to make artisan ales connected to western Pennsylvania."
+    ],
+    storyTitle: "One brewing identity, two neighborhood homes",
+    story: [
+      "Strange Roots currently operates taprooms in Millvale and New Kensington.",
+      "Both locations are family- and dog-friendly with indoor and outdoor seating, but each has its own food setup and neighborhood personality."
+    ],
+    beerTitle: "Farmhouse tradition with room to get strange",
+    beer: [
+      "The core identity is fermentation-driven rather than style-driven: farmhouse influence, local inputs and experimentation matter more than fitting neatly into one category.",
+      "That makes Strange Roots a useful stop for drinkers who like rustic, sour, mixed-fermentation or otherwise less conventional beer."
+    ],
+    take: "Go when you want beer that feels tied to process and place.",
+    takeDetail: "Millvale is the established Pittsburgh-area stop; New Kensington gives the same brewery identity a second neighborhood setting with Common Oven Pizza Co. in the kitchen.",
+    locationSlugs: ["strange-roots-millvale", "strange-roots-new-kensington"],
+    sources: [
+      { label: "Strange Roots", url: "https://www.strangerootsbeer.com/" }
+    ]
+  },
+  "fermata": {
+    slug: "fermata",
+    name: "Fermata Brewing Company",
+    tagline: "An Ambridge brewery that mixes craft beer, live music and local bridge-town history into a deliberately community-focused taproom.",
+    knownFor: ["Ambridge", "Live music", "Community events", "Bridge-town identity"],
+    specialTitle: "The name, logo and taproom all point back to Ambridge.",
+    specialBody: [
+      "Fermata takes its name from the musical symbol for holding a note, a reference to the founders' love of music and the idea of giving people a reason to pause and stay awhile.",
+      "Its logo also references Ambridge's American Bridge Company history through a stylized truss bridge and steel-bolt imagery."
+    ],
+    storyTitle: "Music culture meets steel-town history",
+    story: [
+      "Fermata built its taproom at 918 Merchant Street around a community-focused, interactive experience with a clear line of sight to the brewing process.",
+      "The brewery describes itself as a neighbor first, with live music and community events forming a major part of the identity around the beer."
+    ],
+    beerTitle: "A brewery experience built around the room as much as the recipes",
+    beer: [
+      "Fermata keeps craft beer at the center, but its public identity is strongly tied to live music, gathering and the social experience of the taproom.",
+      "That combination makes the brewery feel especially connected to Ambridge rather than like a generic taproom that could be anywhere."
+    ],
+    take: "Go when you want the brewery visit to feel like part of a neighborhood night out.",
+    takeDetail: "Fermata's strongest identity is the overlap of beer, music and Ambridge itself.",
+    locationSlugs: ["fermata-brewing"],
+    sources: [
+      { label: "Fermata about", url: "https://www.fermatabrewing.beer/about-us" },
+      { label: "Fermata Brewing", url: "https://www.fermatabrewing.beer/" }
+    ]
   }
 };
 
@@ -405,7 +688,17 @@ export const featuredProfileOrder = [
   "brew-gentlemen",
   "cinderlands",
   "allegheny-city",
-  "abjuration"
+  "abjuration",
+  "balance",
+  "eleventh-hour",
+  "golden-age",
+  "hop-farm",
+  "lincoln-avenue",
+  "trace",
+  "two-frays",
+  "velum",
+  "strange-roots",
+  "fermata"
 ] as const;
 
 export const representativeBrewerySlugs: Record<string, string> = {
@@ -419,5 +712,15 @@ export const representativeBrewerySlugs: Record<string, string> = {
   "brew-gentlemen": "brew-gentlemen",
   cinderlands: "cinderlands-warehouse",
   "allegheny-city": "allegheny-city-brewing",
-  abjuration: "abjuration-hazelwood"
+  abjuration: "abjuration-hazelwood",
+  balance: "balance-brewing",
+  "eleventh-hour": "eleventh-hour",
+  "golden-age": "golden-age",
+  "hop-farm": "hop-farm",
+  "lincoln-avenue": "lincoln-avenue-brewery",
+  trace: "trace-brewing",
+  "two-frays": "two-frays",
+  velum: "velum-fermentation",
+  "strange-roots": "strange-roots-millvale",
+  fermata: "fermata-brewing"
 };
