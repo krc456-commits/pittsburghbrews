@@ -7,7 +7,7 @@ import { beerEvents } from "@/data/events";
 import { breweryProfiles, featuredProfileOrder, representativeBrewerySlugs } from "@/data/breweryProfileContent";
 import { getBreweryProfileRoute } from "@/data/breweryProfiles";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
 const primaryActions = [
   { label: "Brewery Search", href: "/breweries", icon: "⌕" },
