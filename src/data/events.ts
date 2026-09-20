@@ -10,6 +10,15 @@ export type BeerEvent = {
 
 export const beerEvents: BeerEvent[] = [
   {
+    name: "Burgh'ers Brewing Millvale Oktoberfest",
+    date: "Sep 27, 2026 · doors 11 AM",
+    location: "Burgh'ers Brewing · Millvale",
+    category: "Oktoberfest",
+    description: "All-day Oktoberfest party with live music starting at 7 PM, prizes and giveaways, Hammerschlagen and stein-holding contests, Bavarian food, and fresh Burgh'ers beer.",
+    url: "https://www.burgherspgh.com/events",
+    featured: true,
+  },
+  {
     name: "11th Hour Brewing Oktoberfest",
     date: "Sep 19, Sep 25-26 & Oct 2-3, 2026",
     location: "11th Hour Brewing Co. · Lawrenceville",
