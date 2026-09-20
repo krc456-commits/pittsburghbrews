@@ -1,7 +1,11 @@
 import Link from "next/link";
-import { beerEvents } from "@/data/events";
+import { getVisibleBeerEvents } from "@/data/events";
+
+export const dynamic = "force-dynamic";
 
 export default function EventsPage() {
+  const beerEvents = getVisibleBeerEvents();
+
   return (
     <main className="bg-[#f6f1e7] text-[#191815]">
       <section className="border-b border-black/10 bg-[#efe6d5]">
