@@ -12,6 +12,17 @@ export type BeerEvent = {
 
 export const beerEvents: BeerEvent[] = [
   {
+    name: "Hops and Hayrides at Trax Farm Market",
+    date: "Sep 25 & Oct 2, 9, 16, 23, 2026",
+    startDate: "2026-09-25",
+    endDate: "2026-10-23",
+    location: "Trax Farm Market · Finleyville",
+    category: "Festival",
+    description: "Friday fall-festival evenings at Trax Farm Market featuring craft beer and hayrides during the farm's seasonal festivities.",
+    url: "https://traxfarmmarket.ticketspice.com/2026-hops-and-hayrides",
+    featured: true,
+  },
+  {
     name: "2026 Slammin' Cans Graffiti Jam",
     date: "Oct 10, 2026 · 1-6 PM",
     startDate: "2026-10-10",
