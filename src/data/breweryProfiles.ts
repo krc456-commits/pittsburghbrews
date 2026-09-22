@@ -41,6 +41,17 @@ export const breweryProfileRoutes: Record<string, string> = {
   "hazel-grove": "/breweries/hazel-grove",
   "inner-groove-verona": "/breweries/inner-groove",
   "late-addition": "/breweries/late-addition",
+  "local-remedy": "/breweries/local-remedy",
+  "lolev-beer": "/breweries/lolev",
+  "pittsburgh-brewing-company": "/breweries/pittsburgh-brewing-company",
+  "southern-tier-pittsburgh": "/breweries/southern-tier",
+  "spoonwood": "/breweries/spoonwood",
+  "mondays-peters-township": "/breweries/mondays",
+  "mondays-greenfield": "/breweries/mondays",
+  "shubrew-zelienople": "/breweries/shubrew",
+  "stick-city": "/breweries/stick-city",
+  "smiling-moose-cranberry": "/breweries/smiling-moose",
+  "smiling-moose-grove-city": "/breweries/smiling-moose",
 };
 
 export function getBreweryProfileRoute(slug: string) {
