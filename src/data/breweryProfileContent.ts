@@ -966,6 +966,284 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     sources: [
       { label: "Late Addition Brewing", url: "https://lateadditionbrewing.com/" }
     ]
+  },
+  "local-remedy": {
+    slug: "local-remedy",
+    name: "Local Remedy Brewing",
+    tagline: "An Oakmont taproom built around good beer, good people and the idea that a brewery should make its neighborhood better.",
+    knownFor: ["Oakmont", "Community focus", "Food trucks", "Local giving"],
+    specialTitle: "Community is part of the recipe.",
+    specialBody: [
+      "Local Remedy started as a reason for friends and family to gather around homebrewed beer and grew into an Oakmont taproom with the same social purpose.",
+      "The brewery backs that idea with a 1% Keep It Local pledge, donating one percent of gross sales annually to local organizations."
+    ],
+    storyTitle: "A hobby grows into an Oakmont gathering place",
+    story: [
+      "Local Remedy describes the brewery as a passion project — a hobby elevated into a business without losing the standards or hospitality that made the original gatherings matter.",
+      "The taproom at 531 Allegheny Avenue is designed as a bright neighborhood space, with regular events, food trucks and the option to bring in food from Oakmont restaurants."
+    ],
+    beerTitle: "House beer with room for the rest of the group",
+    beer: [
+      "Local Remedy centers the bar on its own beer but also carries cider, ready-to-drink cocktails and non-alcoholic options from partner producers.",
+      "That broader beverage mix supports the brewery's larger goal: make the taproom work for more than one kind of drinker."
+    ],
+    take: "Go when you want a brewery that feels explicitly built for its neighborhood.",
+    takeDetail: "The Oakmont location is less about spectacle and more about a comfortable room, thoughtful beer and a clear community mission.",
+    locationSlugs: ["local-remedy"],
+    sources: [
+      { label: "Local Remedy", url: "https://lrbrewing.com/" },
+      { label: "Mission & values", url: "https://lrbrewing.com/mission-and-values/" }
+    ]
+  },
+  "lolev": {
+    slug: "lolev",
+    name: "Lolev Beer",
+    tagline: "A Pittsburgh brewery obsessed with individual hop lots, expressive hoppy beer and a tap list that asks drinkers to notice the details.",
+    knownFor: ["Ultra Hopped Ale", "Hop selection", "Lawrenceville", "Zelienople"],
+    specialTitle: "They chase hop lots, not just hop names.",
+    specialBody: [
+      "Lolev describes its hop program in unusually specific terms: the brewery searches for individual lots from specialty growers around the world rather than treating a hop variety as interchangeable.",
+      "That obsession shows up most clearly in its Ultra Hopped Ale releases, where vivid aroma and balance are treated as the point rather than sheer bitterness."
+    ],
+    storyTitle: "A hop-focused brewery with two western Pennsylvania taprooms",
+    story: [
+      "Lolev's Pittsburgh home is at 5247 Butler Street in Lawrenceville.",
+      "The brewery also operates a second taproom at 111 South Main Street in Zelienople, extending the same beer program into Butler County."
+    ],
+    beerTitle: "Hazy IPA, Ultra Hopped Ale, lager and the occasional curveball",
+    beer: [
+      "The current lineup is hop-heavy, with multiple hazy IPAs and Ultra Hopped Ales often on at the same time.",
+      "Lolev also brews beers such as Japanese rice lager, Märzen and saison, giving the tap list more range than the hop-first identity might suggest."
+    ],
+    take: "Go when you want to nerd out over hops without drinking the same IPA six times.",
+    takeDetail: "Lawrenceville is the Pittsburgh-city stop; Zelienople brings the same beer identity north with its own event schedule and food-truck rotation.",
+    locationSlugs: ["lolev-beer"],
+    extraLocations: [
+      {
+        name: "Lolev Zelienople",
+        address: "111 South Main Street, Zelienople, PA 16063",
+        description: "Lolev's second taproom, pouring the same hop-focused beer program with its own events and rotating food vendors.",
+        atmosphere: "Main Street · casual · community-focused",
+        food: "Rotating food trucks",
+        website: "https://lolev.beer/?loc=lolev-zelienople"
+      }
+    ],
+    sources: [
+      { label: "Lolev Beer", url: "https://lolev.beer/" }
+    ]
+  },
+  "pittsburgh-brewing-company": {
+    slug: "pittsburgh-brewing-company",
+    name: "Pittsburgh Brewing Company",
+    tagline: "The modern home of Iron City and IC Light, brewing inside a transformed 1880s industrial complex on a 42-acre Creighton campus.",
+    knownFor: ["Iron City", "IC Light", "Historic Pittsburgh brand", "Creighton brewery"],
+    specialTitle: "A legacy brewery rebuilding itself at industrial scale.",
+    specialBody: [
+      "Pittsburgh Brewing connects more than 160 years of brand history to a modern production brewery inside the former Pittsburgh Plate Glass complex in Creighton.",
+      "The company positions the campus as both a working brewery and a public destination, with tours, a taproom, a stage, seasonal festivals and a pilot-brewing program."
+    ],
+    storyTitle: "Old Pittsburgh beer moves into a new industrial home",
+    story: [
+      "The Iron City name remains one of Pittsburgh's most recognizable beer brands, but today's production is centered at 150 Ferry Street in Creighton.",
+      "The brewery occupies a historic factory complex dating to the 1880s that has been rebuilt with modern brewing equipment while retaining its industrial character."
+    ],
+    beerTitle: "Flagships, pilot batches and a wider modern portfolio",
+    beer: [
+      "Iron City and IC Light remain the anchors, including newer flavored IC Light variants.",
+      "The Creighton brewery also runs a pilot program for smaller experimental batches, creating a bridge between legacy brands and newer releases."
+    ],
+    take: "Go when you want the region's big historic beer story in a modern brewery setting.",
+    takeDetail: "This is less intimate than a neighborhood microbrewery, but the scale, history, tours and industrial campus make it a distinct Pittsburgh beer experience.",
+    locationSlugs: ["pittsburgh-brewing-company"],
+    sources: [
+      { label: "Pittsburgh Brewing", url: "https://pittsburghbrewing.com/" },
+      { label: "Building our future", url: "https://pittsburghbrewing.com/building-our-future/" }
+    ]
+  },
+  "southern-tier": {
+    slug: "southern-tier",
+    name: "Southern Tier Pittsburgh",
+    tagline: "A North Shore satellite brewpub with more than 30 taps, a full kitchen, a large beer garden and Pittsburgh-only beer brewed in-house.",
+    knownFor: ["North Shore", "PGH Brew'd", "30+ taps", "Beer garden"],
+    specialTitle: "It is a satellite taproom, but Pittsburgh beer is brewed here too.",
+    specialBody: [
+      "Southern Tier's Pittsburgh location opened in 2017 as the brewery's first satellite brewpub and sits within walking distance of PNC Park and Acrisure Stadium.",
+      "Alongside Southern Tier, Victory, Sixpoint and Bold Rock products, the North Shore location serves a PGH Brew'd line made specifically in-house for Pittsburgh."
+    ],
+    storyTitle: "A regional brewery builds a Pittsburgh-specific outpost",
+    story: [
+      "The North Shore taproom combines a large draft list, full restaurant and pet-friendly beer garden in a location built for game-day traffic and downtown visitors.",
+      "Its local brewing program helps distinguish the Pittsburgh location from a simple branded bar."
+    ],
+    beerTitle: "Big regional portfolio plus Pittsburgh-only releases",
+    beer: [
+      "More than 30 taps can include Southern Tier beer, Victory beer, Sixpoint, cider and other Artisanal Brewing Ventures brands.",
+      "The PGH Brew'd line adds beer brewed on site specifically for the Pittsburgh taproom."
+    ],
+    take: "Go when you want a brewery stop that fits naturally into a North Shore game day.",
+    takeDetail: "It is a regional brand rather than a Pittsburgh-founded brewery, but the in-house PGH Brew'd program gives this location a legitimate local beer angle.",
+    locationSlugs: ["southern-tier-pittsburgh"],
+    sources: [
+      { label: "Southern Tier Pittsburgh", url: "https://pittsburgh.stbcbeer.com/" }
+    ]
+  },
+  "spoonwood": {
+    slug: "spoonwood",
+    name: "Spoonwood Brewing Co.",
+    tagline: "A South Hills brewpub built around a 15-barrel brewery, a wood-fired kitchen, live music and a large outdoor beer-garden experience.",
+    knownFor: ["South Hills", "Wood-fired food", "22+ taps", "Live music"],
+    specialTitle: "This is a full brewery-and-restaurant destination.",
+    specialBody: [
+      "Spoonwood operates a 15-barrel brewhouse with more than 22 taps and pairs the beer with a substantial kitchen built around a wood-fired oven.",
+      "The combination of food, beer, live music and outdoor space makes it closer to a complete night-out destination than a tasting-room-only brewery."
+    ],
+    storyTitle: "A South Hills brewery designed for staying awhile",
+    story: [
+      "Spoonwood sits at 5981 Baptist Road in Bethel Park.",
+      "The brewery has grown around recurring live music, seasonal events, Sunday brunch and a full-service restaurant model."
+    ],
+    beerTitle: "A broad house lineup backed by a big draft system",
+    beer: [
+      "Spoonwood's packaged and draft beer spans hazy IPA, American IPA, wheat ale, cream ale, coffee blonde and other rotating styles.",
+      "The large tap count also leaves room for cider, wine and non-alcoholic options."
+    ],
+    take: "Go when the group wants brewery beer and dinner in the same place.",
+    takeDetail: "The full kitchen, events and outdoor space make Spoonwood one of the easier South Hills breweries for a longer visit.",
+    locationSlugs: ["spoonwood"],
+    sources: [
+      { label: "Spoonwood Brewing", url: "https://spoonwoodbrewing.com/" },
+      { label: "Spoonwood beer", url: "https://spoonwoodbrewing.com/beer/" }
+    ]
+  },
+  "mondays": {
+    slug: "mondays",
+    name: "Mondays Brewing Company",
+    tagline: "A two-neighborhood microbrewery built around broad beer variety, locally made drinks and taprooms meant to function as community centers.",
+    knownFor: ["Peters Township", "Greenfield", "Wide style range", "Local beverages"],
+    specialTitle: "The taproom is treated like neighborhood infrastructure.",
+    specialBody: [
+      "Mondays describes both of its locations as more than places to get a drink — each is intended to be a community center where people gather.",
+      "That local-first approach extends beyond house beer to regional cider, mead, wine, spirits and even locally crafted soda."
+    ],
+    storyTitle: "One brewery identity, two very different neighborhoods",
+    story: [
+      "Mondays operates taprooms in Peters Township and Greenfield.",
+      "The two locations keep separate schedules and personalities while sharing the same broad brewing philosophy."
+    ],
+    beerTitle: "Lagers, ales, sours and IPAs without a single-style obsession",
+    beer: [
+      "Mondays explicitly brews across a wide range of styles including lagers, ales, sours and IPAs.",
+      "That range, plus non-beer local beverages, makes both taprooms easy choices for groups with mixed tastes."
+    ],
+    take: "Go when you want a true neighborhood taproom with a little something for everyone.",
+    takeDetail: "Peters Township and Greenfield serve different communities, but both are built around the same local-first, broad-selection idea.",
+    locationSlugs: ["mondays-peters-township", "mondays-greenfield"],
+    sources: [
+      { label: "Mondays Brewing", url: "https://mondays.beer/version3/" }
+    ]
+  },
+  "shubrew": {
+    slug: "shubrew",
+    name: "ShuBrew",
+    tagline: "A Zelienople brewery-restaurant where scratch cooking, locally sourced ingredients and beer have been developed together since 2013.",
+    founded: "2013",
+    knownFor: ["Zelienople", "Scratch kitchen", "Sustainability", "Beer + food"],
+    specialTitle: "Food was never an afterthought.",
+    specialBody: [
+      "Zachary and Erika Shumaker opened ShuBrew in 2013 as both a restaurant and brewery, with the explicit goal of pairing the beer they loved with a kitchen capable of matching it.",
+      "The menu is made from scratch and draws on local purveyors, suppliers and farmers, allowing seasonal changes and beer-focused pairings."
+    ],
+    storyTitle: "A Main Street brewpub with a separate production home",
+    story: [
+      "ShuBrew opened on Main Street in downtown Zelienople in 2013.",
+      "Brewing moved to nearby Harmony in 2016, while the Zelienople restaurant remains the public-facing brewpub experience."
+    ],
+    beerTitle: "Craft beer designed to live beside a serious kitchen",
+    beer: [
+      "ShuBrew describes its brewing around carefully selected ingredients and time-honored techniques.",
+      "The beer program is intentionally connected to the restaurant, where international influences and seasonal local ingredients shape the food."
+    ],
+    take: "Go when you want the food program to matter as much as the beer.",
+    takeDetail: "ShuBrew is one of the clearest north-of-Pittsburgh examples of a brewery and scratch kitchen designed as one business rather than two separate pieces.",
+    locationSlugs: ["shubrew-zelienople"],
+    extraLocations: [
+      {
+        name: "Harmony — Production Brewery",
+        address: "Harmony, PA",
+        description: "ShuBrew moved its brewing operation to nearby Harmony in 2016; the public restaurant and taproom experience remains in Zelienople.",
+        atmosphere: "Production brewery",
+        website: "https://www.shubrew.com/"
+      }
+    ],
+    sources: [
+      { label: "ShuBrew about", url: "https://www.shubrew.com/about" },
+      { label: "ShuBrew", url: "https://www.shubrew.com/" }
+    ]
+  },
+  "stick-city": {
+    slug: "stick-city",
+    name: "Stick City Brewing Company",
+    tagline: "A Mars-area brewery that uses beer as a pathway into conservation, outdoor culture and connection to the natural world.",
+    knownFor: ["Conservation mission", "Mars", "Outdoor culture", "Independent"],
+    specialTitle: "The mission reaches beyond the taproom.",
+    specialBody: [
+      "Stick City states its purpose simply: inspire people to connect with and protect the wild world around them.",
+      "Beer is framed as the pathway rather than the end point, giving the brewery a conservation-first identity that is unusual in the Pittsburgh beer scene."
+    ],
+    storyTitle: "A brewery built around protecting the sticks",
+    story: [
+      "Stick City operates in the Mars area north of Pittsburgh and has tied its brand closely to outdoor life from the beginning.",
+      "That mission shapes collaborations, events and the wider community around the brewery."
+    ],
+    beerTitle: "Beer tied to place, outdoors and community",
+    beer: [
+      "Stick City's beer program supports the larger brand rather than existing separately from it.",
+      "The taproom experience is built for drinkers who respond to independent beer, outdoor culture and conservation as part of the same identity."
+    ],
+    take: "Go when the brewery's values matter to you as much as the beer.",
+    takeDetail: "Stick City has one of the clearest missions in the region: drink beer, connect with the outdoors and help protect it.",
+    locationSlugs: ["stick-city"],
+    sources: [
+      { label: "Stick City Brewing", url: "https://www.stickcitybeer.com/" }
+    ]
+  },
+  "smiling-moose": {
+    slug: "smiling-moose",
+    name: "Smiling Moose Brewing",
+    tagline: "A western Pennsylvania brewpub brand that grew from a Pittsburgh music-bar legacy into its own brewery, Cranberry restaurant and Grove City taproom.",
+    knownFor: ["Grove City brewery", "Cranberry", "Pub food", "Crushable beer"],
+    specialTitle: "A bar brand taught itself to brew, then bought a brewery.",
+    specialBody: [
+      "Smiling Moose began as a South Side music and service-industry bar in 2003, then started experimenting with brewing during the pandemic on a small Pittsburgh system.",
+      "That brewing interest grew into the purchase of a larger Grove City brewery and distribution across western Pennsylvania."
+    ],
+    storyTitle: "From East Carson Street to a regional brewery operation",
+    story: [
+      "The company opened its Cranberry location in 2022, combining Moose beer with a full restaurant and family-oriented suburban setting.",
+      "Production now takes place at 231 Park Street in Grove City, while the main Grove City pub and taproom operates at 218 South Broad Street."
+    ],
+    beerTitle: "Crushable beer, seltzer and playful fermentation",
+    beer: [
+      "Smiling Moose describes its beer as deliberately crushable, with hazy IPA, pale ale, American wheat and IPA among the core styles.",
+      "The program also includes seltzers and a hard root beer, reflecting the brand's willingness to treat fermentation broadly."
+    ],
+    take: "Go when you want brewery beer in a full pub setting rather than a tasting-room-only stop.",
+    takeDetail: "Cranberry is the restaurant-heavy Pittsburgh-area option; Grove City is closer to the production side and the brand's current brewing home.",
+    locationSlugs: ["smiling-moose-cranberry", "smiling-moose-grove-city"],
+    extraLocations: [
+      {
+        name: "Grove City — Production Brewery",
+        address: "231 Park Street, Grove City, PA 16127",
+        description: "Smiling Moose's production brewery, where beer is brewed for its taprooms and western Pennsylvania distribution.",
+        atmosphere: "Production brewery",
+        website: "https://smiling-moose.com/brewery/"
+      }
+    ],
+    sources: [
+      { label: "Smiling Moose brewery", url: "https://smiling-moose.com/brewery/" },
+      { label: "Smiling Moose beer", url: "https://smiling-moose.com/our-beer/" },
+      { label: "Smiling Moose locations", url: "https://smiling-moose.com/locations/" }
+    ]
   }
 };
 
@@ -1000,7 +1278,16 @@ export const featuredProfileOrder = [
   "dough-daddy",
   "hazel-grove",
   "inner-groove",
-  "late-addition"
+  "late-addition",
+  "local-remedy",
+  "lolev",
+  "pittsburgh-brewing-company",
+  "southern-tier",
+  "spoonwood",
+  "mondays",
+  "shubrew",
+  "stick-city",
+  "smiling-moose"
 ] as const;
 
 export const representativeBrewerySlugs: Record<string, string> = {
@@ -1034,5 +1321,14 @@ export const representativeBrewerySlugs: Record<string, string> = {
   "dough-daddy": "dough-daddy-brewery",
   "hazel-grove": "hazel-grove",
   "inner-groove": "inner-groove-verona",
-  "late-addition": "late-addition"
+  "late-addition": "late-addition",
+  "local-remedy": "local-remedy",
+  lolev: "lolev-beer",
+  "pittsburgh-brewing-company": "pittsburgh-brewing-company",
+  "southern-tier": "southern-tier-pittsburgh",
+  spoonwood: "spoonwood",
+  mondays: "mondays-peters-township",
+  shubrew: "shubrew-zelienople",
+  "stick-city": "stick-city",
+  "smiling-moose": "smiling-moose-cranberry"
 };
