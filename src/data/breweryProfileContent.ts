@@ -674,6 +674,298 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
       { label: "Fermata about", url: "https://www.fermatabrewing.beer/about-us" },
       { label: "Fermata Brewing", url: "https://www.fermatabrewing.beer/" }
     ]
+  },
+  "allusion": {
+    slug: "allusion",
+    name: "Allusion Brewing Company",
+    tagline: "A community-first brewery with an original Vandergrift home and a second Pittsburgh-area taproom in Allison Park.",
+    knownFor: ["Vandergrift", "Allison Park", "Community events", "Full food menu"],
+    specialTitle: "Two taprooms, one community-first identity.",
+    specialBody: [
+      "Allusion describes community as the center of the brewery, pairing beer brewed on site with food, trivia, game nights, live music and other events.",
+      "The brand now spans its original Vandergrift brewery and a Pittsburgh-area taproom in Allison Park, giving it two distinct neighborhood homes."
+    ],
+    storyTitle: "From Vandergrift to the North Hills",
+    story: [
+      "Allusion built its original brewery at 143 Grant Avenue in Vandergrift before expanding with a second taproom at 1701 Duncan Avenue in Allison Park.",
+      "Both locations share the same regular weekly hours and serve as active event spaces rather than simple beer counters."
+    ],
+    beerTitle: "Broad craft beer with an approachable taproom focus",
+    beer: [
+      "Allusion emphasizes quality ingredients and a varied house-beer lineup rather than defining itself around one narrow style.",
+      "Its taprooms pair that beer with food and regular programming, making the experience as much about gathering as tasting."
+    ],
+    take: "Go when you want a brewery that treats the taproom as a community hangout.",
+    takeDetail: "Vandergrift is the original brewery experience; Allison Park is the easier Pittsburgh-area stop with the same beer-and-events approach.",
+    locationSlugs: ["allusion-vandergrift", "allusion-allison-park"],
+    sources: [
+      { label: "Allusion about", url: "https://www.allusionbrewing.com/about-us/" },
+      { label: "Allusion Brewing", url: "https://www.allusionbrewing.com/" }
+    ]
+  },
+  "acrospire": {
+    slug: "acrospire",
+    name: "Acrospire Brewing Company",
+    tagline: "A small Glenshaw brewery built around traditional brewing methods, experienced brewers and the freedom to keep the tap list varied.",
+    founded: "2017",
+    knownFor: ["Traditional methods", "Glenshaw", "Small-batch beer", "Variety"],
+    specialTitle: "Small scale is part of the brewing strategy.",
+    specialBody: [
+      "Acrospire was formed in December 2017 by friends with decades of combined brewing experience and a shared interest in traditional beer.",
+      "The brewery says its smaller scale lets the team stay nimble and move through a wide range of styles and flavors."
+    ],
+    storyTitle: "Traditional brewing in a neighborhood-sized room",
+    story: [
+      "Acrospire operates at 1702 Mt. Royal Boulevard in Glenshaw.",
+      "The brewery's identity is intentionally straightforward: traditional methods, familiar ingredients and a taproom built around sharing well-made beer."
+    ],
+    beerTitle: "Classic foundations without a one-style limitation",
+    beer: [
+      "Acrospire focuses on traditional brewing methods and ingredients, but the small system gives the brewers room to move between styles.",
+      "That combination makes the tap list a good fit for drinkers who want recognizable beer styles without a mass-market feel."
+    ],
+    take: "Go when you want a small neighborhood brewery with traditional instincts.",
+    takeDetail: "Acrospire is more about the beer and the local taproom than spectacle, which is exactly the appeal.",
+    locationSlugs: ["acrospire"],
+    sources: [
+      { label: "Acrospire Brewing", url: "https://www.acrospirebrewingco.com/" }
+    ]
+  },
+  "aslin": {
+    slug: "aslin",
+    name: "Aslin Beer Company",
+    tagline: "A Virginia-born brewery with a large Strip District taproom, an experimental streak and a food program built into the Pittsburgh location.",
+    founded: "2015",
+    knownFor: ["Strip District", "Experimental beer", "IZZI kitchen", "Wide style range"],
+    specialTitle: "Pittsburgh gets the full Aslin experience, not just a satellite beer bar.",
+    specialBody: [
+      "Aslin was founded in 2015 by Andrew Kelley and Kai Leszkowicz after the two bonded over craft beer and homebrewing.",
+      "The Pittsburgh location at 1801 Smallman Street combines the taproom with Aslin's IZZI food concept, serving breakfast items earlier in the day and pizza, burgers and other food later."
+    ],
+    storyTitle: "A growing brewery lands in the Strip District",
+    story: [
+      "Aslin began in Northern Virginia and expanded into multiple markets as the company grew.",
+      "Its Pittsburgh taproom places the brand in one of the city's busiest food-and-drink neighborhoods while keeping the brewery's broad, energetic identity intact."
+    ],
+    beerTitle: "Ales, sours, DIPAs, lagers and plenty of experimentation",
+    beer: [
+      "Aslin explicitly describes experimentation as part of its brewing culture.",
+      "The range stretches from hop-heavy beer and sours to lagers and other styles, making variety one of the brand's defining characteristics."
+    ],
+    take: "Go when your group wants a big taproom, food and a beer list that jumps across styles.",
+    takeDetail: "It is not a Pittsburgh-founded brewery, but the Strip District location is substantial enough to function as a real local destination.",
+    locationSlugs: ["aslin-pittsburgh"],
+    sources: [
+      { label: "Aslin story", url: "https://www.aslinbeer.com/about" },
+      { label: "Aslin locations", url: "https://www.aslinbeer.com/locations" }
+    ]
+  },
+  "burghers": {
+    slug: "burghers",
+    name: "Burgh'ers Brewing",
+    tagline: "A chef-driven Pittsburgh-area brewery where smash burgers, house beer and local sourcing are designed as one experience.",
+    founded: "2017",
+    knownFor: ["Smash burgers", "House beer", "Local sourcing", "Four locations"],
+    specialTitle: "The burger and the beer are supposed to matter equally.",
+    specialBody: [
+      "Burgh'ers Brewing officially took shape in 2017 when chef and owner Fiore Moletz brought engineer-turned-brewer Neil Glausier into the business as partner and head brewer.",
+      "The company describes itself as a chef-driven smash burger joint and craft brewery focused on local, ethical and sustainable food and drink."
+    ],
+    storyTitle: "A restaurant becomes a brewery",
+    story: [
+      "Moletz had already opened the original Burgh'ers restaurant before the brewing partnership began.",
+      "The company has since expanded across Zelienople, Lawrenceville, South Side and Millvale while keeping the same beer-and-burger identity."
+    ],
+    beerTitle: "House beer made to sit beside the food",
+    beer: [
+      "Burgh'ers keeps its brewing philosophy deliberately simple: beer should taste good and be made from good things.",
+      "That matches the restaurant side, where local sourcing and approachable food are treated as core parts of the brand rather than add-ons."
+    ],
+    take: "Go when nobody wants to choose between a brewery and a real meal.",
+    takeDetail: "The four locations make Burgh'ers unusually flexible; pick based on neighborhood and atmosphere rather than expecting a completely different beer identity at each one.",
+    locationSlugs: ["burghers-lawrenceville", "burghers-millvale", "burghers-zelienople", "burghers-south-side"],
+    sources: [
+      { label: "Burgh'ers story", url: "https://www.burgherspgh.com/about" },
+      { label: "Burgh'ers locations", url: "https://www.burgherspgh.com/" }
+    ]
+  },
+  "cobblehaus": {
+    slug: "cobblehaus",
+    name: "Cobblehaus Brewing Co.",
+    tagline: "A Coraopolis brewery that draws from German and Belgian traditions, then gives those old-world styles a modern twist.",
+    knownFor: ["German influence", "Belgian influence", "Coraopolis", "Old-world styles"],
+    specialTitle: "Tradition is the starting point, not the boundary.",
+    specialBody: [
+      "Cobblehaus builds its beer identity around German and Belgian brewing traditions and the long history behind those styles.",
+      "The brewery then deliberately adds its own twists, describing the result as old-world styles with new-world curiosity."
+    ],
+    storyTitle: "A neighborhood brewery tied to Coraopolis",
+    story: [
+      "Cobblehaus brews in downtown Coraopolis at 1021 5th Avenue and explicitly connects itself to the borough's ongoing revitalization.",
+      "The company also operates an At The Falls taproom in Mercer County, while Coraopolis remains the place where the beer is brewed."
+    ],
+    beerTitle: "European inspiration without museum-piece rigidity",
+    beer: [
+      "German and Belgian styles provide the backbone of the beer program.",
+      "Cobblehaus uses that traditional framework as a base for experimentation rather than trying to reproduce history exactly."
+    ],
+    take: "Go when you want European-style beer in a relaxed neighborhood taproom.",
+    takeDetail: "Coraopolis is the brewery home and the most direct way to experience what Cobblehaus is trying to do.",
+    locationSlugs: ["cobblehaus"],
+    extraLocations: [
+      {
+        name: "Cobblehaus At The Falls",
+        address: "1015 Leesburg Station Road, Mercer, PA 16137",
+        description: "A second Cobblehaus taproom on a seven-acre former iron-furnace property overlooking Springfield Falls.",
+        atmosphere: "Scenic · destination taproom",
+        website: "https://www.cobblehaus.com/"
+      }
+    ],
+    sources: [
+      { label: "Cobblehaus Coraopolis", url: "https://www.cobblehaus.com/coraopolis" },
+      { label: "Cobblehaus", url: "https://www.cobblehaus.com/" }
+    ]
+  },
+  "costar": {
+    slug: "costar",
+    name: "CoStar Brewing",
+    tagline: "A small Etna brewery with Pittsburgh roots dating to 2011 and a straightforward motto: get outside and drink good beer.",
+    founded: "2011",
+    knownFor: ["Etna", "Small brewery", "Pittsburgh roots", "Independent"],
+    specialTitle: "Long-running local beer in a compact Etna home.",
+    specialBody: [
+      "CoStar says it has been brewing in Pittsburgh since 2011, giving the brand a longer history than its current Etna taproom alone might suggest.",
+      "The taproom keeps the focus tight: house beer alongside a small selection of local mead, cider, cocktails, non-alcoholic options and snacks."
+    ],
+    storyTitle: "A Pittsburgh brewing project finds a home in Etna",
+    story: [
+      "CoStar now operates at 323 Butler Street in Etna.",
+      "The brewery's public identity remains intentionally uncomplicated and local, with regular taproom hours and a neighborhood-scale footprint."
+    ],
+    beerTitle: "House beer first, local alternatives alongside it",
+    beer: [
+      "CoStar centers the menu on its own beer while also carrying a few other Pennsylvania-made drinks and non-alcoholic options.",
+      "That makes the taproom approachable for mixed groups without diluting its brewery-first identity."
+    ],
+    take: "Go when you want an uncomplicated independent brewery stop in Etna.",
+    takeDetail: "CoStar's appeal is its scale and local feel rather than a giant entertainment concept.",
+    locationSlugs: ["costar-brewing"],
+    sources: [
+      { label: "CoStar Brewing", url: "https://www.costarbrewing.com/" }
+    ]
+  },
+  "dough-daddy": {
+    slug: "dough-daddy",
+    name: "Dough Daddy Brewery",
+    tagline: "A female-owned Gibsonia brewery that brings the Caliente pizza-and-craft-beer background into a full brewery, restaurant and beer-garden setting.",
+    founded: "2023",
+    knownFor: ["Gibsonia", "Female-owned", "Full kitchen", "Beer garden"],
+    specialTitle: "Beer and pizza were connected before the brewery even existed.",
+    specialBody: [
+      "Dough Daddy was founded in 2023 by Angie Bogacz as a sister company to Caliente Pizza & Draft House, owned by her husband Nick Bogacz.",
+      "That restaurant background shapes the brewery's identity: beer, food, hospitality, a beer garden and event space are all treated as parts of one experience."
+    ],
+    storyTitle: "From craft-beer restaurant culture to an in-house brewery",
+    story: [
+      "Caliente had spent years working closely with craft breweries and hosting beer events before Dough Daddy became its own brewing company.",
+      "The Gibsonia location expanded that idea into a dedicated brewery with a full kitchen, brunch, live music and community events."
+    ],
+    beerTitle: "Seasonal releases, IPAs and beer built for the table",
+    beer: [
+      "Dough Daddy launched with a mix of seasonal beer, special releases and IPAs.",
+      "The broader concept keeps food pairing close to the beer, reflecting the owners' long-running belief that pizza and craft beer naturally belong together."
+    ],
+    take: "Go when you want brewery beer with a full restaurant instead of planning a separate food stop.",
+    takeDetail: "The beer garden, kitchen and events make Dough Daddy especially useful for groups and longer visits.",
+    locationSlugs: ["dough-daddy-brewery"],
+    sources: [
+      { label: "Dough Daddy story", url: "https://doughdaddybrewery.com/about-us/" },
+      { label: "Dough Daddy Brewery", url: "https://doughdaddybrewery.com/" }
+    ]
+  },
+  "hazel-grove": {
+    slug: "hazel-grove",
+    name: "Hazel Grove Brewing",
+    tagline: "A Hazelwood brewery built around neighborhood connection and a surprisingly broad beer program that has already earned national recognition.",
+    knownFor: ["Hazelwood", "Award-winning beer", "Broad style range", "Community taproom"],
+    specialTitle: "The beer range is wider than the small neighborhood footprint suggests.",
+    specialBody: [
+      "Owners Larry, Barb and Steve describe Hazel Grove as a place created to bring people together, with local partnerships and Hazelwood community connections built into the brewery's identity.",
+      "The brewery also takes a deliberately broad approach to styles, from lager and IPA to Belgian, English, Scottish and darker beer."
+    ],
+    storyTitle: "Homebrewing ambition becomes a Hazelwood gathering place",
+    story: [
+      "Hazel Grove grew from years of homebrewing and an interest in making the kind of brewery its owners wanted to spend time in themselves.",
+      "The taproom at 4609 Irvine Street now combines a colorful indoor space, courtyard, community events and collaborations with Hazelwood organizations and businesses."
+    ],
+    beerTitle: "Lager, IPA, Belgian and English styles all get serious attention",
+    beer: [
+      "Hazel Grove explicitly aims to brew across the spectrum instead of specializing in one lane.",
+      "That breadth has produced recognized beers including Isle of Pitt Scottish Export Ale, which earned bronze at the 2026 World Beer Cup."
+    ],
+    take: "Go when you want a neighborhood brewery where the tap list rewards trying something outside your usual style.",
+    takeDetail: "The combination of broad beer ambition and a genuinely local Hazelwood identity is what makes Hazel Grove stand out.",
+    locationSlugs: ["hazel-grove"],
+    sources: [
+      { label: "Hazel Grove about", url: "https://www.hazelgrovebrewing.com/about" },
+      { label: "Hazel Grove beer", url: "https://www.hazelgrovebrewing.com/beers" },
+      { label: "Hazel Grove awards", url: "https://www.hazelgrovebrewing.com/awards" }
+    ]
+  },
+  "inner-groove": {
+    slug: "inner-groove",
+    name: "Inner Groove Brewing",
+    tagline: "A Verona brewery created by two husband-and-wife teams around craft beer, vinyl records and a taproom meant to feel like a shared night out.",
+    knownFor: ["Verona", "Vinyl culture", "Rotating styles", "Community events"],
+    specialTitle: "The vinyl theme came before the brewery name.",
+    specialBody: [
+      "Inner Groove was created by Tim and Kelly Melle and Kevin and Jennifer Walzer after years of brewing, tasting, trading and traveling for beer.",
+      "Their regular beer gatherings were also built around Kevin's vinyl-record obsession, which eventually inspired the Inner Groove name and the taproom's music-heavy personality."
+    ],
+    storyTitle: "Two families find their brewery home in Verona",
+    story: [
+      "The founders chose Verona after a long search for the right building and neighborhood, seeing the walkable borough as a strong fit for the kind of community brewery they wanted.",
+      "Beer is brewed on site at 751 East Railroad Avenue, where the taproom mixes rotating beer with vinyl and pop-culture events."
+    ],
+    beerTitle: "A rotating board designed to keep changing",
+    beer: [
+      "Inner Groove brews all of its beer on premises from recipes developed by its brewers.",
+      "The tap list rotates through styles such as IPA, sour beer, stout, porter, wheat beer and seasonal releases rather than settling around one permanent specialty."
+    ],
+    take: "Go when music and taproom personality matter almost as much as the beer.",
+    takeDetail: "Inner Groove feels strongest as a Verona night-out stop: rotating beer, vinyl culture and recurring events in one room.",
+    locationSlugs: ["inner-groove-verona"],
+    sources: [
+      { label: "Inner Groove story", url: "https://www.innergroovebrewing.com/about" },
+      { label: "Inner Groove Brewing", url: "https://www.innergroovebrewing.com/" }
+    ]
+  },
+  "late-addition": {
+    slug: "late-addition",
+    name: "Late Addition Brewing + Blending",
+    tagline: "A North Side brewery focused on sessionable beer, classic styles and a blending program that gives the tap list a more patient side.",
+    knownFor: ["North Side", "Session beer", "Classic styles", "Blending"],
+    specialTitle: "Classic beer and blending live on the same board.",
+    specialBody: [
+      "Late Addition describes itself as a small but ambitious Pittsburgh brewery founded and owned by brewers with years of experience making award-winning beer.",
+      "Its focus is unusually clear: session beers, classic styles and current styles, alongside sour and blending projects."
+    ],
+    storyTitle: "Experienced brewers start a new chapter on Western Avenue",
+    story: [
+      "Late Addition operates at 847 Western Avenue on Pittsburgh's North Side, near Allegheny Commons and the National Aviary.",
+      "The taproom is dog-friendly and hosts recurring neighborhood events, while the brewing program moves between highly drinkable classics and slower blending projects."
+    ],
+    beerTitle: "Mild, Kölsch and ESB beside sour blends and stronger beer",
+    beer: [
+      "The current lineup shows the range clearly: Kölsch-style ale, English mild and ESB can sit next to Baltic porter, wee heavy and the Keeping Time sour series.",
+      "That mix makes Late Addition one of the more tradition-minded tap lists in the city without making it rigid."
+    ],
+    take: "Go when you want classic beer styles made by people who clearly enjoy the details.",
+    takeDetail: "Late Addition is a particularly good fit for drinkers who want lower-ABV pub styles but still appreciate more ambitious sour and blending work.",
+    locationSlugs: ["late-addition"],
+    sources: [
+      { label: "Late Addition Brewing", url: "https://lateadditionbrewing.com/" }
+    ]
   }
 };
 
@@ -698,7 +990,17 @@ export const featuredProfileOrder = [
   "two-frays",
   "velum",
   "strange-roots",
-  "fermata"
+  "fermata",
+  "allusion",
+  "acrospire",
+  "aslin",
+  "burghers",
+  "cobblehaus",
+  "costar",
+  "dough-daddy",
+  "hazel-grove",
+  "inner-groove",
+  "late-addition"
 ] as const;
 
 export const representativeBrewerySlugs: Record<string, string> = {
@@ -722,5 +1024,15 @@ export const representativeBrewerySlugs: Record<string, string> = {
   "two-frays": "two-frays",
   velum: "velum-fermentation",
   "strange-roots": "strange-roots-millvale",
-  fermata: "fermata-brewing"
+  fermata: "fermata-brewing",
+  allusion: "allusion-vandergrift",
+  acrospire: "acrospire",
+  aslin: "aslin-pittsburgh",
+  burghers: "burghers-lawrenceville",
+  cobblehaus: "cobblehaus",
+  costar: "costar-brewing",
+  "dough-daddy": "dough-daddy-brewery",
+  "hazel-grove": "hazel-grove",
+  "inner-groove": "inner-groove-verona",
+  "late-addition": "late-addition"
 };
