@@ -27,6 +27,20 @@ export const breweryProfileRoutes: Record<string, string> = {
   "strange-roots-millvale": "/breweries/strange-roots",
   "strange-roots-new-kensington": "/breweries/strange-roots",
   "fermata-brewing": "/breweries/fermata",
+  "allusion-vandergrift": "/breweries/allusion",
+  "allusion-allison-park": "/breweries/allusion",
+  "acrospire": "/breweries/acrospire",
+  "aslin-pittsburgh": "/breweries/aslin",
+  "burghers-lawrenceville": "/breweries/burghers",
+  "burghers-millvale": "/breweries/burghers",
+  "burghers-zelienople": "/breweries/burghers",
+  "burghers-south-side": "/breweries/burghers",
+  "cobblehaus": "/breweries/cobblehaus",
+  "costar-brewing": "/breweries/costar",
+  "dough-daddy-brewery": "/breweries/dough-daddy",
+  "hazel-grove": "/breweries/hazel-grove",
+  "inner-groove-verona": "/breweries/inner-groove",
+  "late-addition": "/breweries/late-addition",
 };
 
 export function getBreweryProfileRoute(slug: string) {
