@@ -77,6 +77,10 @@ const imageOverrides: Record<string, BreweryImage> = {
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
+  "dancing-gnome": {
+    url: "/brand/breweries/dancinggnome/logo.png",
+    alt: "Dancing Gnome logo"
+  },
   "brew-gentlemen": {
     url: "/brand/breweries/brewgentlemen/logo.png",
     alt: "Brew Gentlemen logo"
