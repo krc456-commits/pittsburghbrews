@@ -12,7 +12,7 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 
 const imageOverrides: Record<string, BreweryImage> = {
   "dancing-gnome": localImage(
-    "/api/assets/dancing-gnome-storefront",
+    "/brand/breweries/dancinggnome/storefront.png",
     "Dancing Gnome brewery storefront in Sharpsburg"
   ),
   "abjuration-hazelwood": localImage(
