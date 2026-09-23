@@ -15,14 +15,6 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/dancinggnome/storefront.png",
     "Dancing Gnome brewery storefront in Sharpsburg"
   ),
-  "allusion-vandergrift": localImage(
-    "/brand/breweries/allusion/storefront.png",
-    "Allusion Brewing Company storefront in Vandergrift"
-  ),
-  "allusion-allison-park": localImage(
-    "/brand/breweries/allusion/storefront-taproom.png",
-    "Allusion Brewing Company taproom storefront in Allison Park"
-  ),
   "east-end": localImage(
     "/brand/breweries/eastend/storefront.png",
     "East End Brewing Company storefront in Pittsburgh"
