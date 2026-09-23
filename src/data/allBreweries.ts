@@ -15,14 +15,6 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/dancinggnome/storefront.png",
     "Dancing Gnome brewery storefront in Sharpsburg"
   ),
-  "east-end": localImage(
-    "/brand/breweries/eastend/storefront.png",
-    "East End Brewing Company storefront in Pittsburgh"
-  ),
-  "eleventh-hour": localImage(
-    "/brand/breweries/eleventhhour/storefront.png",
-    "11th Hour Brewing Co. storefront in Lawrenceville"
-  ),
   "abjuration-hazelwood": localImage(
     "/brand/breweries/abjuration/storefront.png",
     "Abjuration Brewing The Lab storefront at the Parkway Theater in McKees Rocks"
@@ -88,22 +80,6 @@ const logoOverrides: Record<string, BreweryLogo> = {
   "dancing-gnome": {
     url: "/brand/breweries/dancinggnome/logo.png",
     alt: "Dancing Gnome logo"
-  },
-  "allusion-vandergrift": {
-    url: "/brand/breweries/allusion/logo.png",
-    alt: "Allusion Brewing Company logo"
-  },
-  "allusion-allison-park": {
-    url: "/brand/breweries/allusion/logo.png",
-    alt: "Allusion Brewing Company logo"
-  },
-  "east-end": {
-    url: "/brand/breweries/eastend/logo.png",
-    alt: "East End Brewing Company logo"
-  },
-  "eleventh-hour": {
-    url: "/brand/breweries/eleventhhour/logo.png",
-    alt: "11th Hour Brewing Co. logo"
   },
   "brew-gentlemen": {
     url: "/brand/breweries/brewgentlemen/logo.png",
