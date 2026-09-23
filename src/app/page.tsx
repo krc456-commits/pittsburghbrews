@@ -210,7 +210,22 @@ export default function Home() {
                   />
                 </div>
               ) : (
-                <div className="flex h-56 items-center justify-center bg-[#22211d] text-5xl text-[var(--gold)] md:h-72">🍺</div>
+                <div className="relative flex h-56 items-center justify-center overflow-hidden bg-[#22211d] md:h-72">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,207,36,.12),transparent_55%)]" />
+                  <div className="relative text-center">
+                    <div className="text-[4.5rem] font-black tracking-[-0.08em] text-[var(--gold)] sm:text-[5.5rem]">
+                      {featuredProfile?.name === "Dancing Gnome" ? "DG" : (featuredProfile?.name ?? featuredBrewery.name)
+                        .split(" ")
+                        .filter(Boolean)
+                        .slice(0, 2)
+                        .map((word) => word[0])
+                        .join("")}
+                    </div>
+                    <div className="mt-2 text-[10px] font-black uppercase tracking-[.24em] text-zinc-500">
+                      {featuredProfile?.name === "Dancing Gnome" ? "Sharpsburg · Pittsburgh" : "Pittsburgh Brews"}
+                    </div>
+                  </div>
+                </div>
               )}
 
               <div className="flex flex-col justify-center p-6 md:p-8">
