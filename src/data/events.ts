@@ -110,6 +110,17 @@ export const beerEvents: BeerEvent[] = [
     featured: true,
   },
   {
+    name: "Lincoln Avenue Brewery Oktoberfest",
+    date: "Oct 3, 2026 · festivities start at 12 PM",
+    startDate: "2026-10-03",
+    endDate: "2026-10-03",
+    location: "Lincoln Avenue Brewery Beer Garden · Bellevue",
+    category: "Oktoberfest",
+    description: "Free Oktoberfest celebration at Lincoln Avenue Brewery's beer garden at 15 N. Sprague Ave. with craft beer, festival food, and live music throughout the day, including Blues Orphans from 1-4 PM and an evening lineup beginning at 5:30 PM.",
+    url: "https://lincolnavenuebrewery.com/",
+    featured: true,
+  },
+  {
     name: "Balance Brewing Oktoberfest",
     date: "Oct 3, 2026 · 12-10 PM",
     startDate: "2026-10-03",
