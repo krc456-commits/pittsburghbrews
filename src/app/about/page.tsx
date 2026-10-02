@@ -54,8 +54,8 @@ export default function AboutPage() {
 
           <div className="mt-10 flex flex-wrap gap-3">
             <Link href="/breweries" className="rounded-full bg-[#191815] px-6 py-3.5 font-black text-white transition hover:bg-[#8d6b00]">Find a brewery</Link>
-            <Link href="/events" className="rounded-full border border-black/15 bg-white/50 px-6 py-3.5 font-black transition hover:border-[#8d6b00] hover:text-[#8d6b00]">See beer events</Link>
-            <Link href="/submit" className="rounded-full border border-black/15 px-6 py-3.5 font-black text-[#625c50] hover:text-black">Submit an update</Link>
+            <Link href="/events" className="rounded-full bg-[#191815] px-6 py-3.5 font-black text-white transition hover:bg-[#8d6b00]">See beer events</Link>
+            <Link href="/submit" className="rounded-full bg-[#191815] px-6 py-3.5 font-black text-white transition hover:bg-[#8d6b00]">Submit an update</Link>
           </div>
         </div>
       </section>
