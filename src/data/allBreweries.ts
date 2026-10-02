@@ -55,6 +55,18 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/eleventhhour/storefront.png",
     "11th Hour Brewing Co. storefront in Lawrenceville"
   ),
+  "old-thunder": localImage(
+    "/brand/breweries/oldthunder/storefront.png",
+    "Old Thunder Brewing storefront in Blawnox"
+  ),
+  "costar-brewing": localImage(
+    "/brand/breweries/costar/storefront.png",
+    "CoStar Brewing storefront in Etna"
+  ),
+  "cobblehaus": localImage(
+    "/brand/breweries/cobblehaus/storefront.png",
+    "Cobblehaus Brewing Co. storefront in Coraopolis"
+  ),
   "burghers-lawrenceville": localImage(
     "/brand/breweries/burghers/lawrenceville-storefront.png",
     "Burgh'ers Brewing Lawrenceville storefront"
@@ -104,6 +116,18 @@ const logoOverrides: Record<string, BreweryLogo> = {
   "eleventh-hour": {
     url: "/brand/breweries/eleventhhour/logo.png",
     alt: "11th Hour Brewing Co. logo"
+  },
+  "old-thunder": {
+    url: "/brand/breweries/oldthunder/logo.png",
+    alt: "Old Thunder Brewing logo"
+  },
+  "costar-brewing": {
+    url: "/brand/breweries/costar/logo.png",
+    alt: "CoStar Brewing logo"
+  },
+  "cobblehaus": {
+    url: "/brand/breweries/cobblehaus/logo.png",
+    alt: "Cobblehaus Brewing Co. logo"
   },
   "brew-gentlemen": {
     url: "/brand/breweries/brewgentlemen/logo.png",
