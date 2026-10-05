@@ -943,25 +943,25 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
   "late-addition": {
     slug: "late-addition",
     name: "Late Addition Brewing + Blending",
-    tagline: "A North Side brewery focused on sessionable beer, classic styles and a blending program that gives the tap list a more patient side.",
-    knownFor: ["North Side", "Session beer", "Classic styles", "Blending"],
-    specialTitle: "Classic beer and blending live on the same board.",
+    tagline: "A North Side nano-brewery that pairs classic brewing roots with a more exploratory side, from highly drinkable pub styles to dry-hopped and blended releases.",
+    knownFor: ["North Side", "Nano-brewery", "Session beer", "Blending"],
+    specialTitle: "A new name with a couple of meanings behind it.",
     specialBody: [
-      "Late Addition describes itself as a small but ambitious Pittsburgh brewery founded and owned by brewers with years of experience making award-winning beer.",
-      "Its focus is unusually clear: session beers, classic styles and current styles, alongside sour and blending projects."
+      "Late Addition took shape in 2024 as the Western Avenue brewery transitioned from the former 412 Brewing identity into something new. The rebrand was meant to keep some of that grounded craft-brewery character while giving the business room to feel fresher and more experimental.",
+      "The name works on two levels. In brewing, a late hop addition is used to build aroma and flavor without chasing bitterness. It also fits the founders' sense that this brewery arrived as a newer chapter in Pittsburgh's already well-established craft-beer scene."
     ],
-    storyTitle: "Experienced brewers start a new chapter on Western Avenue",
+    storyTitle: "A familiar North Side brewery becomes a new chapter",
     story: [
-      "Late Addition operates at 847 Western Avenue on Pittsburgh's North Side, near Allegheny Commons and the National Aviary.",
-      "The taproom is dog-friendly and hosts recurring neighborhood events, while the brewing program moves between highly drinkable classics and slower blending projects."
+      "Late Addition operates at 847 Western Avenue on Pittsburgh's North Side, in the space previously associated with 412 Brewing. Rather than simply changing the sign, the transition gave the brewery a new identity, a clearer brewing direction and a visual brand designed to stand on its own.",
+      "Designer Daniel Pipitone created the visual identity around that balance of tradition and exploration. The result feels rooted enough to fit the neighborhood while still signaling that Late Addition is interested in trying new things."
     ],
-    beerTitle: "Mild, Kölsch and ESB beside sour blends and stronger beer",
+    beerTitle: "Classic styles, late-hop character and slower blending projects",
     beer: [
-      "The current lineup shows the range clearly: Kölsch-style ale, English mild and ESB can sit next to Baltic porter, wee heavy and the Keeping Time sour series.",
-      "That mix makes Late Addition one of the more tradition-minded tap lists in the city without making it rigid."
+      "The tap list can move from Kölsch-style ale, English mild and ESB into Baltic porter, wee heavy and the Keeping Time sour series. That gives Late Addition a lineup that feels traditional without being stuck in one lane.",
+      "The brewery's name is also a useful clue to its approach: late hop additions emphasize aroma and flavor, while the blending side of the program gives some releases a slower, more patient path."
     ],
-    take: "Go when you want classic beer styles made by people who clearly enjoy the details.",
-    takeDetail: "Late Addition is a particularly good fit for drinkers who want lower-ABV pub styles but still appreciate more ambitious sour and blending work.",
+    take: "Go when you want a small brewery with a clear point of view instead of a giant everything-for-everyone taproom.",
+    takeDetail: "Late Addition is especially interesting if you like lower-ABV pub styles, thoughtful hop character and the occasional sour or blended beer — all in a neighborhood-scale North Side setting.",
     locationSlugs: ["late-addition"],
     sources: [
       { label: "Late Addition Brewing", url: "https://lateadditionbrewing.com/" }
