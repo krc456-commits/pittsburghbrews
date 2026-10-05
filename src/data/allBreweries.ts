@@ -11,6 +11,51 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+
+  "dough-daddy-brewery": localImage(
+    "/brand/breweries/doughdaddy/storefront.png",
+    "Dough Daddy Brewery storefront in Gibsonia"
+  ),
+  "fermata-brewing": localImage(
+    "/brand/breweries/fermata/storefront.png",
+    "Fermata Brewing Company storefront in Ambridge"
+  ),
+  "golden-age": localImage(
+    "/brand/breweries/goldenage/storefront.png",
+    "Golden Age Beer Co. storefront in Homestead"
+  ),
+  "grist-house": localImage(
+    "/brand/breweries/gristhouse/storefront-millvale.png",
+    "Grist House Craft Brewery storefront in Millvale"
+  ),
+  "grist-house-command": localImage(
+    "/brand/breweries/gristhouse/storefront-command.png",
+    "Grist House Command storefront in Oakdale"
+  ),
+  "hazel-grove": localImage(
+    "/brand/breweries/hazelgrove/storefront.png",
+    "Hazel Grove Brewing storefront in Hazelwood"
+  ),
+  "hitchhiker-sharpsburg": localImage(
+    "/brand/breweries/hitchhiker/storefront-sharpsburg.png",
+    "Hitchhiker Brewing Co. storefront in Sharpsburg"
+  ),
+  "hitchhiker-mt-lebanon": localImage(
+    "/brand/breweries/hitchhiker/storefront-mtlebo.png",
+    "Hitchhiker Brewing Co. storefront in Mt. Lebanon"
+  ),
+  "hop-farm": localImage(
+    "/brand/breweries/hopfarm/storefront.png",
+    "Hop Farm Brewing Company storefront in Lawrenceville"
+  ),
+  "inner-groove-verona": localImage(
+    "/brand/breweries/innergroove/storefront.png",
+    "Inner Groove Brewing storefront in Verona"
+  ),
+  "late-addition": localImage(
+    "/brand/breweries/lateaddition/storefront.png",
+    "Late Addition Brewing + Blending storefront on the North Side"
+  ),
   "dancing-gnome": localImage(
     "/brand/breweries/dancinggnome/storefront.png",
     "Dancing Gnome brewery storefront in Sharpsburg"
@@ -79,13 +124,6 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/burghers/southside-storefront.png",
     "Burgh'ers Brewing South Side storefront"
   ),
-  "hitchhiker-mt-lebanon": {
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Hitchhiker_brewpub%2C_Pittsburgh.jpg",
-    alt: "Hitchhiker Brewing Mt. Lebanon taproom",
-    sourceLabel: "Wikimedia Commons",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Hitchhiker_brewpub,_Pittsburgh.jpg",
-    license: "Creative Commons licensed"
-  },
   "church-brew-works": {
     url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Church_Brew_Works.jpg",
     alt: "The Church Brew Works in Pittsburgh",
@@ -97,6 +135,59 @@ const imageOverrides: Record<string, BreweryImage> = {
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
+
+  "dough-daddy-brewery": {
+    url: "/brand/breweries/doughdaddy/logo.png",
+    alt: "Dough Daddy Brewery logo"
+  },
+  "fermata-brewing": {
+    url: "/brand/breweries/fermata/logo.png",
+    alt: "Fermata Brewing Company logo"
+  },
+  "golden-age": {
+    url: "/brand/breweries/goldenage/logo.png",
+    alt: "Golden Age Beer Co. logo"
+  },
+  "grist-house": {
+    url: "/brand/breweries/gristhouse/logo.png",
+    alt: "Grist House Craft Brewery logo"
+  },
+  "grist-house-command": {
+    url: "/brand/breweries/gristhouse/logo.png",
+    alt: "Grist House Craft Brewery logo"
+  },
+  "grist-house-beer-crib": {
+    url: "/brand/breweries/gristhouse/logo.png",
+    alt: "Grist House Craft Brewery logo"
+  },
+  "grist-house-beer-market": {
+    url: "/brand/breweries/gristhouse/logo.png",
+    alt: "Grist House Craft Brewery logo"
+  },
+  "hazel-grove": {
+    url: "/brand/breweries/hazelgrove/logo.png",
+    alt: "Hazel Grove Brewing logo"
+  },
+  "hitchhiker-sharpsburg": {
+    url: "/brand/breweries/hitchhiker/logo.png",
+    alt: "Hitchhiker Brewing Co. logo"
+  },
+  "hitchhiker-mt-lebanon": {
+    url: "/brand/breweries/hitchhiker/logo.png",
+    alt: "Hitchhiker Brewing Co. logo"
+  },
+  "hop-farm": {
+    url: "/brand/breweries/hopfarm/logo.png",
+    alt: "Hop Farm Brewing Company logo"
+  },
+  "inner-groove-verona": {
+    url: "/brand/breweries/innergroove/logo.png",
+    alt: "Inner Groove Brewing logo"
+  },
+  "late-addition": {
+    url: "/brand/breweries/lateaddition/logo.png",
+    alt: "Late Addition Brewing + Blending logo"
+  },
   "dancing-gnome": {
     url: "/brand/breweries/dancinggnome/logo.png",
     alt: "Dancing Gnome logo"
