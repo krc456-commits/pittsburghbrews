@@ -60,6 +60,14 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/dancinggnome/storefront.png",
     "Dancing Gnome brewery storefront in Sharpsburg"
   ),
+  "allusion-vandergrift": localImage(
+    "/brand/breweries/allusion/storefront-vandergrift.png",
+    "Allusion Brewing Company storefront in Vandergrift"
+  ),
+  "allusion-allison-park": localImage(
+    "/brand/breweries/allusion/storefront-allisonpark.png",
+    "Allusion Brewing Company storefront in Allison Park"
+  ),
   "abjuration-hazelwood": localImage(
     "/brand/breweries/abjuration/storefront.png",
     "Abjuration Brewing The Lab storefront at the Parkway Theater in McKees Rocks"
