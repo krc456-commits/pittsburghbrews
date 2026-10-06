@@ -9,6 +9,20 @@ const checked = "Sep 17, 2026";
 const listing = "Current business listing";
 
 export const breweryHours: Record<string, BreweryHoursEntry> = {
+  "lolev-zelienople": {
+    hours: [
+      { day: "Monday", hours: "5–10 PM" },
+      { day: "Tuesday", hours: "5–10 PM" },
+      { day: "Wednesday", hours: "5–10 PM" },
+      { day: "Thursday", hours: "5–10 PM" },
+      { day: "Friday", hours: "12 PM–12 AM" },
+      { day: "Saturday", hours: "12 PM–12 AM" },
+      { day: "Sunday", hours: "12–9 PM" },
+    ],
+    lastChecked: "Oct 6, 2026",
+    sourceLabel: "Lolev Beer",
+    sourceUrl: "https://lolev.beer/lolev-zelienople",
+  },
   "abjuration-hazelwood": {
     hours: [
       { day: "Monday", hours: "5–9 PM" },
