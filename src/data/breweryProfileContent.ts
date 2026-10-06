@@ -157,7 +157,8 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     storyTitle: "Craft beer before Pittsburgh had a craft-beer scene",
     story: [
       "The Penn brand began in 1986 with Penn Pilsner produced under contract. Brewing moved into the restored Eberhardt & Ober site in 1989, when the restaurant also opened as Allegheny Brewery & Pub.",
-      "The operation was renamed Penn Brewery in 1994. Penn says it became Pennsylvania's first tied house — a restaurant connected to a brewery — since Prohibition."
+      "The operation was renamed Penn Brewery in 1994. Penn says it became Pennsylvania's first tied house — a restaurant connected to a brewery — since Prohibition.",
+      "Penn filed for Chapter 11 protection in 2026 as it worked to restructure the business. Its Pittsburgh International Airport location permanently closed that April. In September, a new ownership group led by John Graf of Priory Hospitality Group and beverage-industry veteran Eric Heinauer was announced to take over the brewery, with plans to preserve Penn's German brewing identity and historic North Side home."
     ],
     beerTitle: "German roots with room for newer styles",
     beer: [
@@ -165,21 +166,12 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
       "The range has expanded to include IPAs and seasonal beers, but the brewery's strongest identity remains the combination of German-style beer, Pittsburgh-German food and its historic North Side setting."
     ],
     take: "Go here when you want Pittsburgh beer history you can actually sit inside.",
-    takeDetail: "The North Side brewery is the destination. The airport location is useful for travelers, but the historic complex, caves and biergarten are what make Penn Brewery distinctive.",
+    takeDetail: "The historic North Side complex, lagering caves and biergarten are what make Penn Brewery distinctive — and, after the 2026 closure of its airport outpost, Vinial Street is once again the brewery's sole destination.",
     locationSlugs: ["penn-brewery"],
-    extraLocations: [
-      {
-        name: "Pittsburgh International Airport",
-        address: "Pittsburgh International Airport, Pittsburgh, PA",
-        description: "Penn also operates an airport location serving Penn beer with a full bar and food for travelers.",
-        atmosphere: "Airport · traveler-friendly",
-        food: "Full restaurant",
-        website: "https://www.pennbrew.com/"
-      }
-    ],
     sources: [
       { label: "Penn Brewery story", url: "https://www.pennbrew.com/our-story-1" },
-      { label: "Penn Brewery locations and hours", url: "https://www.pennbrew.com/blank" }
+      { label: "Northside Chronicle — 2026 restructuring and airport closure", url: "https://www.thenorthsidechronicle.com/article/537,penn-brewery-owner-declares-bankruptcy-but-remains-open" },
+      { label: "WTAE — 2026 ownership transition", url: "https://www.wtae.com/article/penn-brewery-owners-pittsburgh-beer/73728363" }
     ]
   },
   "church-brew-works": {
