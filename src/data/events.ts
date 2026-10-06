@@ -12,6 +12,17 @@ export type BeerEvent = {
 
 export const beerEvents: BeerEvent[] = [
   {
+    name: "Views & Brews: Downtown Living Tour",
+    date: "Oct 7, 2026 · 4–8 PM",
+    startDate: "2026-10-07",
+    endDate: "2026-10-07",
+    location: "Market Square · Downtown Pittsburgh",
+    category: "Beer Event",
+    description: "Explore Downtown Pittsburgh apartment and condo buildings while sampling beer along the way. The 2026 tour includes guided and self-guided options, starts and ends in Market Square, and features tastings from breweries including Aslin, Dancing Gnome, Old Thunder and Trace.",
+    url: "https://www.eventbrite.com/e/views-and-brews-downtown-living-tour-tickets-2001893872462",
+    featured: true,
+  },
+  {
     name: "Hops and Hayrides at Trax Farm Market",
     date: "Sep 25 & Oct 2, 9, 16, 23, 2026",
     startDate: "2026-09-25",
