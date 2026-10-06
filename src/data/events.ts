@@ -4,7 +4,7 @@ export type BeerEvent = {
   startDate: string;
   endDate: string;
   location: string;
-  category: "Oktoberfest" | "Festival" | "Halloween" | "Beer garden";
+  category: "Oktoberfest" | "Festival" | "Halloween" | "Beer garden" | "Beer Event";
   description: string;
   url: string;
   featured?: boolean;
