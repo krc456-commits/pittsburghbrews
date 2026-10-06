@@ -2,6 +2,20 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Lolev Beer - Zelienople",
+    slug: "lolev-zelienople",
+    city: "Zelienople",
+    neighborhood: "Zelienople",
+    area: "Surrounding Counties",
+    address: "111 South Main Street, Zelienople, PA 16063",
+    website: "https://lolev.beer/lolev-zelienople",
+    type: "Taproom brewery",
+    food: "Food trucks",
+    dogFriendly: true,
+    lastVerified: "Oct 2026",
+    blurb: "Lolev's Butler County taproom on Main Street in Zelienople, pouring the same hop-focused beer program with rotating food trucks and events."
+  },
+  {
     name: "Dough Daddy Brewery",
     slug: "dough-daddy-brewery",
     city: "Gibsonia",
