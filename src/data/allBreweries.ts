@@ -12,6 +12,38 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 
 const imageOverrides: Record<string, BreweryImage> = {
 
+  "shubrew-zelienople": localImage(
+    "/brand/breweries/shubrew/storefront.png",
+    "ShuBrew storefront in Zelienople"
+  ),
+  "pittsburgh-brewing-company": localImage(
+    "/brand/breweries/pittsburgh/storefront.png",
+    "Pittsburgh Brewing Company brewery campus in Creighton"
+  ),
+  "penn-brewery": localImage(
+    "/brand/breweries/penn/storefront.png",
+    "Penn Brewery storefront on Pittsburgh's North Side"
+  ),
+  "mondays-peters-township": localImage(
+    "/brand/breweries/monday/storefront-peters.png",
+    "Mondays Brewing Company storefront in Peters Township"
+  ),
+  "lolev-beer": localImage(
+    "/brand/breweries/lolev/storefront-pittsburgh.png",
+    "Lolev Beer storefront in Lawrenceville"
+  ),
+  "lolev-zelienople": localImage(
+    "/brand/breweries/lolev/storefront-zelienople.png",
+    "Lolev Beer storefront in Zelienople"
+  ),
+  "local-remedy": localImage(
+    "/brand/breweries/localremedy/storefront.png",
+    "Local Remedy Brewing storefront in Oakmont"
+  ),
+  "lincoln-avenue-brewery": localImage(
+    "/brand/breweries/lincolnave/storefront.png",
+    "Lincoln Avenue Brewery storefront in Bellevue"
+  ),
   "dough-daddy-brewery": localImage(
     "/brand/breweries/doughdaddy/storefront.png",
     "Dough Daddy Brewery storefront in Gibsonia"
@@ -144,6 +176,42 @@ const imageOverrides: Record<string, BreweryImage> = {
 
 const logoOverrides: Record<string, BreweryLogo> = {
 
+  "shubrew-zelienople": {
+    url: "/brand/breweries/shubrew/logo.png",
+    alt: "ShuBrew logo"
+  },
+  "pittsburgh-brewing-company": {
+    url: "/brand/breweries/pittsburgh/logo.png",
+    alt: "Pittsburgh Brewing Company logo"
+  },
+  "penn-brewery": {
+    url: "/brand/breweries/penn/logo.png",
+    alt: "Penn Brewery logo"
+  },
+  "mondays-peters-township": {
+    url: "/brand/breweries/monday/logo.png",
+    alt: "Mondays Brewing Company logo"
+  },
+  "mondays-greenfield": {
+    url: "/brand/breweries/monday/logo.png",
+    alt: "Mondays Brewing Company logo"
+  },
+  "lolev-beer": {
+    url: "/brand/breweries/lolev/logo.png",
+    alt: "Lolev Beer logo"
+  },
+  "lolev-zelienople": {
+    url: "/brand/breweries/lolev/logo.png",
+    alt: "Lolev Beer logo"
+  },
+  "local-remedy": {
+    url: "/brand/breweries/localremedy/logo.png",
+    alt: "Local Remedy Brewing logo"
+  },
+  "lincoln-avenue-brewery": {
+    url: "/brand/breweries/lincolnave/logo.png",
+    alt: "Lincoln Avenue Brewery logo"
+  },
   "dough-daddy-brewery": {
     url: "/brand/breweries/doughdaddy/logo.png",
     alt: "Dough Daddy Brewery logo"
