@@ -1017,17 +1017,7 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     ],
     take: "Go when you want to nerd out over hops without drinking the same IPA six times.",
     takeDetail: "Lawrenceville is the Pittsburgh-city stop; Zelienople brings the same beer identity north with its own event schedule and food-truck rotation.",
-    locationSlugs: ["lolev-beer"],
-    extraLocations: [
-      {
-        name: "Lolev Zelienople",
-        address: "111 South Main Street, Zelienople, PA 16063",
-        description: "Lolev's second taproom, pouring the same hop-focused beer program with its own events and rotating food vendors.",
-        atmosphere: "Main Street · casual · community-focused",
-        food: "Rotating food trucks",
-        website: "https://lolev.beer/?loc=lolev-zelienople"
-      }
-    ],
+    locationSlugs: ["lolev-beer", "lolev-zelienople"],
     sources: [
       { label: "Lolev Beer", url: "https://lolev.beer/" }
     ]
