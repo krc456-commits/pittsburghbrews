@@ -43,6 +43,7 @@ export const breweryProfileRoutes: Record<string, string> = {
   "late-addition": "/breweries/late-addition",
   "local-remedy": "/breweries/local-remedy",
   "lolev-beer": "/breweries/lolev",
+  "lolev-zelienople": "/breweries/lolev",
   "pittsburgh-brewing-company": "/breweries/pittsburgh-brewing-company",
   "southern-tier-pittsburgh": "/breweries/southern-tier",
   "spoonwood": "/breweries/spoonwood",
