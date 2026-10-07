@@ -30,17 +30,8 @@ export type Brewery = {
   image?: BreweryImage;
   logo?: BreweryLogo;
   untappd?: {
-    venueUrl: string;
+    url: string;
     liveMenu?: boolean;
-    tapList?: {
-      checkedLabel: string;
-      items: {
-        name: string;
-        style: string;
-        abv?: string;
-        pour?: string;
-      }[];
-    };
   };
 };
 
@@ -310,26 +301,7 @@ export const breweries: Brewery[] = [
     food: "Full kitchen",
     outdoor: true,
     lastVerified: "Sep 2026",
-    blurb: "Bellevue neighborhood brewpub with house beer and a full menu.",
-    untappd: {
-      venueUrl: "https://untappd.com/v/lincoln-avenue-brewery/9212452",
-      liveMenu: true,
-      tapList: {
-        checkedLabel: "Untappd tap list",
-        items: [
-          { name: "Summer Shade", style: "Bitter - Session / Ordinary", abv: "4.6%", pour: "16oz Draft · $6.50" },
-          { name: "Dark Side of the Moon", style: "English Porter", abv: "6.6%", pour: "16oz Draft · $7.00" },
-          { name: "Fit Belly Bot", style: "Pale Ale - American", abv: "4.7%" },
-          { name: "BPR (Bitter Peated Rye)", style: "IPA - Rye", abv: "4.9%", pour: "16oz Draft · $6.50" },
-          { name: "Boom Gose Peach", style: "Sour - Fruited Gose", abv: "5.5%" },
-          { name: "Clear Horizons", style: "IPA - White / Wheat", abv: "6.9%", pour: "16oz Draft · $6.50" },
-          { name: "511 - New England IPA", style: "IPA - New England / Hazy", abv: "7.5%", pour: "16oz Draft · $7.00" },
-          { name: "Sa'Wheat Treat", style: "Wheat Beer - Hefeweizen Light / Leicht", abv: "4.3%", pour: "16oz Draft · $6.50" },
-          { name: "Full Steam Ahead", style: "California Common", abv: "5.0%", pour: "16oz Draft · $6.50" },
-          { name: "Hawley Haze", style: "IPA - New England / Hazy", abv: "6.0%", pour: "16oz Draft · $6.50" }
-        ]
-      }
-    }
+    blurb: "Bellevue neighborhood brewpub with house beer and a full menu."
   },
   {
     name: "Local Remedy Brewing",
