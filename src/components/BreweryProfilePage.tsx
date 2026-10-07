@@ -139,15 +139,44 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
                       <Fact label="Food" value={brewery.food} />
                       {brewery.untappd?.liveMenu && (
                         <div className="mt-4 rounded-xl border border-[var(--gold)]/20 bg-[var(--gold)]/7 p-4">
-                          <div className="text-[10px] font-black uppercase tracking-[.13em] text-[var(--gold)]">What’s pouring</div>
-                          <p className="mt-2 text-sm leading-6 text-zinc-400">See the current beer list maintained on Untappd.</p>
+                          <div className="flex items-start justify-between gap-3">
+                            <div>
+                              <div className="text-[10px] font-black uppercase tracking-[.13em] text-[var(--gold)]">What’s pouring</div>
+                              <div className="mt-1 text-[10px] font-bold uppercase tracking-[.1em] text-zinc-600">
+                                {brewery.untappd.tapList?.checkedLabel ?? "Untappd"}
+                              </div>
+                            </div>
+                            <span className="rounded-full border border-[var(--gold)]/20 bg-black/20 px-2 py-1 text-[9px] font-black uppercase tracking-[.1em] text-[var(--gold)]">
+                              Live menu
+                            </span>
+                          </div>
+
+                          {brewery.untappd.tapList?.items?.length ? (
+                            <div className="mt-4 divide-y divide-white/8 border-y border-white/8">
+                              {brewery.untappd.tapList.items.map((beer) => (
+                                <div key={beer.name} className="py-3">
+                                  <div className="flex items-start justify-between gap-3">
+                                    <div className="min-w-0">
+                                      <div className="font-black leading-5 text-white">{beer.name}</div>
+                                      <div className="mt-1 text-xs leading-5 text-zinc-500">{beer.style}</div>
+                                    </div>
+                                    {beer.abv && <div className="shrink-0 text-xs font-black text-zinc-300">{beer.abv}</div>}
+                                  </div>
+                                  {beer.pour && <div className="mt-1 text-[11px] font-bold text-zinc-600">{beer.pour}</div>}
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className="mt-2 text-sm leading-6 text-zinc-400">See the current beer list maintained on Untappd.</p>
+                          )}
+
                           <a
                             href={brewery.untappd.venueUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="mt-3 inline-flex items-center gap-1 text-sm font-black text-[var(--gold)] hover:text-white"
+                            className="mt-4 inline-flex items-center gap-1 text-sm font-black text-[var(--gold)] hover:text-white"
                           >
-                            View current beer list <span aria-hidden="true">↗</span>
+                            View full menu on Untappd <span aria-hidden="true">↗</span>
                           </a>
                         </div>
                       )}
