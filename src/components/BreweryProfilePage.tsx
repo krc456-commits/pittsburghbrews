@@ -137,6 +137,20 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
                     <aside className="border-t border-white/8 bg-[#10100f] p-5 lg:border-l lg:border-t-0">
                       <Fact label="Type" value={brewery.type} />
                       <Fact label="Food" value={brewery.food} />
+                      {brewery.untappd?.liveMenu && (
+                        <div className="mt-4 rounded-xl border border-[var(--gold)]/20 bg-[var(--gold)]/7 p-4">
+                          <div className="text-[10px] font-black uppercase tracking-[.13em] text-[var(--gold)]">What’s pouring</div>
+                          <p className="mt-2 text-sm leading-6 text-zinc-400">See the current beer list maintained on Untappd.</p>
+                          <a
+                            href={brewery.untappd.venueUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-3 inline-flex items-center gap-1 text-sm font-black text-[var(--gold)] hover:text-white"
+                          >
+                            View current beer list <span aria-hidden="true">↗</span>
+                          </a>
+                        </div>
+                      )}
                       {hours ? (
                         <div className="pt-4">
                           <div className="text-[10px] font-black uppercase tracking-[.13em] text-zinc-600">Current regular hours</div>
