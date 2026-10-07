@@ -129,6 +129,7 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
                             src={brewery.image.url}
                             alt={brewery.image.alt}
                             className="aspect-[16/9] w-full object-cover"
+                            style={brewery.slug === "smiling-moose-grove-city" ? { objectPosition: "center 72%" } : undefined}
                           />
                         </div>
                       )}
