@@ -1202,6 +1202,7 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     storyTitle: "From East Carson Street to a regional brewery operation",
     story: [
       "The company opened its Cranberry location in 2022, combining Moose beer with a full restaurant and family-oriented suburban setting.",
+      "The Cranberry restaurant sits immediately beside Cranberry Golf Center on Rowan Road. The driving range is a separate, independently operated business rather than part of Smiling Moose, but the two make an easy food-and-beer plus golf pairing.",
       "Production now takes place at 231 Park Street in Grove City, while the main Grove City pub and taproom operates at 218 South Broad Street."
     ],
     beerTitle: "Crushable beer, seltzer and playful fermentation",
@@ -1209,8 +1210,8 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
       "Smiling Moose describes its beer as deliberately crushable, with hazy IPA, pale ale, American wheat and IPA among the core styles.",
       "The program also includes seltzers and a hard root beer, reflecting the brand's willingness to treat fermentation broadly."
     ],
-    take: "Go when you want brewery beer in a full pub setting rather than a tasting-room-only stop.",
-    takeDetail: "Cranberry is the restaurant-heavy Pittsburgh-area option; Grove City is closer to the production side and the brand's current brewing home.",
+    take: "Go when you want brewery beer, a full meal and the option to hit a bucket of golf balls next door.",
+    takeDetail: "Cranberry is the restaurant-heavy Pittsburgh-area option and sits beside the independently operated Cranberry Golf Center driving range — making it an unusually easy beer-and-golf stop. Grove City is closer to the production side and the brand's current brewing home.",
     locationSlugs: ["smiling-moose-cranberry", "smiling-moose-grove-city"],
     extraLocations: [
       {
@@ -1224,7 +1225,9 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     sources: [
       { label: "Smiling Moose brewery", url: "https://smiling-moose.com/brewery/" },
       { label: "Smiling Moose beer", url: "https://smiling-moose.com/our-beer/" },
-      { label: "Smiling Moose locations", url: "https://smiling-moose.com/locations/" }
+      { label: "Smiling Moose locations", url: "https://smiling-moose.com/locations/" },
+      { label: "Pittsburgh Magazine — Cranberry location and golf-center relationship", url: "https://www.pittsburghmagazine.com/the-smiling-moose-is-closing/" },
+      { label: "PGA of America — Cranberry Golf Center", url: "https://directory.pga.org/facility/detail/423569276" }
     ]
   }
 };
