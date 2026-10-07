@@ -130,11 +130,11 @@ export default function BreweryDirectory() {
               {brewery.image && (
                 profileHref ? (
                   <a href={profileHref} className="block h-52 overflow-hidden bg-[#191918]">
-                    <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
+                    <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" style={brewery.slug === "smiling-moose-grove-city" ? { objectPosition: "center 88%" } : undefined} />
                   </a>
                 ) : (
                   <div className="h-52 overflow-hidden bg-[#191918]">
-                    <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
+                    <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" style={brewery.slug === "smiling-moose-grove-city" ? { objectPosition: "center 88%" } : undefined} />
                   </div>
                 )
               )}
