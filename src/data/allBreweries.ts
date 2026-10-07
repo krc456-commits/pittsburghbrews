@@ -1,6 +1,7 @@
 import { breweries as coreBreweries, areas } from "./breweries";
 import { breweryAdditions } from "./breweryAdditions";
 import type { BreweryImage, BreweryLogo } from "./breweries";
+import { untappdBySlug } from "./untappd";
 
 const localImage = (url: string, alt: string): BreweryImage => ({
   url,
@@ -419,6 +420,7 @@ export const breweries = [...coreBreweries, ...breweryAdditions]
     ...brewery,
     ...(imageOverrides[brewery.slug] ? { image: imageOverrides[brewery.slug] } : {}),
     ...(logoOverrides[brewery.slug] ? { logo: logoOverrides[brewery.slug] } : {}),
+    ...(untappdBySlug[brewery.slug] ? { untappd: untappdBySlug[brewery.slug] } : {}),
   }))
   .sort((a, b) => a.name.localeCompare(b.name));
 
