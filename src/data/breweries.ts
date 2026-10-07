@@ -29,6 +29,10 @@ export type Brewery = {
   blurb: string;
   image?: BreweryImage;
   logo?: BreweryLogo;
+  untappd?: {
+    venueUrl: string;
+    liveMenu?: boolean;
+  };
 };
 
 export const breweries: Brewery[] = [
@@ -297,7 +301,11 @@ export const breweries: Brewery[] = [
     food: "Full kitchen",
     outdoor: true,
     lastVerified: "Sep 2026",
-    blurb: "Bellevue neighborhood brewpub with house beer and a full menu."
+    blurb: "Bellevue neighborhood brewpub with house beer and a full menu.",
+    untappd: {
+      venueUrl: "https://untappd.com/v/lincoln-avenue-brewery/9212452",
+      liveMenu: true
+    }
   },
   {
     name: "Local Remedy Brewing",
