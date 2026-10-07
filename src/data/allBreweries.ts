@@ -12,6 +12,38 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 
 const imageOverrides: Record<string, BreweryImage> = {
 
+  "velum-fermentation": localImage(
+    "/brand/breweries/velum/storefront.png",
+    "Velum Fermentation storefront on the South Side"
+  ),
+  "trace-brewing": localImage(
+    "/brand/breweries/trace/storefront.png",
+    "Trace Brewing storefront in Bloomfield"
+  ),
+  "two-frays": localImage(
+    "/brand/breweries/twofrays/storefront.png",
+    "Two Frays Brewery storefront in Garfield"
+  ),
+  "strange-roots-millvale": localImage(
+    "/brand/breweries/strangeroots/storefront-millvale.png",
+    "Strange Roots Experimental Ales storefront in Millvale"
+  ),
+  "strange-roots-new-kensington": localImage(
+    "/brand/breweries/strangeroots/storefront-newkensington.png",
+    "Strange Roots Experimental Ales storefront in New Kensington"
+  ),
+  "stick-city": localImage(
+    "/brand/breweries/stickcity/storefront.png",
+    "Stick City Brewing Company storefront in Mars"
+  ),
+  "spoonwood": localImage(
+    "/brand/breweries/spoonwood/storefront.png",
+    "Spoonwood Brewing Co. storefront in Bethel Park"
+  ),
+  "southern-tier-pittsburgh": localImage(
+    "/brand/breweries/southerntier/storefront.png",
+    "Southern Tier Pittsburgh storefront on the North Shore"
+  ),
   "smiling-moose-cranberry": localImage(
     "/brand/breweries/smilingmoose/storefront-cranberry.png",
     "Smiling Moose Brewing storefront in Cranberry Township"
@@ -172,18 +204,50 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/burghers/southside-storefront.png",
     "Burgh'ers Brewing South Side storefront"
   ),
-  "church-brew-works": {
-    url: "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Church_Brew_Works.jpg",
-    alt: "The Church Brew Works in Pittsburgh",
-    sourceLabel: "Wikimedia Commons",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:The_Church_Brew_Works.jpg",
-    license: "Public domain",
-    credit: "Olessi"
-  }
+  "church-brew-works": localImage(
+    "/brand/breweries/churchbrewworks/storefront.png",
+    "The Church Brew Works storefront in Lawrenceville"
+  )
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
 
+  "velum-fermentation": {
+    url: "/brand/breweries/velum/logo.png",
+    alt: "Velum Fermentation logo"
+  },
+  "trace-brewing": {
+    url: "/brand/breweries/trace/logo.png",
+    alt: "Trace Brewing logo"
+  },
+  "two-frays": {
+    url: "/brand/breweries/twofrays/logo.png",
+    alt: "Two Frays Brewery logo"
+  },
+  "church-brew-works": {
+    url: "/brand/breweries/churchbrewworks/logo.png",
+    alt: "The Church Brew Works logo"
+  },
+  "strange-roots-millvale": {
+    url: "/brand/breweries/strangeroots/logo.png",
+    alt: "Strange Roots Experimental Ales logo"
+  },
+  "strange-roots-new-kensington": {
+    url: "/brand/breweries/strangeroots/logo.png",
+    alt: "Strange Roots Experimental Ales logo"
+  },
+  "stick-city": {
+    url: "/brand/breweries/stickcity/logo.png",
+    alt: "Stick City Brewing Company logo"
+  },
+  "spoonwood": {
+    url: "/brand/breweries/spoonwood/logo.png",
+    alt: "Spoonwood Brewing Co. logo"
+  },
+  "southern-tier-pittsburgh": {
+    url: "/brand/breweries/southerntier/logo.png",
+    alt: "Southern Tier Brewing Company logo"
+  },
   "smiling-moose-cranberry": {
     url: "/brand/breweries/smilingmoose/logo.png",
     alt: "Smiling Moose Brewing logo"
