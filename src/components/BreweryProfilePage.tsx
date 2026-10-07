@@ -123,6 +123,15 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
                         {brewery.outdoor && <span className="tag">Outdoor seating</span>}
                         {brewery.dogFriendly && <span className="tag">Dog friendly</span>}
                       </div>
+                      {brewery.image && (
+                        <div className="mt-6 overflow-hidden rounded-xl border border-white/10 bg-[#0d0d0c]">
+                          <img
+                            src={brewery.image.url}
+                            alt={brewery.image.alt}
+                            className="aspect-[16/9] w-full object-cover"
+                          />
+                        </div>
+                      )}
                     </div>
                     <aside className="border-t border-white/8 bg-[#10100f] p-5 lg:border-l lg:border-t-0">
                       <Fact label="Type" value={brewery.type} />
