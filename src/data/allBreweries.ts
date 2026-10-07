@@ -12,6 +12,14 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 
 const imageOverrides: Record<string, BreweryImage> = {
 
+  "smiling-moose-cranberry": localImage(
+    "/brand/breweries/smilingmoose/storefront-cranberry.png",
+    "Smiling Moose Brewing storefront in Cranberry Township"
+  ),
+  "smiling-moose-grove-city": localImage(
+    "/brand/breweries/smilingmoose/storefront-grovecity.png",
+    "Smiling Moose Brewing storefront in Grove City"
+  ),
   "shubrew-zelienople": localImage(
     "/brand/breweries/shubrew/storefront.png",
     "ShuBrew storefront in Zelienople"
@@ -176,6 +184,14 @@ const imageOverrides: Record<string, BreweryImage> = {
 
 const logoOverrides: Record<string, BreweryLogo> = {
 
+  "smiling-moose-cranberry": {
+    url: "/brand/breweries/smilingmoose/logo.png",
+    alt: "Smiling Moose Brewing logo"
+  },
+  "smiling-moose-grove-city": {
+    url: "/brand/breweries/smilingmoose/logo.png",
+    alt: "Smiling Moose Brewing logo"
+  },
   "shubrew-zelienople": {
     url: "/brand/breweries/shubrew/logo.png",
     alt: "ShuBrew logo"
