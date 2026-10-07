@@ -140,25 +140,26 @@ export default function BreweryDirectory() {
               )}
 
               <div className="p-5">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="min-w-0 flex-1">
-                    <div className="text-xs font-black uppercase tracking-[.12em] text-zinc-500">{brewery.neighborhood}</div>
-                    <div className="mt-2 flex items-start gap-3">
-                      <BreweryMark website={brewery.slug.startsWith("hitchhiker-") ? "" : brewery.website} name={brewery.name} logo={brewery.logo} />
-                      <h2 className="min-w-0 flex-1 text-2xl font-black leading-tight">
-                        {profileHref ? (
-                          <a href={profileHref} className="text-white transition hover:text-[var(--gold)]">
-                            {brewery.name}
-                          </a>
-                        ) : (
-                          <a href={brewery.website} target="_blank" rel="noreferrer" className="text-white transition hover:text-[var(--gold)]">
-                            {brewery.name}
-                          </a>
-                        )}
-                      </h2>
-                    </div>
+                <div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="min-w-0 text-xs font-black uppercase tracking-[.12em] text-zinc-500">{brewery.neighborhood}</div>
+                    <div className="shrink-0 rounded-full border border-white/10 bg-[#0d0d0c] px-3 py-1 text-[10px] font-black uppercase tracking-[.14em] text-[var(--gold)]">{brewery.area}</div>
                   </div>
-                  <div className="shrink-0 rounded-full border border-white/10 bg-[#0d0d0c] px-3 py-1 text-[10px] font-black uppercase tracking-[.14em] text-[var(--gold)]">{brewery.area}</div>
+
+                  <div className="mt-2 flex items-start gap-3">
+                    <BreweryMark website={brewery.slug.startsWith("hitchhiker-") ? "" : brewery.website} name={brewery.name} logo={brewery.logo} />
+                    <h2 className="min-w-0 flex-1 text-2xl font-black leading-[1.08]">
+                      {profileHref ? (
+                        <a href={profileHref} className="text-white transition hover:text-[var(--gold)]">
+                          {brewery.name}
+                        </a>
+                      ) : (
+                        <a href={brewery.website} target="_blank" rel="noreferrer" className="text-white transition hover:text-[var(--gold)]">
+                          {brewery.name}
+                        </a>
+                      )}
+                    </h2>
+                  </div>
                 </div>
 
                 <div className="mt-5 flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
