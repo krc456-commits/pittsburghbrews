@@ -516,7 +516,8 @@ const pittsburghOriginalSlugs = new Set([
   "recon-butler",
   "recon-meeder",
   "recon-hastings",
-  "golden-age-bohemian"
+  "golden-age-bohemian",
+  "back-alley-brewing"
 ]);
 
 export const breweries = [...coreBreweries, ...breweryAdditions]
