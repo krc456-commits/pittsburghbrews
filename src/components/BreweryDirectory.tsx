@@ -1,13 +1,32 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { areas, breweries } from "@/data/allBreweries";
 import { breweryHours } from "@/data/breweryHours";
 import { getBreweryProfileRoute } from "@/data/breweryProfiles";
+import { breweryCoordinates } from "@/data/breweryCoordinates";
 
 const foodFilters = ["All food", "Full kitchen", "Food trucks", "Light food"] as const;
 const featureFilters = ["All features", "Outdoor seating", "Dog friendly"] as const;
+
+type UserLocation = { lat: number; lng: number };
+type SortMode = "alpha" | "distance";
+
+function distanceMiles(from: UserLocation, to: UserLocation) {
+  const earthRadiusMiles = 3958.8;
+  const toRadians = (degrees: number) => (degrees * Math.PI) / 180;
+  const dLat = toRadians(to.lat - from.lat);
+  const dLng = toRadians(to.lng - from.lng);
+  const lat1 = toRadians(from.lat);
+  const lat2 = toRadians(to.lat);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+  return 2 * earthRadiusMiles * Math.asin(Math.sqrt(a));
+}
+
+function formatDistance(miles: number) {
+  return miles < 10 ? `${miles.toFixed(1)} mi away` : `${Math.round(miles)} mi away`;
+}
 
 function directionsUrl(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
@@ -56,17 +75,76 @@ export default function BreweryDirectory() {
   const [food, setFood] = useState<(typeof foodFilters)[number]>(initialFood);
   const [feature, setFeature] = useState<(typeof featureFilters)[number]>(initialFeature);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const requestedNearby = searchParams.get("near") === "1";
+  const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
+  const [locationStatus, setLocationStatus] = useState<"idle" | "locating" | "ready" | "error">("idle");
+  const [locationMessage, setLocationMessage] = useState("");
+  const [sortMode, setSortMode] = useState<SortMode>(requestedNearby ? "distance" : "alpha");
+
+  function requestLocation() {
+    if (!navigator.geolocation) {
+      setLocationStatus("error");
+      setLocationMessage("Location is not available in this browser.");
+      return;
+    }
+
+    setLocationStatus("locating");
+    setLocationMessage("");
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const nextLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
+        setUserLocation(nextLocation);
+        setSortMode("distance");
+        setLocationStatus("ready");
+        sessionStorage.setItem("pittsburgh-brews-location", JSON.stringify(nextLocation));
+      },
+      () => {
+        setLocationStatus("error");
+        setLocationMessage("We couldn't access your location. You can still browse the full brewery list.");
+      },
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 5 * 60 * 1000 }
+    );
+  }
+
+  useEffect(() => {
+    const saved = sessionStorage.getItem("pittsburgh-brews-location");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved) as UserLocation;
+        if (Number.isFinite(parsed.lat) && Number.isFinite(parsed.lng)) {
+          setUserLocation(parsed);
+          setLocationStatus("ready");
+          if (requestedNearby) setSortMode("distance");
+          return;
+        }
+      } catch {
+        sessionStorage.removeItem("pittsburgh-brews-location");
+      }
+    }
+
+    if (requestedNearby) requestLocation();
+  }, [requestedNearby]);
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    return breweries.filter((brewery) => {
-      const matchesQuery = !normalized || [brewery.name, brewery.city, brewery.neighborhood, brewery.type].join(" ").toLowerCase().includes(normalized);
-      const matchesArea = area === "All" || brewery.area === area;
-      const matchesFood = food === "All food" || brewery.food === food;
-      const matchesFeature = feature === "All features" || (feature === "Outdoor seating" && brewery.outdoor) || (feature === "Dog friendly" && brewery.dogFriendly);
-      return matchesQuery && matchesArea && matchesFood && matchesFeature;
-    }).sort((a, b) => a.name.localeCompare(b.name));
-  }, [query, area, food, feature]);
+    return breweries
+      .filter((brewery) => {
+        const matchesQuery = !normalized || [brewery.name, brewery.city, brewery.neighborhood, brewery.type].join(" ").toLowerCase().includes(normalized);
+        const matchesArea = area === "All" || brewery.area === area;
+        const matchesFood = food === "All food" || brewery.food === food;
+        const matchesFeature = feature === "All features" || (feature === "Outdoor seating" && brewery.outdoor) || (feature === "Dog friendly" && brewery.dogFriendly);
+        return matchesQuery && matchesArea && matchesFood && matchesFeature;
+      })
+      .map((brewery) => {
+        const coordinates = breweryCoordinates[brewery.slug];
+        const distance = userLocation && coordinates ? distanceMiles(userLocation, coordinates) : null;
+        return { ...brewery, distanceMiles: distance };
+      })
+      .sort((a, b) => {
+        if (sortMode === "distance" && a.distanceMiles !== null && b.distanceMiles !== null) return a.distanceMiles - b.distanceMiles;
+        return a.name.localeCompare(b.name);
+      });
+  }, [query, area, food, feature, userLocation, sortMode]);
 
   const hasActiveFilters = Boolean(query || area !== "All" || food !== "All food" || feature !== "All features");
   const activeFilterCount = [Boolean(query), area !== "All", food !== "All food", feature !== "All features"].filter(Boolean).length;
@@ -99,9 +177,32 @@ export default function BreweryDirectory() {
         </div>
       </div>
 
-      <div className="mt-5 flex items-center justify-between gap-4">
-        <p className="text-sm text-zinc-500"><span className="font-black text-white">{filtered.length}</span> breweries · A–Z</p>
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-zinc-500">
+          <span className="font-black text-white">{filtered.length}</span> breweries · {userLocation && sortMode === "distance" ? "nearest first" : "A–Z"}
+        </p>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={requestLocation}
+            disabled={locationStatus === "locating"}
+            className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-4 py-2 text-xs font-black text-[var(--gold)] transition hover:bg-[var(--gold)] hover:text-black disabled:cursor-wait disabled:opacity-60"
+          >
+            {locationStatus === "locating" ? "Finding your location…" : userLocation ? "Update my location" : "Find Breweries Near Me"}
+          </button>
+          {userLocation && (
+            <button
+              type="button"
+              onClick={() => setSortMode((current) => current === "distance" ? "alpha" : "distance")}
+              className="rounded-full border border-white/10 bg-[#141413] px-4 py-2 text-xs font-black text-zinc-300 transition hover:border-white/20 hover:text-white"
+            >
+              {sortMode === "distance" ? "Sort A–Z" : "Sort by distance"}
+            </button>
+          )}
+        </div>
       </div>
+
+      {locationStatus === "error" && <p className="mt-3 text-sm text-amber-300">{locationMessage}</p>}
 
       <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((brewery) => {
@@ -135,7 +236,10 @@ export default function BreweryDirectory() {
               <div className="p-5">
                 <div>
                   <div className="flex items-center justify-between gap-3">
-                    <div className="min-w-0 text-xs font-black uppercase tracking-[.12em] text-zinc-500">{brewery.neighborhood}</div>
+                    <div className="min-w-0 text-xs font-black uppercase tracking-[.12em] text-zinc-500">
+                      {brewery.neighborhood}
+                      {brewery.distanceMiles !== null && <span className="ml-2 text-[var(--gold)]">· {formatDistance(brewery.distanceMiles)}</span>}
+                    </div>
                     <div className="shrink-0 rounded-full border border-white/10 bg-[#0d0d0c] px-3 py-1 text-[10px] font-black uppercase tracking-[.14em] text-[var(--gold)]">{brewery.area}</div>
                   </div>
 

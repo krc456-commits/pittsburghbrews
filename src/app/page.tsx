@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 const primaryActions = [
   { label: "Brewery Search", href: "/breweries", icon: "⌕" },
-  { label: "Browse by Area", href: "/areas", icon: "◎" },
+  { label: "Find Breweries Near Me", href: "/breweries?near=1", icon: "⌖" },
   { label: "Events", href: "/events", icon: "✦" },
 ] as const;
 
