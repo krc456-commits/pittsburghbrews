@@ -9,6 +9,9 @@ const checked = "Sep 17, 2026";
 const listing = "Current business listing";
 
 export const breweryHours: Record<string, BreweryHoursEntry> = {
+  "new-france": { hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "Closed" }, { day: "Wednesday", hours: "4–10 PM" }, { day: "Thursday", hours: "4–10 PM" }, { day: "Friday", hours: "3–10 PM" }, { day: "Saturday", hours: "12–10 PM" }, { day: "Sunday", hours: "12–6 PM" }], lastChecked: "Oct 8, 2026", sourceLabel: "New France Brewing", sourceUrl: "https://www.newfrancebrewco.com/" },
+  "abjuration-hazelwood": { hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "Closed" }, { day: "Wednesday", hours: "4–10 PM" }, { day: "Thursday", hours: "4–10 PM" }, { day: "Friday", hours: "3–10 PM" }, { day: "Saturday", hours: "12–10 PM" }, { day: "Sunday", hours: "12–6 PM" }], lastChecked: "Oct 8, 2026", sourceLabel: "Hazelwood Brew House", sourceUrl: "https://hazelwoodbrewhouse.com/our-place/" },
+
   "helicon-brewing": {
     hours: [{ day: "Monday", hours: "11 AM–10 PM" }, { day: "Tuesday", hours: "11 AM–10 PM" }, { day: "Wednesday", hours: "11 AM–10 PM" }, { day: "Thursday", hours: "11 AM–10 PM" }, { day: "Friday", hours: "11 AM–10 PM" }, { day: "Saturday", hours: "11 AM–10 PM" }, { day: "Sunday", hours: "11 AM–9 PM" }],
     lastChecked: "Oct 8, 2026",
