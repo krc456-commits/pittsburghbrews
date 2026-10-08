@@ -212,15 +212,15 @@ const imageOverrides: Record<string, BreweryImage> = {
   ),
   "burghers-lawrenceville": localImage(
     "/brand/breweries/burghers/lawrenceville-storefront.png",
-    "Burgh'ers Brewing Lawrenceville storefront"
+    "Burghers Brewing Lawrenceville storefront"
   ),
   "burghers-millvale": localImage(
     "/brand/breweries/burghers/millvale-storefront.png",
-    "Burgh'ers Brewing Millvale storefront"
+    "Burghers Brewing Millvale storefront"
   ),
   "burghers-south-side": localImage(
     "/brand/breweries/burghers/southside-storefront.png",
-    "Burgh'ers Brewing South Side storefront"
+    "Burghers Brewing South Side storefront"
   ),
   "church-brew-works": localImage(
     "/brand/breweries/churchbrewworks/storefront.png",
@@ -432,19 +432,19 @@ const logoOverrides: Record<string, BreweryLogo> = {
   },
   "burghers-lawrenceville": {
     url: "/brand/breweries/burghers/logo.png",
-    alt: "Burgh'ers Brewing logo"
+    alt: "Burghers Brewing logo"
   },
   "burghers-millvale": {
     url: "/brand/breweries/burghers/logo.png",
-    alt: "Burgh'ers Brewing logo"
+    alt: "Burghers Brewing logo"
   },
   "burghers-zelienople": {
     url: "/brand/breweries/burghers/logo.png",
-    alt: "Burgh'ers Brewing logo"
+    alt: "Burghers Brewing logo"
   },
   "burghers-south-side": {
     url: "/brand/breweries/burghers/logo.png",
-    alt: "Burgh'ers Brewing logo"
+    alt: "Burghers Brewing logo"
   }
 };
 
