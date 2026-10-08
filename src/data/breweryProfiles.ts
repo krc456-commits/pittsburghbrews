@@ -7,7 +7,7 @@ export const breweryProfileRoutes: Record<string, string> = {
   "recon-butler": "/breweries/location/recon-butler",
   "recon-meeder": "/breweries/location/recon-meeder",
   "recon-hastings": "/breweries/location/recon-hastings",
-  "cobblehaus-falls": "/breweries/location/cobblehaus-falls",
+  "cobblehaus-falls": "/breweries/cobblehaus",
   "golden-age-bohemian": "/breweries/location/golden-age-bohemian",
   "hitchhiker-sharpsburg": "/breweries/hitchhiker",
   "hitchhiker-mt-lebanon": "/breweries/hitchhiker",
