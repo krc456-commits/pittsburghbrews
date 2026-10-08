@@ -81,7 +81,7 @@ export const breweries: Brewery[] = [
     blurb: "A modern Strip District taproom with a broad beer lineup."
   },
   {
-    name: "Burgh'ers Brewing - Lawrenceville",
+    name: "Burghers Brewing - Lawrenceville",
     slug: "burghers-lawrenceville",
     city: "Pittsburgh",
     neighborhood: "Lawrenceville",
