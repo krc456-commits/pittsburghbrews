@@ -12,6 +12,10 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+  "recon-hastings": localImage("/brand/breweries/recon/storefront-hastings.png", "Recon Brewing Hastings taproom in South Fayette"),
+  "recon-meeder": localImage("/brand/breweries/recon/storefront-meeder.png", "Recon Brewing Meeder taproom in Cranberry Township"),
+  "recon-butler": localImage("/brand/breweries/recon/storefront-butler.png", "Recon Brewing original brewery and taproom in Butler"),
+  "golden-age-bohemian": localImage("/brand/breweries/bohemian/storefront.png", "The Bohemian at the historic Garden Theater on West North Avenue"),
   "helicon-brewing": localImage("/brand/breweries/helicon/storefront.png", "Helicon Brewing storefront in Oakdale"),
   "altered-genius-ambridge": localImage("/brand/breweries/alteredgenious/storefront-ambridge.png", "Altered Genius Brewing Co. storefront in Ambridge"),
   "altered-genius-imperial": localImage("/brand/breweries/alteredgenious/storefront-trailside.png", "Altered Genius Brewing Co. Trailside Taproom storefront in Imperial"),
@@ -225,6 +229,10 @@ const imageOverrides: Record<string, BreweryImage> = {
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
+  "recon-hastings": { url: "/brand/breweries/recon/logo.png", alt: "Recon Brewing logo" },
+  "recon-meeder": { url: "/brand/breweries/recon/logo.png", alt: "Recon Brewing logo" },
+  "recon-butler": { url: "/brand/breweries/recon/logo.png", alt: "Recon Brewing logo" },
+  "golden-age-bohemian": { url: "/brand/breweries/bohemian/logo.png", alt: "The Bohemian logo" },
   "helicon-brewing": { url: "/brand/breweries/helicon/logo.png", alt: "Helicon Brewing logo" },
   "altered-genius-ambridge": { url: "/brand/breweries/alteredgenious/logo.png", alt: "Altered Genius Brewing Co. logo" },
   "altered-genius-imperial": { url: "/brand/breweries/alteredgenious/logo.png", alt: "Altered Genius Brewing Co. logo" },
