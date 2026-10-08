@@ -127,11 +127,11 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     "The food program offers an alternative to taprooms that depend entirely on visiting trucks."
   ],
   "take": "Go when you want a South Hills brewery where everyone can also sit down for a meal.",
-  "takeDetail": "The full kitchen is a useful distinction from smaller tasting-room-only breweries.",
+  "takeDetail": "Greek-mythology theme, an upstairs cocktail bar called Diboja, and a dog-friendly patio make Chimera more than a standard taproom. Chimera's Untappd records include Perpetual Flow IPA, Persephone's Light Kölsch and Fields of Elysium wheat beer; these are examples, not guarantees of current availability.",
   "locationSlugs": [
     "chimera-brewing"
   ],
-  "sources": [
+  "sources": [{"label": "Verified brewery details", "url": "https://chimerabrewingpgh.com/"},
     {
       "label": "Chimera Brewing",
       "url": "https://chimerabrewingpgh.com/"
@@ -164,11 +164,11 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     "Abstract Realm's published beers include Taniwha, Removed From Reality and Double Taniwha, reflecting an emphasis on hop-forward pale ales and IPAs."
   ],
   "take": "Go for an independent brewery discovery without leaving the Hazelwood Brew House campus.",
-  "takeDetail": "Pair the visit with New France and Abjuration if you want to compare three different beer programs under one roof.",
+  "takeDetail": "Abstract Realm's third-floor bar has its own draft lines inside the shared Hazelwood Brew House, which also has a rooftop and seasonal beer garden. Its documented hazy beers include Taniwha and Double Taniwha; consult the current menu for today's taps.",
   "locationSlugs": [
     "abstract-realm"
   ],
-  "sources": [{"label":"Additional brewery research","url":"https://www.abstractrealmbrewing.com/visit"},
+  "sources": [{"label": "Verified brewery details", "url": "https://www.abstractrealmbrewing.com/visit"},{"label":"Additional brewery research","url":"https://www.abstractrealmbrewing.com/visit"},
     {
       "label": "Abstract Realm Brewing",
       "url": "https://www.abstractrealmbrewing.com/"
@@ -205,11 +205,11 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     "The brewery has its own brewing identity within Hazelwood Brew House; an old beer listing should not be mistaken for the current tap list."
   ],
   "take": "Go for New France's beer, and consider visiting the other Hazelwood brewers while you are there.",
-  "takeDetail": "A shared address does not mean these are satellite bars or a single combined brewery.",
+  "takeDetail": "The brewery's name draws on the colonial-era term New France; its logo takes inspiration from the outline of Fort Duquesne at Point State Park. The Hazelwood Brew House opened in 2024 after renovation of a 1905 brewery building, and New France brews in its own production space.",
   "locationSlugs": [
     "new-france"
   ],
-  "sources": [{"label":"Additional brewery research","url":"https://untappd.com/newfrancebrewco"},
+  "sources": [{"label": "Verified brewery details", "url": "https://hazelwoodbrewhouse.com/new-france-brewing-company/"},{"label":"Additional brewery research","url":"https://untappd.com/newfrancebrewco"},
     {
       "label": "New France Brewing",
       "url": "https://www.newfrancebrewco.com/"
@@ -323,11 +323,11 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     "Brewmaster Marc Gignac focuses on traditional lager brewing; the brewery also hosts Thursday trivia, with schedules subject to change."
   ],
   "take": "Go when you want to seek out a smaller independent brewery with a lager focus.",
-  "takeDetail": "A worthwhile option for exploring breweries outside central Pittsburgh.",
+  "takeDetail": "Its founders came from a family with a healthcare background, while brewmaster Marc Gignac concentrates on traditional lager production. In addition to its lager identity, recorded beers include Smokey Joe Vienna lager and a Baltic porter.",
   "locationSlugs": [
     "big-sewickley-creek"
   ],
-  "sources": [{"label":"Additional brewery research","url":"https://sewickleybrewery.com/about/"},
+  "sources": [{"label": "Verified brewery details", "url": "https://sewickleybrewery.com/about/"},{"label":"Additional brewery research","url":"https://sewickleybrewery.com/about/"},
     {
       "label": "Big Sewickley Creek Brewery",
       "url": "https://sewickleybrewery.com/"
