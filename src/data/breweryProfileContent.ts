@@ -1064,31 +1064,31 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
   },
   "burghers": {
     slug: "burghers",
-    name: "Burgh'ers Brewing",
+    name: "Burghers Brewing",
     tagline: "A chef-driven Pittsburgh-area brewery where smash burgers, house beer and local sourcing are designed as one experience.",
     founded: "2017",
     knownFor: ["Smash burgers", "House beer", "Local sourcing", "Four locations"],
     specialTitle: "The burger and the beer are supposed to matter equally.",
     specialBody: [
-      "Burgh'ers Brewing officially took shape in 2017 when chef and owner Fiore Moletz brought engineer-turned-brewer Neil Glausier into the business as partner and head brewer.",
+      "Burghers Brewing officially took shape in 2017 when chef and owner Fiore Moletz brought engineer-turned-brewer Neil Glausier into the business as partner and head brewer.",
       "The company describes itself as a chef-driven smash burger joint and craft brewery focused on local, ethical and sustainable food and drink."
     ],
     storyTitle: "A restaurant becomes a brewery",
     story: [
-      "Moletz had already opened the original Burgh'ers restaurant before the brewing partnership began.",
+      "Moletz had already opened the original Burghers restaurant before the brewing partnership began.",
       "The company has since expanded across Zelienople, Lawrenceville, South Side and Millvale while keeping the same beer-and-burger identity."
     ],
     beerTitle: "House beer made to sit beside the food",
     beer: [
-      "Burgh'ers keeps its brewing philosophy deliberately simple: beer should taste good and be made from good things.",
+      "Burghers keeps its brewing philosophy deliberately simple: beer should taste good and be made from good things.",
       "That matches the restaurant side, where local sourcing and approachable food are treated as core parts of the brand rather than add-ons."
     ],
     take: "Go when nobody wants to choose between a brewery and a real meal.",
-    takeDetail: "The four locations make Burgh'ers unusually flexible; pick based on neighborhood and atmosphere rather than expecting a completely different beer identity at each one.",
+    takeDetail: "The four locations make Burghers unusually flexible; pick based on neighborhood and atmosphere rather than expecting a completely different beer identity at each one.",
     locationSlugs: ["burghers-lawrenceville", "burghers-millvale", "burghers-zelienople", "burghers-south-side"],
     sources: [
-      { label: "Burgh'ers story", url: "https://www.burgherspgh.com/about" },
-      { label: "Burgh'ers locations", url: "https://www.burgherspgh.com/" }
+      { label: "Burghers story", url: "https://www.burgherspgh.com/about" },
+      { label: "Burghers locations", url: "https://www.burgherspgh.com/" }
     ]
   },
   "cobblehaus": {
