@@ -14,6 +14,7 @@ export default async function BreweryLocationPage({ params }: Props) {
       <section className="mx-auto max-w-5xl px-5 py-12 md:px-8 md:py-16">
         <Link href="/breweries" className="text-sm font-semibold text-[#e8b44b] hover:underline">← Back to all breweries</Link>
         <p className="mt-10 text-sm font-bold uppercase tracking-widest text-[#e8b44b]">{brewery.neighborhood} · {brewery.city}</p>
+        {brewery.pittsburghOriginal && <div className="mt-3"><span title="Founded in the greater Pittsburgh region" className="inline-flex rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-black uppercase tracking-wide text-amber-300">★ PGH Original</span></div>}
         <h1 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">{brewery.name}</h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-300">{brewery.blurb}</p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
