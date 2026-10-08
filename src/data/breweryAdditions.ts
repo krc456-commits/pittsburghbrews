@@ -207,7 +207,7 @@ export const breweryAdditions: Brewery[] = [
     blurb: "Strange Roots taproom with Common Oven Pizza Co. in New Kensington."
   },
   {
-    name: "Burgh'ers Brewing - Millvale",
+    name: "Burghers Brewing - Millvale",
     slug: "burghers-millvale",
     city: "Millvale",
     neighborhood: "Millvale",
@@ -217,10 +217,10 @@ export const breweryAdditions: Brewery[] = [
     type: "Brewpub",
     food: "Full kitchen",
     lastVerified: "Sep 2026",
-    blurb: "Burgh'ers flagship-style Millvale location with house beer and burgers."
+    blurb: "Burghers flagship-style Millvale location with house beer and burgers."
   },
   {
-    name: "Burgh'ers Brewing - Zelienople",
+    name: "Burghers Brewing - Zelienople",
     slug: "burghers-zelienople",
     city: "Zelienople",
     neighborhood: "Zelienople",
@@ -230,10 +230,10 @@ export const breweryAdditions: Brewery[] = [
     type: "Brewpub",
     food: "Full kitchen",
     lastVerified: "Sep 2026",
-    blurb: "Original Burgh'ers brewpub serving house beer and burgers in Zelienople."
+    blurb: "Original Burghers brewpub serving house beer and burgers in Zelienople."
   },
   {
-    name: "Burgh'ers Brewing - South Side",
+    name: "Burghers Brewing - South Side",
     slug: "burghers-south-side",
     city: "Pittsburgh",
     neighborhood: "South Side",
@@ -243,7 +243,7 @@ export const breweryAdditions: Brewery[] = [
     type: "Brewpub",
     food: "Full kitchen",
     lastVerified: "Sep 2026",
-    blurb: "South Side Burgh'ers location serving house beer and a full burger menu."
+    blurb: "South Side Burghers location serving house beer and a full burger menu."
   },
   {
     name: "Mondays Brewing Company - Peters Township",
