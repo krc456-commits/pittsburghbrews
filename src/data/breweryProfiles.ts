@@ -1,4 +1,7 @@
 export const breweryProfileRoutes: Record<string, string> = {
+  "altered-genius-ambridge": "/breweries/location/altered-genius-ambridge",
+  "altered-genius-imperial": "/breweries/location/altered-genius-imperial",
+  "big-sewickley-creek": "/breweries/location/big-sewickley-creek",
   "helicon-brewing": "/breweries/location/helicon-brewing",
   "coven-brewing": "/breweries/location/coven-brewing",
   "chimera-brewing": "/breweries/location/chimera-brewing",
