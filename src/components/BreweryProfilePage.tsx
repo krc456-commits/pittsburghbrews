@@ -119,6 +119,12 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
                   <div className="grid lg:grid-cols-[1.25fr_.75fr]">
                     <div className="p-5 sm:p-6">
                       <p className="text-[15px] leading-7 text-zinc-300">{brewery.blurb}</p>
+                      {brewery.slug === "golden-age-bohemian" && (
+                        <div className="mt-4 rounded-xl border border-amber-400/30 bg-amber-400/10 px-4 py-3">
+                          <p className="text-xs font-black uppercase tracking-wider text-amber-300">Finding the entrance</p>
+                          <p className="mt-2 text-sm leading-6 text-zinc-200">Look for The Bohemian’s green-trimmed storefront next to the historic Garden Theater marquee on W. North Avenue. Use the street-facing Bohemian entrance at 22 W. North Avenue—not the old theater doors under the marquee. Mayfly Market &amp; Deli is a separate neighboring storefront.</p>
+                        </div>
+                      )}
                       <div className="mt-5 flex flex-wrap gap-2">
                         <span className="tag">{brewery.food}</span>
                         {brewery.outdoor && <span className="tag">Outdoor seating</span>}
@@ -130,7 +136,7 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
                             src={brewery.image.url}
                             alt={brewery.image.alt}
                             className="aspect-[16/9] w-full object-cover"
-                            style={brewery.slug === "smiling-moose-grove-city" ? { objectPosition: "center 88%" } : undefined}
+                            style={brewery.slug === "smiling-moose-grove-city" ? { objectPosition: "center 88%" } : brewery.slug === "golden-age-bohemian" ? { objectPosition: "center 85%" } : undefined}
                           />
                         </div>
                       )}
