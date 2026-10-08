@@ -28,6 +28,7 @@ export const breweryProfileRoutes: Record<string, string> = {
   "cinderlands-wexford": "/breweries/cinderlands",
   "allegheny-city-brewing": "/breweries/allegheny-city",
   "allegheny-city-brighton-heights": "/breweries/allegheny-city",
+  "abjuration-lab": "/breweries/abjuration",
   "abjuration-hazelwood": "/breweries/abjuration",
   "balance-brewing": "/breweries/balance",
   "eleventh-hour": "/breweries/eleventh-hour",
