@@ -468,7 +468,7 @@ export const breweryAdditions: Brewery[] = [
     type: "Brewery taproom",
     food: "Light food",
     lastVerified: "Oct 2026",
-    blurb: "North Side Czech-style lager bar and taproom operated by the Golden Age Beer Co. team."
+    blurb: "Inside the restored Garden Theater at 22 W. North Avenue. Look for The Bohemian’s green-accented storefront beside the historic GARDEN marquee on North Avenue; it is separate from Mayfly Market & Deli. The Bohemian serves Golden Age-brewed Czech lagers, cocktails and natural wine."
   },
   {
     name: "Altered Genius Brewing Co. - Ambridge",
