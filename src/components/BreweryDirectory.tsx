@@ -254,6 +254,7 @@ export default function BreweryDirectory() {
                 </div>
 
                 {brewery.pittsburghOriginal && <div className="mt-3"><span title="Founded in the greater Pittsburgh region" className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-[.08em] text-amber-300"><span aria-hidden="true">★</span> PGH Original</span></div>}
+                {brewery.photoSource && <p className="mt-2 text-[11px] text-zinc-500">Photo source: <a data-card-action href={brewery.photoSource.url} target="_blank" rel="noopener noreferrer" className="underline decoration-zinc-600 underline-offset-2 hover:text-amber-300">{brewery.photoSource.label} ↗</a></p>}
                 {brewery.originNote && <p className="mt-3 text-xs leading-relaxed text-zinc-400">{brewery.originNote}</p>}
                 <div className="mt-5 flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
 
