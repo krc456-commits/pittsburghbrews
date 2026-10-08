@@ -22,6 +22,7 @@ export default function BreweriesPage() {
               <a href="/breweries?area=Pittsburgh" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">📍 Pittsburgh proper</a>
             </div>
           </div>
+          <p className="mt-5 max-w-4xl text-sm leading-relaxed text-zinc-400">Pittsburgh Brews includes breweries and brewery-operated taprooms across the region. Some breweries were founded elsewhere but brew beer here; others operate local satellite taprooms serving beer produced at another location. We note these distinctions on listings when verified.</p>
           <Suspense fallback={<div className="mt-8 text-zinc-600">Loading directory…</div>}><BreweryDirectory /></Suspense>
         </div>
       </section>
