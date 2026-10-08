@@ -12,6 +12,11 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+  "cobblehaus-falls": localImage("/brand/breweries/cobblehaus/storefront-thefalls.png", "Cobblehaus At The Falls taproom in Mercer"),
+  "coven-brewing": localImage("/brand/breweries/coven/sorefront.png", "Coven Brewing storefront in Lawrenceville"),
+  "chimera-brewing": localImage("/brand/breweries/chimera/storefront.png", "Chimera Brewing storefront in Castle Shannon"),
+  "new-france": localImage("/brand/breweries/newfrance/storefront-hazelwood.png", "New France Brewing at Hazelwood Brew House"),
+  "abstract-realm": localImage("/brand/breweries/abstractrealm/storefront-hazelwood.png", "Abstract Realm Brewing at Hazelwood Brew House"),
 
   "velum-fermentation": localImage(
     "/brand/breweries/velum/storefront.png",
@@ -142,8 +147,8 @@ const imageOverrides: Record<string, BreweryImage> = {
     "Allusion Brewing Company storefront in Allison Park"
   ),
   "abjuration-hazelwood": localImage(
-    "/brand/breweries/abjuration/storefront.png",
-    "Abjuration Brewing The Lab storefront at the Parkway Theater in McKees Rocks"
+    "/brand/breweries/abjuration/storefront-hazelwood.png",
+    "Abjuration Brewing at Hazelwood Brew House"
   ),
   "brew-gentlemen": localImage(
     "/brand/breweries/brewgentlemen/storefront.png",
@@ -212,6 +217,10 @@ const imageOverrides: Record<string, BreweryImage> = {
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
+  "coven-brewing": { url: "/brand/breweries/coven/logo.png", alt: "Coven Brewing logo" },
+  "chimera-brewing": { url: "/brand/breweries/chimera/logo.png", alt: "Chimera Brewing logo" },
+  "new-france": { url: "/brand/breweries/newfrance/logo.png", alt: "New France Brewing logo" },
+  "abstract-realm": { url: "/brand/breweries/abstractrealm/logo.png", alt: "Abstract Realm Brewing logo" },
 
   "velum-fermentation": {
     url: "/brand/breweries/velum/logo.png",
