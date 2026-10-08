@@ -1,4 +1,5 @@
 export const breweryProfileRoutes: Record<string, string> = {
+  "back-alley-brewing": "/breweries/back-alley-brewing",
   "altered-genius-ambridge": "/breweries/altered-genius",
   "altered-genius-imperial": "/breweries/altered-genius",
   "big-sewickley-creek": "/breweries/big-sewickley-creek",
