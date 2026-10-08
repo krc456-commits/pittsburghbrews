@@ -418,6 +418,9 @@ const logoOverrides: Record<string, BreweryLogo> = {
 // Curated, conservative classification: founding origin of the brewery brand,
 // not the city of a particular taproom. Unknown origins are intentionally unbadged.
 const pittsburghOriginalSlugs = new Set([
+  "altered-genius-ambridge",
+  "altered-genius-imperial",
+  "big-sewickley-creek",
   "abjuration-hazelwood",
   "allegheny-city-brewing",
   "allegheny-city-brighton-heights",
