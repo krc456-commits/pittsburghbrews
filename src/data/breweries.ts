@@ -22,6 +22,7 @@ export type Brewery = {
   address: string;
   website: string;
   type: string;
+  originNote?: string;
   food: "Full kitchen" | "Food trucks" | "Light food";
   outdoor?: boolean;
   dogFriendly?: boolean;
@@ -67,6 +68,7 @@ export const breweries: Brewery[] = [
   {
     name: "Aslin Beer Company",
     slug: "aslin-pittsburgh",
+    originNote: "Founded in Virginia; its Pittsburgh Strip District location also brews beer on site.",
     city: "Pittsburgh",
     neighborhood: "Strip District",
     area: "Pittsburgh",
@@ -382,6 +384,7 @@ export const breweries: Brewery[] = [
   {
     name: "Southern Tier Brewing Company",
     slug: "southern-tier-pittsburgh",
+    originNote: "Founded in Lakewood, New York; the Pittsburgh North Shore brewpub brews local-exclusive beers on site.",
     city: "Pittsburgh",
     neighborhood: "North Shore",
     area: "Pittsburgh",
