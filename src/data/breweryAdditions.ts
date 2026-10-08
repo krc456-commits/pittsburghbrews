@@ -367,6 +367,7 @@ export const breweryAdditions: Brewery[] = [
   {
     name: "Abstract Realm Brewing Company",
     slug: "abstract-realm",
+    photoSource: { label: "Hazelwood Brew House", url: "https://hazelwoodbrewhouse.com/wp-content/uploads/2025/12/parking-lot-01.webp" },
     city: "Pittsburgh",
     neighborhood: "Hazelwood",
     area: "Pittsburgh",
@@ -380,6 +381,7 @@ export const breweryAdditions: Brewery[] = [
   {
     name: "New France Brewing Company",
     slug: "new-france",
+    photoSource: { label: "Hazelwood Brew House", url: "https://hazelwoodbrewhouse.com/wp-content/uploads/2025/12/parking-lot-01.webp" },
     city: "Pittsburgh",
     neighborhood: "Hazelwood",
     area: "Pittsburgh",
