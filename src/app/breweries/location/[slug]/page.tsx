@@ -35,6 +35,7 @@ export default async function BreweryLocationPage({ params }: Props) {
           </div>
         </div>
         {otherAlteredGenius && <div className="mt-6 rounded-xl border border-white/10 bg-[#171716] p-5"><p className="text-xs font-bold uppercase tracking-wider text-amber-300">Another Altered Genius location</p><Link className="mt-2 block font-semibold text-white hover:underline" href={`/breweries/location/${otherAlteredGenius.slug}`}>{otherAlteredGenius.name} ↗</Link><p className="mt-1 text-sm text-zinc-400">{otherAlteredGenius.address}</p></div>}
+        {brewery.photoSource && <p className="mt-6 text-xs text-zinc-400">Photo source: <a href={brewery.photoSource.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-amber-300">{brewery.photoSource.label} ↗</a></p>}
         <p className="mt-10 text-sm text-zinc-500">This listing is newly added. More photographs and profile details are coming soon.</p>
       </section>
     </main>
