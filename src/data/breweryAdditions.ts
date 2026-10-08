@@ -454,5 +454,44 @@ export const breweryAdditions: Brewery[] = [
     food: "Light food",
     lastVerified: "Oct 2026",
     blurb: "North Side Czech-style lager bar and taproom operated by the Golden Age Beer Co. team."
+  },
+  {
+    name: "Altered Genius Brewing Co. - Ambridge",
+    slug: "altered-genius-ambridge",
+    city: "Ambridge",
+    neighborhood: "Ambridge",
+    area: "Surrounding Counties",
+    address: "411 Merchant Street, Ambridge, PA 15003",
+    website: "https://www.alteredgeniusbrewing.com/",
+    type: "Production brewery + taproom",
+    food: "Light food",
+    lastVerified: "Oct 2026",
+    blurb: "Altered Genius's original production brewery and taproom in Ambridge, crafting house beer with rotating seasonal selections."
+  },
+  {
+    name: "Altered Genius Brewing Co. - Trailside Taproom",
+    slug: "altered-genius-imperial",
+    city: "Imperial",
+    neighborhood: "Imperial",
+    area: "West",
+    address: "258 Main Street, Imperial, PA 15126",
+    website: "https://www.alteredgeniusbrewing.com/",
+    type: "Satellite taproom",
+    food: "Light food",
+    lastVerified: "Oct 2026",
+    blurb: "Altered Genius's Trailside Taproom in Imperial, pouring beer produced at the company's Ambridge brewery."
+  },
+  {
+    name: "Big Sewickley Creek Brewery",
+    slug: "big-sewickley-creek",
+    city: "Sewickley",
+    neighborhood: "Sewickley",
+    area: "North",
+    address: "2030 Big Sewickley Creek Road, Sewickley, PA 15143",
+    website: "https://sewickleybrewery.com/",
+    type: "Independent nano brewery",
+    food: "Food trucks",
+    lastVerified: "Oct 2026",
+    blurb: "Independent nano brewery along Big Sewickley Creek specializing in locally brewed lagers."
   }
 ];
