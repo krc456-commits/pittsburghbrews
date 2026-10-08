@@ -106,37 +106,30 @@ export default function BreweryDirectory() {
       <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((brewery) => {
           const hours = breweryHours[brewery.slug];
-          const profileHref = getBreweryProfileRoute(brewery.slug);
+          const profileHref = getBreweryProfileRoute(brewery.slug) ?? "/breweries";
 
           return (
             <article
               key={brewery.slug}
-              className={`group overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20 ${profileHref ? "cursor-pointer" : ""}`}
-              role={profileHref ? "link" : undefined}
-              tabIndex={profileHref ? 0 : undefined}
+              className="group cursor-pointer overflow-hidden rounded-xl border border-white/8 bg-[#131312] transition hover:-translate-y-0.5 hover:border-white/20"
+              role="link"
+              tabIndex={0}
               onClick={(event) => {
-                if (!profileHref) return;
                 const target = event.target as HTMLElement;
-                if (target.closest("a, button, input, select, summary, details")) return;
+                if (target.closest("[data-card-action]")) return;
                 window.location.assign(profileHref);
               }}
               onKeyDown={(event) => {
-                if (profileHref && (event.key === "Enter" || event.key === " ")) {
+                if (event.key === "Enter" || event.key === " ") {
                   event.preventDefault();
                   window.location.assign(profileHref);
                 }
               }}
             >
               {brewery.image && (
-                profileHref ? (
-                  <a href={profileHref} className="block h-52 overflow-hidden bg-[#191918]">
-                    <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" style={brewery.slug === "smiling-moose-grove-city" ? { objectPosition: "center 88%" } : undefined} />
-                  </a>
-                ) : (
-                  <div className="h-52 overflow-hidden bg-[#191918]">
-                    <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" style={brewery.slug === "smiling-moose-grove-city" ? { objectPosition: "center 88%" } : undefined} />
-                  </div>
-                )
+                <a href={profileHref} className="block h-52 overflow-hidden bg-[#191918]">
+                  <img src={brewery.image.url} alt={brewery.image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" style={brewery.slug === "smiling-moose-grove-city" ? { objectPosition: "center 88%" } : undefined} />
+                </a>
               )}
 
               <div className="p-5">
@@ -149,15 +142,9 @@ export default function BreweryDirectory() {
                   <div className="mt-2 flex items-start gap-3">
                     <BreweryMark website={brewery.slug.startsWith("hitchhiker-") ? "" : brewery.website} name={brewery.name} logo={brewery.logo} />
                     <h2 className="min-w-0 flex-1 text-2xl font-black leading-[1.08]">
-                      {profileHref ? (
-                        <a href={profileHref} className="text-white transition hover:text-[var(--gold)]">
-                          {brewery.name}
-                        </a>
-                      ) : (
-                        <a href={brewery.website} target="_blank" rel="noreferrer" className="text-white transition hover:text-[var(--gold)]">
-                          {brewery.name}
-                        </a>
-                      )}
+                      <a href={profileHref} className="text-white transition hover:text-[var(--gold)]">
+                        {brewery.name}
+                      </a>
                     </h2>
                   </div>
                 </div>
@@ -176,7 +163,7 @@ export default function BreweryDirectory() {
                     <span aria-hidden="true">↗</span>
                   </a>
 
-                  <details className="group/hours mt-4 border-y border-white/8 py-1">
+                  <details data-card-action className="group/hours mt-4 border-y border-white/8 py-1">
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-3 py-3 text-sm font-black text-white marker:content-none">
                       <span className="flex items-center gap-2">
                         <span>Hours</span>
@@ -197,20 +184,20 @@ export default function BreweryDirectory() {
                         </div>
                         <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-[10px] font-bold uppercase tracking-[.08em] text-zinc-600">
                           <span>Checked {hours.lastChecked}</span>
-                          <a href={hours.sourceUrl || brewery.website} target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-[var(--gold)]">Verify hours ↗</a>
+                          <a href={hours.sourceUrl || brewery.website} target="_blank" rel="noreferrer" data-card-action className="text-zinc-500 hover:text-[var(--gold)]">Verify hours ↗</a>
                         </div>
                       </div>
                     ) : (
                       <div className="pb-3 text-sm leading-6 text-zinc-500">
                         <p>Hours are currently unverified.</p>
-                        <a href={brewery.website} target="_blank" rel="noreferrer" className="mt-1 inline-block font-black text-[var(--gold)] hover:text-white">Check the brewery website for current hours ↗</a>
+                        <a href={brewery.website} target="_blank" rel="noreferrer" data-card-action className="mt-1 inline-block font-black text-[var(--gold)] hover:text-white">Check the brewery website for current hours ↗</a>
                       </div>
                     )}
                   </details>
 
                   <div className="mt-4 flex flex-wrap gap-4 text-sm font-black">
-                    <a href={brewery.website} target="_blank" rel="noreferrer" className="text-[var(--gold)] hover:text-white">Website ↗</a>
-                    <a href={directionsUrl(brewery.address)} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white">Directions ↗</a>
+                    <a href={brewery.website} target="_blank" rel="noreferrer" data-card-action className="text-[var(--gold)] hover:text-white">Website ↗</a>
+                    <a href={directionsUrl(brewery.address)} target="_blank" rel="noreferrer" data-card-action className="text-zinc-400 hover:text-white">Directions ↗</a>
                   </div>
                   <div className="mt-4 text-[10px] font-black uppercase tracking-[.12em] text-zinc-700">Verified {brewery.lastVerified}</div>
                 </div>
