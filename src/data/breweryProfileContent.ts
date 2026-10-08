@@ -752,20 +752,30 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
       "Golden Age was created specifically to put lager at the center of a Pittsburgh brewery. The program ranges from Northern German and Italian-style pilsner to dunkel, rauchbier and American lager.",
       "The brewery ties that lager focus to Homestead's industrial history and to the idea that clean, drinkable beer is fundamentally social."
     ],
-    storyTitle: "A lager brewery for Homestead",
+    storyTitle: "From Homestead to a 1915 North Side movie palace",
     story: [
+      "The Bohemian opened in April 2026 at 22 W. North Avenue in the restored Garden Theater on Pittsburgh’s North Side. The theater began life as a silent-film-era neighborhood movie house in 1915, with a Beaux-Arts terra-cotta facade designed by Thomas H. Scott.",
+      "After decades showing neighborhood films, the Garden became an adult movie theater in the 1970s and closed in 2007. Its landmark facade and iconic neon marquee survived; the structure received city historic designation in 2008. Trek Development and Q Development later restored the building as part of a mixed-use block, retaining the historic street frontage.",
+      "The Bohemian occupies a distinct storefront within the old theater complex, while Mayfly Market & Deli occupies the neighboring retail space. Co-owner Peter Kurzweg, a North Side resident, wanted the project to help bring the landmark back to everyday neighborhood life.",
       "Golden Age was founded by the same team behind Pittsburgh beer bars Independent Brewing Company and Lorelei.",
       "The Homestead brewery uses a 15-barrel BrauKon system designed for precise lager production, with head brewer Aaron Dahl leading the brewing program."
     ],
     beerTitle: "Clean, crisp and intentionally patient",
     beer: [
+      "The Bohemian is a Czech-inspired lager bar rather than a second brewhouse. Golden Age head brewer Aaron Dahl brews its Czech Pale, Gold, Pils and Dark lagers in Homestead; they are poured on side-pull Lukr taps into hand-cleaned glassware in the Czech tradition.",
+      "Alongside lager, The Bohemian serves cocktails, natural wines and nonalcoholic drinks in a vinyl-and-1970s-inspired setting. Guests can bring food from Mayfly Market & Deli or nearby restaurants; this differs from Golden Age’s own full-kitchen experience in Homestead.",
       "Golden Age leans hard into lager traditions: pilsners, dunkels, smoked lagers and other styles that reward precision and time.",
       "The beer is paired with a full kitchen serving wood-fired pizza, smash burgers, wings and sandwiches, while the beer garden extends the brewery into a year-round gathering space when weather allows."
     ],
-    take: "Go when you want lager to be the main event instead of the safe option.",
+    take: "Go for lager in Homestead or take a trip back in time at The Bohemian.",
     takeDetail: "Golden Age is one of the clearest style-driven brewery experiences in the region, and the kitchen plus beer garden make it easy to stay awhile.",
     locationSlugs: ["golden-age", "golden-age-bohemian"],
     sources: [
+      { label: "The Bohemian official address", url: "https://www.bohemianpgh.com/" },
+      { label: "TABLE Magazine — storefront and taproom entrance", url: "https://pittsburgh.tablemagazine.com/blog/the-bohemian-bar-vibes-northside/" },
+      { label: "Pittsburgh Magazine — Czech lager program and theater history", url: "https://www.pittsburghmagazine.com/the-bohemian-north-side/" },
+      { label: "Pittsburgh History & Landmarks Foundation — restoration", url: "https://phlf.org/event/spotlight-the-garden-central-north-side/" },
+      { label: "The Northside Chronicle — Garden Theater redevelopment", url: "https://www.thenorthsidechronicle.com/article/410,renovated-garden-theater-gains-2nd-tenant-golden-age-beer-co" },
       { label: "Golden Age about", url: "https://www.goldenagebeer.com/about-1" },
       { label: "Golden Age visit", url: "https://www.goldenagebeer.com/visit-us" },
       { label: "Golden Age beer", url: "https://www.goldenagebeer.com/menu" }
