@@ -151,7 +151,7 @@ export const breweryAdditions: Brewery[] = [
     blurb: "Small Glenshaw brewery focused on traditional beer styles."
   },
   {
-    name: "Balance Brewing",
+    name: "Balance Brewing Company",
     slug: "balance-brewing",
     city: "Pittsburgh",
     neighborhood: "North Hills",
