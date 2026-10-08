@@ -23,6 +23,7 @@ export default function BreweriesPage() {
             </div>
           </div>
           <p className="mt-5 max-w-4xl text-sm leading-relaxed text-zinc-400">Pittsburgh Brews includes breweries and brewery-operated taprooms across the region. Some breweries were founded elsewhere but brew beer here; others operate local satellite taprooms serving beer produced at another location. We note these distinctions on listings when verified.</p>
+          <p className="mt-2 text-xs text-zinc-500"><span className="font-black text-amber-300">★ PGH Original</span> means the brewery brand was founded in the greater Pittsburgh region, regardless of where its individual taprooms are located.</p>
           <Suspense fallback={<div className="mt-8 text-zinc-600">Loading directory…</div>}><BreweryDirectory /></Suspense>
         </div>
       </section>
