@@ -1,0 +1,40 @@
+name: Optimize brewery storefront images
+on:
+  push:
+    branches:
+      - chore/optimize-storefront-images-20261008
+    paths:
+      - scripts/optimize-storefronts.cjs
+      - .github/workflows/optimize-storefronts.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install project and image optimizer
+        run: |
+          npm install --no-package-lock
+          npm install --no-save --no-package-lock sharp
+      - name: Compress storefront photos and update references
+        run: node scripts/optimize-storefronts.cjs
+      - name: Check production build
+        run: npm run build
+      - name: Commit optimized assets to this branch
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/brand/breweries src
+            git commit -m "Optimize storefront images and update references"
+            git push origin HEAD
+          fi

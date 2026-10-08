@@ -12,218 +12,218 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
-  "recon-hastings": localImage("/brand/breweries/recon/storefront-hastings.png", "Recon Brewing Hastings taproom in South Fayette"),
-  "recon-meeder": localImage("/brand/breweries/recon/storefront-meeder.png", "Recon Brewing Meeder taproom in Cranberry Township"),
-  "recon-butler": localImage("/brand/breweries/recon/storefront-butler.png", "Recon Brewing original brewery and taproom in Butler"),
-  "golden-age-bohemian": localImage("/brand/breweries/bohemian/storefront.png", "The Bohemian at the historic Garden Theater on West North Avenue"),
-  "helicon-brewing": localImage("/brand/breweries/helicon/storefront.png", "Helicon Brewing storefront in Oakdale"),
-  "altered-genius-ambridge": localImage("/brand/breweries/alteredgenious/storefront-ambridge.png", "Altered Genius Brewing Co. storefront in Ambridge"),
-  "altered-genius-imperial": localImage("/brand/breweries/alteredgenious/storefront-trailside.png", "Altered Genius Brewing Co. Trailside Taproom storefront in Imperial"),
-  "big-sewickley-creek": localImage("/brand/breweries/sewickleycreek/storefront.png", "Big Sewickley Creek Brewery storefront near Sewickley"),
-  "cobblehaus-falls": localImage("/brand/breweries/cobblehaus/storefront-thefalls.png", "Cobblehaus At The Falls taproom in Mercer"),
+  "recon-hastings": localImage("/brand/breweries/recon/storefront-hastings.webp", "Recon Brewing Hastings taproom in South Fayette"),
+  "recon-meeder": localImage("/brand/breweries/recon/storefront-meeder.webp", "Recon Brewing Meeder taproom in Cranberry Township"),
+  "recon-butler": localImage("/brand/breweries/recon/storefront-butler.webp", "Recon Brewing original brewery and taproom in Butler"),
+  "golden-age-bohemian": localImage("/brand/breweries/bohemian/storefront.webp", "The Bohemian at the historic Garden Theater on West North Avenue"),
+  "helicon-brewing": localImage("/brand/breweries/helicon/storefront.webp", "Helicon Brewing storefront in Oakdale"),
+  "altered-genius-ambridge": localImage("/brand/breweries/alteredgenious/storefront-ambridge.webp", "Altered Genius Brewing Co. storefront in Ambridge"),
+  "altered-genius-imperial": localImage("/brand/breweries/alteredgenious/storefront-trailside.webp", "Altered Genius Brewing Co. Trailside Taproom storefront in Imperial"),
+  "big-sewickley-creek": localImage("/brand/breweries/sewickleycreek/storefront.webp", "Big Sewickley Creek Brewery storefront near Sewickley"),
+  "cobblehaus-falls": localImage("/brand/breweries/cobblehaus/storefront-thefalls.webp", "Cobblehaus At The Falls taproom in Mercer"),
   "coven-brewing": localImage("/brand/breweries/coven/sorefront.png", "Coven Brewing storefront in Lawrenceville"),
-  "chimera-brewing": localImage("/brand/breweries/chimera/storefront.png", "Chimera Brewing storefront in Castle Shannon"),
-  "new-france": localImage("/brand/breweries/newfrance/storefront-hazelwood.png", "New France Brewing at Hazelwood Brew House"),
-  "abstract-realm": localImage("/brand/breweries/abstractrealm/storefront-hazelwood.png", "Abstract Realm Brewing at Hazelwood Brew House"),
+  "chimera-brewing": localImage("/brand/breweries/chimera/storefront.webp", "Chimera Brewing storefront in Castle Shannon"),
+  "new-france": localImage("/brand/breweries/newfrance/storefront-hazelwood.webp", "New France Brewing at Hazelwood Brew House"),
+  "abstract-realm": localImage("/brand/breweries/abstractrealm/storefront-hazelwood.webp", "Abstract Realm Brewing at Hazelwood Brew House"),
 
   "velum-fermentation": localImage(
-    "/brand/breweries/velum/storefront.png",
+    "/brand/breweries/velum/storefront.webp",
     "Velum Fermentation storefront on the South Side"
   ),
   "trace-brewing": localImage(
-    "/brand/breweries/trace/storefront.png",
+    "/brand/breweries/trace/storefront.webp",
     "Trace Brewing storefront in Bloomfield"
   ),
   "two-frays": localImage(
-    "/brand/breweries/twofrays/storefront.png",
+    "/brand/breweries/twofrays/storefront.webp",
     "Two Frays Brewery storefront in Garfield"
   ),
   "strange-roots-millvale": localImage(
-    "/brand/breweries/strangeroots/storefront-millvale.png",
+    "/brand/breweries/strangeroots/storefront-millvale.webp",
     "Strange Roots Experimental Ales storefront in Millvale"
   ),
   "strange-roots-new-kensington": localImage(
-    "/brand/breweries/strangeroots/storefront-newkensington.png",
+    "/brand/breweries/strangeroots/storefront-newkensington.webp",
     "Strange Roots Experimental Ales storefront in New Kensington"
   ),
   "stick-city": localImage(
-    "/brand/breweries/stickcity/storefront.png",
+    "/brand/breweries/stickcity/storefront.webp",
     "Stick City Brewing Company storefront in Mars"
   ),
   "spoonwood": localImage(
-    "/brand/breweries/spoonwood/storefront.png",
+    "/brand/breweries/spoonwood/storefront.webp",
     "Spoonwood Brewing Co. storefront in Bethel Park"
   ),
   "southern-tier-pittsburgh": localImage(
-    "/brand/breweries/southerntier/storefront.png",
+    "/brand/breweries/southerntier/storefront.webp",
     "Southern Tier Pittsburgh storefront on the North Shore"
   ),
   "smiling-moose-cranberry": localImage(
-    "/brand/breweries/smilingmoose/storefront-cranberry.png",
+    "/brand/breweries/smilingmoose/storefront-cranberry.webp",
     "Smiling Moose Brewing storefront in Cranberry Township"
   ),
   "smiling-moose-grove-city": localImage(
-    "/brand/breweries/smilingmoose/storefront-grovecity.png",
+    "/brand/breweries/smilingmoose/storefront-grovecity.webp",
     "Smiling Moose Brewing storefront in Grove City"
   ),
   "shubrew-zelienople": localImage(
-    "/brand/breweries/shubrew/storefront.png",
+    "/brand/breweries/shubrew/storefront.webp",
     "ShuBrew storefront in Zelienople"
   ),
   "pittsburgh-brewing-company": localImage(
-    "/brand/breweries/pittsburgh/storefront.png",
+    "/brand/breweries/pittsburgh/storefront.webp",
     "Pittsburgh Brewing Company brewery campus in Creighton"
   ),
   "penn-brewery": localImage(
-    "/brand/breweries/penn/storefront.png",
+    "/brand/breweries/penn/storefront.webp",
     "Penn Brewery storefront on Pittsburgh's North Side"
   ),
   "mondays-peters-township": localImage(
-    "/brand/breweries/monday/storefront-peters.png",
+    "/brand/breweries/monday/storefront-peters.webp",
     "Mondays Brewing Company storefront in Peters Township"
   ),
   "lolev-beer": localImage(
-    "/brand/breweries/lolev/storefront-pittsburgh.png",
+    "/brand/breweries/lolev/storefront-pittsburgh.webp",
     "Lolev Beer storefront in Lawrenceville"
   ),
   "lolev-zelienople": localImage(
-    "/brand/breweries/lolev/storefront-zelienople.png",
+    "/brand/breweries/lolev/storefront-zelienople.webp",
     "Lolev Beer storefront in Zelienople"
   ),
   "local-remedy": localImage(
-    "/brand/breweries/localremedy/storefront.png",
+    "/brand/breweries/localremedy/storefront.webp",
     "Local Remedy Brewing storefront in Oakmont"
   ),
   "lincoln-avenue-brewery": localImage(
-    "/brand/breweries/lincolnave/storefront.png",
+    "/brand/breweries/lincolnave/storefront.webp",
     "Lincoln Avenue Brewery storefront in Bellevue"
   ),
   "dough-daddy-brewery": localImage(
-    "/brand/breweries/doughdaddy/storefront.png",
+    "/brand/breweries/doughdaddy/storefront.webp",
     "Dough Daddy Brewery storefront in Gibsonia"
   ),
   "fermata-brewing": localImage(
-    "/brand/breweries/fermata/storefront.png",
+    "/brand/breweries/fermata/storefront.webp",
     "Fermata Brewing Company storefront in Ambridge"
   ),
   "golden-age": localImage(
-    "/brand/breweries/goldenage/storefront.png",
+    "/brand/breweries/goldenage/storefront.webp",
     "Golden Age Beer Co. storefront in Homestead"
   ),
   "grist-house": localImage(
-    "/brand/breweries/gristhouse/storefront-millvale.png",
+    "/brand/breweries/gristhouse/storefront-millvale.webp",
     "Grist House Craft Brewery storefront in Millvale"
   ),
   "grist-house-command": localImage(
-    "/brand/breweries/gristhouse/storefront-command.png",
+    "/brand/breweries/gristhouse/storefront-command.webp",
     "Grist House Command storefront in Oakdale"
   ),
   "hazel-grove": localImage(
-    "/brand/breweries/hazelgrove/storefront.png",
+    "/brand/breweries/hazelgrove/storefront.webp",
     "Hazel Grove Brewing storefront in Hazelwood"
   ),
   "hitchhiker-sharpsburg": localImage(
-    "/brand/breweries/hitchhiker/storefront-sharpsburg.png",
+    "/brand/breweries/hitchhiker/storefront-sharpsburg.webp",
     "Hitchhiker Brewing Co. storefront in Sharpsburg"
   ),
   "hitchhiker-mt-lebanon": localImage(
-    "/brand/breweries/hitchhiker/storefront-mtlebo.png",
+    "/brand/breweries/hitchhiker/storefront-mtlebo.webp",
     "Hitchhiker Brewing Co. storefront in Mt. Lebanon"
   ),
   "hop-farm": localImage(
-    "/brand/breweries/hopfarm/storefront.png",
+    "/brand/breweries/hopfarm/storefront.webp",
     "Hop Farm Brewing Company storefront in Lawrenceville"
   ),
   "inner-groove-verona": localImage(
-    "/brand/breweries/innergroove/storefront.png",
+    "/brand/breweries/innergroove/storefront.webp",
     "Inner Groove Brewing storefront in Verona"
   ),
   "late-addition": localImage(
-    "/brand/breweries/lateaddition/storefront.png",
+    "/brand/breweries/lateaddition/storefront.webp",
     "Late Addition Brewing + Blending storefront on the North Side"
   ),
   "dancing-gnome": localImage(
-    "/brand/breweries/dancinggnome/storefront.png",
+    "/brand/breweries/dancinggnome/storefront.webp",
     "Dancing Gnome brewery storefront in Sharpsburg"
   ),
   "allusion-vandergrift": localImage(
-    "/brand/breweries/allusion/storefront-vandergrift.png",
+    "/brand/breweries/allusion/storefront-vandergrift.webp",
     "Allusion Brewing Company storefront in Vandergrift"
   ),
   "allusion-allison-park": localImage(
-    "/brand/breweries/allusion/storefront-allisonpark.png",
+    "/brand/breweries/allusion/storefront-allisonpark.webp",
     "Allusion Brewing Company storefront in Allison Park"
   ),
   "abjuration-lab": localImage(
-    "/brand/breweries/abjuration/storefront.png",
+    "/brand/breweries/abjuration/storefront.webp",
     "Abjuration Brewing The Lab at the Parkway Theater in McKees Rocks"
   ),
   "abjuration-hazelwood": localImage(
-    "/brand/breweries/abjuration/storefront-hazelwood.png",
+    "/brand/breweries/abjuration/storefront-hazelwood.webp",
     "Abjuration Brewing at Hazelwood Brew House"
   ),
   "brew-gentlemen": localImage(
-    "/brand/breweries/brewgentlemen/storefront.png",
+    "/brand/breweries/brewgentlemen/storefront.webp",
     "Brew Gentlemen brewery storefront in Braddock"
   ),
   "cinderlands-wexford": localImage(
-    "/brand/breweries/cinderlands/storefront-wexford.png",
+    "/brand/breweries/cinderlands/storefront-wexford.webp",
     "Cinderlands Taproom storefront in Wexford"
   ),
   "cinderlands-warehouse": localImage(
-    "/brand/breweries/cinderlands/storefront-warehouse.png",
+    "/brand/breweries/cinderlands/storefront-warehouse.webp",
     "Cinderlands Warehouse storefront in Pittsburgh"
   ),
   "acrospire": localImage(
-    "/brand/breweries/acrospire/storefront.png",
+    "/brand/breweries/acrospire/storefront.webp",
     "Acrospire Brewing Co. storefront in Glenshaw"
   ),
   "allegheny-city-brewing": localImage(
-    "/brand/breweries/alleghenycity/storefront-eohiostreet.png",
+    "/brand/breweries/alleghenycity/storefront-eohiostreet.webp",
     "Allegheny City Brewing storefront on East Ohio Street"
   ),
   "allegheny-city-brighton-heights": localImage(
-    "/brand/breweries/alleghenycity/storefront.png",
+    "/brand/breweries/alleghenycity/storefront.webp",
     "Allegheny City Brewing Brighton Heights storefront"
   ),
   "aslin-pittsburgh": localImage(
-    "/brand/breweries/aslin/storefront.png",
+    "/brand/breweries/aslin/storefront.webp",
     "Aslin Beer Company storefront in Pittsburgh"
   ),
   "east-end": localImage(
-    "/brand/breweries/eastend/storefront.png",
+    "/brand/breweries/eastend/storefront.webp",
     "East End Brewing Company storefront in Pittsburgh"
   ),
   "eleventh-hour": localImage(
-    "/brand/breweries/eleventhhour/storefront.png",
+    "/brand/breweries/eleventhhour/storefront.webp",
     "11th Hour Brewing Co. storefront in Lawrenceville"
   ),
   "old-thunder": localImage(
-    "/brand/breweries/oldthunder/storefront.png",
+    "/brand/breweries/oldthunder/storefront.webp",
     "Old Thunder Brewing storefront in Blawnox"
   ),
   "costar-brewing": localImage(
-    "/brand/breweries/costar/storefront.png",
+    "/brand/breweries/costar/storefront.webp",
     "CoStar Brewing storefront in Etna"
   ),
   "cobblehaus": localImage(
-    "/brand/breweries/cobblehaus/storefront.png",
+    "/brand/breweries/cobblehaus/storefront.webp",
     "Cobblehaus Brewing Co. storefront in Coraopolis"
   ),
   "burghers-lawrenceville": localImage(
-    "/brand/breweries/burghers/lawrenceville-storefront.png",
+    "/brand/breweries/burghers/lawrenceville-storefront.webp",
     "Burghers Brewing Lawrenceville storefront"
   ),
   "burghers-millvale": localImage(
-    "/brand/breweries/burghers/millvale-storefront.png",
+    "/brand/breweries/burghers/millvale-storefront.webp",
     "Burghers Brewing Millvale storefront"
   ),
   "burghers-south-side": localImage(
-    "/brand/breweries/burghers/southside-storefront.png",
+    "/brand/breweries/burghers/southside-storefront.webp",
     "Burghers Brewing South Side storefront"
   ),
   "church-brew-works": localImage(
-    "/brand/breweries/churchbrewworks/storefront.png",
+    "/brand/breweries/churchbrewworks/storefront.webp",
     "The Church Brew Works storefront in Lawrenceville"
   )
 };
