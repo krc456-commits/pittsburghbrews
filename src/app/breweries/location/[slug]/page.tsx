@@ -8,6 +8,7 @@ export default async function BreweryLocationPage({ params }: Props) {
   const { slug } = await params;
   const brewery = breweries.find((item) => item.slug === slug);
   if (!brewery) notFound();
+  const otherAlteredGenius = slug === "altered-genius-ambridge" ? breweries.find((item) => item.slug === "altered-genius-imperial") : slug === "altered-genius-imperial" ? breweries.find((item) => item.slug === "altered-genius-ambridge") : null;
   const mapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(brewery.address);
   return (
     <main className="min-h-screen bg-[#0b0b0a] text-white">
@@ -33,6 +34,7 @@ export default async function BreweryLocationPage({ params }: Props) {
             <p className="mt-5 text-sm text-zinc-500">Verify opening hours and current offerings directly with the brewery before visiting.</p>
           </div>
         </div>
+        {otherAlteredGenius && <div className="mt-6 rounded-xl border border-white/10 bg-[#171716] p-5"><p className="text-xs font-bold uppercase tracking-wider text-amber-300">Another Altered Genius location</p><Link className="mt-2 block font-semibold text-white hover:underline" href={`/breweries/location/${otherAlteredGenius.slug}`}>{otherAlteredGenius.name} ↗</Link><p className="mt-1 text-sm text-zinc-400">{otherAlteredGenius.address}</p></div>}
         <p className="mt-10 text-sm text-zinc-500">This listing is newly added. More photographs and profile details are coming soon.</p>
       </section>
     </main>
