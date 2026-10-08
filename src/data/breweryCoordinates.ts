@@ -1,7 +1,7 @@
 export type BreweryCoordinates = { lat: number; lng: number };
 
 export const breweryCoordinates: Record<string, BreweryCoordinates> = {
-  "abjuration-hazelwood": { lat: 40.4720253, lng: -80.0724192 },
+  "abjuration-lab": { lat: 40.4720253, lng: -80.0724192 },
   "acrospire": { lat: 40.5248811, lng: -79.9621058 },
   "allegheny-city-brewing": { lat: 40.4536088, lng: -80.0003549 },
   "allegheny-city-brighton-heights": { lat: 40.480926, lng: -80.04145 },
