@@ -146,6 +146,10 @@ const imageOverrides: Record<string, BreweryImage> = {
     "/brand/breweries/allusion/storefront-allisonpark.png",
     "Allusion Brewing Company storefront in Allison Park"
   ),
+  "abjuration-lab": localImage(
+    "/brand/breweries/abjuration/storefront.png",
+    "Abjuration Brewing The Lab at the Parkway Theater in McKees Rocks"
+  ),
   "abjuration-hazelwood": localImage(
     "/brand/breweries/abjuration/storefront-hazelwood.png",
     "Abjuration Brewing at Hazelwood Brew House"
@@ -398,6 +402,10 @@ const logoOverrides: Record<string, BreweryLogo> = {
     url: "/brand/breweries/cinderlands/logo.png",
     alt: "Cinderlands Beer Company logo"
   },
+  "abjuration-lab": {
+    url: "/brand/breweries/abjuration/logo.png",
+    alt: "Abjuration Brewing logo"
+  },
   "abjuration-hazelwood": {
     url: "/brand/breweries/abjuration/logo.png",
     alt: "Abjuration Brewing logo"
@@ -430,6 +438,7 @@ const pittsburghOriginalSlugs = new Set([
   "altered-genius-ambridge",
   "altered-genius-imperial",
   "big-sewickley-creek",
+  "abjuration-lab",
   "abjuration-hazelwood",
   "allegheny-city-brewing",
   "allegheny-city-brighton-heights",
