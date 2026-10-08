@@ -23,7 +23,7 @@ export const breweryHours: Record<string, BreweryHoursEntry> = {
     sourceLabel: "Lolev Beer",
     sourceUrl: "https://lolev.beer/lolev-zelienople",
   },
-  "abjuration-hazelwood": {
+  "abjuration-lab": {
     hours: [
       { day: "Monday", hours: "5–9 PM" },
       { day: "Tuesday", hours: "5–9 PM" },
