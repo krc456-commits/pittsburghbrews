@@ -253,6 +253,7 @@ export default function BreweryDirectory() {
                   </div>
                 </div>
 
+                {brewery.originNote && <p className="mt-3 text-xs leading-relaxed text-zinc-400">{brewery.originNote}</p>}
                 <div className="mt-5 flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
 
                 <div className="mt-5 border-t border-white/8 pt-4">
