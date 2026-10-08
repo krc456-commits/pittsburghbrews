@@ -3,6 +3,7 @@ import type { Brewery } from "./breweries";
 type UntappdInfo = NonNullable<Brewery["untappd"]>;
 
 export const untappdBySlug: Record<string, UntappdInfo> = {
+  "abjuration-lab": { url: "https://untappd.com/AbjurationBrewing" },
   "abjuration-hazelwood": { url: "https://untappd.com/AbjurationBrewing" },
   "allegheny-city-brewing": { url: "https://untappd.com/AlleghenyCityBrewing" },
   "allegheny-city-brighton-heights": { url: "https://untappd.com/AlleghenyCityBrewing" },
