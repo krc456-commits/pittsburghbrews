@@ -360,16 +360,8 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     ],
     take: "Go here when you want the tap list to feel like a lab notebook.",
     takeDetail: "Abjuration's personality is not one flagship beer. It is the idea that recipes are never necessarily finished.",
-    locationSlugs: ["abjuration-hazelwood"],
+    locationSlugs: ["abjuration-lab", "abjuration-hazelwood"],
     extraLocations: [
-      {
-        name: "Hazelwood — Hazelwood Brew House",
-        address: "5011 Lytle Street, Pittsburgh, PA 15207",
-        description: "Abjuration operates its own brewing system and tap service inside the independently operated Hazelwood Brew House, a shared historic brewery building that also houses Abstract Realm and New France Brewing.",
-        atmosphere: "Historic · shared brewery destination · indoor + outdoor",
-        food: "Shared-site food service",
-        website: "https://www.abjurationbrewing.com/"
-      },
       {
         name: "Mt. Lebanon — Taps, Axes & Games",
         address: "1689 McFarland Road, Pittsburgh, PA 15216",
