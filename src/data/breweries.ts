@@ -40,7 +40,7 @@ export type Brewery = {
 export const breweries: Brewery[] = [
   {
     name: "Abjuration Brewing - The Lab",
-    slug: "abjuration-hazelwood",
+    slug: "abjuration-lab",
     city: "McKees Rocks",
     neighborhood: "McKees Rocks",
     area: "West",
