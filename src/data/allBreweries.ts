@@ -12,6 +12,9 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+  "altered-genius-ambridge": localImage("/brand/breweries/alteredgenious/storefront-ambridge.png", "Altered Genius Brewing Co. storefront in Ambridge"),
+  "altered-genius-imperial": localImage("/brand/breweries/alteredgenious/storefront-trailside.png", "Altered Genius Brewing Co. Trailside Taproom storefront in Imperial"),
+  "big-sewickley-creek": localImage("/brand/breweries/sewickleycreek/storefront.png", "Big Sewickley Creek Brewery storefront near Sewickley"),
   "cobblehaus-falls": localImage("/brand/breweries/cobblehaus/storefront-thefalls.png", "Cobblehaus At The Falls taproom in Mercer"),
   "coven-brewing": localImage("/brand/breweries/coven/sorefront.png", "Coven Brewing storefront in Lawrenceville"),
   "chimera-brewing": localImage("/brand/breweries/chimera/storefront.png", "Chimera Brewing storefront in Castle Shannon"),
@@ -221,6 +224,9 @@ const imageOverrides: Record<string, BreweryImage> = {
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
+  "altered-genius-ambridge": { url: "/brand/breweries/alteredgenious/logo.png", alt: "Altered Genius Brewing Co. logo" },
+  "altered-genius-imperial": { url: "/brand/breweries/alteredgenious/logo.png", alt: "Altered Genius Brewing Co. logo" },
+  "big-sewickley-creek": { url: "/brand/breweries/sewickleycreek/logo.png", alt: "Big Sewickley Creek Brewery logo" },
   "coven-brewing": { url: "/brand/breweries/coven/logo.png", alt: "Coven Brewing logo" },
   "chimera-brewing": { url: "/brand/breweries/chimera/logo.png", alt: "Chimera Brewing logo" },
   "new-france": { url: "/brand/breweries/newfrance/logo.png", alt: "New France Brewing logo" },
