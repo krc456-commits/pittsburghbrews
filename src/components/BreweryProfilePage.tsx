@@ -53,7 +53,8 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
           <Link href="/breweries" className="text-xs font-black uppercase tracking-[.12em] text-zinc-400 hover:text-[var(--gold)]">← Brewery directory</Link>
           <div className="mt-9 max-w-4xl">
             <div className="eyebrow">Brewery profile</div>
-            <h1 className="mt-3 text-5xl font-black tracking-[-.055em] text-white sm:text-6xl md:text-7xl">{profile.name}</h1>
+            {profile.locationSlugs.some((slug) => breweries.find((item) => item.slug === slug)?.pittsburghOriginal) && <div className="mt-3"><span title="Founded in the greater Pittsburgh region" className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-black uppercase tracking-[.08em] text-amber-300">★ PGH Original</span></div>}
+    <h1 className="mt-3 text-5xl font-black tracking-[-.055em] text-white sm:text-6xl md:text-7xl">{profile.name}</h1>
             <p className="mt-5 max-w-3xl text-base leading-7 text-zinc-300 md:text-lg">{profile.tagline}</p>
             <div className="mt-6 flex flex-wrap gap-2">
               {profile.founded && <span className="tag">Founded {profile.founded}</span>}
