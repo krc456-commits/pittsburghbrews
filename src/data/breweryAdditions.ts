@@ -2,6 +2,19 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Back Alley Brewing Company",
+    slug: "back-alley-brewing",
+    city: "Pittsburgh",
+    neighborhood: "Dormont",
+    area: "South",
+    address: "2975 West Liberty Avenue, Pittsburgh, PA 15216",
+    website: "https://www.backalleybrewingpa.com/",
+    type: "Independent nano brewery + taproom",
+    food: "Food trucks",
+    lastVerified: "Oct 2026",
+    blurb: "Dormont neighborhood brewery in the former municipal building. House-made beer, food trucks, bring-your-own food and regular trivia nights."
+  },
+  {
     name: "Abjuration Brewing - Hazelwood Brew House",
     slug: "abjuration-hazelwood",
     city: "Pittsburgh",
