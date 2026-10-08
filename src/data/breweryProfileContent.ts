@@ -27,6 +27,314 @@ export type BreweryProfileContent = {
 };
 
 export const breweryProfiles: Record<string, BreweryProfileContent> = {
+  "helicon": {
+  "slug": "helicon",
+  "name": "Helicon Brewing",
+  "tagline": "Oakdale's independent brewery, built around a dedicated brewhouse and a welcoming taproom.",
+  "knownFor": [
+    "Oakdale",
+    "On-site brewing",
+    "Taproom",
+    "Rotating beers"
+  ],
+  "specialTitle": "A brewery-first stop in Oakdale.",
+  "specialBody": [
+    "Helicon Brewing makes its beer on site in Oakdale, giving the area a local option for enjoying beer close to where it is produced.",
+    "The taproom is a gathering place as well as a place to explore the brewery's rotating lineup."
+  ],
+  "storyTitle": "A local home for craft beer",
+  "story": [
+    "Helicon operates at 102 Union Avenue in Oakdale, west of Pittsburgh.",
+    "The production brewery and visitor taproom share the same destination, rather than operating as separate satellite locations."
+  ],
+  "beerTitle": "A changing house-brewed lineup",
+  "beer": [
+    "Beer availability and styles rotate, so the current tap list is the best guide to what the brewery is pouring.",
+    "Food trucks and the taproom environment make it an easy brewery outing without needing a separate restaurant."
+  ],
+  "take": "Go for an independent brewery visit in Oakdale.",
+  "takeDetail": "This is the brewery and taproom itself, not an off-site bar serving somebody else's beer.",
+  "locationSlugs": [
+    "helicon-brewing"
+  ],
+  "sources": [
+    {
+      "label": "Helicon Brewing",
+      "url": "https://heliconbrewing.com/"
+    }
+  ]
+},
+  "coven": {
+  "slug": "coven",
+  "name": "Coven Brewing",
+  "tagline": "A Lawrenceville craft brewery on Butler Street with hop-forward beer and a neighborhood taproom.",
+  "knownFor": [
+    "Lawrenceville",
+    "Hop-forward beer",
+    "Independent brewery",
+    "Butler Street"
+  ],
+  "specialTitle": "Beer with a Lawrenceville address.",
+  "specialBody": [
+    "Coven Brewing combines an independent beer program with a home on one of Pittsburgh's busiest neighborhood corridors.",
+    "Its location makes it a natural stop for exploring Lawrenceville's brewery and restaurant scene."
+  ],
+  "storyTitle": "A brewery on 49th and Butler",
+  "story": [
+    "Coven operates at 4901 Butler Street in Lawrenceville, Pittsburgh.",
+    "The building is part of a walkable neighborhood with other places to eat and drink nearby; check Coven's own channels for current food partners and events."
+  ],
+  "beerTitle": "A rotating take on craft beer",
+  "beer": [
+    "Hop-forward styles are a focus, alongside a changing selection of other releases.",
+    "Because taps change, follow the brewery's current menu rather than assuming a particular beer will be pouring."
+  ],
+  "take": "Go when you want to work a neighborhood brewery into a Lawrenceville outing.",
+  "takeDetail": "Its Butler Street location is the draw as much as any single rotating release.",
+  "locationSlugs": [
+    "coven-brewing"
+  ],
+  "sources": [
+    {
+      "label": "Coven Brewing",
+      "url": "https://www.covenbrewingpgh.com/"
+    }
+  ]
+},
+  "chimera": {
+  "slug": "chimera",
+  "name": "Chimera Brewing",
+  "tagline": "A Castle Shannon brewery and restaurant serving locally made beer alongside a full kitchen.",
+  "knownFor": [
+    "Castle Shannon",
+    "Brewery restaurant",
+    "Full kitchen",
+    "South Hills"
+  ],
+  "specialTitle": "A brewery visit with dinner built in.",
+  "specialBody": [
+    "Chimera Brewing combines the taproom experience with a full menu, making it a South Hills option for both food and beer.",
+    "Its Castle Shannon location gives the neighborhood a local brewery destination rather than simply a beer-focused restaurant."
+  ],
+  "storyTitle": "A South Hills home on Library Road",
+  "story": [
+    "Find Chimera at 3759 Library Road in Castle Shannon.",
+    "The brewery-and-restaurant setup makes it suitable for a meal, a quick beer or an outing with friends."
+  ],
+  "beerTitle": "House beer alongside the menu",
+  "beer": [
+    "Chimera's beer selection is part of the restaurant experience, with current styles and releases best confirmed directly with the brewery.",
+    "The food program offers an alternative to taprooms that depend entirely on visiting trucks."
+  ],
+  "take": "Go when you want a South Hills brewery where everyone can also sit down for a meal.",
+  "takeDetail": "The full kitchen is a useful distinction from smaller tasting-room-only breweries.",
+  "locationSlugs": [
+    "chimera-brewing"
+  ],
+  "sources": [
+    {
+      "label": "Chimera Brewing",
+      "url": "https://chimerabrewingpgh.com/"
+    }
+  ]
+},
+  "abstract-realm": {
+  "slug": "abstract-realm",
+  "name": "Abstract Realm Brewing Company",
+  "tagline": "An independent Hazelwood brewery making its own beer inside the shared Hazelwood Brew House.",
+  "knownFor": [
+    "Hazelwood Brew House",
+    "On-site brewing",
+    "Independent brewery",
+    "Shared destination"
+  ],
+  "specialTitle": "One brewhouse campus, a distinct brewery.",
+  "specialBody": [
+    "Abstract Realm is its own brewing operation at Hazelwood Brew House, not a different name for the building or a tap handle belonging to another brewery.",
+    "The shared location lets visitors explore several independent breweries during one visit while keeping each producer's identity clear."
+  ],
+  "storyTitle": "Part of the Hazelwood Brew House",
+  "story": [
+    "Abstract Realm operates from the historic brewery building on Lytle Street in Hazelwood.",
+    "The building also houses New France Brewing and Abjuration Brewing. They share the destination but remain separate breweries with their own beer programs."
+  ],
+  "beerTitle": "Explore its own changing releases",
+  "beer": [
+    "The attraction is trying beers produced by Abstract Realm rather than treating the entire building as a single brewery.",
+    "Check Abstract Realm's current selections before visiting; the offerings can vary independently of its neighbors."
+  ],
+  "take": "Go for an independent brewery discovery without leaving the Hazelwood Brew House campus.",
+  "takeDetail": "Pair the visit with New France and Abjuration if you want to compare three different beer programs under one roof.",
+  "locationSlugs": [
+    "abstract-realm"
+  ],
+  "sources": [
+    {
+      "label": "Abstract Realm Brewing",
+      "url": "https://www.abstractrealmbrewing.com/"
+    },
+    {
+      "label": "Hazelwood Brew House",
+      "url": "https://hazelwoodbrewhouse.com/"
+    }
+  ]
+},
+  "new-france": {
+  "slug": "new-france",
+  "name": "New France Brewing Company",
+  "tagline": "An independent Hazelwood brewery with its own brewing operation inside Hazelwood Brew House.",
+  "knownFor": [
+    "Hazelwood Brew House",
+    "Independent brewery",
+    "On-site brewing",
+    "Shared destination"
+  ],
+  "specialTitle": "Part of the same building, not the same brewery.",
+  "specialBody": [
+    "New France operates an independent beer program within Hazelwood Brew House.",
+    "The distinction matters: the Hazelwood building brings multiple local breweries together, but each brewery is responsible for its own beer."
+  ],
+  "storyTitle": "Brewing on Lytle Street",
+  "story": [
+    "New France's public-facing location is inside Hazelwood Brew House on Lytle Street in Pittsburgh.",
+    "Abstract Realm and Abjuration also brew in the shared complex, making the destination useful for exploring several distinct local producers."
+  ],
+  "beerTitle": "Its own beer, its own identity",
+  "beer": [
+    "New France's selection should be understood as its own brewing lineup, not a combined tap list for the building.",
+    "See its official website or on-site menu for current availability and styles."
+  ],
+  "take": "Go for New France's beer, and consider visiting the other Hazelwood brewers while you are there.",
+  "takeDetail": "A shared address does not mean these are satellite bars or a single combined brewery.",
+  "locationSlugs": [
+    "new-france"
+  ],
+  "sources": [
+    {
+      "label": "New France Brewing",
+      "url": "https://www.newfrancebrewco.com/"
+    },
+    {
+      "label": "Hazelwood Brew House",
+      "url": "https://hazelwoodbrewhouse.com/"
+    }
+  ]
+},
+  "recon": {
+  "slug": "recon",
+  "name": "Recon Brewing",
+  "tagline": "A Butler County brewery that grew from an original brewhouse into multiple Pittsburgh-area taprooms.",
+  "knownFor": [
+    "Butler brewing",
+    "Meeder",
+    "Hastings",
+    "Multiple taprooms"
+  ],
+  "specialTitle": "One brewing identity, three places to visit.",
+  "specialBody": [
+    "Recon Brewing began with its production brewery and taproom in Butler, then expanded its local presence with additional taprooms in Cranberry Township and South Fayette.",
+    "Visitors should see the three locations as parts of the same brewery brand, not as three independent breweries."
+  ],
+  "storyTitle": "From Butler to the wider region",
+  "story": [
+    "Recon's original brewhouse is on North Main Street Extension in Butler.",
+    "Its Meeder location serves Cranberry Township and the Hastings taproom serves the South Fayette and Bridgeville area. Each offers a different convenient starting point for the same Recon beer program."
+  ],
+  "beerTitle": "Recon beer across its locations",
+  "beer": [
+    "The same brewery identity connects the three taprooms, although current draft selections and food offerings can vary by location.",
+    "Check the tap list and hours for the particular Recon taproom you plan to visit."
+  ],
+  "take": "Go for a flexible multi-location brewery with options north and south of Pittsburgh.",
+  "takeDetail": "Choose Butler for the original brewing home, Meeder for Cranberry Township or Hastings for the South Fayette area.",
+  "locationSlugs": [
+    "recon-butler",
+    "recon-meeder",
+    "recon-hastings"
+  ],
+  "sources": [
+    {
+      "label": "Recon Brewing",
+      "url": "https://www.reconbrewing.com/"
+    }
+  ]
+},
+  "altered-genius": {
+  "slug": "altered-genius",
+  "name": "Altered Genius Brewing Co.",
+  "tagline": "An Ambridge brewery with its original production taproom and a second Trailside location in Imperial.",
+  "knownFor": [
+    "Ambridge",
+    "Imperial Trailside",
+    "Production brewery",
+    "Two locations"
+  ],
+  "specialTitle": "One brewery, two different stops.",
+  "specialBody": [
+    "Altered Genius brews in Ambridge and also welcomes visitors at its Trailside Taproom in Imperial.",
+    "The distinction makes the directory easier to use: the Imperial site is an additional taproom of the same brewery, not a separate brewery brand."
+  ],
+  "storyTitle": "Merchant Street roots and a Trailside expansion",
+  "story": [
+    "The production brewery is at 411 Merchant Street in downtown Ambridge.",
+    "The Trailside Taproom at 258 Main Street in Imperial extends the brewery's reach west of Pittsburgh."
+  ],
+  "beerTitle": "Brewery-made beer wherever you visit",
+  "beer": [
+    "Altered Genius connects its house beer program to both taprooms, with availability potentially varying by location.",
+    "Use the relevant location's current tap list and opening hours when deciding where to go."
+  ],
+  "take": "Go for the Ambridge brewery experience or a convenient Imperial taproom stop.",
+  "takeDetail": "One brewery profile keeps the two locations together while preserving distinct addresses and directions.",
+  "locationSlugs": [
+    "altered-genius-ambridge",
+    "altered-genius-imperial"
+  ],
+  "sources": [
+    {
+      "label": "Altered Genius Brewing Co.",
+      "url": "https://www.alteredgeniusbrewing.com/"
+    }
+  ]
+},
+  "big-sewickley-creek": {
+  "slug": "big-sewickley-creek",
+  "name": "Big Sewickley Creek Brewery",
+  "tagline": "A small independent brewery near Sewickley with a particular interest in lager.",
+  "knownFor": [
+    "Nano brewery",
+    "Lager",
+    "Sewickley area",
+    "Independent"
+  ],
+  "specialTitle": "Small-scale brewing beside the creek.",
+  "specialBody": [
+    "Big Sewickley Creek Brewery brings an independent, small-batch brewing identity to the northern suburbs.",
+    "Its lager focus offers a useful change of pace for visitors looking beyond hop-driven tap lists."
+  ],
+  "storyTitle": "A brewery destination on Big Sewickley Creek Road",
+  "story": [
+    "The brewery is at 2030 Big Sewickley Creek Road near Sewickley.",
+    "It is a distinct local brewery, not a satellite taproom for another producer."
+  ],
+  "beerTitle": "A focus on lagers",
+  "beer": [
+    "Locally made lagers are a specialty, with additional selections depending on the brewery's current production schedule.",
+    "Because small breweries can rotate releases quickly, verify the latest menu before heading out."
+  ],
+  "take": "Go when you want to seek out a smaller independent brewery with a lager focus.",
+  "takeDetail": "A worthwhile option for exploring breweries outside central Pittsburgh.",
+  "locationSlugs": [
+    "big-sewickley-creek"
+  ],
+  "sources": [
+    {
+      "label": "Big Sewickley Creek Brewery",
+      "url": "https://sewickleybrewery.com/"
+    }
+  ]
+},
+
   "dancing-gnome": {
     slug: "dancing-gnome",
     name: "Dancing Gnome",
