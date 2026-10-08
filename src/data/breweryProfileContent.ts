@@ -764,7 +764,7 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     ],
     take: "Go when you want lager to be the main event instead of the safe option.",
     takeDetail: "Golden Age is one of the clearest style-driven brewery experiences in the region, and the kitchen plus beer garden make it easy to stay awhile.",
-    locationSlugs: ["golden-age"],
+    locationSlugs: ["golden-age", "golden-age-bohemian"],
     sources: [
       { label: "Golden Age about", url: "https://www.goldenagebeer.com/about-1" },
       { label: "Golden Age visit", url: "https://www.goldenagebeer.com/visit-us" },
@@ -1103,16 +1103,7 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     ],
     take: "Go when you want European-style beer in a relaxed neighborhood taproom.",
     takeDetail: "Coraopolis is the brewery home and the most direct way to experience what Cobblehaus is trying to do.",
-    locationSlugs: ["cobblehaus"],
-    extraLocations: [
-      {
-        name: "Cobblehaus At The Falls",
-        address: "1015 Leesburg Station Road, Mercer, PA 16137",
-        description: "A second Cobblehaus taproom on a seven-acre former iron-furnace property overlooking Springfield Falls.",
-        atmosphere: "Scenic · destination taproom",
-        website: "https://www.cobblehaus.com/"
-      }
-    ],
+    locationSlugs: ["cobblehaus", "cobblehaus-falls"],
     sources: [
       { label: "Cobblehaus Coraopolis", url: "https://www.cobblehaus.com/coraopolis" },
       { label: "Cobblehaus", url: "https://www.cobblehaus.com/" }
