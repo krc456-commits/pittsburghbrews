@@ -12,6 +12,7 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+  "helicon-brewing": localImage("/brand/breweries/helicon/storefront.png", "Helicon Brewing storefront in Oakdale"),
   "altered-genius-ambridge": localImage("/brand/breweries/alteredgenious/storefront-ambridge.png", "Altered Genius Brewing Co. storefront in Ambridge"),
   "altered-genius-imperial": localImage("/brand/breweries/alteredgenious/storefront-trailside.png", "Altered Genius Brewing Co. Trailside Taproom storefront in Imperial"),
   "big-sewickley-creek": localImage("/brand/breweries/sewickleycreek/storefront.png", "Big Sewickley Creek Brewery storefront near Sewickley"),
@@ -224,6 +225,7 @@ const imageOverrides: Record<string, BreweryImage> = {
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
+  "helicon-brewing": { url: "/brand/breweries/helicon/logo.png", alt: "Helicon Brewing logo" },
   "altered-genius-ambridge": { url: "/brand/breweries/alteredgenious/logo.png", alt: "Altered Genius Brewing Co. logo" },
   "altered-genius-imperial": { url: "/brand/breweries/alteredgenious/logo.png", alt: "Altered Genius Brewing Co. logo" },
   "big-sewickley-creek": { url: "/brand/breweries/sewickleycreek/logo.png", alt: "Big Sewickley Creek Brewery logo" },
