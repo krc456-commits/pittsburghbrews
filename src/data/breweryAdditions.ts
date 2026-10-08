@@ -2,6 +2,19 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Abjuration Brewing - Hazelwood Brew House",
+    slug: "abjuration-hazelwood",
+    city: "Pittsburgh",
+    neighborhood: "Hazelwood",
+    area: "Pittsburgh",
+    address: "5011 Lytle Street, Pittsburgh, PA 15207",
+    website: "https://www.abjurationbrewing.com/",
+    type: "Independent brewery + taproom",
+    food: "Light food",
+    lastVerified: "Oct 2026",
+    blurb: "Abjuration's second brewery location inside Hazelwood Brew House, sharing the destination with Abstract Realm and New France."
+  },
+  {
     name: "Lolev Beer - Zelienople",
     slug: "lolev-zelienople",
     city: "Zelienople",
