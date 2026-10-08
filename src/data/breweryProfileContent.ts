@@ -27,6 +27,69 @@ export type BreweryProfileContent = {
 };
 
 export const breweryProfiles: Record<string, BreweryProfileContent> = {
+  "back-alley-brewing": {
+  "slug": "back-alley-brewing",
+  "name": "Back Alley Brewing Company",
+  "tagline": "A Dormont neighborhood brewery created by longtime homebrewing friends, with a taproom inside the community's former municipal building.",
+  "founded": "2022",
+  "knownFor": [
+    "Dormont",
+    "Former municipal building",
+    "Through the Fog",
+    "Community events"
+  ],
+  "specialTitle": "A former municipal building turned neighborhood brewery.",
+  "specialBody": [
+    "Back Alley Brewing opened its West Liberty Avenue taproom in March 2023 after introducing its canned beers in 2022. The site once housed Dormont's municipal offices, giving this South Hills brewery an unusual piece of local history.",
+    "The taproom welcomes neighbors for house-made beer, recurring Thursday trivia, food trucks and pop-ups. Guests can also bring takeout from nearby restaurants; there is no permanent in-house kitchen."
+  ],
+  "storyTitle": "From homebrewing friends to a Dormont taproom",
+  "story": [
+    "The brewery was created by Cody Hoellerman, Lee Sifford, Pat McKinley and Patty McKinley, who turned a long-running homebrewing hobby into a commercial project. They began distributing canned beer in March 2022, before opening the taproom on March 16, 2023.",
+    "Back Alley occupies the former Dormont Municipal Building at 2975 West Liberty Avenue. The team remodeled the property to create a neighborhood gathering place, and also distributes its beer to independent restaurants, bars and bottle shops throughout the area.",
+    "The brewery offers private and semi-private event options in its taproom, and regularly hosts trivia on Thursdays. Its events schedule distinguishes music-themed trivia on the first and third Thursdays from general trivia on other Thursdays."
+  ],
+  "beerTitle": "Hazy IPAs, Pittsburgh lager and an unusually pale coffee stout",
+  "beer": [
+    "Year-round beers include Through the Fog, a 6.1% hazy New England IPA; Back Alley IPA, a 6% American IPA; Mountain of Gold, a 4.5% American lager marketed as a Pittsburgh-style lager; and Brewed Awakening, a 6.9% blonde coffee stout made with cacao, coffee and vanilla.",
+    "Seasonal and rotating beers range from Hair of the Dog Scottish ale to Cinta Roja strawberry margarita sour and MacKinlay Irish stout. The brewery's SMASH Brew, a single-malt, single-hop pale ale, was created in collaboration with Moonlit Burgers. These are documented beers, not a claim that each is currently pouring."
+  ],
+  "take": "Go for a community-oriented Dormont taproom where the building has a story of its own.",
+  "takeDetail": "The converted municipal building, rotating local food vendors and broad range of approachable and experimental styles make Back Alley an easy neighborhood stop. Check the current menu and food-truck calendar before visiting.",
+  "locationSlugs": [
+    "back-alley-brewing"
+  ],
+  "sources": [
+    {
+      "label": "Back Alley Brewing — official site",
+      "url": "https://www.backalleybrewingpa.com/"
+    },
+    {
+      "label": "Back Alley Brewing — current hours",
+      "url": "https://www.backalleybrewingpa.com/hours.html"
+    },
+    {
+      "label": "Back Alley Brewing — beer lineup",
+      "url": "https://www.backalleybrewingpa.com/beer.html"
+    },
+    {
+      "label": "Back Alley Brewing — food trucks and BYO food",
+      "url": "https://www.backalleybrewingpa.com/food.html"
+    },
+    {
+      "label": "Back Alley Brewing — events",
+      "url": "https://www.backalleybrewingpa.com/events.html"
+    },
+    {
+      "label": "Breweries in PA — interview with co-owner and opening history",
+      "url": "https://breweriesinpa.com/back-alley-brewing-company-to-open-taproom-march-16th-pittsburgh/"
+    },
+    {
+      "label": "Back Alley Brewing on Untappd",
+      "url": "https://untappd.com/BackAlleyBrewingCompany"
+    }
+  ]
+},
   "helicon": {
   "slug": "helicon",
   "name": "Helicon Brewing",
