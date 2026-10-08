@@ -9,6 +9,72 @@ const checked = "Sep 17, 2026";
 const listing = "Current business listing";
 
 export const breweryHours: Record<string, BreweryHoursEntry> = {
+  "helicon-brewing": {
+    hours: [{ day: "Monday", hours: "11 AM–10 PM" }, { day: "Tuesday", hours: "11 AM–10 PM" }, { day: "Wednesday", hours: "11 AM–10 PM" }, { day: "Thursday", hours: "11 AM–10 PM" }, { day: "Friday", hours: "11 AM–10 PM" }, { day: "Saturday", hours: "11 AM–10 PM" }, { day: "Sunday", hours: "11 AM–9 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Helicon Brewing",
+    sourceUrl: "https://heliconbrewing.com/",
+  },
+  "coven-brewing": {
+    hours: [{ day: "Monday", hours: "4–10 PM" }, { day: "Tuesday", hours: "4–10 PM" }, { day: "Wednesday", hours: "4–10 PM" }, { day: "Thursday", hours: "4–10 PM" }, { day: "Friday", hours: "4–11 PM" }, { day: "Saturday", hours: "1–10 PM" }, { day: "Sunday", hours: "11 AM–6 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Coven Brewing FAQ",
+    sourceUrl: "https://www.covenbrewingpgh.com/faq",
+  },
+  "chimera-brewing": {
+    hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "3–10 PM" }, { day: "Wednesday", hours: "3–10 PM" }, { day: "Thursday", hours: "3–10 PM" }, { day: "Friday", hours: "11 AM–11 PM" }, { day: "Saturday", hours: "10 AM–11 PM" }, { day: "Sunday", hours: "10 AM–9 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Chimera Brewing",
+    sourceUrl: "https://chimerabrewingpgh.com/",
+  },
+  "abstract-realm": {
+    hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "Closed" }, { day: "Wednesday", hours: "4–10 PM" }, { day: "Thursday", hours: "4–10 PM" }, { day: "Friday", hours: "3–10 PM" }, { day: "Saturday", hours: "12–10 PM" }, { day: "Sunday", hours: "12–6 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Abstract Realm visit",
+    sourceUrl: "https://www.abstractrealmbrewing.com/visit",
+  },
+  "recon-butler": {
+    hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "Closed" }, { day: "Wednesday", hours: "4–10 PM" }, { day: "Thursday", hours: "4–10 PM" }, { day: "Friday", hours: "3–10 PM" }, { day: "Saturday", hours: "12–10 PM" }, { day: "Sunday", hours: "12–7 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Recon Brewing",
+    sourceUrl: "https://www.reconbrewing.com/",
+  },
+  "recon-meeder": {
+    hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "4–10 PM" }, { day: "Wednesday", hours: "12–10 PM" }, { day: "Thursday", hours: "12–10 PM" }, { day: "Friday", hours: "12–10 PM" }, { day: "Saturday", hours: "12–10 PM" }, { day: "Sunday", hours: "12–7 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Recon Brewing",
+    sourceUrl: "https://www.reconbrewing.com/",
+  },
+  "recon-hastings": {
+    hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "Closed" }, { day: "Wednesday", hours: "4–10 PM" }, { day: "Thursday", hours: "4–10 PM" }, { day: "Friday", hours: "4–10 PM" }, { day: "Saturday", hours: "12–10 PM" }, { day: "Sunday", hours: "12–7 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Recon Brewing",
+    sourceUrl: "https://www.reconbrewing.com/",
+  },
+  "altered-genius-ambridge": {
+    hours: [{ day: "Monday", hours: "5–10 PM" }, { day: "Tuesday", hours: "5–10 PM" }, { day: "Wednesday", hours: "5–10 PM" }, { day: "Thursday", hours: "5–10 PM" }, { day: "Friday", hours: "12–11 PM" }, { day: "Saturday", hours: "12–11 PM" }, { day: "Sunday", hours: "12–8 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Altered Genius contact",
+    sourceUrl: "https://www.alteredgeniusbrewing.com/contact",
+  },
+  "altered-genius-imperial": {
+    hours: [{ day: "Monday", hours: "Private bookings only" }, { day: "Tuesday", hours: "3–9 PM" }, { day: "Wednesday", hours: "3–9 PM" }, { day: "Thursday", hours: "3–9 PM" }, { day: "Friday", hours: "3–11 PM" }, { day: "Saturday", hours: "12–11 PM" }, { day: "Sunday", hours: "12–8 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Altered Genius contact",
+    sourceUrl: "https://www.alteredgeniusbrewing.com/contact",
+  },
+  "big-sewickley-creek": {
+    hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "Closed" }, { day: "Wednesday", hours: "Closed" }, { day: "Thursday", hours: "4–9 PM" }, { day: "Friday", hours: "4–10 PM" }, { day: "Saturday", hours: "12–10:30 PM" }, { day: "Sunday", hours: "1–7 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Big Sewickley Creek Brewery",
+    sourceUrl: "https://sewickleybrewery.com/",
+  },
+  "cobblehaus-falls": {
+    hours: [{ day: "Monday", hours: "Closed" }, { day: "Tuesday", hours: "Closed" }, { day: "Wednesday", hours: "4–9 PM" }, { day: "Thursday", hours: "4–9 PM" }, { day: "Friday", hours: "3–10 PM" }, { day: "Saturday", hours: "12–10 PM" }, { day: "Sunday", hours: "12–5 PM" }],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Cobblehaus At The Falls",
+    sourceUrl: "https://www.cobblehaus.com/at-the-falls",
+  },
   "lolev-zelienople": {
     hours: [
       { day: "Monday", hours: "5–10 PM" },
