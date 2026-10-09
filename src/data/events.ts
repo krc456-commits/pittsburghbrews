@@ -5,7 +5,7 @@ export type BeerEvent = {
   endDate: string;
   occurrences?: string[];
   location: string;
-  category: "Oktoberfest" | "Festival" | "Halloween" | "Beer garden" | "Beer Event";
+  category: "Oktoberfest" | "Festival" | "Halloween" | "Beer garden" | "Beer Event" | "Trivia & games" | "Food trucks" | "Live music";
   description: string;
   url: string;
   featured?: boolean;
