@@ -7,10 +7,10 @@ export default function AboutPage() {
         <div className="mx-auto max-w-5xl px-5 py-14 md:px-8 md:py-20">
           <div className="text-xs font-black uppercase tracking-[.16em] text-[#8d6b00]">About Pittsburgh Brews</div>
           <h1 className="mt-3 max-w-4xl text-4xl font-black tracking-[-0.04em] md:text-6xl">
-            Less planning. More enjoying Pittsburgh beer.
+            Find your next Pittsburgh brewery.
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[#625c50] md:text-lg">
-            Pittsburgh Brews is an independent guide built to help locals and visitors find breweries, see what’s happening, and decide where to go next without digging through scattered sites and social feeds.
+            Pittsburgh Brews is an independent brewery discovery tool built to help locals and visitors search what’s nearby, compare locations, filter for what matters, see what’s happening, and decide where to go next.
           </p>
         </div>
       </section>
@@ -23,7 +23,7 @@ export default function AboutPage() {
               <h2 className="mt-2 text-2xl font-black md:text-3xl">Built around decisions, not checklists.</h2>
               <div className="mt-5 space-y-4 text-[#625c50] md:text-lg md:leading-8">
                 <p>Search breweries quickly, browse by area, check hours, food, patios, dog-friendly spots, directions, and useful links in one place.</p>
-                <p>Events are a major part of the guide too — festivals, Oktoberfests, brewery happenings, seasonal events, and other reasons to get out and try somewhere new.</p>
+                <p>Events are part of the discovery experience too — festivals, Oktoberfests, brewery happenings, seasonal events, and other reasons to get out and try somewhere new.</p>
               </div>
             </div>
 
