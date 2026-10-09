@@ -3,8 +3,9 @@ export type BeerEvent = {
   date: string;
   startDate: string;
   endDate: string;
+  occurrences?: string[];
   location: string;
-  category: "Oktoberfest" | "Festival" | "Halloween" | "Beer garden" | "Beer Event";
+  category: "Oktoberfest" | "Festival" | "Halloween" | "Beer garden" | "Beer Event" | "Trivia & games" | "Food trucks" | "Live music";
   description: string;
   url: string;
   featured?: boolean;
@@ -24,6 +25,7 @@ export const beerEvents: BeerEvent[] = [
   },
   {
     name: "Hops and Hayrides at Trax Farm Market",
+    occurrences: ["2026-09-25", "2026-10-02", "2026-10-09", "2026-10-16", "2026-10-23"],
     date: "Sep 25 & Oct 2, 9, 16, 23, 2026",
     startDate: "2026-09-25",
     endDate: "2026-10-23",
@@ -57,6 +59,7 @@ export const beerEvents: BeerEvent[] = [
   },
   {
     name: "11th Hour Brewing Oktoberfest",
+    occurrences: ["2026-09-19", "2026-09-25", "2026-09-26", "2026-10-02", "2026-10-03"],
     date: "Sep 19, Sep 25-26 & Oct 2-3, 2026",
     startDate: "2026-09-19",
     endDate: "2026-10-03",
@@ -79,6 +82,7 @@ export const beerEvents: BeerEvent[] = [
   },
   {
     name: "Penn Brewery Oktoberfest",
+    occurrences: ["2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-25", "2026-09-26", "2026-09-27"],
     date: "Sep 17-20 & Sep 25-27, 2026",
     startDate: "2026-09-17",
     endDate: "2026-09-27",
@@ -90,6 +94,7 @@ export const beerEvents: BeerEvent[] = [
   },
   {
     name: "Hofbräuhaus Pittsburgh Oktoberfest",
+    occurrences: ["2026-09-18", "2026-09-19", "2026-09-20", "2026-09-25", "2026-09-26", "2026-09-27"],
     date: "Sep 18-20 & Sep 25-27, 2026",
     startDate: "2026-09-18",
     endDate: "2026-09-27",
@@ -215,12 +220,12 @@ function isoDateToUtc(value: string) {
   return Date.UTC(year, month - 1, day);
 }
 
-export function getVisibleBeerEvents(retentionDays = 14) {
+export function getVisibleBeerEvents(retentionDays = 0, sourceEvents: BeerEvent[] = beerEvents) {
   const today = getPittsburghTodayUtc();
   const retentionMs = retentionDays * 24 * 60 * 60 * 1000;
 
-  return beerEvents
-    .filter((event) => isoDateToUtc(event.endDate) + retentionMs >= today)
+  return sourceEvents
+    .filter((event) => (event.occurrences?.length ? Math.max(...event.occurrences.map(isoDateToUtc)) : isoDateToUtc(event.endDate)) + retentionMs >= today)
     .sort((a, b) => {
       const dateDifference = isoDateToUtc(a.startDate) - isoDateToUtc(b.startDate);
       return dateDifference || a.name.localeCompare(b.name);
