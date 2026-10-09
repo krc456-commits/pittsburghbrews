@@ -125,6 +125,14 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
                           <p className="mt-2 text-sm leading-6 text-zinc-200">Look for The Bohemian’s green-trimmed storefront next to the historic Garden Theater marquee on W. North Avenue. Use the street-facing Bohemian entrance at 22 W. North Avenue—not the old theater doors under the marquee. Mayfly Market &amp; Deli is a separate neighboring storefront.</p>
                         </div>
                       )}
+                      {brewery.glutenInfo && (
+                        <div className="mt-4 rounded-xl border border-white/10 bg-[#10100f] p-4">
+                          <p className="text-sm font-black text-white">{brewery.glutenInfo.category === "gluten-free" ? "Reported gluten-free options" : "Reported gluten-reduced options"}</p>
+                          <p className="mt-1 text-sm text-zinc-300">{brewery.glutenInfo.products.join(", ")}</p>
+                          {brewery.glutenInfo.note && <p className="mt-2 text-xs text-zinc-400">{brewery.glutenInfo.note}</p>}
+                          <p className="mt-2 text-xs text-zinc-400">Gluten-reduced beer is not necessarily safe for people with celiac disease. Confirm ingredients, testing, and cross-contact directly with the brewery. <a href={brewery.glutenInfo.sourceUrl} target="_blank" rel="noreferrer" className="underline">Source ↗</a> · Checked {brewery.glutenInfo.checked}</p>
+                        </div>
+                      )}
                       <div className="mt-5 flex flex-wrap gap-2">
                         <span className="tag">{brewery.food}</span>
                         {brewery.outdoor && <span className="tag">Outdoor seating</span>}
