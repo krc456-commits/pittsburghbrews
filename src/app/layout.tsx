@@ -4,8 +4,8 @@ import MobileNav from "@/components/MobileNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pittsburgh Brews | Pittsburgh Brewery Guide",
-  description: "A local guide to breweries, taprooms, patios, food, and beer across Pittsburgh and Western Pennsylvania.",
+  title: "Pittsburgh Brews | Find Pittsburgh Breweries",
+  description: "Search and discover Pittsburgh breweries by distance, neighborhood, food, patios, gluten-aware options, tap lists, events, and more.",
   icons: {
     icon: "/brand/yellow%20outline-bridge%20centered.png",
     shortcut: "/brand/yellow%20outline-bridge%20centered.png",
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <div className="grid gap-10 md:grid-cols-[1.2fr_.8fr] md:items-end">
                 <div>
                   <Brand footer />
-                  <p className="mt-5 max-w-xl text-sm leading-6 text-zinc-500">A local, independent guide to Pittsburgh breweries — useful whether you are trying somewhere new or checking in on an old favorite.</p>
+                  <p className="mt-5 max-w-xl text-sm leading-6 text-zinc-500">An independent Pittsburgh brewery discovery tool — search what’s nearby, compare locations, and find the brewery that fits.</p>
                 </div>
                 <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm font-bold text-zinc-400 md:justify-end">
                   <Link href="/breweries" className="hover:text-white">Breweries</Link>
