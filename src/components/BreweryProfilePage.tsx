@@ -50,7 +50,7 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
           </div>
         )}
         <div className="relative mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16">
-          <Link href="/breweries" className="text-xs font-black uppercase tracking-[.12em] text-zinc-400 hover:text-[var(--gold)]">← Brewery directory</Link>
+          <Link href="/breweries" className="text-xs font-black uppercase tracking-[.12em] text-zinc-400 hover:text-[var(--gold)]">← Brewery search</Link>
           <div className="mt-9 max-w-4xl">
             <div className="eyebrow">Brewery profile</div>
             {profile.locationSlugs.some((slug) => breweries.find((item) => item.slug === slug)?.pittsburghOriginal) && <div className="mt-3"><span title="Founded in the greater Pittsburgh region" className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-xs font-black uppercase tracking-[.08em] text-amber-300">★ PGH Original</span></div>}
