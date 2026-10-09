@@ -62,7 +62,7 @@ function parseItem(item: SourceItem, calendar: typeof calendars[number], today: 
     : /trivia|bingo|game night|quiz/i.test(name + " " + description) ? "Trivia & games" as const
     : /food truck|pizza|bbq|taco|tortas|sando|wrap|trailer|chamo|rincon|horns|boonseek|77 club|off the press/i.test(name) ? "Food trucks" as const
     : /music|concert|band|dj|comedy/i.test(name + " " + description) ? "Live music" as const : "Beer Event" as const;
-  return { name: `${name} · ${calendar.brewery}`, date: startDate === endDate ? displayDate(startDate) : `${displayDate(startDate)} – ${displayDate(endDate)}`, startDate, endDate, location: calendar.location, category, description, url, image: officialImage(item) };
+  return { name: `${name} · ${calendar.brewery}`, date: startDate === endDate ? displayDate(startDate) : `${displayDate(startDate)} – ${displayDate(endDate)}`, startDate, endDate, location: calendar.location, category, description, url, image: calendar.brewery === "Eleventh Hour Brewing" ? undefined : officialImage(item) };
 }
 
 export async function getSquarespaceBeerEvents(): Promise<BeerEvent[]> {
