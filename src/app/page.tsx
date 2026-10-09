@@ -123,7 +123,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
           <div className="mx-auto max-w-6xl text-center">
             <div className="eyebrow">Pittsburgh Brews</div>
-            <h1 className="mt-3 whitespace-nowrap text-[clamp(1.65rem,7vw,4rem)] font-black tracking-[-0.05em] text-white">
+            <h1 className="mx-auto mt-3 max-w-4xl text-4xl font-black leading-[1.02] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
               Pittsburgh breweries, made easy.
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-zinc-200 sm:text-base md:text-lg md:leading-7">
@@ -169,7 +169,7 @@ export default function Home() {
           <div>
             <div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Why Pittsburgh Brews?</div>
             <h2 className="mt-2 max-w-3xl text-2xl font-black tracking-[-.035em] md:text-3xl">
-              Discover Pittsburgh breweries your way.
+              Find the brewery that fits.
             </h2>
           </div>
           <p className="text-sm leading-6 text-[#5e594d] md:text-base">
