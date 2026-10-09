@@ -8,7 +8,7 @@ import { getBreweryProfileRoute } from "@/data/breweryProfiles";
 import { breweryCoordinates } from "@/data/breweryCoordinates";
 
 const foodFilters = ["All food", "Full kitchen", "Food trucks", "Light food"] as const;
-const featureFilters = ["All features", "Outdoor seating", "Dog friendly"] as const;
+const featureFilters = ["All features", "Outdoor seating", "Dog friendly", "Gluten-aware"] as const;
 
 type UserLocation = { lat: number; lng: number };
 type SortMode = "alpha" | "distance";
@@ -68,7 +68,7 @@ export default function BreweryDirectory() {
 
   const initialArea = areas.includes(requestedArea as (typeof areas)[number]) ? (requestedArea as (typeof areas)[number]) : "All";
   const initialFood = foodFilters.includes(requestedFood as (typeof foodFilters)[number]) ? (requestedFood as (typeof foodFilters)[number]) : "All food";
-  const initialFeature = requestedFeature === "outdoor" ? "Outdoor seating" : requestedFeature === "dog" ? "Dog friendly" : "All features";
+  const initialFeature = requestedFeature === "outdoor" ? "Outdoor seating" : requestedFeature === "dog" ? "Dog friendly" : requestedFeature === "gluten" ? "Gluten-aware" : "All features";
 
   const [query, setQuery] = useState(requestedQuery);
   const [area, setArea] = useState<(typeof areas)[number]>(initialArea);
@@ -132,7 +132,7 @@ export default function BreweryDirectory() {
         const matchesQuery = !normalized || [brewery.name, brewery.city, brewery.neighborhood, brewery.type].join(" ").toLowerCase().includes(normalized);
         const matchesArea = area === "All" || brewery.area === area;
         const matchesFood = food === "All food" || brewery.food === food;
-        const matchesFeature = feature === "All features" || (feature === "Outdoor seating" && brewery.outdoor) || (feature === "Dog friendly" && brewery.dogFriendly);
+        const matchesFeature = feature === "All features" || (feature === "Outdoor seating" && brewery.outdoor) || (feature === "Dog friendly" && brewery.dogFriendly) || (feature === "Gluten-aware" && Boolean(brewery.glutenInfo));
         return matchesQuery && matchesArea && matchesFood && matchesFeature;
       })
       .map((brewery) => {
@@ -168,7 +168,7 @@ export default function BreweryDirectory() {
               <select value={area} onChange={(e) => setArea(e.target.value as (typeof areas)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{areas.map((item) => <option key={item}>{item}</option>)}</select>
               <select value={food} onChange={(e) => setFood(e.target.value as (typeof foodFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{foodFilters.map((item) => <option key={item}>{item}</option>)}</select>
               <select value={feature} onChange={(e) => setFeature(e.target.value as (typeof featureFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{featureFilters.map((item) => <option key={item}>{item}</option>)}</select>
-              <p className="text-xs leading-5 text-zinc-400 lg:col-span-4">Looking for gluten-free or gluten-reduced beer? I'm collecting brewery-confirmed options. These are different categories: gluten-reduced beer may not be appropriate for celiac disease. I won't label any brewery as celiac-safe without appropriate verification.</p>
+              <p className="text-xs leading-5 text-zinc-400 lg:col-span-4"><span className="font-black text-white">GF / gluten-aware:</span> badges are based on brewery-published information. Availability can change with the active tap list or menu. Gluten-reduced beer is not the same as gluten-free, and no listing should be read as a celiac-safety guarantee.</p>
               <div className="flex items-center justify-between pt-1 lg:col-span-4">
                 <span className="text-xs text-zinc-600">{filtered.length} matching breweries</span>
                 {hasActiveFilters && <button type="button" onClick={reset} className="text-xs font-black text-[var(--gold)]">Clear filters</button>}
@@ -257,7 +257,7 @@ export default function BreweryDirectory() {
                 {brewery.pittsburghOriginal && <div className="mt-3"><span title="Founded in the greater Pittsburgh region" className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-[.08em] text-amber-300"><span aria-hidden="true">★</span> PGH Original</span></div>}
                 {brewery.photoSource && <p className="mt-2 text-[11px] text-zinc-500">Photo source: <a data-card-action href={brewery.photoSource.url} target="_blank" rel="noopener noreferrer" className="underline decoration-zinc-600 underline-offset-2 hover:text-amber-300">{brewery.photoSource.label} ↗</a></p>}
                 {brewery.originNote && <p className="mt-3 text-xs leading-relaxed text-zinc-400">{brewery.originNote}</p>}
-                <div className="mt-5 flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}</div>
+                <div className="mt-5 flex flex-wrap gap-2"><span className="tag">{brewery.type}</span><span className="tag">{brewery.food}</span>{brewery.outdoor && <span className="tag">Patio</span>}{brewery.dogFriendly && <span className="tag">Dog friendly</span>}{brewery.glutenInfo && <span className="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-[.08em] text-emerald-300">GF options</span>}</div>
 
                 <div className="mt-5 border-t border-white/8 pt-4">
                   <a
