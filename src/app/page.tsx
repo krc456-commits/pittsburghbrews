@@ -4,7 +4,7 @@ import Link from "next/link";
 import HeroBackgroundRotator from "@/components/HeroBackgroundRotator";
 import { breweries } from "@/data/allBreweries";
 import { getVisibleBeerEvents } from "@/data/events";
-import { eventUrl } from "@/data/eventDetails";
+import { eventUrl, getCurrentEvents } from "@/data/eventDetails";
 import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents";
 import { getSquarespaceBeerEvents } from "@/data/squarespaceEvents";
 import { breweryProfiles, featuredProfileOrder, representativeBrewerySlugs } from "@/data/breweryProfileContent";
@@ -116,7 +116,7 @@ function getHeroStorefronts() {
 }
 
 export default async function Home() {
-  const upcomingEvents = getVisibleBeerEvents(0, mergeBeerEvents(getVisibleBeerEvents(), [...await getAutomaticBeerEvents(), ...await getSquarespaceBeerEvents()])).slice(0, 5);
+  const upcomingEvents = (await getCurrentEvents()).slice(0, 5);
   const heroStorefronts = getHeroStorefronts();
   return (
     <main className="bg-[#171714]">

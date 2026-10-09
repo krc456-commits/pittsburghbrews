@@ -1,13 +1,11 @@
 import Link from "next/link";
 import EventExplorer from "@/components/EventExplorer";
-import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents";
-import { getSquarespaceBeerEvents } from "@/data/squarespaceEvents";
-import { getVisibleBeerEvents } from "@/data/events";
+import { getCurrentEvents } from "@/data/eventDetails";
 
 export const dynamic = "force-dynamic";
 
 export default async function EventsPage() {
-  const beerEvents = getVisibleBeerEvents(0, mergeBeerEvents(getVisibleBeerEvents(), [...await getAutomaticBeerEvents(), ...await getSquarespaceBeerEvents()]));
+  const beerEvents = await getCurrentEvents();
 
   return (
     <main className="bg-[#f6f1e7] text-[#191815]">

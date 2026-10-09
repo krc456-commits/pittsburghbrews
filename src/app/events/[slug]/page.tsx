@@ -16,6 +16,7 @@ export default async function EventDetail({ params }: { params: Promise<{ slug: 
         <div className="relative flex min-h-48 flex-col items-center justify-center gap-3 overflow-hidden bg-[#29271f] px-5 py-10 text-center text-white">
           {event.image && <img src={event.image.url} alt={event.image.alt} className="absolute inset-0 h-full w-full object-cover" />}
           {event.image && <div className="absolute inset-0 bg-black/60" />}
+                {event.image?.alt.startsWith("Brewery venue photo:") && <div className="absolute bottom-2 right-2 z-20 rounded bg-black/70 px-2 py-1 text-[10px] font-semibold text-white">Brewery photo · Not event flyer</div>}
           <div className="relative z-10 flex flex-col items-center gap-3">
           <span className="rounded-full border border-white/30 px-3 py-1 text-xs font-black uppercase tracking-widest text-[#edcf78]">{event.category}</span>
           <div className="text-5xl" aria-hidden="true">✦</div>
