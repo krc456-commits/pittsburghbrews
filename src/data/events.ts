@@ -215,11 +215,11 @@ function isoDateToUtc(value: string) {
   return Date.UTC(year, month - 1, day);
 }
 
-export function getVisibleBeerEvents(retentionDays = 0) {
+export function getVisibleBeerEvents(retentionDays = 0, sourceEvents: BeerEvent[] = beerEvents) {
   const today = getPittsburghTodayUtc();
   const retentionMs = retentionDays * 24 * 60 * 60 * 1000;
 
-  return beerEvents
+  return sourceEvents
     .filter((event) => isoDateToUtc(event.endDate) + retentionMs >= today)
     .sort((a, b) => {
       const dateDifference = isoDateToUtc(a.startDate) - isoDateToUtc(b.startDate);
