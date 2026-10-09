@@ -9,6 +9,20 @@ const checked = "Sep 17, 2026";
 const listing = "Current business listing";
 
 export const breweryHours: Record<string, BreweryHoursEntry> = {
+  "four-points-north-side": {
+    hours: [
+      { day: "Monday", hours: "Closed" },
+      { day: "Tuesday", hours: "Closed" },
+      { day: "Wednesday", hours: "4–9 PM" },
+      { day: "Thursday", hours: "4–9 PM" },
+      { day: "Friday", hours: "4–10 PM" },
+      { day: "Saturday", hours: "12–10 PM" },
+      { day: "Sunday", hours: "12–6 PM" }
+    ],
+    lastChecked: "Oct 8, 2026",
+    sourceLabel: "Current Pittsburgh taproom business listings",
+    sourceUrl: "https://www.restaurantji.com/pa/pittsburgh/four-points-brewing-taproom-/"
+  },
   "back-alley-brewing": {
     hours: [
       { day: "Monday", hours: "Closed" },
