@@ -116,7 +116,7 @@ function getHeroStorefronts() {
 }
 
 export default async function Home() {
-  const upcomingEvents = getVisibleBeerEvents(0, mergeBeerEvents(getVisibleBeerEvents(), [...await getAutomaticBeerEvents(), ...await getSquarespaceBeerEvents()])).slice(0, 5);
+  const upcomingEvents = (await getCurrentEvents()).slice(0, 5);
   const heroStorefronts = getHeroStorefronts();
   return (
     <main className="bg-[#171714]">
