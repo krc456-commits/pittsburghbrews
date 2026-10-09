@@ -37,7 +37,7 @@ function parseItem(item: SourceItem, calendar: typeof calendars[number], today: 
   const endDate = pittsburghDate(endValue);
   if (endDate < today || startDate > pittsburghDate(Date.now() + 180 * 86400000)) return null;
   const rawPath = plainText(item.fullUrl ?? item.urlId);
-  let url = calendar.page;
+  let url: string = calendar.page;
   if (rawPath) {
     try {
       const resolved = new URL(rawPath.startsWith("/") ? rawPath : `/${rawPath}`, calendar.page);
