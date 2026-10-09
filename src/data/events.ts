@@ -5,7 +5,7 @@ export type BeerEvent = {
   endDate: string;
   occurrences?: string[];
   location: string;
-  category: "Oktoberfest" | "Festival" | "Halloween" | "Beer garden" | "Beer Event" | "Trivia & games" | "Food trucks" | "Live music";
+  category: "Oktoberfest" | "Festival" | "Holiday themed" | "Beer garden" | "Beer Event" | "Trivia & games" | "Food trucks" | "Live music";
   description: string;
   url: string;
   featured?: boolean;
@@ -174,7 +174,7 @@ export const beerEvents: BeerEvent[] = [
     startDate: "2026-10-08",
     endDate: "2026-10-31",
     location: "Eleventh Hour Brewing · Lawrenceville",
-    category: "Halloween",
+    category: "Holiday themed",
     description: "A 21+ Halloween pop-up with themed drinks, spooky décor, games, music, and photo setups.",
     url: "https://feverup.com/m/740597",
     featured: true,
