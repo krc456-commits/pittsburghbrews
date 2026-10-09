@@ -1,7 +1,77 @@
 import { breweries as coreBreweries, areas } from "./breweries";
 import { breweryAdditions } from "./breweryAdditions";
-import type { BreweryImage, BreweryLogo } from "./breweries";
+import type { Brewery, BreweryImage, BreweryLogo } from "./breweries";
 import { untappdBySlug } from "./untappd";
+
+const glutenInfoBySlug: Record<string, NonNullable<Brewery["glutenInfo"]>> = {
+  "east-end": {
+    options: [
+      { category: "gluten-free-drink", label: "Along Came a Cider — brewery says it is lab-certified gluten free" }
+    ],
+    sourceUrl: "https://www.eastendbrewing.com/about-our-beers",
+    checked: "Oct 2026",
+    note: "Availability can change; check the current tap/can list before visiting."
+  },
+  "coven-brewing": {
+    options: [
+      { category: "gluten-free-drink", label: "Gluten-free cider and seltzer options" }
+    ],
+    sourceUrl: "https://www.covenbrewingpgh.com/faq",
+    checked: "Oct 2026",
+    note: "Coven says its tap list changes during service; verify the current list before visiting."
+  },
+  "recon-butler": {
+    options: [
+      { category: "gluten-free-drink", label: "Recon Cider — described by the brewery as a gluten-free option" },
+      { category: "gluten-reduced-beer", label: "Future Brew and Re-Arranged — gluten-reduced beers in Recon's catalog" }
+    ],
+    sourceUrl: "https://www.reconbrewing.com/our-beers",
+    checked: "Oct 2026",
+    note: "The catalog documents these products, but individual taproom availability varies."
+  },
+  "recon-meeder": {
+    options: [
+      { category: "gluten-free-drink", label: "Recon Cider — described by the brewery as a gluten-free option" },
+      { category: "gluten-reduced-beer", label: "Future Brew and Re-Arranged — gluten-reduced beers in Recon's catalog" }
+    ],
+    sourceUrl: "https://www.reconbrewing.com/our-beers",
+    checked: "Oct 2026",
+    note: "The catalog documents these products, but individual taproom availability varies."
+  },
+  "recon-hastings": {
+    options: [
+      { category: "gluten-free-drink", label: "Recon Cider — described by the brewery as a gluten-free option" },
+      { category: "gluten-reduced-beer", label: "Future Brew and Re-Arranged — gluten-reduced beers in Recon's catalog" }
+    ],
+    sourceUrl: "https://www.reconbrewing.com/our-beers",
+    checked: "Oct 2026",
+    note: "The catalog documents these products, but individual taproom availability varies."
+  },
+  "spoonwood": {
+    options: [
+      { category: "gluten-aware-food", label: "Brewery says gluten-free food options can be available by request" }
+    ],
+    sourceUrl: "https://spoonwoodbrewing.com/",
+    checked: "Oct 2026",
+    note: "This is a food accommodation, not a claim that Spoonwood beer is gluten free."
+  },
+  "cinderlands-warehouse": {
+    options: [
+      { category: "gluten-aware-food", label: "Gluten-free bun available" }
+    ],
+    sourceUrl: "https://www.cinderlands.com/cinderlands-warehouse/",
+    checked: "Oct 2026",
+    note: "Cinderlands specifically says it does not currently have gluten-conscious dishes; the bun should not be treated as a celiac-safety claim."
+  },
+  "penn-brewery": {
+    options: [
+      { category: "gluten-free-food", label: "Official menu marks multiple dishes and sides GF" }
+    ],
+    sourceUrl: "https://www.pennbrew.com/_files/ugd/edf429_b1843a3595f64f14b9831a967ab806d4.pdf?index=true",
+    checked: "Oct 2026",
+    note: "Menu labeling can change; verify current preparation and cross-contact practices with the brewery if medically necessary."
+  }
+};
 
 const localImage = (url: string, alt: string): BreweryImage => ({
   url,
@@ -528,6 +598,7 @@ export const breweries = [...coreBreweries, ...breweryAdditions]
     ...(imageOverrides[brewery.slug] ? { image: imageOverrides[brewery.slug] } : {}),
     ...(logoOverrides[brewery.slug] ? { logo: logoOverrides[brewery.slug] } : {}),
     ...(untappdBySlug[brewery.slug] ? { untappd: untappdBySlug[brewery.slug] } : {}),
+    ...(glutenInfoBySlug[brewery.slug] ? { glutenInfo: glutenInfoBySlug[brewery.slug] } : {}),
   }))
   .sort((a, b) => a.name.localeCompare(b.name));
 
