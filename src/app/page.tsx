@@ -122,12 +122,12 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
           <div className="mx-auto max-w-6xl text-center">
-            <div className="eyebrow">Independent Pittsburgh beer guide</div>
+            <div className="eyebrow">Pittsburgh brewery discovery</div>
             <h1 className="mt-3 whitespace-nowrap text-[clamp(1.65rem,7vw,4rem)] font-black tracking-[-0.05em] text-white">
-              Pittsburgh beer, made easier.
+              Find your next brewery.
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-zinc-200 sm:text-base md:text-lg md:leading-7">
-              Find breweries, browse by area, and discover local beer events — without turning a night out into a project.
+              Search by distance, neighborhood, food, patios, gluten-aware options, and more — then see what’s happening around Pittsburgh beer.
             </p>
 
             <div className="mx-auto mt-7 grid max-w-3xl grid-cols-3 gap-2 sm:gap-3">
@@ -158,7 +158,7 @@ export default function Home() {
             </div>
 
             <div className="mt-5 text-[11px] font-black uppercase tracking-[.12em] text-zinc-300/80">
-              Independent guide · Local events · No paid placement
+              Independent · Useful filters · Local events · No paid placement
             </div>
           </div>
         </div>
@@ -169,11 +169,11 @@ export default function Home() {
           <div>
             <div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Why Pittsburgh Brews?</div>
             <h2 className="mt-2 max-w-3xl text-2xl font-black tracking-[-.035em] md:text-3xl">
-              Less planning. More enjoying Pittsburgh beer.
+              Discover Pittsburgh breweries your way.
             </h2>
           </div>
           <p className="text-sm leading-6 text-[#5e594d] md:text-base">
-            One place for current brewery details, useful filters, upcoming beer events, and a little inspiration for where to go next.
+            Search what’s nearby, compare locations, filter for what matters to you, and find the brewery that fits the kind of stop you want.
           </p>
         </div>
       </section>
