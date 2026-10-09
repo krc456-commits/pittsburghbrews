@@ -4,6 +4,7 @@ import Link from "next/link";
 import HeroBackgroundRotator from "@/components/HeroBackgroundRotator";
 import { breweries } from "@/data/allBreweries";
 import { getVisibleBeerEvents } from "@/data/events";
+import { eventUrl } from "@/data/eventDetails";
 import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents";
 import { getSquarespaceBeerEvents } from "@/data/squarespaceEvents";
 import { breweryProfiles, featuredProfileOrder, representativeBrewerySlugs } from "@/data/breweryProfileContent";
@@ -261,9 +262,7 @@ export default async function Home() {
             {upcomingEvents.map((event, index) => (
               <a
                 key={event.name}
-                href={event.url}
-                target="_blank"
-                rel="noreferrer"
+                href={eventUrl(event)}
                 className={`group grid gap-2 px-5 py-4 transition hover:bg-white sm:grid-cols-[180px_1fr_auto] sm:items-center sm:gap-5 ${index !== upcomingEvents.length - 1 ? "border-b border-black/10" : ""}`}
               >
                 <div className="text-xs font-black uppercase tracking-[0.08em] text-[#8d6b00]">{event.date}</div>
