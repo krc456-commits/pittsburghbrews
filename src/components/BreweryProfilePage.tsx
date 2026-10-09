@@ -137,7 +137,38 @@ export default function BreweryProfilePage({ profile }: { profile: BreweryProfil
                         <span className="tag">{brewery.food}</span>
                         {brewery.outdoor && <span className="tag">Outdoor seating</span>}
                         {brewery.dogFriendly && <span className="tag">Dog friendly</span>}
+                        {brewery.glutenInfo && <span className="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-[.08em] text-emerald-300">GF options</span>}
                       </div>
+                      {brewery.glutenInfo && (
+                        <div className="mt-5 rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-4">
+                          <div className="text-[10px] font-black uppercase tracking-[.13em] text-emerald-300">Gluten-aware options</div>
+                          <div className="mt-2 space-y-2">
+                            {brewery.glutenInfo.options.map((option) => (
+                              <div key={option.label} className="text-sm leading-6 text-zinc-300">
+                                <span className="mr-2 font-black text-white">
+                                  {option.category === "gluten-reduced-beer" ? "Gluten-reduced" : option.category.includes("food") ? "Food" : "GF"}
+                                </span>
+                                {option.label}
+                              </div>
+                            ))}
+                          </div>
+                          {brewery.glutenInfo.note && <p className="mt-3 text-xs leading-5 text-zinc-500">{brewery.glutenInfo.note}</p>}
+                          <p className="mt-3 text-xs leading-5 text-zinc-500">
+                            Availability may depend on the current tap list or menu. Gluten-reduced beer is not the same as gluten-free, and this listing is not a celiac-safety guarantee.
+                          </p>
+                          <div className="mt-3 flex flex-wrap gap-4 text-xs font-black">
+                            <a href={brewery.glutenInfo.sourceUrl} target="_blank" rel="noreferrer" className="text-emerald-300 hover:text-white">
+                              Brewery source ↗
+                            </a>
+                            {brewery.untappd && (
+                              <a href={brewery.untappd.url} target="_blank" rel="noreferrer" className="text-[var(--gold)] hover:text-white">
+                                {brewery.untappd.liveMenu ? "Check current tap list ↗" : "View beer list on Untappd ↗"}
+                              </a>
+                            )}
+                          </div>
+                          <div className="mt-2 text-[10px] uppercase tracking-[.1em] text-zinc-600">Checked {brewery.glutenInfo.checked}</div>
+                        </div>
+                      )}
                       {brewery.image && (
                         <div className="mt-6 overflow-hidden rounded-xl border border-white/10 bg-[#0d0d0c]">
                           <img
