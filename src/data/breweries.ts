@@ -27,6 +27,13 @@ export type Brewery = {
   food: "Full kitchen" | "Food trucks" | "Light food";
   outdoor?: boolean;
   dogFriendly?: boolean;
+  glutenInfo?: {
+    category: "gluten-free" | "gluten-reduced";
+    products: string[];
+    sourceUrl: string;
+    checked: string;
+    note?: string;
+  };
   lastVerified: string;
   blurb: string;
   image?: BreweryImage;
