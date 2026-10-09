@@ -7,7 +7,9 @@ type Period = "all" | "today" | "weekend" | "week" | "month";
 const zones = ["All areas", "Pittsburgh", "North", "South", "East", "West", "Surrounding"] as const;
 
 function dayKey(date: Date) {
-  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
+  const parts = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(date);
+  const x = Object.fromEntries(parts.map(p => [p.type, p.value]));
+  return `${x.year}-${x.month}-${x.day}`;
 }
 function isoToDay(value: string) {
   const [y, m, d] = value.split("-").map(Number);
