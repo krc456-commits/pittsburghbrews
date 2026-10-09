@@ -122,12 +122,12 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-20">
           <div className="mx-auto max-w-6xl text-center">
-            <div className="eyebrow">Pittsburgh brewery discovery</div>
+            <div className="eyebrow">Pittsburgh Brews</div>
             <h1 className="mt-3 whitespace-nowrap text-[clamp(1.65rem,7vw,4rem)] font-black tracking-[-0.05em] text-white">
-              Find your next brewery.
+              Pittsburgh breweries, made easy.
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-zinc-200 sm:text-base md:text-lg md:leading-7">
-              Search by distance, neighborhood, food, patios, gluten-aware options, and more — then see what’s happening around Pittsburgh beer.
+              Search by distance, neighborhood, food, patios, gluten-aware options, tap lists, and more.
             </p>
 
             <div className="mx-auto mt-7 grid max-w-3xl grid-cols-3 gap-2 sm:gap-3">
