@@ -123,7 +123,7 @@ const imageOverrides: Record<string, BreweryImage> = {
     "Hazel Grove Brewing storefront in Hazelwood"
   ),
   "hitchhiker-sharpsburg": localImage(
-    "/brand/breweries/hitchhiker/storefront-sharpsburg.png",
+    "/brand/breweries/hitchhiker/storefront-sharpsburg.PNG",
     "Hitchhiker Brewing Co. storefront in Sharpsburg"
   ),
   "hitchhiker-mt-lebanon": localImage(
