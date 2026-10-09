@@ -9,6 +9,8 @@ export type BeerEvent = {
   description: string;
   url: string;
   featured?: boolean;
+  /** Only use reviewed, permission-cleared official event flyers or original photos. */
+  image?: { url: string; alt: string; credit?: string };
 };
 
 export const beerEvents: BeerEvent[] = [
