@@ -13,10 +13,14 @@ export default async function EventDetail({ params }: { params: Promise<{ slug: 
     <div className="mx-auto max-w-5xl px-5 py-10 md:px-8 md:py-14">
       <Link href="/events" className="text-sm font-black text-[#8d6b00] hover:underline">← All events</Link>
       <div className="mt-6 overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm">
-        <div className="flex min-h-48 flex-col items-center justify-center gap-3 bg-[#29271f] px-5 py-10 text-center text-white">
+        <div className="relative flex min-h-48 flex-col items-center justify-center gap-3 overflow-hidden bg-[#29271f] px-5 py-10 text-center text-white">
+          {event.image && <img src={event.image.url} alt={event.image.alt} className="absolute inset-0 h-full w-full object-cover" />}
+          {event.image && <div className="absolute inset-0 bg-black/60" />}
+          <div className="relative z-10 flex flex-col items-center gap-3">
           <span className="rounded-full border border-white/30 px-3 py-1 text-xs font-black uppercase tracking-widest text-[#edcf78]">{event.category}</span>
           <div className="text-5xl" aria-hidden="true">✦</div>
           <div className="max-w-lg text-lg font-bold">{event.date}</div>
+          </div>
         </div>
         <div className="p-6 md:p-10">
           <h1 className="text-3xl font-black tracking-tight md:text-5xl">{event.name}</h1>
