@@ -215,7 +215,7 @@ function isoDateToUtc(value: string) {
   return Date.UTC(year, month - 1, day);
 }
 
-export function getVisibleBeerEvents(retentionDays = 14) {
+export function getVisibleBeerEvents(retentionDays = 0) {
   const today = getPittsburghTodayUtc();
   const retentionMs = retentionDays * 24 * 60 * 60 * 1000;
 
