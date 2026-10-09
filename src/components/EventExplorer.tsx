@@ -31,7 +31,7 @@ function matchesPeriod(event: BeerEvent, period: Period, today: number) {
   const now = new Date(today);
   if (period === "weekend") {
     const weekDay = now.getUTCDay();
-    const fridayOffset = (5 - weekDay + 7) % 7;
+    const fridayOffset = weekDay === 6 ? -1 : weekDay === 0 ? -2 : (5 - weekDay + 7) % 7;
     const fri = today + fridayOffset * 86400000;
     const sun = fri + 2 * 86400000;
     return isoToDay(event.startDate) <= sun && isoToDay(event.endDate) >= fri;
