@@ -28,8 +28,10 @@ export type Brewery = {
   outdoor?: boolean;
   dogFriendly?: boolean;
   glutenInfo?: {
-    category: "gluten-free" | "gluten-reduced";
-    products: string[];
+    options: {
+      category: "gluten-free-drink" | "gluten-reduced-beer" | "gluten-free-food" | "gluten-aware-food";
+      label: string;
+    }[];
     sourceUrl: string;
     checked: string;
     note?: string;
