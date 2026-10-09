@@ -20,6 +20,18 @@ function plainText(input: unknown): string {
   return typeof input === "string" ? input.replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, " ").trim() : "";
 }
 type SourceItem = Record<string, unknown>;
+// Embedded promotional artwork is displayed from the brewery-owned original URL,
+// not copied, edited, or downloaded into the Pittsburgh Brews repository.
+function officialImage(item: SourceItem): BeerEvent["image"] {
+  const raw = item.assetUrl ?? item.originalSize ?? item.imageUrl;
+  if (typeof raw !== "string") return undefined;
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "https:" || !/^(?:images\.squarespace-cdn\.com|static1\.squarespace\.com|static\.squarespace\.com)$/.test(url.hostname)) return undefined;
+    return { url: url.href, alt: "Official event image published by the brewery" };
+  } catch { return undefined; }
+}
+
 function itemsFrom(value: unknown): SourceItem[] {
   if (!value || typeof value !== "object") return [];
   const v = value as Record<string, unknown>;
@@ -50,7 +62,7 @@ function parseItem(item: SourceItem, calendar: typeof calendars[number], today: 
     : /trivia|bingo|game night|quiz/i.test(name + " " + description) ? "Trivia & games" as const
     : /food truck|pizza|bbq|taco|tortas|sando|wrap|trailer|chamo|rincon|horns|boonseek|77 club|off the press/i.test(name) ? "Food trucks" as const
     : /music|concert|band|dj|comedy/i.test(name + " " + description) ? "Live music" as const : "Beer Event" as const;
-  return { name: `${name} · ${calendar.brewery}`, date: startDate === endDate ? displayDate(startDate) : `${displayDate(startDate)} – ${displayDate(endDate)}`, startDate, endDate, location: calendar.location, category, description, url };
+  return { name: `${name} · ${calendar.brewery}`, date: startDate === endDate ? displayDate(startDate) : `${displayDate(startDate)} – ${displayDate(endDate)}`, startDate, endDate, location: calendar.location, category, description, url, image: officialImage(item) };
 }
 
 export async function getSquarespaceBeerEvents(): Promise<BeerEvent[]> {

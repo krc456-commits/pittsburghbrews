@@ -2,6 +2,7 @@ import type { BeerEvent } from "@/data/events";
 import { getVisibleBeerEvents } from "@/data/events";
 import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents";
 import { getSquarespaceBeerEvents } from "@/data/squarespaceEvents";
+import { getOfficialEventArtwork } from "@/data/officialEventArtwork";
 import { breweries } from "@/data/allBreweries";
 
 // Map only unambiguous event locations to existing brewery location photos.
@@ -34,8 +35,11 @@ export function eventUrl(event: BeerEvent) {
   return "/events/" + eventSlug(event);
 }
 export async function getCurrentEvents() {
-  const [ics, squarespace] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents()]);
-  return getVisibleBeerEvents(0, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace])).map(withVenueImage);
+  const [ics, squarespace, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getOfficialEventArtwork()]);
+  return getVisibleBeerEvents(0, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace])).map(event => {
+    const official = artwork.get(event.name);
+    return withVenueImage(official ? { ...event, image: official } : event);
+  });
 }
 export function findEvent(events: BeerEvent[], slug: string) {
   return events.find(e => eventSlug(e) === slug);
