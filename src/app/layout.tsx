@@ -67,7 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <div className="grid gap-10 md:grid-cols-[1.2fr_.8fr] md:items-end">
                 <div>
                   <Brand footer />
-                  <p className="mt-5 max-w-xl text-sm leading-6 text-zinc-500">An independent Pittsburgh brewery discovery tool — search what’s nearby, compare locations, and find the brewery that fits.</p>
+                  <p className="mt-5 max-w-xl text-sm leading-6 text-zinc-500">Pittsburgh breweries, made easy — search what’s nearby, compare locations, and find the brewery that fits.</p>
                 </div>
                 <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm font-bold text-zinc-400 md:justify-end">
                   <Link href="/breweries" className="hover:text-white">Breweries</Link>
