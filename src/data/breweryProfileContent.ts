@@ -27,6 +27,65 @@ export type BreweryProfileContent = {
 };
 
 export const breweryProfiles: Record<string, BreweryProfileContent> = {
+  "four-points": {
+  "slug": "four-points",
+  "name": "Four Points Brewing",
+  "tagline": "Charleroi-rooted craft brewing with a North Side taproom celebrated for hop-forward releases, pinball and vinyl nights.",
+  "founded": "2018",
+  "knownFor": [
+    "Fourth Street IPA",
+    "North Side taproom",
+    "Charleroi roots",
+    "Hazy IPAs"
+  ],
+  "specialTitle": "From a steel-town brewery to Western Avenue.",
+  "specialBody": [
+    "Four Points began in Charleroi, Washington County, where it opened a public brewery and taproom in July 2018. The original Charleroi taproom closed in 2020; the company continued brewing in Charleroi while opening a new public taproom in Pittsburgh's North Side.",
+    "The name refers to the four-pointed stars in the American Iron and Steel Institute's emblem, a nod to the area's manufacturing heritage. Today the Western Avenue location blends a changing beer selection with pinball, vinyl nights, trivia and visiting food vendors."
+  ],
+  "storyTitle": "A Charleroi original with a Pittsburgh taproom",
+  "story": [
+    "Four Points opened its original taproom on Washington Avenue in downtown Charleroi in July 2018. Early coverage described owner Dave Barbe and brewmaster Adam Boura developing the beer operation alongside the neighboring Fourth Street BBQ restaurant.",
+    "The original public Charleroi taproom closed in 2020. Four Points expanded its customer-facing presence to 919 Western Avenue on Pittsburgh's North Side in 2021, in the former Shamrock Inn space. Brewing remained associated with Charleroi, while Western Avenue became the public taproom visitors can currently plan to visit.",
+    "The North Side space is known for a comfortable neighborhood atmosphere, several pinball machines, rotating food trucks and regular vinyl-focused events. The Charleroi brewery remains part of Four Points' story, but should not be presented as an operating public taproom without renewed verification."
+  ],
+  "beerTitle": "Fourth Street, Nitemoves and a wide-ranging draft lineup",
+  "beer": [
+    "Fourth Street is the brewery's flagship 6.6% American IPA, built around Citra and Mosaic hops. Its variation Fourth Street + adds another substantial dry-hop charge, while Nitemoves brings Nelson, Enigma and Strata into a hazy IPA.",
+    "Beyond hop-forward releases, Four Points has produced lagers such as 4P Märzen and 4P Dunkel, the coffee porter Little City, and stronger dark beer such as Donora Smog. These are documented examples from its beer catalog—not a statement about what's currently on tap."
+  ],
+  "take": "Go for a North Side stop with strong IPAs, pinball and a relaxed neighborhood feel.",
+  "takeDetail": "It's a particularly useful addition to a Western Avenue brewery crawl. Check the taproom's current lineup and food truck calendar before visiting.",
+  "locationSlugs": [
+    "four-points-north-side"
+  ],
+  "sources": [
+    {
+      "label": "Four Points Brewing official website",
+      "url": "https://fourpointsbrewing.com/"
+    },
+    {
+      "label": "Four Points official events calendar",
+      "url": "https://fourpointsbrewing.com/4p-events"
+    },
+    {
+      "label": "Pittsburgh Magazine — production in Charleroi and North Side expansion",
+      "url": "https://www.pittsburghmagazine.com/19-pittsburgh-breweries-that-have-multiple-locations-or-are-poised-to-expand/"
+    },
+    {
+      "label": "Discover the Burgh — Charleroi taproom closure and North Side location",
+      "url": "https://www.discovertheburgh.com/pittsburgh-craft-beer/"
+    },
+    {
+      "label": "Four Points Brewing official Untappd",
+      "url": "https://untappd.com/FourPointsBrewing"
+    },
+    {
+      "label": "North Side taproom hours",
+      "url": "https://www.restaurantji.com/pa/pittsburgh/four-points-brewing-taproom-/"
+    }
+  ]
+},
   "hitchhiker": {
     slug: "hitchhiker",
     name: "Hitchhiker Brewing Co.",
