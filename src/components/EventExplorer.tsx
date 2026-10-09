@@ -26,6 +26,7 @@ function eventRegion(location: string) {
 }
 function matchesPeriod(event: BeerEvent, period: Period, today: number) {
   if (period === "all") return true;
+  if (event.occurrences?.length) return event.occurrences.some(date => matchesPeriod({ ...event, occurrences: undefined, startDate: date, endDate: date }, period, today));
   if (period === "today") return isoToDay(event.startDate) <= today && isoToDay(event.endDate) >= today;
   const now = new Date(today);
   if (period === "weekend") {
