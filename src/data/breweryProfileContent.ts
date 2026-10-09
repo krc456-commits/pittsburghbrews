@@ -27,6 +27,37 @@ export type BreweryProfileContent = {
 };
 
 export const breweryProfiles: Record<string, BreweryProfileContent> = {
+  "hitchhiker": {
+    slug: "hitchhiker",
+    name: "Hitchhiker Brewing Co.",
+    tagline: "Two Pittsburgh-area taprooms, one adventurous beer program, and a Sharpsburg brewery inside part of the former Fort Pitt Brewing Company complex.",
+    founded: "2014",
+    knownFor: ["Sharpsburg + Mt. Lebanon", "IPA", "Lager", "Sour", "Stout"],
+    specialTitle: "One brewery, two chapters.",
+    specialBody: [
+      "Hitchhiker began in Mt. Lebanon and later grew into a much larger production brewery in Sharpsburg. The two locations still feel meaningfully different: Mt. Lebanon is the intimate neighborhood original, while Sharpsburg is the bigger brewery experience.",
+      "The Sharpsburg building adds another layer. Hitchhiker brews inside part of the former Fort Pitt Brewing Company complex, returning active beer production to a property tied to Pittsburgh's earlier brewing era."
+    ],
+    storyTitle: "From a three-barrel system to Sharpsburg",
+    story: [
+      "Hitchhiker Brewing began brewing in May 2014 on a small three-barrel electric system beneath its Mt. Lebanon taproom.",
+      "By 2017, production had moved to 1500 S. Canal Street in Sharpsburg, where the brewery installed a larger brewhouse and expanded its production footprint.",
+      "The move connected Hitchhiker to a much older Pittsburgh beer story through the former Fort Pitt Brewing Company property."
+    ],
+    beerTitle: "Traditional when it wants to be. Weird when it wants to be.",
+    beer: [
+      "Hitchhiker's lineup stretches from clean lagers and hop-forward IPAs to rich stouts, fruit-driven sour releases and barrel-aged beer.",
+      "Bane of Existence IPA is one of the brewery's recognizable names, while rotating releases remain a major part of the brewery's identity."
+    ],
+    take: "Go to Hitchhiker when everyone in your group wants something different.",
+    takeDetail: "Sharpsburg gives you the larger production-brewery experience and beer garden, while Mt. Lebanon keeps the smaller neighborhood-taproom feel where the brewery began.",
+    locationSlugs: ["hitchhiker-sharpsburg", "hitchhiker-mt-lebanon"],
+    sources: [
+      { label: "Hitchhiker Brewing", url: "https://hitchhiker.beer/" },
+      { label: "Hitchhiker taprooms", url: "https://hitchhiker.beer/tap-rooms/" },
+      { label: "Hitchhiker brewery", url: "https://hitchhiker.beer/the-brewery/" }
+    ]
+  },
   "back-alley-brewing": {
   "slug": "back-alley-brewing",
   "name": "Back Alley Brewing Company",
