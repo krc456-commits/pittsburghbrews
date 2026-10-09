@@ -34,6 +34,8 @@ function LocationCard({
   dogs,
   parking,
   hours,
+  imageSrc,
+  imageAlt,
   children,
 }: {
   title: string;
@@ -45,6 +47,8 @@ function LocationCard({
   dogs: string;
   parking: string;
   hours: string[];
+  imageSrc: string;
+  imageAlt: string;
   children: React.ReactNode;
 }) {
   return (
@@ -65,6 +69,13 @@ function LocationCard({
       <div className="grid gap-0 lg:grid-cols-[1.25fr_.75fr]">
         <div className="p-5 sm:p-7">
           <div className="space-y-5 text-[15px] leading-7 text-zinc-300">{children}</div>
+          <div className="mt-6 overflow-hidden rounded-xl border border-white/10 bg-[#0d0d0c]">
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
         </div>
         <aside className="border-t border-white/8 bg-[#10100f] p-5 lg:border-l lg:border-t-0 sm:p-6">
           <Fact label="Best feature" value={bestFeature} />
@@ -216,6 +227,8 @@ export default function HitchhikerProfilePage() {
               dogs="Well-behaved dogs on the patio when open"
               parking="Street parking + nearby municipal lots"
               hours={["Mon: Closed", "Tue–Fri: 4–10 PM", "Sat: 12–10 PM", "Sun: 12–8 PM"]}
+              imageSrc="/brand/breweries/hitchhiker/storefront-sharpsburg.PNG"
+              imageAlt="Hitchhiker Brewing Co. Sharpsburg brewery and taproom"
             >
               <p>
                 This is the heart of Hitchhiker&apos;s brewing operation. Production moved here in 2017, and the scale is completely different from the original Mt. Lebanon location.
@@ -238,6 +251,8 @@ export default function HitchhikerProfilePage() {
               dogs="Well-behaved dogs in outdoor areas"
               parking="Free nearby parking + Red Line T access"
               hours={["Mon–Fri: 4–10 PM", "Sat: 12–10 PM", "Sun: 12–8 PM"]}
+              imageSrc="/brand/breweries/hitchhiker/storefront-mtlebo.png"
+              imageAlt="Hitchhiker Brewing Co. Mt. Lebanon taproom"
             >
               <p>
                 This is where Hitchhiker started. Before the Sharpsburg production brewery existed, beer was brewed downstairs here on the brewery&apos;s original three-barrel electric system.
