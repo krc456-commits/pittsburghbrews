@@ -4,7 +4,7 @@ import type { BeerEvent } from "@/data/events";
 // Feed subscriptions can also be supplied as a comma-separated EVENTS_ICS_FEEDS env var.
 // Unknown formats, malformed events, and failed requests are ignored rather than published.
 const curatedFeeds: string[] = [];
-const knownCategories = ["Oktoberfest", "Festival", "Halloween", "Beer garden", "Beer Event"] as const;
+const knownCategories = ["Oktoberfest", "Festival", "Holiday themed", "Beer garden", "Beer Event"] as const;
 
 function parseIcsDate(raw: string): string | null {
   const match = raw.match(/^(\d{4})(\d{2})(\d{2})(?:T\d{6}Z?)?$/);
@@ -45,7 +45,8 @@ function parseFeed(feed: string, sourceUrl: string): BeerEvent[] {
     const rawUrl = unescapeIcs(readField(rows, "URL"));
     const url = /^https:\/\//i.test(rawUrl) ? rawUrl : sourceUrl;
     const description = unescapeIcs(readField(rows, "DESCRIPTION")).slice(0, 350);
-    const category = knownCategories.find(c => name.toLowerCase().includes(c.toLowerCase())) ?? "Beer Event";
+    const holiday = /halloween|christmas|xmas|holiday|valentine|st\. patrick|st patrick|new year|easter|thanksgiving|winter pop.up/i.test(name + " " + description);
+    const category = holiday ? "Holiday themed" : knownCategories.find(c => name.toLowerCase().includes(c.toLowerCase())) ?? "Beer Event";
     output.push({ name, date: startDate === endDate ? startDate : `${startDate} to ${endDate}`, startDate, endDate, location, category, description, url });
   }
   return output;
