@@ -2,6 +2,20 @@ import type { Brewery } from "./breweries";
 
 export const breweryAdditions: Brewery[] = [
   {
+    name: "Four Points Brewing - North Side",
+    slug: "four-points-north-side",
+    city: "Pittsburgh",
+    neighborhood: "North Side",
+    area: "Pittsburgh",
+    address: "919 Western Avenue, Pittsburgh, PA 15233",
+    website: "https://fourpointsbrewing.com/",
+    type: "Brewery taproom",
+    food: "Food trucks",
+    outdoor: true,
+    lastVerified: "Oct 2026",
+    blurb: "Four Points' North Side taproom on Western Avenue, pouring beer brewed in Charleroi. Known for hoppy releases, pinball, vinyl nights and rotating food trucks."
+  },
+  {
     name: "Back Alley Brewing Company",
     slug: "back-alley-brewing",
     city: "Pittsburgh",
