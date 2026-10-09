@@ -171,11 +171,11 @@ export default async function Home() {
           <div>
             <div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Why Pittsburgh Brews?</div>
             <h2 className="mt-2 max-w-3xl text-2xl font-black tracking-[-.035em] md:text-3xl">
-              Find the brewery that fits.
+              Find your next brewery. Discover what’s happening.
             </h2>
           </div>
           <p className="text-sm leading-6 text-[#5e594d] md:text-base">
-            Search what’s nearby, compare locations, filter for what matters to you, and find the brewery that fits the kind of stop you want.
+            Explore nearby breweries, compare locations, and find local beer events — from food trucks and trivia nights to festivals and special releases.
           </p>
         </div>
       </section>
