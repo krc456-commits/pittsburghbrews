@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EventExplorer from "@/components/EventExplorer";
 import { getVisibleBeerEvents } from "@/data/events";
 
 export const dynamic = "force-dynamic";
@@ -25,37 +26,7 @@ export default function EventsPage() {
 
       <section>
         <div className="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-10">
-          <div className="overflow-hidden rounded-2xl border border-black/10 bg-white/55">
-            {beerEvents.map((event, index) => (
-              <a
-                key={event.name}
-                href={event.url}
-                target="_blank"
-                rel="noreferrer"
-                className={`group grid gap-3 px-5 py-5 transition hover:bg-white md:grid-cols-[190px_1fr_auto] md:items-center md:gap-6 ${index !== beerEvents.length - 1 ? "border-b border-black/10" : ""}`}
-              >
-                <div>
-                  <div className="text-xs font-black uppercase tracking-[.1em] text-[#8d6b00]">{event.date}</div>
-                  <div className="mt-1 text-[10px] font-black uppercase tracking-[.12em] text-[#9a9386]">{event.category}</div>
-                </div>
-
-                <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="text-lg font-black group-hover:text-[#8d6b00]">{event.name}</h2>
-                    {event.featured && (
-                      <span className="rounded-full border border-black/10 bg-[#f2ead8] px-2 py-1 text-[9px] font-black uppercase tracking-[.08em] text-[#8d6b00]">
-                        Featured
-                      </span>
-                    )}
-                  </div>
-                  <div className="mt-1 text-sm font-bold text-[#625c50]">{event.location}</div>
-                  <p className="mt-2 max-w-3xl text-sm leading-6 text-[#777064]">{event.description}</p>
-                </div>
-
-                <div className="hidden text-lg text-[#aaa294] transition group-hover:translate-x-0.5 group-hover:text-[#8d6b00] md:block">→</div>
-              </a>
-            ))}
-          </div>
+          <EventExplorer events={beerEvents} />
 
           <div className="mt-7 rounded-2xl border border-black/10 bg-[#eee8d9] p-5 text-sm leading-6 text-[#625c50]">
             Pittsburgh Brews focuses on events that give people a reason to get out and enjoy the local beer scene — not just a static brewery list. <Link href="/submit" className="font-black text-[#8d6b00] hover:text-black">Send us an event or correction →</Link>
