@@ -1,6 +1,22 @@
 export type BreweryCoordinates = { lat: number; lng: number };
 
 export const breweryCoordinates: Record<string, BreweryCoordinates> = {
+  "four-points-north-side": { lat: 40.4517, lng: -80.0172 },
+  "back-alley-brewing": { lat: 40.3934, lng: -80.0361 },
+  "abjuration-hazelwood": { lat: 40.4075, lng: -79.9456 },
+  "helicon-brewing": { lat: 40.3965, lng: -80.1858 },
+  "coven-brewing": { lat: 40.4773, lng: -79.9571 },
+  "chimera-brewing": { lat: 40.3643, lng: -80.0226 },
+  "abstract-realm": { lat: 40.4075, lng: -79.9456 },
+  "new-france": { lat: 40.4077, lng: -79.9455 },
+  "recon-butler": { lat: 40.9083, lng: -79.9255 },
+  "recon-meeder": { lat: 40.701035, lng: -80.10854 },
+  "recon-hastings": { lat: 40.3281, lng: -80.1091 },
+  "cobblehaus-falls": { lat: 41.1443, lng: -80.2184 },
+  "golden-age-bohemian": { lat: 40.45549, lng: -80.00727 },
+  "altered-genius-ambridge": { lat: 40.5839, lng: -80.2258 },
+  "altered-genius-imperial": { lat: 40.4502, lng: -80.2471 },
+  "big-sewickley-creek": { lat: 40.6091, lng: -80.157 },
   "abjuration-lab": { lat: 40.4720253, lng: -80.0724192 },
   "acrospire": { lat: 40.5248811, lng: -79.9621058 },
   "allegheny-city-brewing": { lat: 40.4536088, lng: -80.0003549 },
