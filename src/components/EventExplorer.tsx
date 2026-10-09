@@ -24,7 +24,7 @@ function eventRegion(location: string) {
   if (/creighton|sewickley|coraopolis|imperial|robinson|carnegie/.test(l)) return "West";
   return "Surrounding";
 }
-function matchesPeriod(event: BeerEvent, period: Period, today: number) {
+function matchesPeriod(event: BeerEvent, period: Period, today: number): boolean {
   if (period === "all") return true;
   if (event.occurrences?.length) return event.occurrences.some(date => matchesPeriod({ ...event, occurrences: undefined, startDate: date, endDate: date }, period, today));
   if (period === "today") return isoToDay(event.startDate) <= today && isoToDay(event.endDate) >= today;
