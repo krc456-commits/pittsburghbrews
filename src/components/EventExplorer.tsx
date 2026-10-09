@@ -2,6 +2,9 @@
 
 import { useMemo, useState } from "react";
 import type { BeerEvent } from "@/data/events";
+import Link from "next/link";
+import { eventUrl } from "@/data/eventDetails";
+import EventActions from "@/components/EventActions";
 
 type Period = "all" | "today" | "weekend" | "week" | "month";
 const zones = ["All areas", "Pittsburgh", "North", "South", "East", "West", "Surrounding"] as const;
@@ -86,22 +89,27 @@ export default function EventExplorer({ events }: { events: BeerEvent[] }) {
           {(query || period !== "all" || category !== "All types" || area !== "All areas") && <button type="button" className="font-black text-[#8d6b00] hover:underline" onClick={() => { setQuery(""); setPeriod("all"); setCategory("All types"); setArea("All areas"); }}>Clear filters</button>}
         </div>
       </div>
-      <div className="mt-5 overflow-hidden rounded-2xl border border-black/10 bg-white/60">
-        {filtered.length ? filtered.map((event, index) => (
-          <a key={event.url + event.startDate + event.name} href={event.url} target="_blank" rel="noopener noreferrer" className={`group grid gap-3 px-5 py-5 transition hover:bg-white md:grid-cols-[190px_1fr_auto] md:items-center md:gap-6 ${index !== filtered.length - 1 ? "border-b border-black/10" : ""}`}>
-            <div>
-              <div className="text-xs font-black uppercase tracking-[.08em] text-[#8d6b00]">{event.date}</div>
-              <div className="mt-1 text-[10px] font-black uppercase tracking-[.1em] text-[#9a9386]">{event.category}</div>
+      <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.length ? filtered.map(event => (
+          <article key={event.url + event.startDate + event.name} className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <Link href={eventUrl(event)} className="block">
+              <div className="flex min-h-40 flex-col items-center justify-center gap-3 bg-[#2a2924] p-6 text-center text-white">
+                <div className="rounded-full border border-[#edcf78]/50 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-[#edcf78]">{event.category}</div>
+                <div className="text-4xl" aria-hidden="true">{event.category === "Food trucks" ? "♨" : event.category === "Live music" ? "♫" : event.category === "Trivia & games" ? "?" : "✦"}</div>
+                <div className="text-xs font-black text-[#edcf78]">{event.date}</div>
+              </div>
+              <div className="px-5 pt-5">
+                <h2 className="text-xl font-black leading-tight tracking-tight text-[#191815] hover:text-[#8d6b00]">{event.name}</h2>
+                <div className="mt-2 text-sm font-bold text-[#625c50]">{event.location}</div>
+                <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#777064]">{event.description}</p>
+                <span className="mt-3 inline-block text-sm font-black text-[#8d6b00]">Explore event →</span>
+              </div>
+            </Link>
+            <div className="mt-auto px-5 pb-5 pt-4">
+              <EventActions title={event.name} url={eventUrl(event)} calendarUrl={eventUrl(event) + "/calendar"}/>
             </div>
-            <div>
-              <div className="flex flex-wrap items-center gap-2"><h2 className="text-lg font-black group-hover:text-[#8d6b00]">{event.name}</h2>{event.featured && <span className="rounded-full bg-[#f2ead8] px-2 py-1 text-[9px] font-black uppercase text-[#8d6b00]">Featured</span>}</div>
-              <div className="mt-1 text-sm font-bold text-[#625c50]">{event.location}</div>
-              <p className="mt-2 text-sm leading-6 text-[#777064]">{event.description}</p>
-              <span className="mt-2 inline-block text-xs font-black text-[#8d6b00]">Event details ↗</span>
-            </div>
-            <span aria-hidden="true" className="hidden text-lg text-[#aaa294] md:block">→</span>
-          </a>
-        )) : <div className="p-8 text-center"><h2 className="text-xl font-black">No events match those filters</h2><p className="mt-2 text-sm text-[#625c50]">Try a wider date range or another area. Know of an event that should be here?</p><a href="/submit" className="mt-4 inline-block font-black text-[#8d6b00] hover:underline">Suggest an event →</a></div>}
+          </article>
+        )) : <div className="rounded-2xl border border-black/10 bg-white p-8 text-center sm:col-span-2 lg:col-span-3"><h2 className="text-xl font-black">No events match those filters</h2><p className="mt-2 text-sm text-[#625c50]">Try a wider date range or another area.</p><a href="/submit" className="mt-4 inline-block font-black text-[#8d6b00] hover:underline">Suggest an event →</a></div>}
       </div>
     </>
   );
