@@ -82,6 +82,7 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
+  "balance-brewing": localImage("/brand/breweries/balance/storefront.PNG", "Balance Brewing Company storefront on Babcock Boulevard"),
   "recon-hastings": localImage("/brand/breweries/recon/storefront-hastings.png", "Recon Brewing Hastings taproom in South Fayette"),
   "recon-meeder": localImage("/brand/breweries/recon/storefront-meeder.png", "Recon Brewing Meeder taproom in Cranberry Township"),
   "recon-butler": localImage("/brand/breweries/recon/storefront-butler.png", "Recon Brewing original brewery and taproom in Butler"),
@@ -299,6 +300,7 @@ const imageOverrides: Record<string, BreweryImage> = {
 };
 
 const logoOverrides: Record<string, BreweryLogo> = {
+  "balance-brewing": { url: "/brand/breweries/balance/logo.PNG", alt: "Balance Brewing Company logo" },
   "recon-hastings": { url: "/brand/breweries/recon/logo.png", alt: "Recon Brewing logo" },
   "recon-meeder": { url: "/brand/breweries/recon/logo.png", alt: "Recon Brewing logo" },
   "recon-butler": { url: "/brand/breweries/recon/logo.png", alt: "Recon Brewing logo" },
