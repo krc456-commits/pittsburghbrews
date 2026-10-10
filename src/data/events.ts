@@ -15,6 +15,23 @@ export type BeerEvent = {
 
 export const beerEvents: BeerEvent[] = [
   {
+    name: "Brewing for a Cause 2026",
+    date: "Nov 14, 2026 · VIP 2–6 PM · General admission 3–6 PM",
+    startDate: "2026-11-14",
+    endDate: "2026-11-14",
+    location: "Velum Fermentation · 2120 Jane St, Pittsburgh, PA 15203",
+    category: "Festival",
+    description: "Charity beer festival hosted by Three Rivers Underground Brewers benefiting Animal Friends. More than 100 homebrewed beers, ciders, and meads, plus regional craft beers, auctions, and food available from Cold Friends Kitchen. Tickets start at $25; visit the official website for availability and admission details.",
+    url: "https://www.brewingforacause.org/",
+    featured: true,
+    image: {
+      url: "https://www.brewingforacause.org/_astro/event.Day6jIw1_2ecKOc.webp",
+      alt: "Official Brewing for a Cause 2026 event artwork",
+      credit: "Brewing for a Cause"
+    },
+  },
+
+  {
     name: "No Horns Pizza at Balance Brewing",
     date: "Oct 9, 2026 · 5–9 PM",
     startDate: "2026-10-09",
