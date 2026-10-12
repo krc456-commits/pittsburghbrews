@@ -768,13 +768,13 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     knownFor: ["North Side", "Neighborhood brewery", "Beer garden", "Variety"],
     specialTitle: "The name is a history lesson and a statement of neighborhood loyalty.",
     specialBody: [
-      "Founders Al, Amy and Matt are Pittsburgh natives who moved to Colorado, fell for craft beer and brewery culture, then returned home in 2013 to build their own place.",
-      "They opened Allegheny City Brewing in 2016 and named it for the former City of Allegheny, now Pittsburgh's North Side. Community, neighborhood identity and the social side of small breweries were part of the idea from the beginning."
+      "Allegheny City Brewing takes its name from the former municipality that became part of Pittsburgh's North Side.",
+      "The brewery operates neighborhood taprooms with a rotating selection of house-made beer."
     ],
     storyTitle: "Colorado inspiration, Pittsburgh homecoming",
     story: [
-      "After visiting hundreds of breweries and beginning to homebrew, the three founders moved back to Pittsburgh and eventually opened ACB on September 28, 2016.",
-      "The brewing operation remains on Foreland Street. The main taproom and beer garden moved to 510 East Ohio Street in May 2024, and a Brighton Heights taproom opened in April 2026."
+      "The brewery opened on the North Side in 2016.",
+      "Its East Ohio Street location includes a taproom and beer garden. Check the brewery's official website for current locations and hours."
     ],
     beerTitle: "Traditional styles beside experimental ideas",
     beer: [
