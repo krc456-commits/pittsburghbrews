@@ -597,8 +597,11 @@ export const breweries = [...coreBreweries, ...breweryAdditions]
   .map((brewery) => ({
     ...brewery,
     pittsburghOriginal: pittsburghOriginalSlugs.has(brewery.slug),
-    ...(imageOverrides[brewery.slug] ? { image: imageOverrides[brewery.slug] } : {}),
-    ...(logoOverrides[brewery.slug] ? { logo: logoOverrides[brewery.slug] } : {}),
+    // Rights-first policy: do not publish photos or logos until their
+    // ownership, license or written permission is individually verified.
+    // Existing files remain in the repository for provenance review.
+    image: undefined,
+    logo: undefined,
     ...(untappdBySlug[brewery.slug] ? { untappd: untappdBySlug[brewery.slug] } : {}),
     ...(glutenInfoBySlug[brewery.slug] ? { glutenInfo: glutenInfoBySlug[brewery.slug] } : {}),
   }))
