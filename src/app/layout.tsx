@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Pittsburgh Brews | Find Pittsburgh Breweries",
-  description: "Search and discover Pittsburgh breweries by distance, neighborhood, food, patios, gluten-aware options, tap lists, events, and more.",
+  description: "An independent, personally maintained list of breweries in Pittsburgh and nearby communities, with useful search tools, profiles and local events.",
   icons: {
     icon: "/brand/yellow%20outline-bridge%20centered.png",
     shortcut: "/brand/yellow%20outline-bridge%20centered.png",
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <div className="grid gap-10 md:grid-cols-[1.2fr_.8fr] md:items-end">
                 <div>
                   <Brand footer />
-                  <p className="mt-5 max-w-xl text-sm leading-6 text-zinc-500">Pittsburgh breweries, made easy — search what’s nearby, compare locations, and find the brewery that fits.</p>
+                  <p className="mt-5 max-w-xl text-sm leading-6 text-zinc-500">Pittsburgh breweries, made easy — my independently maintained list of breweries across the Pittsburgh area and nearby communities.</p>
                 </div>
                 <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm font-bold text-zinc-400 md:justify-end">
                   <Link href="/breweries" className="hover:text-white">Breweries</Link>
@@ -76,7 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   <Link href="/submit" className="hover:text-white">Submit an update</Link>
                 </div>
               </div>
-              <div className="mt-9 border-t border-white/8 pt-5 text-xs text-zinc-600">Pittsburgh Brews · Independently maintained · No paid placement · <Link href="/credits" className="hover:text-zinc-300">Image credits</Link></div>
+              <div className="mt-9 border-t border-white/8 pt-5 text-xs text-zinc-600">Pittsburgh Brews · Independent personal project · Not affiliated with the Pittsburgh Brewers Guild · No paid placement · <Link href="/credits" className="hover:text-zinc-300">Image credits</Link></div>
             </div>
           </footer>
         </div>
