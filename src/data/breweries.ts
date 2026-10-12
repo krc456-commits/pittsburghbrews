@@ -23,6 +23,7 @@ export type Brewery = {
   website: string;
   type: string;
   originNote?: string;
+  pittsburghOriginal?: boolean;
   photoSource?: { label: string; url: string };
   food: "Full kitchen" | "Food trucks" | "Light food";
   outdoor?: boolean;
