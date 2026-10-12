@@ -593,7 +593,7 @@ const pittsburghOriginalSlugs = new Set([
   "four-points-north-side"
 ]);
 
-export const breweries = [...coreBreweries, ...breweryAdditions]
+export const breweries: Brewery[] = [...coreBreweries, ...breweryAdditions]
   .map((brewery) => ({
     ...brewery,
     pittsburghOriginal: pittsburghOriginalSlugs.has(brewery.slug),
