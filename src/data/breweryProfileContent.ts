@@ -671,7 +671,7 @@ export const breweryProfiles: Record<string, BreweryProfileContent> = {
     knownFor: ["Millvale", "Dog-friendly culture", "Wide beer range", "Multiple taprooms"],
     specialTitle: "Grist House built its identity around people as much as beer.",
     specialBody: [
-      "Grist House describes the brewery as a place built with the support of friends and family, where regulars become part of the community. That welcoming identity still carries through the brand even as it has expanded well beyond its original Millvale taproom.",
+      "Grist House operates a Millvale brewery with extensive outdoor space and several additional taproom formats around the Pittsburgh region.",
       "The beer follows the same broad approach: hoppy beer, sours and lighter styles all share the board rather than forcing the brewery into one narrow lane."
     ],
     storyTitle: "From Millvale to a four-location brewery",
