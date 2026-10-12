@@ -76,7 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   <Link href="/submit" className="hover:text-white">Submit an update</Link>
                 </div>
               </div>
-              <div className="mt-9 border-t border-white/8 pt-5 text-xs text-zinc-600">Pittsburgh Brews · Independent personal project · Not affiliated with the Pittsburgh Brewers Guild · No paid placement · <Link href="/credits" className="hover:text-zinc-300">Image credits</Link></div>
+              <div className="mt-9 border-t border-white/8 pt-5 text-xs text-zinc-600">Pittsburgh Brews · Independent personal project · No paid placement · <Link href="/credits" className="hover:text-zinc-300">Image credits</Link></div>
             </div>
           </footer>
         </div>
