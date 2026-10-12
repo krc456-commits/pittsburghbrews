@@ -10,7 +10,7 @@ export default function AboutPage() {
             Find your next Pittsburgh brewery.
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[#625c50] md:text-lg">
-            Pittsburgh Brews is my independent, personally maintained running list of breweries I find interesting around Pittsburgh, with a searchable directory to make visiting them easier. It is not affiliated with the Pittsburgh Brewers Guild or any brewery association.
+            Pittsburgh Brews is my independent, personally maintained running list of breweries I find interesting around Pittsburgh, with a searchable directory to make visiting them easier.
           </p>
         </div>
       </section>
