@@ -75,8 +75,8 @@ export default function RetailersPage() {
             <p className="mt-4 rounded-xl border border-white/10 bg-black/20 p-3 text-xs leading-5 text-zinc-300"><strong>Selection & availability:</strong> Brands and features are based on retailer-published information, not live inventory. Selection can change. Call the shop to confirm a particular beer, brand or club benefit before visiting.</p>
             <p className="mt-4 text-sm text-zinc-300">{item.address}</p>
             <div className="mt-4 flex flex-wrap gap-3 text-sm font-bold">
-              <a className="rounded-lg bg-[var(--gold)] px-4 py-2 text-black" href={`tel:${item.phone}`}>Call shop ↗</a>
-              <a className="rounded-lg border border-white/25 px-4 py-2" href={item.website} target="_blank" rel="noopener noreferrer">Shop website ↗</a>
+              {item.phone && <a className="rounded-lg bg-[var(--gold)] px-4 py-2 text-black" href={`tel:${item.phone}`}>Call shop ↗</a>}
+              {item.website && <a className="rounded-lg border border-white/25 px-4 py-2" href={item.website} target="_blank" rel="noopener noreferrer">Shop website ↗</a>}
               <a className="rounded-lg border border-white/25 px-4 py-2" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`} target="_blank" rel="noopener noreferrer">Directions ↗</a>
               <a className="rounded-lg border border-white/25 px-4 py-2" href={item.source} target="_blank" rel="noopener noreferrer">Source ↗</a>
             </div>
@@ -84,7 +84,7 @@ export default function RetailersPage() {
         </article>)}
         {results.length===0 && <p className="rounded-xl border border-white/15 p-5 text-zinc-300">No matching retailers in this initial collection.</p>}
       </div>
-      <p className="mt-8 text-sm text-zinc-400">This is an initial, curated list of independently verified retail locations, not an exhaustive directory. Event listings and brewery profiles remain available separately.</p>
+      <p className="mt-8 text-sm text-zinc-400">This is an expanding research-backed list, not an exhaustive directory. Verify current hours, inventory and business details with the retailer before visiting. Event listings and brewery profiles remain available separately.</p>
       <div className="mt-6 flex flex-wrap gap-5 text-sm font-bold text-[var(--gold)]"><a href="/breweries">Browse breweries →</a><a href="/events">Explore beer events →</a></div>
     </div>
   </main>;
