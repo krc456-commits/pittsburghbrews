@@ -196,8 +196,8 @@ export default async function Home() {
           <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-12">
             <div className="mb-4 flex items-end justify-between gap-4">
               <div>
-                <div className="text-xs font-black uppercase tracking-[0.12em] text-[var(--gold)]">Featured brewery</div>
-                <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">Worth a stop</h2>
+                <div className="text-xs font-black uppercase tracking-[0.12em] text-[var(--gold)]">Spotlight</div>
+                <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">Spotlight</h2>
               </div>
               <Link href="/breweries" className="text-sm font-black text-zinc-400 transition hover:text-[var(--gold)]">Browse all →</Link>
             </div>
