@@ -116,10 +116,11 @@ function getHeroStorefronts() {
 }
 
 export default async function Home() {
-  const upcomingEvents = (await getCurrentEvents()).slice(0, 5);
+  const currentEvents = await getCurrentEvents();
+  const upcomingEvents = currentEvents.slice(0, 5);
   const heroStorefronts = getHeroStorefronts();
   const spotlight = getWeeklySpotlight();
-  const eventOfTheMonth = getEventOfTheMonth(await getCurrentEvents());
+  const eventOfTheMonth = getEventOfTheMonth(currentEvents);
   return (
     <main className="bg-[#171714]">
       <section className="relative overflow-hidden border-b border-white/10">
@@ -158,7 +159,7 @@ export default async function Home() {
               Find Brews Near Me
               <span aria-hidden="true" className="text-[var(--gold)]">→</span>
             </Link>
-            <p className="mt-2 text-center text-xs text-zinc-300">Combined brewery and retailer location search is coming next.</p>
+            <p className="mt-2 text-center text-xs text-zinc-300">Search breweries and craft beer retailers together, with local distance sorting.</p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
               {quickPicks.map(([label, href]) => (
