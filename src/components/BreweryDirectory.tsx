@@ -143,8 +143,8 @@ export default function BreweryDirectory() {
         return { ...brewery, distanceMiles: distance };
       })
       .map(brewery => ({kind:"brewery" as const, brewery, name:brewery.name, distanceMiles:brewery.distanceMiles}));
-    const retailerMatches = placeType === "Breweries" || food !== "All food" || feature !== "All features" || area !== "All" ? [] :
-      retailers.filter(item => !normalized || [item.name,item.area,item.address,item.kind,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(normalized))
+    const retailerMatches = placeType === "Breweries" || food !== "All food" || feature !== "All features" || false ? [] :
+      retailers.filter(item => (area === "All" || (area === "Pittsburgh" ? /Pittsburgh|Lawrenceville|Bloomfield|South Side|Squirrel Hill|Regent Square/.test(item.area+" "+item.address) : area === "North" ? /North|Gibsonia|Allison Park/.test(item.area) : area === "South" ? /South|Bethel|Washington/.test(item.area) : area === "East" ? /New Kensington|Murrysville/.test(item.area) : /Sewickley|New Brighton/.test(item.area))) && (!normalized || [item.name,item.area,item.address,item.kind,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(normalized)))
         .map(retailer => ({kind:"retailer" as const, retailer, name:retailer.name, distanceMiles:userLocation && retailer.coordinates ? distanceMiles(userLocation,retailer.coordinates) : null as number | null}));
     return [...breweryMatches,...retailerMatches].sort((a,b) => {
       if (sortMode === "distance" && userLocation) {
