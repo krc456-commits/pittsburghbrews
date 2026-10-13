@@ -14,6 +14,7 @@ export const dynamic = "force-dynamic";
 
 const primaryActions = [
   { label: "Brewery Search", href: "/breweries", icon: "⌕" },
+  { label: "Bottle Shops & Distributors", href: "/retailers", icon: "▣" },
   { label: "Find Breweries Near Me", href: "/breweries?near=1", icon: "⌖" },
   { label: "Events", href: "/events", icon: "✦" },
 ] as const;
@@ -127,13 +128,13 @@ export default async function Home() {
           <div className="mx-auto max-w-6xl text-center">
             <div className="eyebrow">Pittsburgh Brews</div>
             <h1 className="mx-auto mt-3 max-w-4xl text-4xl font-black leading-[1.02] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
-              Pittsburgh breweries, made easy.
+              Find Your Brew in Pittsburgh.
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-zinc-200 sm:text-base md:text-lg md:leading-7">
-              Search by distance, neighborhood, food, patios, gluten-aware options, tap lists, and more.
+              Discover breweries, bottle shops, beer distributors, and local craft beer events. Find places worth visiting without rankings.
             </p>
 
-            <div className="mx-auto mt-7 grid max-w-3xl grid-cols-3 gap-2 sm:gap-3">
+            <div className="mx-auto mt-7 grid max-w-4xl grid-cols-2 gap-2 sm:gap-3">
               {primaryActions.map((item) => (
                 <Link
                   key={item.label}
@@ -172,11 +173,11 @@ export default async function Home() {
           <div>
             <div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Why Pittsburgh Brews?</div>
             <h2 className="mt-2 max-w-3xl text-2xl font-black tracking-[-.035em] md:text-3xl">
-              Find your next brewery. Discover what’s happening.
+              Find breweries, shops, and events near Pittsburgh.
             </h2>
           </div>
           <p className="text-sm leading-6 text-[#5e594d] md:text-base">
-            Explore nearby breweries, compare locations, and find local beer events — from food trucks and trivia nights to festivals and special releases.
+            Browse brewery locations and craft beer retailers, then explore local events. Business listings are factual and alphabetical — never ranked.
           </p>
         </div>
       </section>
