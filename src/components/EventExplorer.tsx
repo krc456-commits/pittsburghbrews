@@ -99,7 +99,6 @@ export default function EventExplorer({ events }: { events: BeerEvent[] }) {
                 {event.image?.alt.startsWith("Brewery venue photo:") && <div className="absolute bottom-2 right-2 z-20 rounded bg-black/70 px-2 py-1 text-[10px] font-semibold text-white">Brewery photo · Not event flyer</div>}
                 <div className={`relative z-10 flex flex-col items-center gap-3 ${event.image?.alt.startsWith("Official") ? "sr-only" : ""}`}>
                 <div className="rounded-full border border-[#edcf78]/50 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-[#edcf78]">{event.category}</div>
-                <div className="text-4xl" aria-hidden="true">{event.category === "Food trucks" ? "♨" : event.category === "Live music" ? "♫" : event.category === "Trivia & games" ? "?" : "✦"}</div>
                 <div className="text-xs font-black text-[#edcf78]">{event.date}</div>
                 </div>
               </div>
