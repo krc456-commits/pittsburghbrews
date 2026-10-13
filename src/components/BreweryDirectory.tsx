@@ -6,7 +6,7 @@ import { areas, breweries } from "@/data/allBreweries";
 import { breweryHours } from "@/data/breweryHours";
 import { getBreweryProfileRoute } from "@/data/breweryProfiles";
 import { breweryCoordinates } from "@/data/breweryCoordinates";
-import { retailers } from "@/data/retailers";
+import { retailers, retailerRegion } from "@/data/retailers";
 
 const foodFilters = ["All food", "Full kitchen", "Food trucks", "Light food"] as const;
 const featureFilters = ["All features", "Outdoor seating", "Dog friendly", "Gluten-aware"] as const;
@@ -143,8 +143,11 @@ export default function BreweryDirectory() {
         return { ...brewery, distanceMiles: distance };
       })
       .map(brewery => ({kind:"brewery" as const, brewery, name:brewery.name, distanceMiles:brewery.distanceMiles}));
-    const retailerMatches = placeType === "Breweries" || food !== "All food" || feature !== "All features" || false ? [] :
-      retailers.filter(item => (area === "All" || (area === "Pittsburgh" ? /Pittsburgh|Lawrenceville|Bloomfield|South Side|Squirrel Hill|Regent Square/.test(item.area+" "+item.address) : area === "North" ? /North|Gibsonia|Allison Park/.test(item.area) : area === "South" ? /South|Bethel|Washington/.test(item.area) : area === "East" ? /New Kensington|Murrysville/.test(item.area) : /Sewickley|New Brighton/.test(item.area))) && (!normalized || [item.name,item.area,item.address,item.kind,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(normalized)))
+    // Food and amenity filters are brewery-specific; avoid implying retailers
+    // have been screened for kitchen, patio or gluten-aware features.
+    const retailerMatches = placeType === "Breweries" || food !== "All food" || feature !== "All features" ? [] :
+      retailers.filter(item => (area === "All" || retailerRegion(item) === area) &&
+        (!normalized || [item.name,item.area,item.address,item.kind,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(normalized)))
         .map(retailer => ({kind:"retailer" as const, retailer, name:retailer.name, distanceMiles:userLocation && retailer.coordinates ? distanceMiles(userLocation,retailer.coordinates) : null as number | null}));
     return [...breweryMatches,...retailerMatches].sort((a,b) => {
       if (sortMode === "distance" && userLocation) {
@@ -177,8 +180,8 @@ export default function BreweryDirectory() {
               <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search breweries, shops, brands, or areas" className="w-full rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[var(--gold)]" />
               <select aria-label="Place type" value={placeType} onChange={(e) => {setPlaceType(e.target.value as "All" | "Breweries" | "Craft Beer Retailers"); if(e.target.value==="Craft Beer Retailers"){setArea("All");setFood("All food");setFeature("All features");}}} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold"><option>All</option><option>Breweries</option><option>Craft Beer Retailers</option></select>
               <select value={area} onChange={(e) => setArea(e.target.value as (typeof areas)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{areas.map((item) => <option key={item}>{item}</option>)}</select>
-              <select value={food} onChange={(e) => setFood(e.target.value as (typeof foodFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{foodFilters.map((item) => <option key={item}>{item}</option>)}</select>
-              <select value={feature} onChange={(e) => setFeature(e.target.value as (typeof featureFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{featureFilters.map((item) => <option key={item}>{item}</option>)}</select>
+              <select aria-label="Brewery food filter" value={food} onChange={(e) => setFood(e.target.value as (typeof foodFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{foodFilters.map((item) => <option key={item}>{item}</option>)}</select>
+              <select aria-label="Brewery amenity filter" value={feature} onChange={(e) => setFeature(e.target.value as (typeof featureFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{featureFilters.map((item) => <option key={item}>{item}</option>)}</select>
               <p className="text-xs leading-5 text-zinc-400 lg:col-span-5"><span className="font-black text-white">GF / gluten-aware:</span> badges are based on brewery-published information. Availability can change with the active tap list or menu. Gluten-reduced beer is not the same as gluten-free, and no listing should be read as a celiac-safety guarantee.</p>
               <div className="flex items-center justify-between pt-1 lg:col-span-4">
                 <span className="text-xs text-zinc-600">{filtered.length} matching places</span>
