@@ -13,9 +13,8 @@ import { getBreweryProfileRoute } from "@/data/breweryProfiles";
 export const dynamic = "force-dynamic";
 
 const primaryActions = [
-  { label: "Brewery Search", href: "/breweries", icon: "⌕" },
-  { label: "Bottle Shops & Distributors", href: "/retailers", icon: "▣" },
-  { label: "Find Breweries Near Me", href: "/breweries?near=1", icon: "⌖" },
+  { label: "Breweries", href: "/breweries", icon: "⌕" },
+  { label: "Beer Shops", href: "/retailers", icon: "▣" },
   { label: "Events", href: "/events", icon: "✦" },
 ] as const;
 
@@ -134,20 +133,30 @@ export default async function Home() {
               Discover breweries, bottle shops, beer distributors, and local craft beer events.
             </p>
 
-            <div className="mx-auto mt-7 grid max-w-4xl grid-cols-2 gap-2 sm:gap-3">
+            <div className="mx-auto mt-7 grid max-w-4xl grid-cols-3 gap-2 sm:gap-3">
               {primaryActions.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="group flex min-h-[120px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/20 bg-black/35 px-3 py-4 text-center text-white backdrop-blur-md transition hover:border-[var(--gold)]/70 hover:bg-black/50 sm:min-h-[116px] sm:px-4"
+                  className="group flex min-h-[105px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/20 bg-black/35 px-1.5 py-3 text-center text-white backdrop-blur-md transition hover:border-[var(--gold)]/70 hover:bg-black/50 sm:min-h-[116px] sm:px-4"
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--gold)] text-base font-black text-black sm:h-10 sm:w-10">
                     {item.icon}
                   </span>
-                  <span className="flex min-h-[36px] max-w-full items-center justify-center text-center text-[12px] font-black leading-snug sm:text-sm md:text-base">{item.label}</span>
+                  <span className="flex min-h-[30px] max-w-full items-center justify-center text-center text-[11px] font-black leading-snug sm:text-sm md:text-base">{item.label}</span>
                 </Link>
               ))}
             </div>
+
+            <Link
+              href="/breweries?near=1"
+              className="mx-auto mt-3 flex max-w-4xl items-center justify-center gap-3 rounded-2xl border border-[var(--gold)]/60 bg-black/65 px-4 py-4 text-center text-sm font-black text-white backdrop-blur-md transition hover:bg-black/80 sm:text-base"
+            >
+              <span aria-hidden="true" className="text-[var(--gold)]">⌖</span>
+              Find Breweries Near Me
+              <span aria-hidden="true" className="text-[var(--gold)]">→</span>
+            </Link>
+            <p className="mt-2 text-center text-xs text-zinc-300">Combined brewery and shop location search is coming next.</p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
               {quickPicks.map(([label, href]) => (
