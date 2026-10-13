@@ -6,6 +6,7 @@ import { areas, breweries } from "@/data/allBreweries";
 import { breweryHours } from "@/data/breweryHours";
 import { getBreweryProfileRoute } from "@/data/breweryProfiles";
 import { breweryCoordinates } from "@/data/breweryCoordinates";
+import { retailers } from "@/data/retailers";
 
 const foodFilters = ["All food", "Full kitchen", "Food trucks", "Light food"] as const;
 const featureFilters = ["All features", "Outdoor seating", "Dog friendly", "Gluten-aware"] as const;
@@ -71,6 +72,7 @@ export default function BreweryDirectory() {
   const initialFeature = requestedFeature === "outdoor" ? "Outdoor seating" : requestedFeature === "dog" ? "Dog friendly" : requestedFeature === "gluten" ? "Gluten-aware" : "All features";
 
   const [query, setQuery] = useState(requestedQuery);
+  const [placeType, setPlaceType] = useState<"All" | "Breweries" | "Beer Retailers">("All");
   const [area, setArea] = useState<(typeof areas)[number]>(initialArea);
   const [food, setFood] = useState<(typeof foodFilters)[number]>(initialFood);
   const [feature, setFeature] = useState<(typeof featureFilters)[number]>(initialFeature);
@@ -100,7 +102,7 @@ export default function BreweryDirectory() {
       },
       () => {
         setLocationStatus("error");
-        setLocationMessage("We couldn't access your location. You can still browse the full brewery list.");
+        setLocationMessage("We couldn't access your location. You can still browse the full list.");
       },
       { enableHighAccuracy: false, timeout: 10000, maximumAge: 5 * 60 * 1000 }
     );
@@ -127,28 +129,36 @@ export default function BreweryDirectory() {
 
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    return breweries
-      .filter((brewery) => {
+    const breweryMatches = breweries
+      .filter((brewery) => placeType !== "Beer Retailers" && (() => {
         const matchesQuery = !normalized || [brewery.name, brewery.city, brewery.neighborhood, brewery.type].join(" ").toLowerCase().includes(normalized);
         const matchesArea = area === "All" || brewery.area === area;
         const matchesFood = food === "All food" || brewery.food === food;
         const matchesFeature = feature === "All features" || (feature === "Outdoor seating" && brewery.outdoor) || (feature === "Dog friendly" && brewery.dogFriendly) || (feature === "Gluten-aware" && Boolean(brewery.glutenInfo));
         return matchesQuery && matchesArea && matchesFood && matchesFeature;
-      })
+      })())
       .map((brewery) => {
         const coordinates = breweryCoordinates[brewery.slug];
         const distance = userLocation && coordinates ? distanceMiles(userLocation, coordinates) : null;
         return { ...brewery, distanceMiles: distance };
       })
-      .sort((a, b) => {
-        if (sortMode === "distance" && a.distanceMiles !== null && b.distanceMiles !== null) return a.distanceMiles - b.distanceMiles;
-        return a.name.localeCompare(b.name);
-      });
-  }, [query, area, food, feature, userLocation, sortMode]);
+      .map(brewery => ({kind:"brewery" as const, brewery, name:brewery.name, distanceMiles:brewery.distanceMiles}));
+    const retailerMatches = placeType === "Breweries" || food !== "All food" || feature !== "All features" || area !== "All" ? [] :
+      retailers.filter(item => !normalized || [item.name,item.area,item.address,item.kind,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(normalized))
+        .map(retailer => ({kind:"retailer" as const, retailer, name:retailer.name, distanceMiles:null as number | null}));
+    return [...breweryMatches,...retailerMatches].sort((a,b) => {
+      if (sortMode === "distance" && userLocation) {
+        if (a.distanceMiles === null && b.distanceMiles !== null) return 1;
+        if (b.distanceMiles === null && a.distanceMiles !== null) return -1;
+        if (a.distanceMiles !== null && b.distanceMiles !== null) return a.distanceMiles-b.distanceMiles;
+      }
+      return a.name.localeCompare(b.name);
+    });
+  }, [query, placeType, area, food, feature, userLocation, sortMode]);
 
-  const hasActiveFilters = Boolean(query || area !== "All" || food !== "All food" || feature !== "All features");
-  const activeFilterCount = [Boolean(query), area !== "All", food !== "All food", feature !== "All features"].filter(Boolean).length;
-  const reset = () => { setQuery(""); setArea("All"); setFood("All food"); setFeature("All features"); };
+  const hasActiveFilters = Boolean(query || placeType !== "All" || area !== "All" || food !== "All food" || feature !== "All features");
+  const activeFilterCount = [Boolean(query), placeType !== "All", area !== "All", food !== "All food", feature !== "All features"].filter(Boolean).length;
+  const reset = () => { setQuery(""); setPlaceType("All"); setArea("All"); setFood("All food"); setFeature("All features"); };
 
   return (
     <div className="mt-6">
@@ -163,14 +173,15 @@ export default function BreweryDirectory() {
           </button>
 
           {filtersOpen && (
-            <div className="mt-3 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto]">
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search brewery, neighborhood, or city" className="w-full rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[var(--gold)]" />
+            <div className="mt-3 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto_auto]">
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search breweries, shops, brands, or areas" className="w-full rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[var(--gold)]" />
+              <select aria-label="Place type" value={placeType} onChange={(e) => {setPlaceType(e.target.value as "All" | "Breweries" | "Beer Retailers"); if(e.target.value==="Beer Retailers"){setArea("All");setFood("All food");setFeature("All features");}}} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold"><option>All</option><option>Breweries</option><option>Beer Retailers</option></select>
               <select value={area} onChange={(e) => setArea(e.target.value as (typeof areas)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{areas.map((item) => <option key={item}>{item}</option>)}</select>
               <select value={food} onChange={(e) => setFood(e.target.value as (typeof foodFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{foodFilters.map((item) => <option key={item}>{item}</option>)}</select>
               <select value={feature} onChange={(e) => setFeature(e.target.value as (typeof featureFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{featureFilters.map((item) => <option key={item}>{item}</option>)}</select>
-              <p className="text-xs leading-5 text-zinc-400 lg:col-span-4"><span className="font-black text-white">GF / gluten-aware:</span> badges are based on brewery-published information. Availability can change with the active tap list or menu. Gluten-reduced beer is not the same as gluten-free, and no listing should be read as a celiac-safety guarantee.</p>
+              <p className="text-xs leading-5 text-zinc-400 lg:col-span-5"><span className="font-black text-white">GF / gluten-aware:</span> badges are based on brewery-published information. Availability can change with the active tap list or menu. Gluten-reduced beer is not the same as gluten-free, and no listing should be read as a celiac-safety guarantee.</p>
               <div className="flex items-center justify-between pt-1 lg:col-span-4">
-                <span className="text-xs text-zinc-600">{filtered.length} matching breweries</span>
+                <span className="text-xs text-zinc-600">{filtered.length} matching places</span>
                 {hasActiveFilters && <button type="button" onClick={reset} className="text-xs font-black text-[var(--gold)]">Clear filters</button>}
               </div>
             </div>
@@ -180,7 +191,7 @@ export default function BreweryDirectory() {
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm text-zinc-500">
-          <span className="font-black text-white">{filtered.length}</span> breweries · {userLocation && sortMode === "distance" ? "nearest first" : "A–Z"}
+          <span className="font-black text-white">{filtered.length}</span> places · {userLocation && sortMode === "distance" ? "nearest first" : "A–Z"}
         </p>
         <div className="flex flex-wrap items-center gap-2">
           <button
@@ -189,7 +200,7 @@ export default function BreweryDirectory() {
             disabled={locationStatus === "locating"}
             className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-4 py-2 text-xs font-black text-[var(--gold)] transition hover:bg-[var(--gold)] hover:text-black disabled:cursor-wait disabled:opacity-60"
           >
-            {locationStatus === "locating" ? "Finding your location…" : userLocation ? "Update my location" : "Find Breweries Near Me"}
+            {locationStatus === "locating" ? "Finding your location…" : userLocation ? "Update my location" : "Find Brews Near Me"}
           </button>
           {userLocation && (
             <button
@@ -206,7 +217,26 @@ export default function BreweryDirectory() {
       {locationStatus === "error" && <p className="mt-3 text-sm text-amber-300">{locationMessage}</p>}
 
       <div className="mt-4 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {filtered.map((brewery) => {
+        {filtered.map((entry) => {
+          if (entry.kind === "retailer") {
+            const shop=entry.retailer;
+            return <article key={shop.name} className="rounded-xl border border-white/10 bg-[#131312] p-5">
+              <div className="text-xs font-black uppercase tracking-widest text-[var(--gold)]">{shop.kind} · {shop.area}</div>
+              <h2 className="mt-2 text-2xl font-black text-white">{shop.name}</h2>
+              <p className="mt-3 text-sm leading-6 text-zinc-300">{shop.summary}</p>
+              <div className="mt-3 flex flex-wrap gap-2">{shop.reasons.map(reason=><span key={reason} className="tag">{reason}</span>)}</div>
+              {shop.brands && <details className="mt-4 text-sm"><summary className="cursor-pointer font-black text-white">Brewery brands you may find</summary><p className="mt-2 text-zinc-300">{shop.brands.join(" · ")}</p></details>}
+              <p className="mt-3 text-xs text-zinc-500">Selection varies; call the shop to confirm brands or products before visiting.</p>
+              <p className="mt-4 text-sm text-zinc-300">{shop.address}</p>
+              <p className="mt-2 text-xs text-zinc-500">Distance not yet verified</p>
+              <div className="mt-4 flex flex-wrap gap-4 text-sm font-black">
+                <a href={`/retailers?spotlight=${encodeURIComponent(shop.name)}`} className="text-[var(--gold)]">Shop profile →</a>
+                <a href={`tel:${shop.phone}`} className="text-[var(--gold)]">Call →</a>
+                <a href={directionsUrl(shop.address)} target="_blank" rel="noreferrer" className="text-zinc-300">Directions ↗</a>
+              </div>
+            </article>;
+          }
+          const brewery=entry.brewery;
           const hours = breweryHours[brewery.slug];
           const profileHref = getBreweryProfileRoute(brewery.slug) ?? "/breweries";
 
@@ -315,7 +345,7 @@ export default function BreweryDirectory() {
         })}
       </div>
 
-      {filtered.length === 0 && <div className="mt-6 rounded-xl border border-dashed border-zinc-700 p-10 text-center"><div className="text-xl font-black">No breweries match those filters.</div><p className="mt-2 text-zinc-500">Try another area or clear the filters.</p></div>}
+      {filtered.length === 0 && <div className="mt-6 rounded-xl border border-dashed border-zinc-700 p-10 text-center"><div className="text-xl font-black">No places match those filters.</div><p className="mt-2 text-zinc-500">Try another area or clear the filters.</p></div>}
     </div>
   );
 }
