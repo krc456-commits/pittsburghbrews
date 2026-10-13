@@ -139,12 +139,12 @@ export default async function Home() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="group grid min-h-[88px] grid-cols-[36px_minmax(0,1fr)] items-center gap-2 rounded-2xl border border-white/20 bg-black/35 px-3 py-3 text-left text-white backdrop-blur-md transition hover:border-[var(--gold)]/70 hover:bg-black/50 sm:min-h-[82px] sm:grid-cols-[40px_minmax(0,1fr)] sm:gap-3 sm:px-4"
+                  className="group flex min-h-[120px] flex-col items-center justify-center gap-2 rounded-2xl border border-white/20 bg-black/35 px-3 py-4 text-center text-white backdrop-blur-md transition hover:border-[var(--gold)]/70 hover:bg-black/50 sm:min-h-[116px] sm:px-4"
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--gold)] text-base font-black text-black sm:h-10 sm:w-10">
                     {item.icon}
                   </span>
-                  <span className="min-w-0 text-[11px] font-black leading-snug sm:text-sm md:text-base">{item.label}</span>
+                  <span className="flex min-h-[36px] max-w-full items-center justify-center text-center text-[12px] font-black leading-snug sm:text-sm md:text-base">{item.label}</span>
                 </Link>
               ))}
             </div>
