@@ -27,3 +27,30 @@ export const retailers: Retailer[] = [
   {"name":"Save-Mor Beer & Pop Warehouse","kind":"Beer distributor","area":"Squirrel Hill","address":"4516 Browns Hill Rd, Pittsburgh, PA 15217","source":"https://www.google.com/maps/search/?api=1&query=Save+Mor+Beer+Pop+Warehouse+Pittsburgh","summary":"Beer retailer known for packaged beer choices; contact the store for current local craft selection.","reasons":["Packaged beer","Singles and craft varieties"]},
 ];
 
+
+/** Site-wide geographic regions; avoid guessing an item's region from its postal city. */
+export function retailerRegion(item: Retailer): "Pittsburgh" | "North" | "South" | "East" | "West" | "Surrounding Counties" {
+  switch(item.area) {
+    case "Lawrenceville":
+    case "Bloomfield":
+    case "South Side":
+    case "Squirrel Hill":
+      return "Pittsburgh";
+    case "North Hills":
+    case "Gibsonia":
+    case "Allison Park":
+      return "North";
+    case "Bethel Park":
+    case "South Hills":
+      return "South";
+    case "Regent Square":
+    case "Murrysville":
+    case "New Kensington":
+      return "East";
+    case "Sewickley":
+    case "New Brighton":
+      return "West";
+    default:
+      return "Surrounding Counties";
+  }
+}
