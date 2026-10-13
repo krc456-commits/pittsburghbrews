@@ -1,32 +1,70 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { retailers } from "@/data/retailers";
 
+type Location = {lat:number; lng:number};
+function miles(a:Location,b:Location) {
+  const rad=(x:number)=>x*Math.PI/180;
+  const dLat=rad(b.lat-a.lat), dLng=rad(b.lng-a.lng);
+  const v=Math.sin(dLat/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dLng/2)**2;
+  return 3958.8*2*Math.asin(Math.sqrt(v));
+}
 export default function RetailersPage() {
+  const [location,setLocation]=useState<Location|null>(null);
+  const [locationStatus,setLocationStatus]=useState<"idle"|"locating"|"ready"|"error">("idle");
+  const [sort,setSort]=useState<"alpha"|"distance">("alpha");
+  function locate(){
+    if(!navigator.geolocation){setLocationStatus("error");return;}
+    setLocationStatus("locating");
+    navigator.geolocation.getCurrentPosition(position=>{
+      const next={lat:position.coords.latitude,lng:position.coords.longitude};
+      setLocation(next);setSort("distance");setLocationStatus("ready");
+      sessionStorage.setItem("pittsburgh-brews-location",JSON.stringify(next));
+    },()=>setLocationStatus("error"),{enableHighAccuracy:false,timeout:10000,maximumAge:300000});
+  }
+  useEffect(()=>{
+    try {
+      const saved=sessionStorage.getItem("pittsburgh-brews-location");
+      if(saved) {const loc=JSON.parse(saved) as Location;if(Number.isFinite(loc.lat)&&Number.isFinite(loc.lng)){setLocation(loc);setSort("distance");setLocationStatus("ready");}}
+    }catch {/* Ignore unavailable session data */}
+  },[]);
   const [query,setQuery] = useState("");
   const [filter,setFilter] = useState("All");
   const [open,setOpen] = useState<string | null>(null);
   const results = useMemo(()=>retailers.filter(item =>
     (filter==="All" || item.kind===filter) &&
     [item.name,item.area,item.address,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(query.trim().toLowerCase())
-  ).sort((a,b)=>a.name.localeCompare(b.name)),[query,filter]);
+  ).sort((a,b)=>{
+    if(sort==="distance"&&location){
+      const x=a.coordinates?miles(location,a.coordinates):null,y=b.coordinates?miles(location,b.coordinates):null;
+      if(x===null&&y!==null)return 1;
+      if(y===null&&x!==null)return -1;
+      if(x!==null&&y!==null)return x-y;
+    }
+    return a.name.localeCompare(b.name);
+  }),[query,filter,location,sort]);
   return <main className="min-h-screen bg-[#171714] text-white">
     <div className="mx-auto max-w-5xl px-5 py-12 md:px-8">
       <a href="/" className="text-sm font-bold text-[var(--gold)]">← Pittsburgh Brews</a>
       <div className="mt-8 text-xs font-black uppercase tracking-widest text-[var(--gold)]">Find your brew in Pittsburgh</div>
       <h1 className="mt-2 text-4xl font-black tracking-tight">Bottle Shops & Beer Distributors</h1>
-      <p className="mt-4 max-w-2xl text-zinc-300">A simple, alphabetical list of places to explore craft beer. No rankings, no paid placements, and no claims of live inventory.</p>
+      <p className="mt-4 max-w-2xl text-zinc-300">A simple, alphabetical list of places to explore craft beer. No ratings or rankings, and no claims of live inventory.</p>
       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
         <label className="flex-1"><span className="sr-only">Search places and beer brands</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search shops, areas or beer brands" className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white placeholder:text-zinc-400"/></label>
         <label><span className="sr-only">Type of retailer</span><select value={filter} onChange={e=>setFilter(e.target.value)} className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white sm:w-auto"><option>All</option><option>Bottle shop</option><option>Beer distributor</option></select></label>
       </div>
-      <p aria-live="polite" className="mt-4 text-sm text-zinc-400">{results.length} {results.length===1?"place":"places"} · Alphabetical, not ranked</p>
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        <button onClick={locate} disabled={locationStatus==="locating"} className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-4 py-2 text-sm font-black text-[var(--gold)] disabled:opacity-60">{locationStatus==="locating"?"Finding your location…":location?"Update my location":"Find Bottle Shops Near Me"}</button>
+        {location&&<button onClick={()=>setSort(sort==="alpha"?"distance":"alpha")} className="rounded-full border border-white/20 px-4 py-2 text-sm">{sort==="alpha"?"Sort by distance":"Sort A–Z"}</button>}
+      </div>
+      {locationStatus==="error"&&<p role="alert" className="mt-3 text-sm text-amber-300">Location is unavailable or permission was denied. You can still search all bottle shops and distributors.</p>}
+      <p aria-live="polite" className="mt-4 text-sm text-zinc-400">{results.length} {results.length===1?"place":"places"} · {location&&sort==="distance"?"Nearest first (where location verified)":"A–Z"}</p>
       <div className="mt-4 space-y-3">
         {results.map(item=><article key={item.name} className="overflow-hidden rounded-2xl border border-white/15 bg-[#26251f]">
           <button type="button" aria-expanded={open===item.name} onClick={()=>setOpen(open===item.name?null:item.name)} className="flex w-full items-center justify-between gap-3 p-5 text-left hover:bg-white/5">
-            <span><span className="block text-lg font-black">{item.name}</span><span className="mt-1 block text-sm text-zinc-400">{item.kind} · {item.area}</span><span className="mt-2 block text-sm text-zinc-300">{item.reasons[0]}</span></span>
+            <span><span className="block text-lg font-black">{item.name}</span><span className="mt-1 block text-sm text-zinc-400">{item.kind} · {item.area}{location&&item.coordinates?` · ${miles(location,item.coordinates).toFixed(1)} mi away`:location?" · Distance unavailable":""}</span><span className="mt-2 block text-sm text-zinc-300">{item.reasons[0]}</span></span>
             <span aria-hidden="true" className="text-[var(--gold)]">{open===item.name?"−":"+"}</span>
           </button>
           {open===item.name && <div className="border-t border-white/10 p-5">
