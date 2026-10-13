@@ -36,7 +36,7 @@ export function eventUrl(event: BeerEvent) {
 }
 export async function getCurrentEvents() {
   const [ics, squarespace, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getOfficialEventArtwork()]);
-  return getVisibleBeerEvents(0, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace])).map(event => {
+  return getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace])).map(event => {
     const official = artwork.get(event.name);
     return withVenueImage(official ? { ...event, image: official } : event);
   });
