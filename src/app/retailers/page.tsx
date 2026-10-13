@@ -33,6 +33,13 @@ export default function RetailersPage() {
   const [query,setQuery] = useState("");
   const [filter,setFilter] = useState("All");
   const [open,setOpen] = useState<string | null>(null);
+  useEffect(() => {
+    const highlighted = new URLSearchParams(window.location.search).get("spotlight");
+    if (highlighted && retailers.some(item => item.name === highlighted)) {
+      setOpen(highlighted);
+      setQuery(highlighted);
+    }
+  }, []);
   const results = useMemo(()=>retailers.filter(item =>
     (filter==="All" || item.kind===filter) &&
     [item.name,item.area,item.address,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(query.trim().toLowerCase())
@@ -50,10 +57,10 @@ export default function RetailersPage() {
       <a href="/" className="text-sm font-bold text-[var(--gold)]">← Pittsburgh Brews</a>
       <div className="mt-8 text-xs font-black uppercase tracking-widest text-[var(--gold)]">Find your brew in Pittsburgh</div>
       <h1 className="mt-2 text-4xl font-black tracking-tight">Craft Beer Retailers</h1>
-      <p className="mt-4 max-w-2xl text-zinc-300">A simple, alphabetical list of places to explore craft beer. No ratings or rankings, and no claims of live inventory.</p>
+      <p className="mt-4 max-w-2xl text-zinc-300">A simple, alphabetical list of places to explore craft beer. Browse bottle shops, distributors, and places offering craft beer to go. Listings do not represent live inventory.</p>
       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
         <label className="flex-1"><span className="sr-only">Search places and beer brands</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search shops, areas or beer brands" className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white placeholder:text-zinc-400"/></label>
-        <label><span className="sr-only">Type of retailer</span><select value={filter} onChange={e=>setFilter(e.target.value)} className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white sm:w-auto"><option>All</option><option>Bottle shop</option><option>Beer distributor</option></select></label>
+        <label><span className="sr-only">Type of retailer</span><select value={filter} onChange={e=>setFilter(e.target.value)} className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white sm:w-auto"><option>All</option><option>Bottle shop</option><option>Beer distributor</option><option>Bottle shop &amp; taproom</option><option>Restaurant &amp; beer to go</option></select></label>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <button onClick={locate} disabled={locationStatus==="locating"} className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-4 py-2 text-sm font-black text-[var(--gold)] disabled:opacity-60">{locationStatus==="locating"?"Finding your location…":location?"Update my location":"Find Craft Beer Retailers Near Me"}</button>
