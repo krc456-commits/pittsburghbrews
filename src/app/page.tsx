@@ -41,56 +41,52 @@ function getPittsburghDateParts() {
   };
 }
 
-function getFeaturedSelection() {
+const retailerSpotlights = [
+  { name: "Hal’s Bottle Shop", description: "North Hills craft beer shop with a Rare Beer Club and build-your-own six-packs.", tags: ["Rare Beer Club", "Local craft beer", "Build-your-own six-packs"] },
+  { name: "Beer Towne", description: "Gibsonia retailer offering local craft beers and a published beer menu.", tags: ["Local craft beer", "Gibsonia"] },
+  { name: "Creekside Beer", description: "Sewickley-area beer distributor with an online catalog.", tags: ["Beer catalog", "Sewickley"] },
+  { name: "Babcock Beer", description: "North Hills retailer with a broad craft beer selection.", tags: ["Craft beer", "North Hills"] },
+  { name: "Bethel Beer and More", description: "Bethel Park retailer featuring Pittsburgh craft favorites.", tags: ["Local craft beer", "Bethel Park"] },
+] as const;
+
+function getWeeklySpotlight() {
   const { year, month, day } = getPittsburghDateParts();
-  const today = new Date(Date.UTC(year, month - 1, day, 12));
+  const today = Date.UTC(year, month - 1, day, 12);
   const baseMonday = Date.UTC(2026, 8, 14, 12);
-  const weekIndex = Math.floor((today.getTime() - baseMonday) / (7 * 24 * 60 * 60 * 1000));
-  const profileSlug = featuredProfileOrder[((weekIndex % featuredProfileOrder.length) + featuredProfileOrder.length) % featuredProfileOrder.length];
-  const brewerySlug = representativeBrewerySlugs[profileSlug];
-
-  const brewery = breweries.find((item) => item.slug === brewerySlug) ??
-    breweries.find((item) => item.image) ??
-    breweries[0];
-
-  const fallbackBrand = profileSlug === "hitchhiker"
-    ? {
-        name: "Hitchhiker Brewing Co.",
-        tagline: "A Pittsburgh brewery known for a wide-ranging beer program, from hop-forward releases and lagers to experimental sours and barrel-aged beer.",
-        knownFor: ["IPAs", "Lagers", "Experimental releases"],
-      }
-    : null;
-
+  const week = Math.floor((today - baseMonday) / (7 * 24 * 60 * 60 * 1000));
+  const cycle = Math.floor(week / 2);
+  if (((week % 2) + 2) % 2 === 1) {
+    const item = retailerSpotlights[((cycle % retailerSpotlights.length) + retailerSpotlights.length) % retailerSpotlights.length];
+    return { category: "Beer retailer", title: item.name, description: item.description, tags: [...item.tags], href: `/retailers?spotlight=${encodeURIComponent(item.name)}`, image: null as null | {url:string;alt:string}, logo: null as null | {url:string;alt:string} };
+  }
+  const slug = featuredProfileOrder[((cycle % featuredProfileOrder.length) + featuredProfileOrder.length) % featuredProfileOrder.length];
+  const representativeSlug = representativeBrewerySlugs[slug];
+  const brewery = breweries.find(item => item.slug === representativeSlug) ?? breweries.find(item => item.image) ?? breweries[0];
+  const profile = breweryProfiles[slug];
+  const route = getBreweryProfileRoute(brewery.slug);
+  const places = route ? breweries.filter(item => getBreweryProfileRoute(item.slug) === route) : [brewery];
   return {
-    profileSlug,
-    profile: breweryProfiles[profileSlug] ?? fallbackBrand,
-    brewery,
+    category: "Brewery",
+    title: profile?.name ?? brewery.name,
+    description: profile?.tagline ?? brewery.blurb,
+    tags: (profile?.knownFor ?? [brewery.type]).slice(0,3),
+    href: route ?? `/breweries?q=${encodeURIComponent(brewery.name)}`,
+    image: places.find(item => item.image)?.image ?? null,
+    logo: places.find(item => item.logo)?.logo ?? null,
   };
 }
 
-const featuredSelection = getFeaturedSelection();
-const featuredBrewery = featuredSelection.brewery;
-const featuredProfile = featuredSelection.profile;
-
-function getFeaturedVisual() {
-  if (!featuredBrewery) return null;
-
-  const profileRoute = getBreweryProfileRoute(featuredBrewery.slug);
-  const sameProfileBreweries = profileRoute
-    ? breweries.filter((brewery) => getBreweryProfileRoute(brewery.slug) === profileRoute)
-    : [featuredBrewery];
-
-  const withImage = sameProfileBreweries.find((brewery) => brewery.image);
-  if (withImage?.image) return { type: "image" as const, ...withImage.image };
-
-  const withLogo = sameProfileBreweries.find((brewery) => brewery.logo);
-  if (withLogo?.logo) return { type: "logo" as const, ...withLogo.logo };
-
-  return null;
+function getEventOfTheMonth(events: Awaited<ReturnType<typeof getCurrentEvents>>) {
+  const {year,month,day} = getPittsburghDateParts();
+  const today = `${year}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+  const prefix = `${year}-${String(month).padStart(2,"0")}`;
+  // Exactly one candidate per month. Never substitute a different event after the
+  // featured event ends. The same selection is made regardless of the current day.
+  const inMonth = events.filter(e => e.startDate.startsWith(prefix))
+    .sort((a,b) => Number(Boolean(b.featured))-Number(Boolean(a.featured)) || a.startDate.localeCompare(b.startDate) || a.name.localeCompare(b.name));
+  const selected = inMonth[0];
+  return selected && selected.endDate >= today ? selected : null;
 }
-
-const featuredVisual = getFeaturedVisual();
-
 
 function getHeroStorefronts() {
   const root = path.join(process.cwd(), "public", "brand", "breweries");
@@ -118,6 +114,8 @@ function getHeroStorefronts() {
 export default async function Home() {
   const upcomingEvents = (await getCurrentEvents()).slice(0, 5);
   const heroStorefronts = getHeroStorefronts();
+  const spotlight = getWeeklySpotlight();
+  const eventOfTheMonth = getEventOfTheMonth(await getCurrentEvents());
   return (
     <main className="bg-[#171714]">
       <section className="relative overflow-hidden border-b border-white/10">
@@ -191,71 +189,34 @@ export default async function Home() {
         </div>
       </section>
 
-      {featuredBrewery && (
-        <section className="border-b border-white/10 bg-[#1d1c18]">
-          <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-12">
-            <div className="mb-4 flex items-end justify-between gap-4">
-              <div>
-                <div className="text-xs font-black uppercase tracking-[0.12em] text-[var(--gold)]">Spotlight</div>
-                <h2 className="mt-1 text-2xl font-black text-white md:text-3xl">Spotlight</h2>
-              </div>
-              <Link href="/breweries" className="text-sm font-black text-zinc-400 transition hover:text-[var(--gold)]">Browse all →</Link>
+      <section className="border-b border-white/10 bg-[#1d1c18]">
+        <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-12">
+          <div className="mb-4"><h2 className="text-2xl font-black text-white md:text-3xl">Spotlight</h2></div>
+          <Link href={spotlight.href} className="group grid overflow-hidden rounded-2xl border border-white/10 bg-[#27251f] transition hover:border-[var(--gold)]/30 md:grid-cols-[1.15fr_.85fr]">
+            <div className="flex h-56 items-center justify-center overflow-hidden bg-[#22211d] md:h-72">
+              {spotlight.image ? <img src={spotlight.image.url} alt={spotlight.image.alt} className="h-full w-full object-cover" /> :
+                spotlight.logo ? <img src={spotlight.logo.url} alt={spotlight.logo.alt} className="max-h-full max-w-full object-contain p-8" /> :
+                <div className="text-center"><div className="text-5xl font-black tracking-tight text-[var(--gold)]">PB</div><div className="mt-3 text-xs font-bold uppercase tracking-widest text-zinc-400">Pittsburgh Brews</div></div>}
             </div>
-
-            <Link
-              href={getBreweryProfileRoute(featuredBrewery.slug) ?? `/breweries?q=${encodeURIComponent(featuredBrewery.name)}`}
-              className="group grid overflow-hidden rounded-2xl border border-white/10 bg-[#27251f] transition hover:border-[var(--gold)]/30 md:grid-cols-[1.15fr_.85fr]"
-            >
-              {featuredVisual?.type === "image" ? (
-                <div className="h-56 overflow-hidden bg-[#22211d] md:h-72">
-                  <img
-                    src={featuredVisual.url}
-                    alt={featuredVisual.alt}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                  />
-                </div>
-              ) : featuredVisual?.type === "logo" ? (
-                <div className="flex h-56 items-center justify-center bg-[#22211d] p-10 md:h-72">
-                  <img
-                    src={featuredVisual.url}
-                    alt={featuredVisual.alt}
-                    className="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-[1.02]"
-                  />
-                </div>
-              ) : (
-                <div className="relative flex h-56 items-center justify-center overflow-hidden bg-[#22211d] md:h-72">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,207,36,.12),transparent_55%)]" />
-                  <div className="relative text-center">
-                    <div className="text-[4.5rem] font-black tracking-[-0.08em] text-[var(--gold)] sm:text-[5.5rem]">
-                      {featuredProfile?.name === "Dancing Gnome" ? "DG" : (featuredProfile?.name ?? featuredBrewery.name)
-                        .split(" ")
-                        .filter(Boolean)
-                        .slice(0, 2)
-                        .map((word) => word[0])
-                        .join("")}
-                    </div>
-                    <div className="mt-2 text-[10px] font-black uppercase tracking-[.24em] text-zinc-500">
-                      {featuredProfile?.name === "Dancing Gnome" ? "Sharpsburg · Pittsburgh" : "Pittsburgh Brews"}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <div className="flex flex-col justify-center p-6 md:p-8">
-                <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-400">This week’s brewery</div>
-                <div className="mt-2 text-3xl font-black tracking-[-0.03em] text-white">{featuredProfile?.name ?? featuredBrewery.name}</div>
-                <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-300">{featuredProfile?.tagline ?? featuredBrewery.blurb}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {(featuredProfile?.knownFor ?? [featuredBrewery.type]).slice(0, 3).map((item) => (
-                    <span key={item} className="tag">{item}</span>
-                  ))}
-                </div>
-                <div className="mt-6 text-sm font-black text-[var(--gold)]">Check it out →</div>
-              </div>
-            </Link>
-          </div>
-        </section>
-      )}
+            <div className="flex flex-col justify-center p-6 md:p-8">
+              <div className="text-xs font-black uppercase tracking-[0.12em] text-zinc-400">This week’s {spotlight.category.toLowerCase()}</div>
+              <div className="mt-2 text-3xl font-black tracking-[-0.03em] text-white">{spotlight.title}</div>
+              <p className="mt-3 text-sm leading-6 text-zinc-300">{spotlight.description}</p>
+              <div className="mt-5 flex flex-wrap gap-2">{spotlight.tags.map(tag => <span key={tag} className="tag">{tag}</span>)}</div>
+              <div className="mt-6 text-sm font-black text-[var(--gold)]">Explore →</div>
+            </div>
+          </Link>
+          {eventOfTheMonth && <Link href={eventUrl(eventOfTheMonth)} className="mt-4 flex flex-col gap-4 rounded-2xl border border-white/10 bg-[#27251f] p-5 transition hover:border-[var(--gold)]/30 sm:flex-row sm:items-center">
+            {eventOfTheMonth.image && <img src={eventOfTheMonth.image.url} alt={eventOfTheMonth.image.alt} className="h-28 w-full rounded-lg object-contain sm:w-40" />}
+            <div className="flex-1">
+              <div className="text-xs font-black uppercase tracking-wider text-[var(--gold)]">Event of the Month</div>
+              <div className="mt-2 text-xl font-black text-white">{eventOfTheMonth.name}</div>
+              <p className="mt-1 text-sm text-zinc-300">{eventOfTheMonth.date} · {eventOfTheMonth.location}</p>
+              <div className="mt-3 text-sm font-bold text-[var(--gold)]">Event details →</div>
+            </div>
+          </Link>}
+        </div>
+      </section>
 
       <section className="border-b border-black/10 bg-[#f6f1e7] text-[#191815]">
         <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-12">
