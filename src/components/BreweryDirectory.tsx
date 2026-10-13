@@ -231,7 +231,7 @@ export default function BreweryDirectory() {
               <p className="mt-2 text-xs text-zinc-500">{entry.distanceMiles === null ? "Distance not yet verified" : formatDistance(entry.distanceMiles)}</p>
               <div className="mt-4 flex flex-wrap gap-4 text-sm font-black">
                 <a href={`/retailers?spotlight=${encodeURIComponent(shop.name)}`} className="text-[var(--gold)]">Shop profile →</a>
-                <a href={`tel:${shop.phone}`} className="text-[var(--gold)]">Call →</a>
+                {shop.phone && <a href={`tel:${shop.phone}`} className="text-[var(--gold)]">Call →</a>}
                 <a href={directionsUrl(shop.address)} target="_blank" rel="noreferrer" className="text-zinc-300">Directions ↗</a>
               </div>
             </article>;
