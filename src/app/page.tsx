@@ -130,7 +130,7 @@ export default async function Home() {
               Find Your Brew in Pittsburgh.
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-zinc-200 sm:text-base md:text-lg md:leading-7">
-              Discover breweries, bottle shops, beer distributors, and local craft beer events.
+              Discover breweries, beer retailers, and local craft beer events.
             </p>
 
             <div className="mx-auto mt-7 grid max-w-4xl grid-cols-3 gap-2 sm:gap-3">
