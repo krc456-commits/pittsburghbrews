@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 
 const primaryActions = [
   { label: "Breweries", href: "/breweries", icon: "⌕" },
-  { label: "Beer Shops", href: "/retailers", icon: "▣" },
+  { label: "Bottle Shops", href: "/retailers", icon: "▣" },
   { label: "Events", href: "/events", icon: "✦" },
 ] as const;
 
