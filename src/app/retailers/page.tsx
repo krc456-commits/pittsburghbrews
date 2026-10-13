@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import { retailers } from "@/data/retailers";
+import { retailers, retailerRegion } from "@/data/retailers";
 
 type Location = {lat:number; lng:number};
 function miles(a:Location,b:Location) {
@@ -32,6 +32,7 @@ export default function RetailersPage() {
   },[]);
   const [query,setQuery] = useState("");
   const [filter,setFilter] = useState("All");
+  const [region,setRegion] = useState("All");
   const [open,setOpen] = useState<string | null>(null);
   useEffect(() => {
     const highlighted = new URLSearchParams(window.location.search).get("spotlight");
@@ -42,6 +43,7 @@ export default function RetailersPage() {
   }, []);
   const results = useMemo(()=>retailers.filter(item =>
     (filter==="All" || item.kind===filter) &&
+    (region==="All" || retailerRegion(item)===region) &&
     [item.name,item.area,item.address,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(query.trim().toLowerCase())
   ).sort((a,b)=>{
     if(sort==="distance"&&location){
@@ -51,7 +53,7 @@ export default function RetailersPage() {
       if(x!==null&&y!==null)return x-y;
     }
     return a.name.localeCompare(b.name);
-  }),[query,filter,location,sort]);
+  }),[query,filter,region,location,sort]);
   return <main className="min-h-screen bg-[#171714] text-white">
     <div className="mx-auto max-w-5xl px-5 py-12 md:px-8">
       <a href="/" className="text-sm font-bold text-[var(--gold)]">← Pittsburgh Brews</a>
@@ -61,6 +63,7 @@ export default function RetailersPage() {
       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
         <label className="flex-1"><span className="sr-only">Search places and beer brands</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search shops, areas or beer brands" className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white placeholder:text-zinc-400"/></label>
         <label><span className="sr-only">Type of retailer</span><select value={filter} onChange={e=>setFilter(e.target.value)} className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white sm:w-auto"><option>All</option><option>Bottle shop</option><option>Beer distributor</option><option>Bottle shop &amp; taproom</option><option>Restaurant &amp; beer to go</option></select></label>
+        <label><span className="sr-only">Filter by region</span><select value={region} onChange={e=>setRegion(e.target.value)} className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white sm:w-auto"><option>All</option><option>Pittsburgh</option><option>North</option><option>South</option><option>East</option><option>West</option><option>Surrounding Counties</option></select></label>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <button onClick={locate} disabled={locationStatus==="locating"} className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-4 py-2 text-sm font-black text-[var(--gold)] disabled:opacity-60">{locationStatus==="locating"?"Finding your location…":location?"Update my location":"Find Craft Beer Retailers Near Me"}</button>
