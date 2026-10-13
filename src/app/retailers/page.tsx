@@ -49,14 +49,14 @@ export default function RetailersPage() {
     <div className="mx-auto max-w-5xl px-5 py-12 md:px-8">
       <a href="/" className="text-sm font-bold text-[var(--gold)]">← Pittsburgh Brews</a>
       <div className="mt-8 text-xs font-black uppercase tracking-widest text-[var(--gold)]">Find your brew in Pittsburgh</div>
-      <h1 className="mt-2 text-4xl font-black tracking-tight">Bottle Shops & Beer Distributors</h1>
+      <h1 className="mt-2 text-4xl font-black tracking-tight">Craft Beer Retailers</h1>
       <p className="mt-4 max-w-2xl text-zinc-300">A simple, alphabetical list of places to explore craft beer. No ratings or rankings, and no claims of live inventory.</p>
       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
         <label className="flex-1"><span className="sr-only">Search places and beer brands</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search shops, areas or beer brands" className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white placeholder:text-zinc-400"/></label>
         <label><span className="sr-only">Type of retailer</span><select value={filter} onChange={e=>setFilter(e.target.value)} className="w-full rounded-xl border border-white/20 bg-[#282720] px-4 py-3 text-white sm:w-auto"><option>All</option><option>Bottle shop</option><option>Beer distributor</option></select></label>
       </div>
       <div className="mt-4 flex flex-wrap items-center gap-3">
-        <button onClick={locate} disabled={locationStatus==="locating"} className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-4 py-2 text-sm font-black text-[var(--gold)] disabled:opacity-60">{locationStatus==="locating"?"Finding your location…":location?"Update my location":"Find Bottle Shops Near Me"}</button>
+        <button onClick={locate} disabled={locationStatus==="locating"} className="rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/10 px-4 py-2 text-sm font-black text-[var(--gold)] disabled:opacity-60">{locationStatus==="locating"?"Finding your location…":location?"Update my location":"Find Craft Beer Retailers Near Me"}</button>
         {location&&<button onClick={()=>setSort(sort==="alpha"?"distance":"alpha")} className="rounded-full border border-white/20 px-4 py-2 text-sm">{sort==="alpha"?"Sort by distance":"Sort A–Z"}</button>}
       </div>
       {locationStatus==="error"&&<p role="alert" className="mt-3 text-sm text-amber-300">Location is unavailable or permission was denied. You can still search all bottle shops and distributors.</p>}
