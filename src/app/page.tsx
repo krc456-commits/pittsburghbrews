@@ -131,7 +131,7 @@ export default async function Home() {
               Find Your Brew in Pittsburgh.
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-zinc-200 sm:text-base md:text-lg md:leading-7">
-              Discover breweries, bottle shops, beer distributors, and local craft beer events. Find places worth visiting without rankings.
+              Discover breweries, bottle shops, beer distributors, and local craft beer events.
             </p>
 
             <div className="mx-auto mt-7 grid max-w-4xl grid-cols-2 gap-2 sm:gap-3">
@@ -139,12 +139,12 @@ export default async function Home() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="group flex min-h-[72px] items-center justify-center gap-2 rounded-2xl border border-white/20 bg-black/35 px-2 py-3 text-center text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-[var(--gold)]/70 hover:bg-black/50 sm:min-h-[82px] sm:px-4"
+                  className="group grid min-h-[88px] grid-cols-[36px_minmax(0,1fr)] items-center gap-2 rounded-2xl border border-white/20 bg-black/35 px-3 py-3 text-left text-white backdrop-blur-md transition hover:border-[var(--gold)]/70 hover:bg-black/50 sm:min-h-[82px] sm:grid-cols-[40px_minmax(0,1fr)] sm:gap-3 sm:px-4"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--gold)] text-base font-black text-black sm:h-9 sm:w-9">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--gold)] text-base font-black text-black sm:h-10 sm:w-10">
                     {item.icon}
                   </span>
-                  <span className="text-[11px] font-black leading-tight sm:text-sm md:text-base">{item.label}</span>
+                  <span className="min-w-0 text-[11px] font-black leading-snug sm:text-sm md:text-base">{item.label}</span>
                 </Link>
               ))}
             </div>
