@@ -8,8 +8,8 @@ export default function BreweriesPage() {
         <div className="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-10">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <div className="eyebrow">Brewery search</div>
-              <h1 className="mt-2 text-4xl font-black tracking-[-.045em] text-white md:text-5xl">Find a brewery</h1>
+              <div className="eyebrow">Pittsburgh Brews</div>
+              <h1 className="mt-2 text-4xl font-black tracking-[-.045em] text-white md:text-5xl">Brew Finder</h1>
             </div>
           </div>
           <div className="mt-6">
