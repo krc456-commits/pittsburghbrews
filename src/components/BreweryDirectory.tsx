@@ -72,7 +72,7 @@ export default function BreweryDirectory() {
   const initialFeature = requestedFeature === "outdoor" ? "Outdoor seating" : requestedFeature === "dog" ? "Dog friendly" : requestedFeature === "gluten" ? "Gluten-aware" : "All features";
 
   const [query, setQuery] = useState(requestedQuery);
-  const [placeType, setPlaceType] = useState<"All" | "Breweries" | "Bottle Shops & Distributors">("All");
+  const [placeType, setPlaceType] = useState<"All" | "Breweries" | "Craft Beer Retailers">("All");
   const [area, setArea] = useState<(typeof areas)[number]>(initialArea);
   const [food, setFood] = useState<(typeof foodFilters)[number]>(initialFood);
   const [feature, setFeature] = useState<(typeof featureFilters)[number]>(initialFeature);
@@ -130,7 +130,7 @@ export default function BreweryDirectory() {
   const filtered = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     const breweryMatches = breweries
-      .filter((brewery) => placeType !== "Bottle Shops & Distributors" && (() => {
+      .filter((brewery) => placeType !== "Craft Beer Retailers" && (() => {
         const matchesQuery = !normalized || [brewery.name, brewery.city, brewery.neighborhood, brewery.type].join(" ").toLowerCase().includes(normalized);
         const matchesArea = area === "All" || brewery.area === area;
         const matchesFood = food === "All food" || brewery.food === food;
@@ -175,7 +175,7 @@ export default function BreweryDirectory() {
           {filtersOpen && (
             <div className="mt-3 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto_auto]">
               <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search breweries, shops, brands, or areas" className="w-full rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[var(--gold)]" />
-              <select aria-label="Place type" value={placeType} onChange={(e) => {setPlaceType(e.target.value as "All" | "Breweries" | "Bottle Shops & Distributors"); if(e.target.value==="Bottle Shops & Distributors"){setArea("All");setFood("All food");setFeature("All features");}}} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold"><option>All</option><option>Breweries</option><option>Beer Retailers</option></select>
+              <select aria-label="Place type" value={placeType} onChange={(e) => {setPlaceType(e.target.value as "All" | "Breweries" | "Craft Beer Retailers"); if(e.target.value==="Craft Beer Retailers"){setArea("All");setFood("All food");setFeature("All features");}}} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold"><option>All</option><option>Breweries</option><option>Craft Beer Retailers</option></select>
               <select value={area} onChange={(e) => setArea(e.target.value as (typeof areas)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{areas.map((item) => <option key={item}>{item}</option>)}</select>
               <select value={food} onChange={(e) => setFood(e.target.value as (typeof foodFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{foodFilters.map((item) => <option key={item}>{item}</option>)}</select>
               <select value={feature} onChange={(e) => setFeature(e.target.value as (typeof featureFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{featureFilters.map((item) => <option key={item}>{item}</option>)}</select>
