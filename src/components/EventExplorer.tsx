@@ -80,7 +80,7 @@ export default function EventExplorer({ events }: { events: BeerEvent[] }) {
           </label>
         </div>
         <div className="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter by date">
-          {([["all", "All upcoming"], ["today", "Today"], ["weekend", "This weekend"], ["week", "Next 7 days"], ["month", "This month"]] as const).map(([value, label]) => (
+          {([["all", "Recent & upcoming"], ["today", "Today"], ["weekend", "This weekend"], ["week", "Next 7 days"], ["month", "This month"]] as const).map(([value, label]) => (
             <button key={value} type="button" onClick={() => setPeriod(value)} aria-pressed={period === value} className={`rounded-full border px-3.5 py-2 text-xs font-black transition ${period === value ? "border-[#8d6b00] bg-[#8d6b00] text-white" : "border-black/15 bg-[#f8f5ef] text-[#625c50] hover:border-[#8d6b00]"}`}>{label}</button>
           ))}
         </div>
