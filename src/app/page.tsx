@@ -76,15 +76,19 @@ function getWeeklySpotlight() {
   };
 }
 
+// Editorially choose at most one event per calendar month. Don't silently
+// switch to a different event when feeds change or the selected event ends.
+const monthlyEventPicks: Record<string, string> = {
+  "2026-11": "Brewing for a Cause 2026",
+};
+
 function getEventOfTheMonth(events: Awaited<ReturnType<typeof getCurrentEvents>>) {
-  const {year,month,day} = getPittsburghDateParts();
+  const { year, month, day } = getPittsburghDateParts();
+  const key = `${year}-${String(month).padStart(2, "0")}`;
+  const pickedName = monthlyEventPicks[key];
+  if (!pickedName) return null;
+  const selected = events.find(e => e.name === pickedName && e.startDate.startsWith(key));
   const today = `${year}-${String(month).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
-  const prefix = `${year}-${String(month).padStart(2,"0")}`;
-  // Exactly one candidate per month. Never substitute a different event after the
-  // featured event ends. The same selection is made regardless of the current day.
-  const inMonth = events.filter(e => e.startDate.startsWith(prefix))
-    .sort((a,b) => Number(Boolean(b.featured))-Number(Boolean(a.featured)) || a.startDate.localeCompare(b.startDate) || a.name.localeCompare(b.name));
-  const selected = inMonth[0];
   return selected && selected.endDate >= today ? selected : null;
 }
 
