@@ -153,10 +153,10 @@ export default async function Home() {
               className="mx-auto mt-3 flex max-w-4xl items-center justify-center gap-3 rounded-2xl border border-[var(--gold)]/60 bg-black/65 px-4 py-4 text-center text-sm font-black text-white backdrop-blur-md transition hover:bg-black/80 sm:text-base"
             >
               <span aria-hidden="true" className="text-[var(--gold)]">⌖</span>
-              Find Breweries Near Me
+              Find Brews Near Me
               <span aria-hidden="true" className="text-[var(--gold)]">→</span>
             </Link>
-            <p className="mt-2 text-center text-xs text-zinc-300">Combined brewery and shop location search is coming next.</p>
+            <p className="mt-2 text-center text-xs text-zinc-300">Combined brewery and retailer location search is coming next.</p>
 
             <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
               {quickPicks.map(([label, href]) => (
