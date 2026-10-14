@@ -81,6 +81,10 @@ export default function RetailersPage() {
             <p className="text-sm leading-6 text-zinc-200">{item.summary}</p>
             <h2 className="mt-5 font-black">What makes this place worth knowing?</h2>
             <ul className="mt-2 list-inside list-disc space-y-1 text-sm text-zinc-300">{item.reasons.map(reason=><li key={reason}>{reason}</li>)}</ul>
+            <details className="mt-5 text-sm">
+              <summary className="cursor-pointer font-black text-white">Hours</summary>
+              {item.hours?.length ? <div className="mt-2 space-y-1 text-zinc-300">{item.hours.map(line => <p key={line}>{line}</p>)}<a href={item.hoursSource ?? item.source} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs text-[var(--gold)]">Verify current hours ↗</a></div> : <p className="mt-2 text-zinc-400">Hours not verified yet. Contact the retailer before visiting.</p>}
+            </details>
             {item.brands && <><h2 className="mt-5 font-black">Brewery brands you may find</h2><div className="mt-2 flex flex-wrap gap-2">{item.brands.map(brand=><span key={brand} className="rounded-full border border-white/20 px-3 py-1 text-xs">{brand}</span>)}</div></>}
             <p className="mt-4 rounded-xl border border-white/10 bg-black/20 p-3 text-xs leading-5 text-zinc-300"><strong>Selection & availability:</strong> Brands and features are based on retailer-published information, not live inventory. Selection can change. Call the shop to confirm a particular beer, brand or club benefit before visiting.</p>
             <p className="mt-4 text-sm text-zinc-300">{item.address}</p>
