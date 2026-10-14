@@ -66,13 +66,15 @@ export default function BreweryDirectory() {
   const requestedArea = searchParams.get("area");
   const requestedFood = searchParams.get("food");
   const requestedFeature = searchParams.get("feature");
+  const requestedRetailerType = searchParams.get("retailerType");
 
   const initialArea = areas.includes(requestedArea as (typeof areas)[number]) ? (requestedArea as (typeof areas)[number]) : "All";
   const initialFood = foodFilters.includes(requestedFood as (typeof foodFilters)[number]) ? (requestedFood as (typeof foodFilters)[number]) : "All food";
   const initialFeature = requestedFeature === "outdoor" ? "Outdoor seating" : requestedFeature === "dog" ? "Dog friendly" : requestedFeature === "gluten" ? "Gluten-aware" : "All features";
 
   const [query, setQuery] = useState(requestedQuery);
-  const [placeType, setPlaceType] = useState<"All" | "Breweries" | "Craft Beer Retailers">("All");
+  const [placeType, setPlaceType] = useState<"All" | "Breweries" | "Craft Beer Retailers">(requestedRetailerType === "bottle" || requestedRetailerType === "distributor" ? "Craft Beer Retailers" : "All");
+  const [retailerType, setRetailerType] = useState<"All" | "bottle" | "distributor">(requestedRetailerType === "bottle" || requestedRetailerType === "distributor" ? requestedRetailerType : "All");
   const [area, setArea] = useState<(typeof areas)[number]>(initialArea);
   const [food, setFood] = useState<(typeof foodFilters)[number]>(initialFood);
   const [feature, setFeature] = useState<(typeof featureFilters)[number]>(initialFeature);
@@ -146,7 +148,7 @@ export default function BreweryDirectory() {
     // Food and amenity filters are brewery-specific; avoid implying retailers
     // have been screened for kitchen, patio or gluten-aware features.
     const retailerMatches = placeType === "Breweries" || food !== "All food" || feature !== "All features" ? [] :
-      retailers.filter(item => (area === "All" || retailerRegion(item) === area) &&
+      retailers.filter(item => (retailerType === "All" || (retailerType === "bottle" ? item.kind.startsWith("Bottle shop") : item.kind === "Beer distributor")) && (area === "All" || retailerRegion(item) === area) &&
         (!normalized || [item.name,item.area,item.address,item.kind,item.summary,...item.reasons,...(item.brands ?? [])].join(" ").toLowerCase().includes(normalized)))
         .map(retailer => ({kind:"retailer" as const, retailer, name:retailer.name, distanceMiles:userLocation && retailer.coordinates ? distanceMiles(userLocation,retailer.coordinates) : null as number | null}));
     return [...breweryMatches,...retailerMatches].sort((a,b) => {
@@ -157,11 +159,11 @@ export default function BreweryDirectory() {
       }
       return a.name.localeCompare(b.name);
     });
-  }, [query, placeType, area, food, feature, userLocation, sortMode]);
+  }, [query, placeType, retailerType, area, food, feature, userLocation, sortMode]);
 
-  const hasActiveFilters = Boolean(query || placeType !== "All" || area !== "All" || food !== "All food" || feature !== "All features");
-  const activeFilterCount = [Boolean(query), placeType !== "All", area !== "All", food !== "All food", feature !== "All features"].filter(Boolean).length;
-  const reset = () => { setQuery(""); setPlaceType("All"); setArea("All"); setFood("All food"); setFeature("All features"); };
+  const hasActiveFilters = Boolean(query || retailerType !== "All" || placeType !== "All" || area !== "All" || food !== "All food" || feature !== "All features");
+  const activeFilterCount = [Boolean(query), retailerType !== "All", placeType !== "All", area !== "All", food !== "All food", feature !== "All features"].filter(Boolean).length;
+  const reset = () => { setQuery(""); setPlaceType("All"); setRetailerType("All"); setArea("All"); setFood("All food"); setFeature("All features"); };
 
   return (
     <div className="mt-6">
@@ -178,7 +180,8 @@ export default function BreweryDirectory() {
           {filtersOpen && (
             <div className="mt-3 grid gap-3 lg:grid-cols-[1fr_auto_auto_auto_auto]">
               <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search breweries, shops, brands, or areas" className="w-full rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-[var(--gold)]" />
-              <select aria-label="Place type" value={placeType} onChange={(e) => {setPlaceType(e.target.value as "All" | "Breweries" | "Craft Beer Retailers"); if(e.target.value==="Craft Beer Retailers"){setArea("All");setFood("All food");setFeature("All features");}}} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold"><option>All</option><option>Breweries</option><option>Craft Beer Retailers</option></select>
+              <select aria-label="Place type" value={placeType} onChange={(e) => {setPlaceType(e.target.value as "All" | "Breweries" | "Craft Beer Retailers"); if(e.target.value !== "Craft Beer Retailers")setRetailerType("All"); if(e.target.value==="Craft Beer Retailers"){setArea("All");setFood("All food");setFeature("All features");}}} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold"><option>All</option><option>Breweries</option><option>Craft Beer Retailers</option></select>
+              {placeType === "Craft Beer Retailers" && <select aria-label="Retailer type" value={retailerType} onChange={e=>setRetailerType(e.target.value as "All" | "bottle" | "distributor")} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold"><option value="All">All retailer types</option><option value="bottle">Bottle shops</option><option value="distributor">Beer distributors</option></select>}
               <select value={area} onChange={(e) => setArea(e.target.value as (typeof areas)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{areas.map((item) => <option key={item}>{item}</option>)}</select>
               <select aria-label="Brewery food filter" value={food} onChange={(e) => setFood(e.target.value as (typeof foodFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{foodFilters.map((item) => <option key={item}>{item}</option>)}</select>
               <select aria-label="Brewery amenity filter" value={feature} onChange={(e) => setFeature(e.target.value as (typeof featureFilters)[number])} className="rounded-md border border-white/10 bg-[#141413] px-4 py-3 text-sm font-bold outline-none focus:border-[var(--gold)]">{featureFilters.map((item) => <option key={item}>{item}</option>)}</select>
