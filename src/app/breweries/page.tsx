@@ -19,6 +19,8 @@ export default function BreweriesPage() {
               <a href="/breweries?food=Full%20kitchen" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">🍔 Full kitchen</a>
               <a href="/breweries?food=Food%20trucks" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">🚚 Food trucks</a>
               <a href="/breweries?feature=dog" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">🐾 Dog friendly</a>
+              <a href="/breweries?retailerType=bottle" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">🍺 Bottle shops</a>
+              <a href="/breweries?retailerType=distributor" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">📦 Beer distributors</a>
               <a href="/breweries?area=Pittsburgh" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">📍 Pittsburgh proper</a>
             </div>
           </div>
