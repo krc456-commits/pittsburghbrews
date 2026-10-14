@@ -236,7 +236,7 @@ export default function BreweryDirectory() {
                 <summary className="cursor-pointer font-black text-white">Hours</summary>
                 {shop.hours?.length ? <div className="mt-2 space-y-1 text-zinc-300">{shop.hours.map(line => <p key={line}>{line}</p>)}<a href={shop.hoursSource ?? shop.source} target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-[var(--gold)]">Verify current hours ↗</a></div> : <p className="mt-2 text-zinc-400">Hours not verified yet. Contact the retailer before visiting.</p>}
               </details>
-              {shop.brands && <details className="mt-4 text-sm"><summary className="cursor-pointer font-black text-white">Brewery brands you may find</summary><p className="mt-2 text-zinc-300">{shop.brands.join(" · ")}</p></details>}
+              {shop.brands && <details className="mt-4 text-sm"><summary className="cursor-pointer font-black text-white">Brewery brands you may find</summary><p className="mt-2 text-zinc-300">{shop.brands.join(" · ")}</p>{shop.brandListUrl && <a href={shop.brandListUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-[var(--gold)]">View full published craft beer list ↗</a>}</details>}
               <p className="mt-3 text-xs text-zinc-500">Selection varies; call the shop to confirm brands or products before visiting.</p>
               <p className="mt-4 text-sm text-zinc-300">{shop.address}</p>
               <p className="mt-2 text-xs text-zinc-500">{entry.distanceMiles === null ? "Distance not yet verified" : formatDistance(entry.distanceMiles)}</p>
