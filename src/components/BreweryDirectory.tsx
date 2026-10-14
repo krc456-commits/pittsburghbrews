@@ -232,6 +232,10 @@ export default function BreweryDirectory() {
               <h2 className="mt-2 text-2xl font-black text-white">{shop.name}</h2>
               <p className="mt-3 text-sm leading-6 text-zinc-300">{shop.summary}</p>
               <div className="mt-3 flex flex-wrap gap-2">{shop.reasons.map(reason=><span key={reason} className="tag">{reason}</span>)}</div>
+              <details className="mt-4 text-sm">
+                <summary className="cursor-pointer font-black text-white">Hours</summary>
+                {shop.hours?.length ? <div className="mt-2 space-y-1 text-zinc-300">{shop.hours.map(line => <p key={line}>{line}</p>)}<a href={shop.hoursSource ?? shop.source} target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-[var(--gold)]">Verify current hours ↗</a></div> : <p className="mt-2 text-zinc-400">Hours not verified yet. Contact the retailer before visiting.</p>}
+              </details>
               {shop.brands && <details className="mt-4 text-sm"><summary className="cursor-pointer font-black text-white">Brewery brands you may find</summary><p className="mt-2 text-zinc-300">{shop.brands.join(" · ")}</p></details>}
               <p className="mt-3 text-xs text-zinc-500">Selection varies; call the shop to confirm brands or products before visiting.</p>
               <p className="mt-4 text-sm text-zinc-300">{shop.address}</p>
