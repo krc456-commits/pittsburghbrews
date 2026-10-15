@@ -8,8 +8,8 @@ export default function BreweriesPage() {
         <div className="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-10">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <div className="eyebrow">Brewery search</div>
-              <h1 className="mt-2 text-4xl font-black tracking-[-.045em] text-white md:text-5xl">Find a brewery</h1>
+              <div className="eyebrow">Pittsburgh Brews</div>
+              <h1 className="mt-2 text-4xl font-black tracking-[-.045em] text-white md:text-5xl">Brew Finder</h1>
             </div>
           </div>
           <div className="mt-6">
@@ -19,10 +19,12 @@ export default function BreweriesPage() {
               <a href="/breweries?food=Full%20kitchen" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">🍔 Full kitchen</a>
               <a href="/breweries?food=Food%20trucks" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">🚚 Food trucks</a>
               <a href="/breweries?feature=dog" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">🐾 Dog friendly</a>
+              <a href="/breweries?retailerType=bottle" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">🍺 Bottle shops</a>
+              <a href="/breweries?retailerType=distributor" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">📦 Beer distributors</a>
               <a href="/breweries?area=Pittsburgh" className="rounded-full border border-white/10 bg-[#151514] px-4 py-2.5 text-sm font-black text-zinc-200 transition hover:border-[var(--gold)]/50 hover:text-[var(--gold)]">📍 Pittsburgh proper</a>
             </div>
           </div>
-          <p className="mt-5 max-w-4xl text-sm leading-relaxed text-zinc-400">Pittsburgh Brews includes breweries and brewery-operated taprooms across the region. Some breweries were founded elsewhere but brew beer here; others operate local satellite taprooms serving beer produced at another location. We note these distinctions on listings when verified.</p>
+          <p className="mt-5 max-w-4xl text-sm leading-relaxed text-zinc-400">Find breweries, brewery-operated taprooms, bottle shops, and beer distributors in one list. Filter by place type or search by name, area, and brewery brand. Retailer selections vary; call the shop to confirm current inventory.</p>
           <p className="mt-2 text-xs text-zinc-500"><span className="font-black text-amber-300">★ PGH Original</span> means the brewery brand was founded in the greater Pittsburgh region, regardless of where its individual taprooms are located.</p>
           <Suspense fallback={<div className="mt-8 text-zinc-600">Loading breweries…</div>}><BreweryDirectory /></Suspense>
         </div>
