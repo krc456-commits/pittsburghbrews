@@ -4,8 +4,18 @@ import type { BeerEvent } from "@/data/events";
 // reviewed brewery-owned calendar pages. If a source becomes unavailable or
 // changes format, it fails closed and manual listings remain untouched.
 const calendars = [
-  { page: "https://www.11thhourbrews.com/foodtrucks-1", brewery: "Eleventh Hour Brewing", location: "Eleventh Hour Brewing · Lawrenceville" },
-  { page: "https://pittsburgh.stbcbeer.com/taproomevents", brewery: "Southern Tier Pittsburgh", location: "Southern Tier Brewing · North Shore" },
+  {
+    page: "https://www.11thhourbrews.com/foodtrucks-1",
+    brewery: "Eleventh Hour Brewing",
+    location: "Eleventh Hour Brewing · Lawrenceville",
+    defaultCategory: "Food trucks" as const,
+  },
+  {
+    page: "https://pittsburgh.stbcbeer.com/taproomevents",
+    brewery: "Southern Tier Pittsburgh",
+    location: "Southern Tier Brewing · North Shore",
+    defaultCategory: undefined,
+  },
 ] as const;
 
 function pittsburghDate(timestamp: number): string {
@@ -58,10 +68,13 @@ function parseItem(item: SourceItem, calendar: typeof calendars[number], today: 
   }
   const name = title;
   const description = plainText(item.excerpt ?? item.body ?? item.description).slice(0, 300) || `Listed on the ${calendar.brewery} event calendar. Check the source for full details and changes.`;
-  const category = /halloween|christmas|xmas|holiday|valentine|st\. patrick|st patrick|new year|easter|thanksgiving|winter pop.up/i.test(name + " " + description) ? "Holiday themed" as const
+  const detectedCategory = /halloween|christmas|xmas|holiday|valentine|st\. patrick|st patrick|new year|easter|thanksgiving|winter pop.up/i.test(name + " " + description) ? "Holiday themed" as const
     : /trivia|bingo|game night|quiz/i.test(name + " " + description) ? "Trivia & games" as const
     : /food truck|pizza|bbq|taco|tortas|sando|wrap|trailer|chamo|rincon|horns|boonseek|77 club|off the press/i.test(name) ? "Food trucks" as const
     : /music|concert|band|dj|comedy/i.test(name + " " + description) ? "Live music" as const : "Beer Event" as const;
+
+  const category = calendar.defaultCategory ?? detectedCategory;
+  
   return { name: `${name} · ${calendar.brewery}`, date: startDate === endDate ? displayDate(startDate) : `${displayDate(startDate)} – ${displayDate(endDate)}`, startDate, endDate, location: calendar.location, category, description, url, image: calendar.brewery === "Eleventh Hour Brewing" ? undefined : officialImage(item) };
 }
 
