@@ -4,7 +4,7 @@ import Link from "next/link";
 import HeroBackgroundRotator from "@/components/HeroBackgroundRotator";
 import { breweries } from "@/data/allBreweries";
 import { getVisibleBeerEvents } from "@/data/events";
-import { eventUrl, getCurrentEvents } from "@/data/eventDetails";
+import { eventUrl, getCurrentEvents, getWeeklyFeaturedEvent, isRoutineEvent } from "@/data/eventDetails";
 import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents";
 import { getSquarespaceBeerEvents } from "@/data/squarespaceEvents";
 import { breweryProfiles, featuredProfileOrder, representativeBrewerySlugs } from "@/data/breweryProfileContent";
@@ -117,10 +117,11 @@ function getHeroStorefronts() {
 
 export default async function Home() {
   const currentEvents = await getCurrentEvents();
-  const upcomingEvents = currentEvents.slice(0, 5);
+  const upcomingEvents = currentEvents.filter(event => !isRoutineEvent(event)).slice(0, 5);
   const heroStorefronts = getHeroStorefronts();
   const spotlight = getWeeklySpotlight();
   const eventOfTheMonth = getEventOfTheMonth(currentEvents);
+  const weeklyEvent = getWeeklyFeaturedEvent(currentEvents);
   return (
     <main className="bg-[#171714]">
       <section className="relative overflow-hidden border-b border-white/10">
@@ -219,6 +220,10 @@ export default async function Home() {
               <p className="mt-1 text-sm text-zinc-300">{eventOfTheMonth.date} · {eventOfTheMonth.location}</p>
               <div className="mt-3 text-sm font-bold text-[var(--gold)]">Event details →</div>
             </div>
+          </Link>}
+          {weeklyEvent && weeklyEvent.name !== eventOfTheMonth?.name && <Link href={eventUrl(weeklyEvent)} className="mt-4 grid overflow-hidden rounded-2xl border border-[var(--gold)]/25 bg-[#121210] transition hover:border-[var(--gold)]/60 sm:grid-cols-[180px_1fr]">
+            <div className="flex min-h-36 items-center justify-center overflow-hidden bg-[#22211d]">{weeklyEvent.image ? <img src={weeklyEvent.image.url} alt={weeklyEvent.image.alt} className={`h-full w-full ${weeklyEvent.image.alt.startsWith("Official") ? "object-contain" : "object-cover"}`} /> : <span className="text-5xl text-[var(--gold)]">✦</span>}</div>
+            <div className="flex flex-col justify-center p-5"><div className="text-xs font-black uppercase tracking-wider text-[var(--gold)]">Weekly event feature</div><div className="mt-2 text-2xl font-black text-white">{weeklyEvent.name}</div><p className="mt-1 text-sm text-zinc-300">{weeklyEvent.date} · {weeklyEvent.location}</p><div className="mt-3 text-sm font-bold text-[var(--gold)]">See why it’s featured →</div></div>
           </Link>}
         </div>
       </section>

@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import type { BeerEvent } from "@/data/events";
 import Link from "next/link";
-import { eventUrl } from "@/data/eventDetails";
+import { eventUrl, isRoutineEvent } from "@/data/eventDetails";
 import EventActions from "@/components/EventActions";
 
 type Period = "all" | "today" | "weekend" | "week" | "month";
@@ -57,6 +57,23 @@ export default function EventExplorer({ events }: { events: BeerEvent[] }) {
       && (area === "All areas" || eventRegion(event.location) === area)
       && matchesPeriod(event, period, today);
   }), [events, query, category, area, period, today]);
+  const specialEvents = filtered.filter(event => !isRoutineEvent(event));
+  const calendarEvents = filtered.filter(isRoutineEvent);
+
+  function EventCard({ event }: { event: BeerEvent }) {
+    return <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <Link href={eventUrl(event)} className="block">
+        <div className="relative flex min-h-40 flex-col items-center justify-center gap-3 overflow-hidden bg-[#2a2924] p-6 text-center text-white">
+          {event.image && <img src={event.image.url} alt={event.image.alt} className={`absolute inset-0 h-full w-full ${event.image.alt.startsWith("Official") ? "object-contain bg-[#282620]" : "object-cover"}`} loading="lazy" />}
+          {event.image && !event.image.alt.startsWith("Official") && <div className="absolute inset-0 bg-black/60" />}
+          {event.image?.alt.startsWith("Brewery venue photo:") && <div className="absolute bottom-2 right-2 z-20 rounded bg-black/70 px-2 py-1 text-[10px] font-semibold text-white">Brewery photo · Not event flyer</div>}
+          <div className={`relative z-10 flex flex-col items-center gap-3 ${event.image?.alt.startsWith("Official") ? "sr-only" : ""}`}><div className="rounded-full border border-[#edcf78]/50 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-[#edcf78]">{event.category}</div><div className="text-xs font-black text-[#edcf78]">{event.date}</div></div>
+        </div>
+        <div className="px-5 pt-5"><h3 className="text-xl font-black leading-tight tracking-tight text-[#191815] hover:text-[#8d6b00]">{event.name}</h3><div className="mt-2 text-sm font-bold text-[#625c50]">{event.location}</div><p className="mt-3 line-clamp-3 text-sm leading-6 text-[#777064]">{event.description}</p><span className="mt-3 inline-block text-sm font-black text-[#8d6b00]">Explore event →</span></div>
+      </Link>
+      <div className="mt-auto px-5 pb-5 pt-4"><EventActions title={event.name} url={eventUrl(event)} calendarUrl={eventUrl(event) + "/calendar"}/></div>
+    </article>;
+  }
 
   return (
     <>
@@ -89,32 +106,9 @@ export default function EventExplorer({ events }: { events: BeerEvent[] }) {
           {(query || period !== "all" || category !== "All types" || area !== "All areas") && <button type="button" className="font-black text-[#8d6b00] hover:underline" onClick={() => { setQuery(""); setPeriod("all"); setCategory("All types"); setArea("All areas"); }}>Clear filters</button>}
         </div>
       </div>
-      <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.length ? filtered.map(event => (
-          <article key={event.url + event.startDate + event.name} className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-            <Link href={eventUrl(event)} className="block">
-              <div className="relative flex min-h-40 flex-col items-center justify-center gap-3 overflow-hidden bg-[#2a2924] p-6 text-center text-white">
-                {event.image && <img src={event.image.url} alt={event.image.alt} className={`absolute inset-0 h-full w-full ${event.image.alt.startsWith("Official") ? "object-contain bg-[#282620]" : "object-cover"}`} loading="lazy" />}
-                {event.image && !event.image.alt.startsWith("Official") && <div className="absolute inset-0 bg-black/60" />}
-                {event.image?.alt.startsWith("Brewery venue photo:") && <div className="absolute bottom-2 right-2 z-20 rounded bg-black/70 px-2 py-1 text-[10px] font-semibold text-white">Brewery photo · Not event flyer</div>}
-                <div className={`relative z-10 flex flex-col items-center gap-3 ${event.image?.alt.startsWith("Official") ? "sr-only" : ""}`}>
-                <div className="rounded-full border border-[#edcf78]/50 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-[#edcf78]">{event.category}</div>
-                <div className="text-xs font-black text-[#edcf78]">{event.date}</div>
-                </div>
-              </div>
-              <div className="px-5 pt-5">
-                <h2 className="text-xl font-black leading-tight tracking-tight text-[#191815] hover:text-[#8d6b00]">{event.name}</h2>
-                <div className="mt-2 text-sm font-bold text-[#625c50]">{event.location}</div>
-                <p className="mt-3 line-clamp-3 text-sm leading-6 text-[#777064]">{event.description}</p>
-                <span className="mt-3 inline-block text-sm font-black text-[#8d6b00]">Explore event →</span>
-              </div>
-            </Link>
-            <div className="mt-auto px-5 pb-5 pt-4">
-              <EventActions title={event.name} url={eventUrl(event)} calendarUrl={eventUrl(event) + "/calendar"}/>
-            </div>
-          </article>
-        )) : <div className="rounded-2xl border border-black/10 bg-white p-8 text-center sm:col-span-2 lg:col-span-3"><h2 className="text-xl font-black">No events match those filters</h2><p className="mt-2 text-sm text-[#625c50]">Try a wider date range or another area.</p><a href="/submit" className="mt-4 inline-block font-black text-[#8d6b00] hover:underline">Suggest an event →</a></div>}
-      </div>
+      {specialEvents.length ? <><div className="mt-8"><div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Featured & special events</div><h2 className="mt-1 text-2xl font-black">Events worth planning around</h2></div><div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{specialEvents.map(event => <EventCard key={event.url + event.startDate + event.name} event={event} />)}</div></> : filtered.length ? null : <div className="mt-5 rounded-2xl border border-black/10 bg-white p-8 text-center"><h2 className="text-xl font-black">No events match those filters</h2><p className="mt-2 text-sm text-[#625c50]">Try a wider date range or another area.</p><a href="/submit" className="mt-4 inline-block font-black text-[#8d6b00] hover:underline">Suggest an event →</a></div>}
+
+      {calendarEvents.length > 0 && <section className="mt-10 border-t border-black/10 pt-8"><div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"><div><div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Brewery calendars</div><h2 className="mt-1 text-2xl font-black">Food trucks, trivia & weekly happenings</h2></div><p className="max-w-md text-sm leading-6 text-[#777064]">Useful for making tonight’s plan, kept separate so they don’t bury festivals and one-off events.</p></div><div className="mt-5 overflow-hidden rounded-2xl border border-black/10 bg-white">{calendarEvents.map((event, index) => <Link key={event.url + event.startDate + event.name} href={eventUrl(event)} className={`grid gap-2 px-5 py-4 transition hover:bg-[#f8f5ef] sm:grid-cols-[150px_1fr_auto] sm:items-center sm:gap-5 ${index ? "border-t border-black/10" : ""}`}><div className="text-xs font-black uppercase tracking-wide text-[#8d6b00]">{event.date}</div><div><h3 className="font-black">{event.name}</h3><p className="mt-0.5 text-sm text-[#777064]">{event.location}</p></div><span className="text-[#8d6b00]">→</span></Link>)}</div></section>}
     </>
   );
 }
