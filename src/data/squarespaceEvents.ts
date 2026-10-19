@@ -1,4 +1,5 @@
 import type { BeerEvent } from "@/data/events";
+import { classifyEvent } from "@/data/eventClassification";
 
 // Squarespace supports structured public collection output. Sources below are
 // reviewed brewery-owned calendar pages. If a source becomes unavailable or
@@ -16,6 +17,18 @@ const calendars = [
     location: "Southern Tier Brewing · North Shore",
     defaultCategory: undefined,
   },
+  {
+    page: "https://www.goldenagebeer.com/events",
+    brewery: "Golden Age Beer Company",
+    location: "Golden Age Beer Company · Homestead",
+    defaultCategory: undefined,
+  },
+  {
+    page: "https://www.tracebloomfield.com/calendar-1",
+    brewery: "Trace Brewing",
+    location: "Trace Brewing · Bloomfield",
+    defaultCategory: undefined,
+  },
 ] as const;
 
 function pittsburghDate(timestamp: number): string {
@@ -30,8 +43,6 @@ function plainText(input: unknown): string {
   return typeof input === "string" ? input.replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, " ").trim() : "";
 }
 type SourceItem = Record<string, unknown>;
-const foodTruckPattern =
-  /food truck|mobile kitchen|pizza|bbq|bar-b-q|barbecue|taco|tortas|sando|sandwich|wrap|trailer|chamo|rincon|horns|boonseek|77 club|off the press|streets on the fly|redeye|red eye/i;
 // Embedded promotional artwork is displayed from the brewery-owned original URL,
 // not copied, edited, or downloaded into the Pittsburgh Brews repository.
 function officialImage(item: SourceItem): BeerEvent["image"] {
@@ -70,11 +81,7 @@ function parseItem(item: SourceItem, calendar: typeof calendars[number], today: 
   }
   const name = title;
   const description = plainText(item.excerpt ?? item.body ?? item.description).slice(0, 300) || `Listed on the ${calendar.brewery} event calendar. Check the source for full details and changes.`;
-  const detectedCategory = /halloween|christmas|xmas|holiday|valentine|st\. patrick|st patrick|new year|easter|thanksgiving|winter pop.up/i.test(name + " " + description) ? "Holiday themed" as const
-    : /trivia|bingo|game night|quiz/i.test(name + " " + description) ? "Trivia & games" as const
-    : foodTruckPattern.test(name + " " + description) ? "Food trucks" as const
-    : /music|concert|band|dj|comedy/i.test(name + " " + description) ? "Live music" as const : "Beer Event" as const;
-
+  const detectedCategory = classifyEvent(name, description);
   const category = calendar.defaultCategory ?? detectedCategory;
   
   return { name: `${name} · ${calendar.brewery}`, date: startDate === endDate ? displayDate(startDate) : `${displayDate(startDate)} – ${displayDate(endDate)}`, startDate, endDate, location: calendar.location, category, description, url, image: officialImage(item) };

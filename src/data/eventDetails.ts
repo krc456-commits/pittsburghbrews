@@ -2,6 +2,7 @@ import type { BeerEvent } from "@/data/events";
 import { getVisibleBeerEvents } from "@/data/events";
 import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents";
 import { getSquarespaceBeerEvents } from "@/data/squarespaceEvents";
+import { getTribeBeerEvents } from "@/data/tribeEvents";
 import { getOfficialEventArtwork } from "@/data/officialEventArtwork";
 import { breweries } from "@/data/allBreweries";
 
@@ -15,6 +16,10 @@ const venueImages: { match: RegExp; slug: string }[] = [
   { match: /pittsburgh brewing company/i, slug: "pittsburgh-brewing-company" },
   { match: /lincoln avenue brewery/i, slug: "lincoln-avenue-brewery" },
   { match: /balance brewing/i, slug: "balance-brewing" },
+  { match: /golden age/i, slug: "golden-age" },
+  { match: /trace brewing/i, slug: "trace-brewing" },
+  { match: /hitchhiker.*sharpsburg|sharpsburg.*hitchhiker/i, slug: "hitchhiker-sharpsburg" },
+  { match: /hitchhiker.*lebanon|lebanon.*hitchhiker/i, slug: "hitchhiker-mt-lebanon" },
   { match: /cinderlands warehouse/i, slug: "cinderlands-warehouse" },
   { match: /cinderlands.*wexford/i, slug: "cinderlands-wexford" },
   { match: /abjuration.*hazelwood/i, slug: "abjuration-hazelwood" },
@@ -36,7 +41,9 @@ export function eventUrl(event: BeerEvent) {
 }
 
 export function isRoutineEvent(event: BeerEvent) {
-  return event.category === "Food trucks" || event.category === "Trivia & games";
+  return event.category === "Food trucks"
+    || event.category === "Trivia & games"
+    || /\bweekly\b|\bevery (?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(`${event.name} ${event.description}`);
 }
 
 // Kevin's editorial pick for each Monday. Keeping this list explicit makes the
@@ -86,8 +93,8 @@ export function getWeeklyFeaturedEvent(events: BeerEvent[]) {
     ?? null;
 }
 export async function getCurrentEvents() {
-  const [ics, squarespace, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getOfficialEventArtwork()]);
-  return getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace])).map(event => {
+  const [ics, squarespace, tribe, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getTribeBeerEvents(), getOfficialEventArtwork()]);
+  return getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace, ...tribe])).map(event => {
     const official = artwork.get(event.name);
     return withVenueImage(official ? { ...event, image: official } : event);
   });
