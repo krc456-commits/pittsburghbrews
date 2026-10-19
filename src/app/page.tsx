@@ -41,25 +41,12 @@ function getPittsburghDateParts() {
   };
 }
 
-const retailerSpotlights = [
-  { name: "Hal’s Bottle Shop", description: "North Hills craft beer shop with a Rare Beer Club and build-your-own six-packs.", tags: ["Rare Beer Club", "Local craft beer", "Build-your-own six-packs"] },
-  { name: "Beer Towne", description: "Gibsonia retailer offering local craft beers and a published beer menu.", tags: ["Local craft beer", "Gibsonia"] },
-  { name: "Creekside Beer", description: "Sewickley-area beer distributor with an online catalog.", tags: ["Beer catalog", "Sewickley"] },
-  { name: "Babcock Beer", description: "North Hills retailer with a broad craft beer selection.", tags: ["Craft beer", "North Hills"] },
-  { name: "Bethel Beer and More", description: "Bethel Park retailer featuring Pittsburgh craft favorites.", tags: ["Local craft beer", "Bethel Park"] },
-] as const;
-
 function getWeeklySpotlight() {
   const { year, month, day } = getPittsburghDateParts();
   const today = Date.UTC(year, month - 1, day, 12);
   const baseMonday = Date.UTC(2026, 8, 14, 12);
   const week = Math.floor((today - baseMonday) / (7 * 24 * 60 * 60 * 1000));
-  const cycle = Math.floor(week / 2);
-  if (((week % 2) + 2) % 2 === 1) {
-    const item = retailerSpotlights[((cycle % retailerSpotlights.length) + retailerSpotlights.length) % retailerSpotlights.length];
-    return { category: "Beer retailer", title: item.name, description: item.description, tags: [...item.tags], href: `/retailers?spotlight=${encodeURIComponent(item.name)}`, image: null as null | {url:string;alt:string}, logo: null as null | {url:string;alt:string} };
-  }
-  const slug = featuredProfileOrder[((cycle % featuredProfileOrder.length) + featuredProfileOrder.length) % featuredProfileOrder.length];
+  const slug = featuredProfileOrder[((week % featuredProfileOrder.length) + featuredProfileOrder.length) % featuredProfileOrder.length];
   const representativeSlug = representativeBrewerySlugs[slug];
   const brewery = breweries.find(item => item.slug === representativeSlug) ?? breweries.find(item => item.image) ?? breweries[0];
   const profile = breweryProfiles[slug];
