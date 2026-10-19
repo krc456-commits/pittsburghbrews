@@ -34,6 +34,57 @@ export function eventSlug(event: BeerEvent) {
 export function eventUrl(event: BeerEvent) {
   return "/events/" + eventSlug(event);
 }
+
+export function isRoutineEvent(event: BeerEvent) {
+  return event.category === "Food trucks" || event.category === "Trivia & games";
+}
+
+// Kevin's editorial pick for each Monday. Keeping this list explicit makes the
+// feature feel curated instead of letting the largest automated feed choose it.
+// Add a new Monday + exact event name whenever you want to change the feature.
+const weeklyEventPicks: Record<string, string> = {
+  "2026-10-19": "Hops and Hayrides at Trax Farm Market",
+  "2026-11-09": "Brewing for a Cause 2026",
+};
+
+function pittsburghDayKey(date = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function weekMonday(dayKey: string) {
+  const [year, month, day] = dayKey.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  const offset = (date.getUTCDay() + 6) % 7;
+  date.setUTCDate(date.getUTCDate() - offset);
+  return date.toISOString().slice(0, 10);
+}
+
+function eventTouchesWindow(event: BeerEvent, start: string, end: string) {
+  if (event.occurrences?.length) return event.occurrences.some(date => date >= start && date <= end);
+  return event.startDate <= end && event.endDate >= start;
+}
+
+export function getWeeklyFeaturedEvent(events: BeerEvent[]) {
+  const today = pittsburghDayKey();
+  const monday = weekMonday(today);
+  const selectedName = weeklyEventPicks[monday];
+  const selected = selectedName ? events.find(event => event.name === selectedName) : undefined;
+  if (selected) return selected;
+
+  const end = new Date(`${today}T12:00:00Z`);
+  end.setUTCDate(end.getUTCDate() + 7);
+  const endKey = end.toISOString().slice(0, 10);
+  return events.find(event => event.featured && !isRoutineEvent(event) && eventTouchesWindow(event, today, endKey))
+    ?? events.find(event => !isRoutineEvent(event) && eventTouchesWindow(event, today, endKey))
+    ?? null;
+}
 export async function getCurrentEvents() {
   const [ics, squarespace, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getOfficialEventArtwork()]);
   return getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace])).map(event => {
