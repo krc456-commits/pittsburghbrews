@@ -30,6 +30,8 @@ function plainText(input: unknown): string {
   return typeof input === "string" ? input.replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, " ").trim() : "";
 }
 type SourceItem = Record<string, unknown>;
+const foodTruckPattern =
+  /food truck|mobile kitchen|pizza|bbq|bar-b-q|barbecue|taco|tortas|sando|sandwich|wrap|trailer|chamo|rincon|horns|boonseek|77 club|off the press|streets on the fly|redeye|red eye/i;
 // Embedded promotional artwork is displayed from the brewery-owned original URL,
 // not copied, edited, or downloaded into the Pittsburgh Brews repository.
 function officialImage(item: SourceItem): BeerEvent["image"] {
@@ -70,12 +72,12 @@ function parseItem(item: SourceItem, calendar: typeof calendars[number], today: 
   const description = plainText(item.excerpt ?? item.body ?? item.description).slice(0, 300) || `Listed on the ${calendar.brewery} event calendar. Check the source for full details and changes.`;
   const detectedCategory = /halloween|christmas|xmas|holiday|valentine|st\. patrick|st patrick|new year|easter|thanksgiving|winter pop.up/i.test(name + " " + description) ? "Holiday themed" as const
     : /trivia|bingo|game night|quiz/i.test(name + " " + description) ? "Trivia & games" as const
-    : /food truck|pizza|bbq|taco|tortas|sando|wrap|trailer|chamo|rincon|horns|boonseek|77 club|off the press/i.test(name) ? "Food trucks" as const
+    : foodTruckPattern.test(name + " " + description) ? "Food trucks" as const
     : /music|concert|band|dj|comedy/i.test(name + " " + description) ? "Live music" as const : "Beer Event" as const;
 
   const category = calendar.defaultCategory ?? detectedCategory;
   
-  return { name: `${name} · ${calendar.brewery}`, date: startDate === endDate ? displayDate(startDate) : `${displayDate(startDate)} – ${displayDate(endDate)}`, startDate, endDate, location: calendar.location, category, description, url, image: calendar.brewery === "Eleventh Hour Brewing" ? undefined : officialImage(item) };
+  return { name: `${name} · ${calendar.brewery}`, date: startDate === endDate ? displayDate(startDate) : `${displayDate(startDate)} – ${displayDate(endDate)}`, startDate, endDate, location: calendar.location, category, description, url, image: officialImage(item) };
 }
 
 export async function getSquarespaceBeerEvents(): Promise<BeerEvent[]> {
