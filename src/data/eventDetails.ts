@@ -41,7 +41,9 @@ export function eventUrl(event: BeerEvent) {
 }
 
 export function isRoutineEvent(event: BeerEvent) {
-  return event.category === "Food trucks" || event.category === "Trivia & games";
+  return event.category === "Food trucks"
+    || event.category === "Trivia & games"
+    || /\bweekly\b|\bevery (?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(`${event.name} ${event.description}`);
 }
 
 // Kevin's editorial pick for each Monday. Keeping this list explicit makes the
