@@ -1,5 +1,4 @@
-import { readdirSync } from "node:fs";
-import { join } from "node:path";
+import eventImageFiles from "@/data/eventImageFiles.json";
 import type { BeerEvent } from "@/data/events";
 import { getVisibleBeerEvents } from "@/data/events";
 import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents";
@@ -59,9 +58,7 @@ function artworkKey(value: string) {
 }
 function eventUploadArtwork(events: BeerEvent[]): Map<string, BeerEvent["image"]> {
   const result = new Map<string, BeerEvent["image"]>();
-  const directory = join(process.cwd(), "public", "brand", "events");
-  let filenames: string[];
-  try { filenames = readdirSync(directory); } catch { return result; }
+  const filenames: string[] = eventImageFiles;
   const counts = new Map<string, number>();
   for (const event of events) {
     const key = event.startDate + "--" + artworkKey(event.name);
