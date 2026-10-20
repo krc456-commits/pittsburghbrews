@@ -1,6 +1,6 @@
 import type { BeerEvent } from "@/data/events";
 
-const foodTruckPattern = /food truck|mobile kitchen|pizza|bbq|bar-b-q|barbecue|burger|taco|tortas|sando|sandwich|wrap|trailer|chamo|rincon|horns|boonseek|77 club|off the press|streets on the fly|redeye|red eye|blue sparrow|farmer burger|side hustle|blowfish|robal/i;
+const foodTruckPattern = /food truck|food vendor|food pop.up|black sheep kitchens|mobile kitchen|pizza|bbq|bar-b-q|barbecue|burger|taco|tortas|sando|sandwich|wrap|trailer|chamo|rincon|horns|boonseek|77 club|off the press|streets on the fly|redeye|red eye|blue sparrow|farmer burger|side hustle|blowfish|robal/i;
 
 export function classifyEvent(name: string, description = ""): BeerEvent["category"] {
   const text = `${name} ${description}`;
