@@ -1,3 +1,5 @@
+import { readdirSync } from "node:fs";
+import { join } from "node:path";
 import type { BeerEvent } from "@/data/events";
 import { getVisibleBeerEvents } from "@/data/events";
 import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents";
@@ -46,6 +48,33 @@ function withUploadedEventArtwork(event: BeerEvent): BeerEvent {
     : null
   );
   return image ? { ...event, image } : event;
+}
+
+// Files named YYYY-MM-DD--event-name.png in public/brand/events are picked
+// up automatically after a GitHub upload triggers the next deployment.
+// Match only events already verified from curated data or approved calendars.
+// Ambiguous names are deliberately ignored rather than attaching wrong artwork.
+function artworkKey(value: string) {
+  return value.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+function eventUploadArtwork(events: BeerEvent[]): Map<string, BeerEvent["image"]> {
+  const result = new Map<string, BeerEvent["image"]>();
+  const directory = join(process.cwd(), "public", "brand", "events");
+  let filenames: string[];
+  try { filenames = readdirSync(directory); } catch { return result; }
+  const counts = new Map<string, number>();
+  for (const event of events) {
+    const key = event.startDate + "--" + artworkKey(event.name);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  for (const filename of filenames) {
+    const match = filename.match(/^(\d{4}-\d{2}-\d{2})--(.+)\.(png|jpe?g|webp|avif)$/i);
+    if (!match) continue;
+    const key = match[1] + "--" + artworkKey(match[2]);
+    if (counts.get(key) !== 1 || result.has(key)) continue;
+    result.set(key, { url: "/brand/events/" + encodeURIComponent(filename), alt: "Official event flyer: " + match[2].replace(/-/g, " ") });
+  }
+  return result;
 }
 
 export function eventSlug(event: BeerEvent) {
@@ -107,8 +136,11 @@ export function getWeeklyFeaturedEvent(events: BeerEvent[]) {
 }
 export async function getCurrentEvents() {
   const [ics, squarespace, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getOfficialEventArtwork()]);
-  return getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace])).map(event => {
-    const official = artwork.get(event.name);
+  const events = getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace]));
+  const uploaded = eventUploadArtwork(events);
+  return events.map(event => {
+    const key = event.startDate + "--" + artworkKey(event.name);
+    const official = uploaded.get(key) ?? artwork.get(event.name);
     return withUploadedEventArtwork(withVenueImage(official ? { ...event, image: official } : event));
   });
 }
