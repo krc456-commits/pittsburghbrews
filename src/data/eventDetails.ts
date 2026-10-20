@@ -41,7 +41,11 @@ function withUploadedEventArtwork(event: BeerEvent): BeerEvent {
   const name = event.name.toLowerCase();
   const location = event.location.toLowerCase();
   const image = (
-    name.includes("hops and hayrides") && /trax/.test(location)
+    name.includes("brewing for a cause") && event.startDate.startsWith("2026")
+      ? { url: "/brand/events/BrewingForACause2026.png", alt: "Official Brewing for a Cause 2026 event flyer" }
+    : name.includes("pittsburgh winter beerfest") && event.startDate.startsWith("2027")
+      ? { url: "/brand/events/PittsburghWinterBeerFest2027.png", alt: "Official Pittsburgh Winter Beerfest 2027 event flyer" }
+    : name.includes("hops and hayrides") && /trax/.test(location)
       ? { url: "/brand/events/HopsHayridesTraxFarm2026.png", alt: "Official Hops and Hayrides at Trax Farm Market 2026 event flyer" }
     : name.includes("nightmare bar") && /eleventh hour/.test(location)
       ? { url: "/brand/events/NightmareBarEleventhHour2026.png", alt: "Official Nightmare Bar at Eleventh Hour Brewing 2026 event flyer" }
