@@ -2,14 +2,15 @@ import { NextResponse } from "next/server";
 export const runtime="nodejs";
 function get(data:FormData,key:string,max=3000){const v=data.get(key);return typeof v==="string"?v.trim().slice(0,max):""}
 function html(s:string){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]||c))}
+function isValidSource(value:string){try{const url=new URL(value);return (url.protocol==="https:"||url.protocol==="http:")&&!!url.hostname&&url.hostname.includes(".")&&!url.username&&!url.password}catch{return false}}
 export async function POST(request:Request){
 try{
 const d=await request.formData();
 if(get(d,"company"))return NextResponse.json({ok:true});
-const name=get(d,"name",120),email=get(d,"email",200),event=get(d,"eventName",180),location=get(d,"location",240),address=get(d,"address",300),category=get(d,"category",60),description=get(d,"description"),source=get(d,"sourceUrl",1000),schedule=get(d,"scheduleType",20);
+const name=get(d,"name",120),email=get(d,"email",200),event=get(d,"eventName",180),location=get(d,"location",240),address=get(d,"address",300),category=get(d,"category",60),description=get(d,"description"),sourceRaw=get(d,"sourceUrl",1000),source=/^https?:\/\//i.test(sourceRaw)?sourceRaw:"https://"+sourceRaw,schedule=get(d,"scheduleType",20);
 const start=get(d,"startTime",10),end=get(d,"endTime",10);
 let dates:unknown;try{dates=JSON.parse(get(d,"dates",5000))}catch{return NextResponse.json({error:"Invalid schedule"},{status:400})}
-if(!name||!email||!event||!location||!address||!description||!/^https?:\/\//i.test(source)||!Array.isArray(dates)||dates.length<1||dates.length>120||!dates.every(x=>typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x))||!["Beer Event","Festival","Holiday themed","Food trucks","Live music","Trivia & games","Beer garden","Oktoberfest","Meetup / Social event"].includes(category))return NextResponse.json({error:"Invalid submission"},{status:400});
+if(!name||!email||!event||!location||!address||!description||!isValidSource(source)||!Array.isArray(dates)||dates.length<1||dates.length>120||!dates.every(x=>typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x))||!["Beer Event","Festival","Holiday themed","Food trucks","Live music","Trivia & games","Beer garden","Oktoberfest","Meetup / Social event"].includes(category))return NextResponse.json({error:"Invalid submission"},{status:400});
 const key=process.env.RESEND_API_KEY;if(!key)return NextResponse.json({error:"Email not configured"},{status:503});
 const attachments:{filename:string;content:string}[]=[];
 const flyer=d.get("flyer");
