@@ -20,7 +20,7 @@ export default async function EventsPage() {
                 Festivals, Oktoberfests, brewery happenings, seasonal pop-ups, and other beer-focused events worth knowing about.
               </p>
             </div>
-            <Link href="/submit" className="text-sm font-black text-[#8d6b00] hover:text-black">Know one we missed? →</Link>
+            <Link href="/submit-event" className="inline-flex items-center justify-center rounded-full bg-[#8d6b00] px-5 py-3 text-sm font-black text-white hover:bg-[#705400]">+ Submit an Event</Link>
           </div>
         </div>
       </section>
@@ -57,7 +57,7 @@ export default async function EventsPage() {
           <EventExplorer events={beerEvents} />
 
           <div className="mt-7 rounded-2xl border border-black/10 bg-[#eee8d9] p-5 text-sm leading-6 text-[#625c50]">
-            Pittsburgh Brews focuses on events that give people a reason to get out and enjoy the local beer scene — not just a static brewery list. <Link href="/submit" className="font-black text-[#8d6b00] hover:text-black">Send us an event or correction →</Link>
+            Pittsburgh Brews focuses on events that give people a reason to get out and enjoy the local beer scene — not just a static brewery list. <Link href="/submit-event" className="font-black text-[#8d6b00] hover:text-black">Submit an event →</Link> <span className="mx-2">·</span><Link href="/submit" className="font-black text-[#8d6b00] hover:text-black">Report a correction →</Link>
           </div>
         </div>
       </section>
