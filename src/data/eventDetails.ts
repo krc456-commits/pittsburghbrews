@@ -49,7 +49,7 @@ function withUploadedEventArtwork(event: BeerEvent): BeerEvent {
   return image ? { ...event, image } : event;
 }
 
-// Files named YYYY-MM-DD--event-name.png in public/brand/events are picked
+// Files named event-name.png in public/brand/events are picked
 // up automatically after a GitHub upload triggers the next deployment.
 // Match only events already verified from curated data or approved calendars.
 // Ambiguous names are deliberately ignored rather than attaching wrong artwork.
@@ -61,15 +61,15 @@ function eventUploadArtwork(events: BeerEvent[]): Map<string, BeerEvent["image"]
   const filenames: string[] = eventImageFiles;
   const counts = new Map<string, number>();
   for (const event of events) {
-    const key = event.startDate + "--" + artworkKey(event.name);
+    const key = artworkKey(event.name);
     counts.set(key, (counts.get(key) ?? 0) + 1);
   }
   for (const filename of filenames) {
-    const match = filename.match(/^(\d{4}-\d{2}-\d{2})--(.+)\.(png|jpe?g|webp|avif)$/i);
+    const match = filename.match(/^(.+)\.(png|jpe?g|webp|avif)$/i);
     if (!match) continue;
-    const key = match[1] + "--" + artworkKey(match[2]);
+    const key = artworkKey(match[1]);
     if (counts.get(key) !== 1 || result.has(key)) continue;
-    result.set(key, { url: "/brand/events/" + encodeURIComponent(filename), alt: "Official event flyer: " + match[2].replace(/-/g, " ") });
+    result.set(key, { url: "/brand/events/" + encodeURIComponent(filename), alt: "Event flyer: " + match[1].replace(/-/g, " ") });
   }
   return result;
 }
@@ -136,7 +136,7 @@ export async function getCurrentEvents() {
   const events = getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace]));
   const uploaded = eventUploadArtwork(events);
   return events.map(event => {
-    const key = event.startDate + "--" + artworkKey(event.name);
+    const key = artworkKey(event.name);
     const official = uploaded.get(key) ?? artwork.get(event.name);
     return withUploadedEventArtwork(withVenueImage(official ? { ...event, image: official } : event));
   });
