@@ -28,6 +28,26 @@ function withVenueImage(event: BeerEvent): BeerEvent {
 }
 
 
+
+// Use uploaded event-specific artwork where the event identity is unambiguous.
+// Keep the original artwork intact; never use these for unrelated venue events.
+function withUploadedEventArtwork(event: BeerEvent): BeerEvent {
+  const name = event.name.toLowerCase();
+  const location = event.location.toLowerCase();
+  const image = (
+    name.includes("hops and hayrides") && /trax/.test(location)
+      ? { url: "/brand/events/HopsHayridesTraxFarm2026.png", alt: "Official Hops and Hayrides at Trax Farm Market 2026 event flyer" }
+    : name.includes("nightmare bar") && /eleventh hour/.test(location)
+      ? { url: "/brand/events/NightmareBarEleventhHour2026.png", alt: "Official Nightmare Bar at Eleventh Hour Brewing 2026 event flyer" }
+    : name.includes("scream bar") && /hundred acres/.test(location)
+      ? { url: "/brand/events/ScreamBarHundredAcresManor2026.png", alt: "Official Scream Bar at Hundred Acres Manor 2026 event flyer" }
+    : /plant\s*pop[ -]?up/i.test(event.name) && /trace/i.test(location) && event.startDate.startsWith("2026-10")
+      ? { url: "/brand/events/PlantPopUpTrace2026.png", alt: "Official Plant Pop-Up at Trace Brewing 2026 event flyer" }
+    : null
+  );
+  return image ? { ...event, image } : event;
+}
+
 export function eventSlug(event: BeerEvent) {
   return [event.startDate, event.name, event.location].join("-").toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 220);
 }
@@ -89,7 +109,7 @@ export async function getCurrentEvents() {
   const [ics, squarespace, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getOfficialEventArtwork()]);
   return getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace])).map(event => {
     const official = artwork.get(event.name);
-    return withVenueImage(official ? { ...event, image: official } : event);
+    return withUploadedEventArtwork(withVenueImage(official ? { ...event, image: official } : event));
   });
 }
 export function findEvent(events: BeerEvent[], slug: string) {
