@@ -82,7 +82,7 @@ const localImage = (url: string, alt: string): BreweryImage => ({
 });
 
 const imageOverrides: Record<string, BreweryImage> = {
-  "balance-brewing": localImage("/brand/breweries/balance/storefront.PNG", "Balance Brewing Company storefront on Babcock Boulevard"),
+  "balance-brewing": localImage("/brand/breweries/balance/storefront.png", "Balance Brewing Company storefront on Babcock Boulevard"),
   "recon-hastings": localImage("/brand/breweries/recon/storefront-hastings.png", "Recon Brewing Hastings taproom in South Fayette"),
   "recon-meeder": localImage("/brand/breweries/recon/storefront-meeder.png", "Recon Brewing Meeder taproom in Cranberry Township"),
   "recon-butler": localImage("/brand/breweries/recon/storefront-butler.png", "Recon Brewing original brewery and taproom in Butler"),
