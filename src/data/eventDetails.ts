@@ -5,6 +5,7 @@ import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents"
 import { getSquarespaceBeerEvents } from "@/data/squarespaceEvents";
 import { getTribeBeerEvents } from "@/data/tribeEvents";
 import { getOfficialEventArtwork } from "@/data/officialEventArtwork";
+import { getApprovedSubmittedEvents } from "@/data/submittedEvents";
 import { breweries } from "@/data/allBreweries";
 
 // Map only unambiguous event locations to existing brewery location photos.
