@@ -5,6 +5,7 @@ import { getAutomaticBeerEvents, mergeBeerEvents } from "@/data/automaticEvents"
 import { getSquarespaceBeerEvents } from "@/data/squarespaceEvents";
 import { getTribeBeerEvents } from "@/data/tribeEvents";
 import { getOfficialEventArtwork } from "@/data/officialEventArtwork";
+import { verifiedCalendarAdditions } from "@/data/verifiedCalendarAdditions";
 import { getApprovedSubmittedEvents } from "@/data/submittedEvents";
 import { breweries } from "@/data/allBreweries";
 
@@ -146,7 +147,7 @@ export function getWeeklyFeaturedEvent(events: BeerEvent[]) {
 }
 export async function getCurrentEvents() {
   const [ics, squarespace, tribe, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getTribeBeerEvents(), getOfficialEventArtwork()]);
-  const events = getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...ics, ...squarespace, ...tribe]));
+  const events = getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...verifiedCalendarAdditions, ...ics, ...squarespace, ...tribe]));
   const uploaded = eventUploadArtwork(events);
   return events.map(event => {
     const key = artworkKey(event.name);
