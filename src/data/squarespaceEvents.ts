@@ -6,6 +6,12 @@ import { classifyEvent } from "@/data/eventClassification";
 // changes format, it fails closed and manual listings remain untouched.
 const calendars = [
   {
+    page: "https://www.acrospirebrewingco.com/calendar",
+    brewery: "Acrospire Brewing Company",
+    location: "Acrospire Brewing Company · 1702 Mt Royal Blvd, Glenshaw",
+    defaultCategory: undefined,
+  },
+  {
     page: "https://www.11thhourbrews.com/foodtrucks-1",
     brewery: "Eleventh Hour Brewing",
     location: "Eleventh Hour Brewing · Lawrenceville",
