@@ -46,7 +46,11 @@ function getWeeklySpotlight() {
   const today = Date.UTC(year, month - 1, day, 12);
   const baseMonday = Date.UTC(2026, 8, 14, 12);
   const week = Math.floor((today - baseMonday) / (7 * 24 * 60 * 60 * 1000));
-  const slug = featuredProfileOrder[((week % featuredProfileOrder.length) + featuredProfileOrder.length) % featuredProfileOrder.length];
+  // Editorial anniversary spotlight for the two weeks after Dancing Gnome's tenth birthday.
+  const anniversarySpotlight = today >= Date.UTC(2026, 9, 19, 12) && today < Date.UTC(2026, 10, 2, 12);
+  const slug = anniversarySpotlight
+    ? "dancing-gnome"
+    : featuredProfileOrder[((week % featuredProfileOrder.length) + featuredProfileOrder.length) % featuredProfileOrder.length];
   const representativeSlug = representativeBrewerySlugs[slug];
   const brewery = breweries.find(item => item.slug === representativeSlug) ?? breweries.find(item => item.image) ?? breweries[0];
   const profile = breweryProfiles[slug];
@@ -54,9 +58,11 @@ function getWeeklySpotlight() {
   const places = route ? breweries.filter(item => getBreweryProfileRoute(item.slug) === route) : [brewery];
   return {
     category: "Brewery",
-    title: profile?.name ?? brewery.name,
-    description: profile?.tagline ?? brewery.blurb,
-    tags: (profile?.knownFor ?? [brewery.type]).slice(0,3),
+    title: anniversarySpotlight ? "Dancing Gnome · 10 Years" : (profile?.name ?? brewery.name),
+    description: anniversarySpotlight
+      ? "A decade of Dancing Gnome. Since opening in Sharpsburg in October 2016, they've become a familiar name in Pittsburgh craft beer, known for hop-forward favorites like Lustra and a community that's grown alongside the brewery. Here's to ten years of great beer and the people behind it."
+      : (profile?.tagline ?? brewery.blurb),
+    tags: anniversarySpotlight ? ["Est. 2016", "10 years in Pittsburgh", "Sharpsburg"] : (profile?.knownFor ?? [brewery.type]).slice(0,3),
     href: route ?? `/breweries?q=${encodeURIComponent(brewery.name)}`,
     image: places.find(item => item.image)?.image ?? null,
     logo: places.find(item => item.logo)?.logo ?? null,
