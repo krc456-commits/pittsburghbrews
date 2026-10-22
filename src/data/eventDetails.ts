@@ -94,6 +94,11 @@ export function eventUrl(event: BeerEvent) {
 }
 
 export function isRoutineEvent(event: BeerEvent) {
+  const text = `${event.name} ${event.description}`;
+  // Venue calendar entries such as BYO-food nights, vendor visits and themed trivia
+  // are day-to-day happenings, even when a calendar labels them as a holiday.
+  if (/acrospire/i.test(event.location) && !/festival|beerfest|anniversary|ticketed concert|oktoberfest/i.test(event.name)) return true;
+  if (/\bBYO\s*food\b|\bBYOFood\b|\bfood trucks?\b|\bvisiting food vendor\b/i.test(event.name)) return true;
   return event.category === "Food trucks"
     || event.category === "Trivia & games"
     || /\bweekly\b|\bevery (?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i.test(`${event.name} ${event.description}`);
@@ -146,8 +151,8 @@ export function getWeeklyFeaturedEvent(events: BeerEvent[]) {
     ?? null;
 }
 export async function getCurrentEvents() {
-  const [ics, squarespace, tribe, artwork] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getTribeBeerEvents(), getOfficialEventArtwork()]);
-  const events = getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...verifiedCalendarAdditions, ...ics, ...squarespace, ...tribe]));
+  const [ics, squarespace, tribe, artwork, submitted] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getTribeBeerEvents(), getOfficialEventArtwork(), getApprovedSubmittedEvents()]);
+  const events = getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...submitted, ...verifiedCalendarAdditions, ...ics, ...squarespace, ...tribe]));
   const uploaded = eventUploadArtwork(events);
   return events.map(event => {
     const key = artworkKey(event.name);
