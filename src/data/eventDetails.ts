@@ -70,18 +70,25 @@ function artworkKey(value: string) {
 }
 function eventUploadArtwork(events: BeerEvent[]): Map<string, BeerEvent["image"]> {
   const result = new Map<string, BeerEvent["image"]>();
-  const filenames: string[] = eventImageFiles;
-  const counts = new Map<string, number>();
-  for (const event of events) {
-    const key = artworkKey(event.name);
-    counts.set(key, (counts.get(key) ?? 0) + 1);
-  }
-  for (const filename of filenames) {
-    const match = filename.match(/^(.+)\.(png|jpe?g|webp|avif)$/i);
-    if (!match) continue;
-    const key = artworkKey(match[1]);
-    if (counts.get(key) !== 1 || result.has(key)) continue;
-    result.set(key, { url: "/brand/events/" + encodeURIComponent(filename), alt: "Event flyer: " + match[1].replace(/-/g, " ") });
+  const files: string[] = eventImageFiles;
+  const compact = (value: string) => artworkKey(value).replace(/-/g, "");
+  for (const filename of files) {
+    const parts=filename.match(/^(.+)\.(png|jpe?g|webp|avif)$/i);
+    if (!parts) continue;
+    const basename=parts[1];
+    const fileYear=basename.match(/20\d{2}/)?.[0];
+    const stem=compact(basename.replace(/20\d{2}/g,""));
+    if (stem.length<12) continue;
+    const matches=events.filter(event=>{
+      if (fileYear && !event.startDate.startsWith(fileYear)) return false;
+      const name=compact(event.name);
+      return name===stem || name.includes(stem);
+    });
+    // Never guess which event owns a flyer when filenames overlap.
+    if (matches.length!==1) continue;
+    const event=matches[0];
+    const key=artworkKey(event.name);
+    result.set(key,{url:"/brand/events/"+encodeURIComponent(filename),alt:"Event flyer: "+event.name});
   }
   return result;
 }
@@ -150,9 +157,18 @@ export function getWeeklyFeaturedEvent(events: BeerEvent[]) {
     ?? events.find(event => !isRoutineEvent(event) && eventTouchesWindow(event, today, endKey))
     ?? null;
 }
-export async function getCurrentEvents() {
+export async function getCurrentEvents(includeHidden = false) {
   const [ics, squarespace, tribe, artwork, submitted] = await Promise.all([getAutomaticBeerEvents(), getSquarespaceBeerEvents(), getTribeBeerEvents(), getOfficialEventArtwork(), getApprovedSubmittedEvents()]);
-  const events = getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...submitted, ...verifiedCalendarAdditions, ...ics, ...squarespace, ...tribe]));
+  const merged = getVisibleBeerEvents(7, mergeBeerEvents(getVisibleBeerEvents(), [...submitted, ...verifiedCalendarAdditions, ...ics, ...squarespace, ...tribe]));
+  let hidden = new Set<string>();
+  try {
+    const url = process.env.SUPABASE_URL, key=process.env.SUPABASE_PUBLISHABLE_KEY;
+    if(url){
+      const res=await fetch(url+"/rest/v1/event_hidden_sources?select=event_key",{headers:{apikey:key||""},cache:"no-store"});
+      if(res.ok) hidden=new Set((await res.json() as {event_key:string}[]).map(x=>x.event_key));
+    }
+  }catch(error){console.error("Event visibility lookup failed",error)}
+  const events=includeHidden?merged:merged.filter(event=>!hidden.has(eventSlug(event)));
   const uploaded = eventUploadArtwork(events);
   return events.map(event => {
     const key = artworkKey(event.name);
