@@ -7,6 +7,7 @@ import { eventUrl, isRoutineEvent } from "@/data/eventDetails";
 import EventActions from "@/components/EventActions";
 
 type Period = "all" | "today" | "weekend" | "week" | "month";
+type CalendarTab = "all" | "food" | "trivia" | "other";
 const zones = ["All areas", "Pittsburgh", "North", "South", "East", "West", "Surrounding"] as const;
 
 function dayKey(date: Date) {
@@ -48,6 +49,8 @@ export default function EventExplorer({ events }: { events: BeerEvent[] }) {
   const [period, setPeriod] = useState<Period>("all");
   const [category, setCategory] = useState("All types");
   const [area, setArea] = useState("All areas");
+  const [calendarTab, setCalendarTab] = useState<CalendarTab>("all");
+  const [showAllCalendar, setShowAllCalendar] = useState(false);
   const today = isoToDay(dayKey(new Date()));
   const categories = useMemo(() => ["All types", ...Array.from(new Set(events.map(event => event.category))).sort()], [events]);
   const filtered = useMemo(() => events.filter(event => {
@@ -59,6 +62,23 @@ export default function EventExplorer({ events }: { events: BeerEvent[] }) {
   }), [events, query, category, area, period, today]);
   const specialEvents = filtered.filter(event => !isRoutineEvent(event));
   const calendarEvents = filtered.filter(isRoutineEvent);
+  const calendarGroups = [
+    { id: "all" as const, label: "All happenings" },
+    { id: "food" as const, label: "Food trucks" },
+    { id: "trivia" as const, label: "Trivia & games" },
+    { id: "other" as const, label: "Other weekly" },
+  ];
+  function calendarType(event: BeerEvent): Exclude<CalendarTab,"all"> {
+    if (event.category === "Food trucks") return "food";
+    if (event.category === "Trivia & games" || /\\btrivia\\b|\\bbingo\\b|\\bquiz\\b|\\bgame night\\b/i.test(event.name)) return "trivia";
+    return "other";
+  }
+  const selectedCalendar = calendarEvents.filter(e => calendarTab === "all" || calendarType(e) === calendarTab)
+    .sort((a,b) => a.startDate.localeCompare(b.startDate) || a.location.localeCompare(b.location) || a.name.localeCompare(b.name));
+  const shownCalendar = showAllCalendar ? selectedCalendar : selectedCalendar.slice(0, 6);
+  function calendarDay(date: string) {
+    return new Intl.DateTimeFormat("en-US", { weekday: "long", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(date + "T12:00:00Z"));
+  }
 
   function EventCard({ event }: { event: BeerEvent }) {
     return <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
@@ -108,7 +128,41 @@ export default function EventExplorer({ events }: { events: BeerEvent[] }) {
       </div>
       {specialEvents.length ? <><div className="mt-8"><div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Featured & special events</div><h2 className="mt-1 text-2xl font-black">Events worth planning around</h2></div><div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{specialEvents.map(event => <EventCard key={event.url + event.startDate + event.name} event={event} />)}</div></> : filtered.length ? null : <div className="mt-5 rounded-2xl border border-black/10 bg-white p-8 text-center"><h2 className="text-xl font-black">No events match those filters</h2><p className="mt-2 text-sm text-[#625c50]">Try a wider date range or another area.</p><a href="/submit" className="mt-4 inline-block font-black text-[#8d6b00] hover:underline">Suggest an event →</a></div>}
 
-      {calendarEvents.length > 0 && <section className="mt-10 border-t border-black/10 pt-8"><div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between"><div><div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Brewery calendars</div><h2 className="mt-1 text-2xl font-black">Food trucks, trivia & weekly happenings</h2></div><p className="max-w-md text-sm leading-6 text-[#777064]">Useful for making tonight’s plan, kept separate so they don’t bury festivals and one-off events.</p></div><div className="mt-5 overflow-hidden rounded-2xl border border-black/10 bg-white">{calendarEvents.map((event, index) => <Link key={event.url + event.startDate + event.name} href={eventUrl(event)} className={`grid gap-2 px-5 py-4 transition hover:bg-[#f8f5ef] sm:grid-cols-[150px_1fr_auto] sm:items-center sm:gap-5 ${index ? "border-t border-black/10" : ""}`}><div className="text-xs font-black uppercase tracking-wide text-[#8d6b00]">{event.date}</div><div><h3 className="font-black">{event.name}</h3><p className="mt-0.5 text-sm text-[#777064]">{event.location}</p></div><span className="text-[#8d6b00]">→</span></Link>)}</div></section>}
+      {calendarEvents.length > 0 && (
+        <section className="mt-10 border-t border-black/10 pt-8">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div><div className="text-xs font-black uppercase tracking-[.14em] text-[#8d6b00]">Brewery calendars</div><h2 className="mt-1 text-2xl font-black">Food trucks, trivia & weekly happenings</h2></div>
+            <p className="max-w-md text-sm leading-6 text-[#777064]">Find something happening at a brewery without scrolling through the entire calendar.</p>
+          </div>
+          <div className="mt-5 rounded-2xl border border-black/10 bg-white p-4 sm:p-5">
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Browse brewery calendar types">
+              {calendarGroups.map(group => {
+                const count = group.id === "all" ? calendarEvents.length : calendarEvents.filter(e => calendarType(e) === group.id).length;
+                return <button type="button" key={group.id} aria-pressed={calendarTab === group.id} onClick={() => {setCalendarTab(group.id);setShowAllCalendar(false);}} className={`rounded-full border px-4 py-2 text-sm font-black transition ${calendarTab === group.id ? "border-[#8d6b00] bg-[#8d6b00] text-white" : "border-black/15 bg-[#f8f5ef] text-[#625c50] hover:border-[#8d6b00]"}`}>{group.label} <span className="ml-1 opacity-70">({count})</span></button>;
+              })}
+            </div>
+            <div className="mt-4 flex items-center justify-between gap-3 border-b border-black/10 pb-3 text-sm text-[#625c50]">
+              <span><strong className="text-[#191815]">{selectedCalendar.length}</strong> matching happenings · soonest first</span>
+              <span className="text-xs">Showing {shownCalendar.length}</span>
+            </div>
+            {selectedCalendar.length === 0 ? <p className="py-8 text-center text-sm text-[#625c50]">No happenings in this category with the current filters.</p> :
+              <div>
+                {shownCalendar.map((event, index) => {
+                  const newDay = index === 0 || shownCalendar[index-1].startDate !== event.startDate;
+                  return <div key={event.url + event.startDate + event.name + event.location}>
+                    {newDay && <div className="border-b border-black/10 bg-[#f6f1e7] px-3 py-2 text-xs font-black uppercase tracking-wider text-[#795b00]">{calendarDay(event.startDate)}</div>}
+                    <Link href={eventUrl(event)} className="grid gap-1 border-b border-black/10 px-3 py-3 transition hover:bg-[#f8f5ef] sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
+                      <div><div className="flex flex-wrap items-center gap-2"><h3 className="font-black text-[#191815]">{event.name}</h3><span className="rounded-full bg-[#f4edda] px-2 py-0.5 text-[10px] font-bold text-[#795b00]">{event.category}</span></div><p className="mt-1 text-sm text-[#777064]">{event.location}</p><p className="mt-1 text-xs font-semibold text-[#8d6b00]">{event.date}</p></div>
+                      <span className="hidden text-sm font-black text-[#8d6b00] sm:inline">Details →</span>
+                    </Link>
+                  </div>;
+                })}
+              </div>
+            }
+            {selectedCalendar.length > 6 && <button type="button" onClick={() => setShowAllCalendar(v => !v)} className="mt-4 w-full rounded-xl border border-[#8d6b00]/30 bg-[#f8f5ef] px-4 py-3 text-sm font-black text-[#795b00] hover:bg-[#f4edda]">{showAllCalendar ? "Show fewer happenings ↑" : `Show all ${selectedCalendar.length} happenings ↓`}</button>}
+          </div>
+        </section>
+      )}
     </>
   );
 }
