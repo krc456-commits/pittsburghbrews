@@ -13,7 +13,7 @@ if(get(d,"company"))return NextResponse.json({ok:true});
 const name=get(d,"name",120),email=get(d,"email",200),event=get(d,"eventName",180),location=get(d,"location",240),address=get(d,"address",300),category=get(d,"category",60),description=get(d,"description"),sourceRaw=get(d,"sourceUrl",1000),source=/^https?:\/\//i.test(sourceRaw)?sourceRaw:"https://"+sourceRaw,schedule=get(d,"scheduleType",20);
 const start=get(d,"startTime",10),end=get(d,"endTime",10);
 let dates:unknown;try{dates=JSON.parse(get(d,"dates",5000))}catch{return NextResponse.json({error:"Invalid schedule"},{status:400})}
-if(!name||!email||!event||!location||!address||!description||!isValidSource(source)||!Array.isArray(dates)||dates.length<1||dates.length>120||!dates.every(x=>typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x))||!["Beer Event","Festival","Holiday themed","Food trucks","Live music","Trivia & games","Beer garden","Oktoberfest","Meetup / Social event"].includes(category))return NextResponse.json({error:"Please check the event details, street address, category, dates, and official link."},{status:400});
+if(!name||!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)||!event||!location||!address||!description||!isValidSource(source)||!Array.isArray(dates)||dates.length<1||dates.length>120||!dates.every(x=>typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x))||!["Beer Event","Festival","Holiday themed","Food trucks","Live music","Trivia & games","Beer garden","Oktoberfest","Meetup / Social event"].includes(category))return NextResponse.json({error:"Please check the event details, street address, category, dates, and official link."},{status:400});
 
 const supabaseUrl=process.env.SUPABASE_URL,gateway=process.env.EVENT_SUBMISSION_GATEWAY_SECRET;
 if(!supabaseUrl||!gateway)return NextResponse.json({error:"Submission storage is not configured"},{status:503});
@@ -43,6 +43,12 @@ const actions=`<div style="margin:28px 0;display:flex;gap:12px;flex-wrap:wrap"><
 const body="<h2>Pittsburgh Brews event submission</h2><p><b>Awaiting your review.</b> Approving publishes it automatically; no GitHub or Vercel step is needed.</p>"+actions+fields.map(([label,value])=>"<p><b>"+html(label)+":</b> "+html(value)+"</p>").join("");
 const response=await fetch("https://api.resend.com/emails",{method:"POST",headers:{Authorization:"Bearer "+key,"Content-Type":"application/json"},body:JSON.stringify({from:process.env.UPDATE_FROM_EMAIL||"Pittsburgh Brews <contact@3xnorth.com>",to:[process.env.UPDATE_SUBMISSION_EMAIL||"contact@3xnorth.com"],reply_to:email,subject:"[Event review] "+event,html:body})});
 if(!response.ok){const reason=await response.text();console.error("Resend event notification failed",response.status,reason.slice(0,2000));return NextResponse.json({error:"The event was saved, but the review email could not be sent. Contact Pittsburgh Brews so it can be reviewed."},{status:502})}
-return NextResponse.json({ok:true});
+const receiptBody=`<div style="max-width:600px;margin:auto;font-family:Arial,sans-serif;color:#20201d"><p style="font-weight:800;color:#8d6b00">Pittsburgh Brews</p><h1 style="font-size:25px">We received your event submission</h1><p>Hi ${html(name)},</p><p>Thanks for submitting <strong>${html(event)}</strong> to Pittsburgh Brews. Your event is <strong>pending review</strong> and is not published yet.</p><p><strong>Event:</strong> ${html(event)}<br><strong>Venue:</strong> ${html(location)}<br><strong>Date(s):</strong> ${html((dates as string[]).join(", "))}</p><p>We review submissions before adding them to the site. You don't need to do anything else right now.</p><p>— Pittsburgh Brews</p></div>`;
+const receipt=await fetch("https://api.resend.com/emails",{
+ method:"POST",headers:{Authorization:"Bearer "+key,"Content-Type":"application/json"},
+ body:JSON.stringify({from:process.env.UPDATE_FROM_EMAIL||"Pittsburgh Brews <contact@3xnorth.com>",to:[email],subject:"We received your Pittsburgh Brews event submission",html:receiptBody})
+});
+if(!receipt.ok){const reason=await receipt.text();console.error("Submitter confirmation email failed",receipt.status,reason.slice(0,2000));return NextResponse.json({ok:true,confirmationSent:false})}
+return NextResponse.json({ok:true,confirmationSent:true});
 }catch(error){console.error("Event submission failed",error);return NextResponse.json({error:"The submission could not be processed. Please try again."},{status:500})}
 }
