@@ -1,0 +1,77 @@
+import type { BeerEvent } from "@/data/events";
+
+// Individually verified near-term listings from brewery-owned calendars or the
+// event organizer. Unlike automated feeds, these are intentionally date-specific.
+// Do not generate recurring dates from these examples.
+export const verifiedCalendarAdditions: BeerEvent[] = [
+  {
+    name: "The Farmers Burger at CoStar Brewing",
+    date: "Oct 23, 2026 · 4–8 PM",
+    startDate: "2026-10-23",
+    endDate: "2026-10-23",
+    location: "CoStar Brewing · 323 Butler St, Etna",
+    category: "Food trucks",
+    description: "The Farmers Burger food truck at CoStar Brewing. Check the brewery's official event listing for updates.",
+    url: "https://www.costarbrewing.com/event-details-registration/the-farmers-burger-food-truck-2026-07-24-16-00",
+  },
+  {
+    name: "The Steer and Wheel at CoStar Brewing",
+    date: "Nov 19, 2026 · 4 PM",
+    startDate: "2026-11-19",
+    endDate: "2026-11-19",
+    location: "CoStar Brewing · 323 Butler St, Etna",
+    category: "Food trucks",
+    description: "The Steer and Wheel food truck, listed on CoStar Brewing's official recurring event page. Check the official source for the end time and schedule changes.",
+    url: "https://www.costarbrewing.com/event-details-registration/the-steer-and-wheel-food-truck-2026-07-16-16-00",
+  },
+  {
+    name: "Soul Pasta at Acrospire Brewing",
+    date: "Oct 23, 2026 · 5–9 PM",
+    startDate: "2026-10-23",
+    endDate: "2026-10-23",
+    location: "Acrospire Brewing Company · 1702 Mt Royal Blvd, Glenshaw",
+    category: "Food trucks",
+    description: "Soul Pasta visiting Acrospire Brewing Company, as listed on Acrospire's official event calendar.",
+    url: "https://www.acrospirebrewingco.com/calendar",
+  },
+  {
+    name: "The Farmers Burger at Acrospire Brewing",
+    date: "Oct 24, 2026 · 4–8 PM",
+    startDate: "2026-10-24",
+    endDate: "2026-10-24",
+    location: "Acrospire Brewing Company · 1702 Mt Royal Blvd, Glenshaw",
+    category: "Food trucks",
+    description: "The Farmers Burger visiting Acrospire, as listed on Acrospire's official event calendar.",
+    url: "https://www.acrospirebrewingco.com/calendar",
+  },
+  {
+    name: "Halloween Trivia Night at Acrospire",
+    date: "Oct 29, 2026 · 5–9 PM",
+    startDate: "2026-10-29",
+    endDate: "2026-10-29",
+    location: "Acrospire Brewing Company · 1702 Mt Royal Blvd, Glenshaw",
+    category: "Trivia & games",
+    description: "Halloween-themed trivia night; Acrospire lists the venue's hours and BYO food. Confirm the trivia start time directly with the brewery.",
+    url: "https://www.acrospirebrewingco.com/calendar",
+  },
+  {
+    name: "Sticky Rice Tacos at Acrospire Brewing",
+    date: "Oct 30, 2026 · 4–9 PM",
+    startDate: "2026-10-30",
+    endDate: "2026-10-30",
+    location: "Acrospire Brewing Company · 1702 Mt Royal Blvd, Glenshaw",
+    category: "Food trucks",
+    description: "Sticky Rice Tacos visiting Acrospire, as listed on Acrospire's official event calendar.",
+    url: "https://www.acrospirebrewingco.com/calendar",
+  },
+  {
+    name: "Jane West at Balance Brewing",
+    date: "Oct 23, 2026 · 6–9 PM",
+    startDate: "2026-10-23",
+    endDate: "2026-10-23",
+    location: "Balance Brewing Company · 2257 Babcock Blvd, Pittsburgh",
+    category: "Live music",
+    description: "Live music by Jane West with Tyler of Change of Heart at Balance Brewing. No cover was advertised; check with the organizers for updates.",
+    url: "https://www.bandsintown.com/e/108965354-jane-west-at-balance-brewing-company?came_from=274",
+  },
+];
