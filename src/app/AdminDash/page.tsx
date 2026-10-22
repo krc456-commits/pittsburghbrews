@@ -30,6 +30,16 @@ export default function AdminDash(){
    }catch(e){setMessage(e instanceof Error?e.message:"Could not load events")}
  }
  useEffect(()=>{if(token)void load(token)},[token]);
+ async function register(){
+  if(!email||password.length<12){setMessage("Choose an admin email and a password of at least 12 characters.");return}
+  setBusy(true);setMessage("");
+  try{
+   const res=await fetch(url+"/auth/v1/signup",{method:"POST",headers:{"apikey":key,"Content-Type":"application/json"},body:JSON.stringify({email,password})});
+   const data=await res.json();
+   if(!res.ok)throw Error(data.msg||data.error_description||"Could not create login");
+   setMessage("Check your inbox to confirm your email, then sign in. Only the authorized Pittsburgh Brews address can access this dashboard.");
+  }catch(e){setMessage(e instanceof Error?e.message:"Signup failed")}finally{setBusy(false)}
+ }
  async function login(e:FormEvent){e.preventDefault();setBusy(true);setMessage("");
   try{
    const response=await fetch(url+"/auth/v1/token?grant_type=password",{method:"POST",headers:{"apikey":key,"Content-Type":"application/json"},body:JSON.stringify({email,password})});
@@ -54,7 +64,7 @@ export default function AdminDash(){
  const filtered=rows.filter(r=>(r.name+" "+r.location_name).toLowerCase().includes(filter.toLowerCase()));
  return <main className="min-h-screen bg-[#0e0e0c] px-4 py-10 text-white"><div className="mx-auto max-w-5xl">
  <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="font-bold text-[#edcf78]">Pittsburgh Brews</p><h1 className="mt-1 text-3xl font-black">Admin Dashboard</h1><p className="mt-2 text-sm text-zinc-400">Private event management · changes go live without a redeploy</p></div>{token&&<button className="rounded-lg border border-white/20 px-4 py-2" onClick={()=>{sessionStorage.removeItem("pb-admin-token");setToken("");setRows([]);}}>Sign out</button>}</div>
- {!token?<form onSubmit={login} className="mt-8 max-w-md space-y-4 rounded-2xl border border-white/15 bg-[#1b1b18] p-6"><h2 className="text-lg font-bold">Administrator sign in</h2><label className="block text-sm">Admin email<input className={box+" mt-2"} type="email" required value={email} onChange={e=>setEmail(e.target.value)}/></label><label className="block text-sm">Password<input className={box+" mt-2"} type="password" required value={password} onChange={e=>setPassword(e.target.value)}/></label><button disabled={busy} className="rounded-full bg-[#edcf78] px-6 py-3 font-black text-black">Sign in</button><p className="text-xs text-zinc-400">Access is restricted to authorized accounts in the Pittsburgh Brews Supabase project. New admin accounts are created privately by the site owner.</p></form>:
+ {!token?<form onSubmit={login} className="mt-8 max-w-md space-y-4 rounded-2xl border border-white/15 bg-[#1b1b18] p-6"><h2 className="text-lg font-bold">Administrator sign in</h2><label className="block text-sm">Admin email<input className={box+" mt-2"} type="email" required value={email} onChange={e=>setEmail(e.target.value)}/></label><label className="block text-sm">Password<input className={box+" mt-2"} type="password" required value={password} onChange={e=>setPassword(e.target.value)}/></label><div className="flex flex-wrap items-center gap-3"><button disabled={busy} className="rounded-full bg-[#edcf78] px-6 py-3 font-black text-black">Sign in</button><button type="button" disabled={busy} onClick={register} className="rounded-full border border-white/30 px-5 py-3 font-bold">Create admin login</button></div><p className="text-xs text-zinc-400">Access is restricted to authorized accounts in the Pittsburgh Brews Supabase project. New admin accounts are created privately by the site owner.</p></form>:
  <div className="mt-7"><div className="flex flex-wrap gap-2">
  {([["published","Published events"],["submissions","Submissions"],["sources","Imported & curated"]] as const).map(([value,label])=><button key={value} onClick={()=>{setTab(value);setSelected(null)}} className={"rounded-full px-4 py-2 text-sm font-bold "+(tab===value?"bg-[#edcf78] text-black":"border border-white/20")}>{label}</button>)}
  </div>
